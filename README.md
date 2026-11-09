@@ -7,6 +7,8 @@ EEPROMs, mostra o estado em um OLED e exporta tudo para CSV por USB. Projeto de 
 > combinações de sensores, e com o consumo medido. O ensaio de estabilidade prolongada também foi executado (12 h 07 min até encher a memória).
 > Resultados em \\\[docs/RESULTADOS\\\_DOS\\\_TESTES.md](docs/RESULTADOS\\\_DOS\\\_TESTES.md); histórico em \\\[CHANGELOG.md](CHANGELOG.md).
 
+
+
 \## Documentação
 
 
@@ -16,10 +18,6 @@ A documentação técnica do projeto, gerada com Doxygen, está disponível onli
 
 
 \[\*\*Acessar documentação Doxygen\*\*](https://cristianoteruia.github.io/PlataformaModular/)
-
-
-
-
 
 ## O que faz
 
