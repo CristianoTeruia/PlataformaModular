@@ -1,0 +1,125 @@
+/**
+@mainpage PlataformaModular
+
+Plataforma modular embarcada para aquisição e registro periódico de dados de sensores, baseada no
+microcontrolador STM32F411 (placa Black Pill), com FreeRTOS. O sistema lê módulos de sensores I²C
+substituíveis a cada 10 s, grava registros com data e hora e CRC-16 em duas EEPROMs 24LC512, mostra o
+estado em um OLED e exporta os dados em CSV por USB.
+
+Esta documentação descreve o código da aplicação. Os arquivos gerados pelo STM32CubeMX e as bibliotecas
+(HAL, FreeRTOS, USB) não fazem parte dela.
+
+@section sec_hw Hardware
+
+| Barramento | Dispositivos | Função |
+|---|---|---|
+| I²C1 (100 kHz) | AHT20 (0x38), BMP280 (0x77), MPU6500 (0x68), BH1750 (0x23 ou 0x5C), ENS160 (0x53 ou 0x52) | Sensores (módulos substituíveis) |
+| I²C2 (100 kHz) | EEPROM 24LC512 (0x50 e 0x51), OLED SSD1306 (0x3D) | Armazenamento e interface |
+| USB (CDC) | Computador | Exportação e comandos |
+| VBAT | CR2032 | Backup do RTC |
+
+A alimentação é feita por uma célula Li-ion 18650, um módulo TP4056 (carga e proteção) e um conversor
+elevador MT3608 que alimenta o pino 5 V da Black Pill. A USB e a bateria não podem ser ligadas ao mesmo
+tempo.
+
+@section sec_tasks Tarefas e mutexes
+
+| Tarefa | Prioridade | Função |
+|---|---|---|
+| `defaultTask` | normal | USB, RTC, exportação, limpeza e alimentação do watchdog (App_CommandTask()) |
+| `sensorTask` | abaixo do normal | Aquisição a cada 10 s e gravação na EEPROM (StartSensorTask()) |
+| `oledTask` | baixa | Atualização do display, botão e política de energia (StartOledTask()) |
+
+| Mutex | Protege |
+|---|---|
+| EEPROM | Gravação, exportação e limpeza (uma operação por vez) |
+| I²C2 | Barramento compartilhado por OLED e EEPROMs (I2C2_BusAcquire()) |
+| Dados dos sensores | Últimas leituras e máscaras de disponibilidade |
+| RTC | Leitura e ajuste do RTC (App_RTC_Lock()) |
+
+O watchdog independente (@ref app_watchdog.h) só é realimentado quando todas as tarefas supervisionadas
+registraram atividade dentro do prazo (30 s para a `sensorTask` e 10 s para a `oledTask`), de modo que o
+travamento de uma delas reinicia o sistema.
+
+@section sec_sensors Sensores modulares
+
+Cada sensor é uma linha da tabela de @ref sensor_registry.h: bit da máscara, tamanho do dado, funções de
+leitura, serialização e formatação CSV. O restante do firmware apenas percorre a tabela. Adicionar um
+sensor equivale a escrever um driver e acrescentar uma linha.
+
+| Sensor | Bit da máscara | Dados no registro (B) | Colunas do CSV |
+|---|---|---|---|
+| AHT20 | 0 | 4 | `aht_present`, `aht_temp_c`, `aht_humidity_pct` |
+| BMP280 | 1 | 4 | `bmp_pressure` |
+| MPU6500 | 2 | 12 | `accel_x_g`, `accel_y_g`, `accel_z_g`, `gyro_x_dps`, `gyro_y_dps`, `gyro_z_dps` |
+| BH1750 | 3 | 2 | `bh_lux` |
+| ENS160 | 4 | 6 | `ens_aqi`, `ens_tvoc_ppb`, `ens_eco2_ppm`, `ens_validity` |
+
+@note O ENS160 tem driver e testes no PC, mas o módulo usado nos ensaios nunca completou uma medição com
+alimentação de 3,3 V; por isso ele ficou fora dos ensaios em hardware.
+
+@section sec_record Formato do registro e mapa da EEPROM
+
+@code
+[máscara 1 B][dados dos sensores presentes, na ordem da tabela][RTC 7 B][CRC-16 2 B]
+@endcode
+
+O RTC ocupa 7 bytes: ano completo em 2 bytes (little-endian), mês, dia, hora, minuto e segundo. O CRC é o
+CRC-16/CCITT-FALSE (polinômio 0x1021, valor inicial 0xFFFF) de todos os bytes anteriores, gravado em
+little-endian (EEPROM_CalculateCRC16()). O tamanho do registro depende da máscara (Sensors_RecordSizeFromMask()):
+
+| Sensores | Máscara | Registro (B) | Capacidade (registros) | Tempo até encher a 10 s |
+|---|---|---|---|---|
+| AHT20 + BMP280 | 3 | 18 | 7.266 | cerca de 20,2 h |
+| AHT20 + BMP280 + BH1750 | 11 | 20 | 6.540 | cerca de 18,2 h |
+| AHT20 + BMP280 + MPU6500 | 7 | 30 | 4.360 | cerca de 12,1 h |
+
+Mapa das memórias (dois chips de 64 KiB, usados em sequência; um registro nunca é dividido entre eles):
+
+| Região | Conteúdo |
+|---|---|
+| EEPROM 1, 0x0000 a 0x00FF | Metadados (EEPROMMetadata): próximo endereço, chip ativo, indicador de cheia e `magic` 0xA55A |
+| EEPROM 1, 0x0100 a 0xFFFF | Registros (65.280 B) |
+| EEPROM 2, 0x0000 a 0xFFFF | Registros, quando não cabem mais na EEPROM 1 (65.536 B) |
+
+Após cada gravação, o firmware relê o registro, compara com o original e confere o CRC
+(EEPROM_SaveSensorRecord()). Ao atingir a capacidade, a gravação é interrompida sem sobrescrever dados e o
+OLED avisa. Na exportação, registros com CRC ou máscara inválidos são contados como suspeitos e a varredura
+avança um byte para se ressincronizar (EEPROM_ExportCSV_USB()).
+
+@section sec_usb Protocolo USB (CDC)
+
+Os comandos são linhas de texto terminadas por CR ou LF. As respostas terminam em CR LF.
+
+| Comando | Resposta |
+|---|---|
+| `PING` | `PONG` |
+| `STATUS` | `STATUS,OK` |
+| `DIAG` | Linha `DIAG,...` com o estado interno (tarefas, I²C, sensores, watchdog, OLED) |
+| `EXPORT` | `EXPORT,ACEITO`; depois `EXPORT_BEGIN`, o cabeçalho CSV, uma linha por registro (`sensor_mask,timestamp,...`), eventuais `PROGRESS,<endereço>` e `EXPORT_END,<enviados>,<suspeitos>` |
+| `RTC_SET,AAAA,MM,DD,HH,mm,ss` | `RTC_SET_END,OK,<data e hora>` ou `RTC_SET_END,ERRO,FORMATO`, `DATA` ou `HAL` |
+| `CLEAR` | `ERRO,CLEAR_REQUER_CONFIRMACAO` |
+| `CLEAR,CONFIRMO` | `CLEAR,ACEITO`; ao final, `CLEAR_END,OK` ou `CLEAR_END,ERRO` |
+| `WDTTEST` | `WDTTEST,ACEITO` (somente com ENABLE_WDT_TEST igual a 1) |
+| outro | `ERRO,COMANDO_DESCONHECIDO` |
+
+Outras respostas de erro da exportação e da limpeza: `ERRO,EXPORTACAO_JA_SOLICITADA`,
+`ERRO,OPERACAO_EM_ANDAMENTO`, `ERRO,RTC_COMANDO_LONGO`, `ERRO,METADADOS_INVALIDOS`,
+`ERRO,METADADOS_INCONSISTENTES`, `ERRO,SELETOR_EEPROM_INVALIDO`, `ERRO,LIMITE_EEPROM_INVALIDO`,
+`ERRO,FALHA_LEITURA_EEPROM2` e `ERRO,FALHA_LEITURA_EEPROM1,...` (esta última traz campos extras de
+diagnóstico do I²C e do OLED). Os comandos são executados pela `defaultTask`, nunca dentro da callback
+USB.
+
+@section sec_opts Opções de compilação
+
+As opções ficam em @ref app_config.h: ENABLE_WDT_TEST, ENABLE_IDLE_WFI e OLED_AUTO_OFF_MS.
+
+@section sec_gen Como gerar esta documentação
+
+@code
+doxygen Doxyfile
+@endcode
+
+A saída HTML fica em `docs/api/html/index.html`. Para o PDF, entre em `docs/api/latex` e execute `make`
+(Linux e macOS) ou `make.bat` (Windows). O arquivo de configuração é o `Doxyfile` da raiz do projeto.
+*/

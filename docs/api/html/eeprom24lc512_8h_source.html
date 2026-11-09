@@ -1,0 +1,204 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pt-BR">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.18.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>PlataformaModular: Código-Fonte de Core/Inc/eeprom24lc512.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="codefolding.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">PlataformaModular
+   </div>
+   <div id="projectbrief">Plataforma modular embarcada para aquisição e registro de dados de sensores (STM32F411 + FreeRTOS)</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Gerado por Doxygen 1.18.0 -->
+<script type="text/javascript">
+let searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', codefold.init);
+</script>
+<script type="application/json" id="doxygen-config">
+{
+  "relPath": "",
+  "generateTreeView": true,
+  "searchEngine": true,
+  "serverBasedSearch": false,
+  "disableIndex": false,
+  "dynamicMenus": true,
+  "fullSidebar": false
+}
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<div id="main-nav-mobile">
+<div class="sm sm-dox"><input id="main-menu-state" type="checkbox"/>
+<label class="main-menu-btn" for="main-menu-state">
+<span class="main-menu-btn-icon"></span> Toggle main menu visibility</label>
+<span id="searchBoxPos1"></span>
+</div>
+</div><!-- main-nav-mobile -->
+<div id="main-nav">
+  <ul class="sm sm-dox" id="main-menu">
+    <li id="searchBoxPos2">
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect" class="search-icon"><span class="search-icon-dropdown"></span></span>
+          <input type="text" id="MSearchField" value="" placeholder="Busca" accesskey="S"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+          </span>
+        </div>
+    </li>
+  </ul>
+</div><!-- main-nav -->
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded',() => { initNavTree('eeprom24lc512_8h_source.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Carregando...</div>
+<div class="SRStatus" id="Searching">Procurando...</div>
+<div class="SRStatus" id="NoMatches">Nenhuma entrada encontrado</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">eeprom24lc512.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="eeprom24lc512_8h.html">Ir para a documentação desse arquivo.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#ifndef EEPROM24LC512_H</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#define EEPROM24LC512_H</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#include &quot;<a class="code" href="app__state_8h.html">app_state.h</a>&quot;</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> {</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span></div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>HAL_StatusTypeDef <a class="code hl_function" href="eeprom24lc512_8h.html#a463c2abe90877b2471a08cba75274439">EEPROM24LC512_WriteBuffer</a>(uint16_t address, uint8_t *data, uint16_t size, uint16_t i2c_address);</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span></div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>HAL_StatusTypeDef <a class="code hl_function" href="eeprom24lc512_8h.html#a844398a3e9a655590f69aaf46a47233e">EEPROM24LC512_ReadBuffer</a>(uint16_t address, uint8_t *data, uint16_t size, uint16_t i2c_address);</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span></div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>HAL_StatusTypeDef <a class="code hl_function" href="eeprom24lc512_8h.html#a8bc81fbaa44af07005751569fd0a390d">EEPROM24LC512_WriteByte</a>(uint16_t address, uint8_t data);</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span></div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>HAL_StatusTypeDef <a class="code hl_function" href="eeprom24lc512_8h.html#a0ffd22360967cfa9e25f48f0ca8a8c17">EEPROM24LC512_ReadByte</a>(uint16_t address, uint8_t *data);</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span></div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>HAL_StatusTypeDef <a class="code hl_function" href="eeprom24lc512_8h.html#a3f556bea17e6286c006a548ca51470c0">EEPROM24LC512_WriteRecord</a>(uint16_t address, uint8_t *data, uint8_t size);</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span></div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>HAL_StatusTypeDef <a class="code hl_function" href="eeprom24lc512_8h.html#a85dba059fc69fb1601c533fb961d2f2e">EEPROM24LC512_ReadRecord</a>(uint16_t address, <a class="code hl_struct" href="struct_sensor_record_e_e_p_r_o_m.html">SensorRecordEEPROM</a> *record);</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span></div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span><span class="keywordtype">void</span> <a class="code hl_function" href="eeprom24lc512_8h.html#a9ce45678ac2a598caa5b0416a2f23033">EEPROM_CreateSensorRecord</a>(<a class="code hl_struct" href="struct_sensor_record_e_e_p_r_o_m.html">SensorRecordEEPROM</a> *record);</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span></div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>HAL_StatusTypeDef <a class="code hl_function" href="eeprom24lc512_8h.html#a3bdee773136462d85fd2547023d62c42">EEPROM_SaveSensorRecord</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span></div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span><span class="keywordtype">void</span> <a class="code hl_function" href="eeprom24lc512_8h.html#ab83e49947ce34753469ff505b77ef87d">EEPROM24C512_ReadFullMemory</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span></div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>HAL_StatusTypeDef <a class="code hl_function" href="eeprom24lc512_8h.html#a5faed85c58392ae27658715071d9c0c8">EEPROM_SaveMetadata</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span></div>
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>HAL_StatusTypeDef <a class="code hl_function" href="eeprom24lc512_8h.html#a1435936f9c34d0d830872b6ae81da659">EEPROM_ExportCSV_USB</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span></div>
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>HAL_StatusTypeDef <a class="code hl_function" href="eeprom24lc512_8h.html#a88c1d3e7f600cf8094f7858fdc9f6546">EEPROM_LoadMetadata</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span></div>
+<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span>uint16_t <a class="code hl_function" href="eeprom24lc512_8h.html#a521d6ae3daac4f726fbbacb1c09afd9d">EEPROM_CalculateCRC16</a>(<span class="keyword">const</span> uint8_t *data, uint16_t length);</div>
+<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span></div>
+<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span>HAL_StatusTypeDef <a class="code hl_function" href="eeprom24lc512_8h.html#a7d71581bbe3b5317e1ddfa34f1ca9486">EEPROM_Test_CRC16</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span></div>
+<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span>HAL_StatusTypeDef <a class="code hl_function" href="eeprom24lc512_8h.html#a7e550f6e0fbbca8e2822268d02574ee1">EEPROM_BuildSensorRecord</a>(uint8_t *buffer, uint8_t *record_size, uint8_t sensor_mask);</div>
+<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span></div>
+<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span>HAL_StatusTypeDef <a class="code hl_function" href="eeprom24lc512_8h.html#a8e0a1900749e1cb61c5ebf06a1197d95">EEPROM24LC512_EraseAll</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span></div>
+<div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span></div>
+<div class="line"><a id="l00215" name="l00215"></a><span class="lineno">  215</span>HAL_StatusTypeDef <a class="code hl_function" href="eeprom24lc512_8h.html#ad9d43aabb4a7c0b0166223abe574c814">EEPROM2_Test</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00216" name="l00216"></a><span class="lineno">  216</span></div>
+<div class="line"><a id="l00221" name="l00221"></a><span class="lineno">  221</span>HAL_StatusTypeDef <a class="code hl_function" href="eeprom24lc512_8h.html#a390477998631dcf2039b8f8452f9431f">EEPROM_Test_Independence</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span></div>
+<div class="line"><a id="l00227" name="l00227"></a><span class="lineno">  227</span>HAL_StatusTypeDef <a class="code hl_function" href="eeprom24lc512_8h.html#ad49cf3b13c4bd80318f6068cb7e5084e">EEPROM_Test_AddressBoundaries</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00228" name="l00228"></a><span class="lineno">  228</span></div>
+<div class="line"><a id="l00233" name="l00233"></a><span class="lineno">  233</span>HAL_StatusTypeDef <a class="code hl_function" href="eeprom24lc512_8h.html#abceec24c6eaa0378357f605b260ff97a">EEPROM_Test_PageBoundary</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00234" name="l00234"></a><span class="lineno">  234</span></div>
+<div class="line"><a id="l00240" name="l00240"></a><span class="lineno">  240</span>HAL_StatusTypeDef <a class="code hl_function" href="eeprom24lc512_8h.html#a5aba544c59517a9257be40fd6b60a01c">EEPROM_Test_SerializedRecordRoundTrip</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00242" name="l00242"></a><span class="lineno">  242</span><span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span>}</div>
+<div class="line"><a id="l00244" name="l00244"></a><span class="lineno">  244</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00245" name="l00245"></a><span class="lineno">  245</span><span class="preprocessor">#endif</span></div>
+<div class="ttc" id="aapp__state_8h_html"><div class="ttname"><a href="app__state_8h.html">app_state.h</a></div><div class="ttdoc">Tipos, constantes e variáveis globais compartilhadas entre os módulos do firmware.</div></div>
+<div class="ttc" id="aeeprom24lc512_8h_html_a0ffd22360967cfa9e25f48f0ca8a8c17"><div class="ttname"><a href="eeprom24lc512_8h.html#a0ffd22360967cfa9e25f48f0ca8a8c17">EEPROM24LC512_ReadByte</a></div><div class="ttdeci">HAL_StatusTypeDef EEPROM24LC512_ReadByte(uint16_t address, uint8_t *data)</div><div class="ttdoc">Lê um byte da EEPROM 1.</div><div class="ttdef"><b>Definição</b> <a href="eeprom24lc512_8c_source.html#l00170">eeprom24lc512.c:170</a></div></div>
+<div class="ttc" id="aeeprom24lc512_8h_html_a1435936f9c34d0d830872b6ae81da659"><div class="ttname"><a href="eeprom24lc512_8h.html#a1435936f9c34d0d830872b6ae81da659">EEPROM_ExportCSV_USB</a></div><div class="ttdeci">HAL_StatusTypeDef EEPROM_ExportCSV_USB(void)</div><div class="ttdoc">Exporta todos os registros gravados, em CSV, pela USB (CDC).</div><div class="ttdef"><b>Definição</b> <a href="eeprom24lc512_8c_source.html#l01361">eeprom24lc512.c:1361</a></div></div>
+<div class="ttc" id="aeeprom24lc512_8h_html_a390477998631dcf2039b8f8452f9431f"><div class="ttname"><a href="eeprom24lc512_8h.html#a390477998631dcf2039b8f8452f9431f">EEPROM_Test_Independence</a></div><div class="ttdeci">HAL_StatusTypeDef EEPROM_Test_Independence(void)</div><div class="ttdoc">Grava valores diferentes no endereço 0x0020 de cada chip e confere que são independentes.</div><div class="ttdef"><b>Definição</b> <a href="eeprom24lc512_8c_source.html#l00832">eeprom24lc512.c:832</a></div></div>
+<div class="ttc" id="aeeprom24lc512_8h_html_a3bdee773136462d85fd2547023d62c42"><div class="ttname"><a href="eeprom24lc512_8h.html#a3bdee773136462d85fd2547023d62c42">EEPROM_SaveSensorRecord</a></div><div class="ttdeci">HAL_StatusTypeDef EEPROM_SaveSensorRecord(void)</div><div class="ttdoc">Grava na EEPROM um registro com as últimas leituras dos sensores disponíveis.</div><div class="ttdef"><b>Definição</b> <a href="eeprom24lc512_8c_source.html#l00252">eeprom24lc512.c:252</a></div></div>
+<div class="ttc" id="aeeprom24lc512_8h_html_a3f556bea17e6286c006a548ca51470c0"><div class="ttname"><a href="eeprom24lc512_8h.html#a3f556bea17e6286c006a548ca51470c0">EEPROM24LC512_WriteRecord</a></div><div class="ttdeci">HAL_StatusTypeDef EEPROM24LC512_WriteRecord(uint16_t address, uint8_t *data, uint8_t size)</div><div class="ttdoc">Grava um registro de tamanho qualquer na EEPROM 1 (função simples, sem metadados).</div><div class="ttdef"><b>Definição</b> <a href="eeprom24lc512_8c_source.html#l00183">eeprom24lc512.c:183</a></div></div>
+<div class="ttc" id="aeeprom24lc512_8h_html_a463c2abe90877b2471a08cba75274439"><div class="ttname"><a href="eeprom24lc512_8h.html#a463c2abe90877b2471a08cba75274439">EEPROM24LC512_WriteBuffer</a></div><div class="ttdeci">HAL_StatusTypeDef EEPROM24LC512_WriteBuffer(uint16_t address, uint8_t *data, uint16_t size, uint16_t i2c_address)</div><div class="ttdoc">Grava um bloco de bytes em um dos chips.</div><div class="ttdef"><b>Definição</b> <a href="eeprom24lc512_8c_source.html#l00032">eeprom24lc512.c:32</a></div></div>
+<div class="ttc" id="aeeprom24lc512_8h_html_a521d6ae3daac4f726fbbacb1c09afd9d"><div class="ttname"><a href="eeprom24lc512_8h.html#a521d6ae3daac4f726fbbacb1c09afd9d">EEPROM_CalculateCRC16</a></div><div class="ttdeci">uint16_t EEPROM_CalculateCRC16(const uint8_t *data, uint16_t length)</div><div class="ttdoc">Calcula o CRC-16/CCITT-FALSE de um bloco de bytes.</div><div class="ttdef"><b>Definição</b> <a href="eeprom24lc512_8c_source.html#l00592">eeprom24lc512.c:592</a></div></div>
+<div class="ttc" id="aeeprom24lc512_8h_html_a5aba544c59517a9257be40fd6b60a01c"><div class="ttname"><a href="eeprom24lc512_8h.html#a5aba544c59517a9257be40fd6b60a01c">EEPROM_Test_SerializedRecordRoundTrip</a></div><div class="ttdeci">HAL_StatusTypeDef EEPROM_Test_SerializedRecordRoundTrip(void)</div><div class="ttdoc">Monta um registro com os sensores disponíveis, grava em 0x0200 da EEPROM 2, relê e confere byte a byt...</div><div class="ttdef"><b>Definição</b> <a href="eeprom24lc512_8c_source.html#l01008">eeprom24lc512.c:1008</a></div></div>
+<div class="ttc" id="aeeprom24lc512_8h_html_a5faed85c58392ae27658715071d9c0c8"><div class="ttname"><a href="eeprom24lc512_8h.html#a5faed85c58392ae27658715071d9c0c8">EEPROM_SaveMetadata</a></div><div class="ttdeci">HAL_StatusTypeDef EEPROM_SaveMetadata(void)</div><div class="ttdoc">Grava os metadados (eeprom_metadata) no endereço 0x0000 da EEPROM 1.</div><div class="ttdef"><b>Definição</b> <a href="eeprom24lc512_8c_source.html#l00471">eeprom24lc512.c:471</a></div></div>
+<div class="ttc" id="aeeprom24lc512_8h_html_a7d71581bbe3b5317e1ddfa34f1ca9486"><div class="ttname"><a href="eeprom24lc512_8h.html#a7d71581bbe3b5317e1ddfa34f1ca9486">EEPROM_Test_CRC16</a></div><div class="ttdeci">HAL_StatusTypeDef EEPROM_Test_CRC16(void)</div><div class="ttdoc">Autoteste do CRC com o vetor padrão &quot;123456789&quot; (esperado 0x29B1).</div><div class="ttdef"><b>Definição</b> <a href="eeprom24lc512_8c_source.html#l00622">eeprom24lc512.c:622</a></div></div>
+<div class="ttc" id="aeeprom24lc512_8h_html_a7e550f6e0fbbca8e2822268d02574ee1"><div class="ttname"><a href="eeprom24lc512_8h.html#a7e550f6e0fbbca8e2822268d02574ee1">EEPROM_BuildSensorRecord</a></div><div class="ttdeci">HAL_StatusTypeDef EEPROM_BuildSensorRecord(uint8_t *buffer, uint8_t *record_size, uint8_t sensor_mask)</div><div class="ttdoc">Monta um registro: máscara, dados dos sensores, data e hora do RTC e CRC.</div><div class="ttdef"><b>Definição</b> <a href="eeprom24lc512_8c_source.html#l00635">eeprom24lc512.c:635</a></div></div>
+<div class="ttc" id="aeeprom24lc512_8h_html_a844398a3e9a655590f69aaf46a47233e"><div class="ttname"><a href="eeprom24lc512_8h.html#a844398a3e9a655590f69aaf46a47233e">EEPROM24LC512_ReadBuffer</a></div><div class="ttdeci">HAL_StatusTypeDef EEPROM24LC512_ReadBuffer(uint16_t address, uint8_t *data, uint16_t size, uint16_t i2c_address)</div><div class="ttdoc">Lê um bloco de bytes de um dos chips.</div><div class="ttdef"><b>Definição</b> <a href="eeprom24lc512_8c_source.html#l00105">eeprom24lc512.c:105</a></div></div>
+<div class="ttc" id="aeeprom24lc512_8h_html_a85dba059fc69fb1601c533fb961d2f2e"><div class="ttname"><a href="eeprom24lc512_8h.html#a85dba059fc69fb1601c533fb961d2f2e">EEPROM24LC512_ReadRecord</a></div><div class="ttdeci">HAL_StatusTypeDef EEPROM24LC512_ReadRecord(uint16_t address, SensorRecordEEPROM *record)</div><div class="ttdoc">Lê da EEPROM 1 um registro do formato antigo de tamanho fixo (legado).</div><div class="ttdef"><b>Definição</b> <a href="eeprom24lc512_8c_source.html#l00199">eeprom24lc512.c:199</a></div></div>
+<div class="ttc" id="aeeprom24lc512_8h_html_a88c1d3e7f600cf8094f7858fdc9f6546"><div class="ttname"><a href="eeprom24lc512_8h.html#a88c1d3e7f600cf8094f7858fdc9f6546">EEPROM_LoadMetadata</a></div><div class="ttdeci">HAL_StatusTypeDef EEPROM_LoadMetadata(void)</div><div class="ttdoc">Lê e valida os metadados gravados na EEPROM 1.</div><div class="ttdef"><b>Definição</b> <a href="eeprom24lc512_8c_source.html#l00482">eeprom24lc512.c:482</a></div></div>
+<div class="ttc" id="aeeprom24lc512_8h_html_a8bc81fbaa44af07005751569fd0a390d"><div class="ttname"><a href="eeprom24lc512_8h.html#a8bc81fbaa44af07005751569fd0a390d">EEPROM24LC512_WriteByte</a></div><div class="ttdeci">HAL_StatusTypeDef EEPROM24LC512_WriteByte(uint16_t address, uint8_t data)</div><div class="ttdoc">Grava um byte na EEPROM 1.</div><div class="ttdef"><b>Definição</b> <a href="eeprom24lc512_8c_source.html#l00156">eeprom24lc512.c:156</a></div></div>
+<div class="ttc" id="aeeprom24lc512_8h_html_a8e0a1900749e1cb61c5ebf06a1197d95"><div class="ttname"><a href="eeprom24lc512_8h.html#a8e0a1900749e1cb61c5ebf06a1197d95">EEPROM24LC512_EraseAll</a></div><div class="ttdeci">HAL_StatusTypeDef EEPROM24LC512_EraseAll(void)</div><div class="ttdoc">Apaga as duas EEPROMs e reinicia os metadados.</div><div class="ttdef"><b>Definição</b> <a href="eeprom24lc512_8c_source.html#l00721">eeprom24lc512.c:721</a></div></div>
+<div class="ttc" id="aeeprom24lc512_8h_html_a9ce45678ac2a598caa5b0416a2f23033"><div class="ttname"><a href="eeprom24lc512_8h.html#a9ce45678ac2a598caa5b0416a2f23033">EEPROM_CreateSensorRecord</a></div><div class="ttdeci">void EEPROM_CreateSensorRecord(SensorRecordEEPROM *record)</div><div class="ttdoc">Preenche um registro do formato antigo com as últimas leituras escaladas (legado).</div><div class="ttdef"><b>Definição</b> <a href="eeprom24lc512_8c_source.html#l00217">eeprom24lc512.c:217</a></div></div>
+<div class="ttc" id="aeeprom24lc512_8h_html_ab83e49947ce34753469ff505b77ef87d"><div class="ttname"><a href="eeprom24lc512_8h.html#ab83e49947ce34753469ff505b77ef87d">EEPROM24C512_ReadFullMemory</a></div><div class="ttdeci">void EEPROM24C512_ReadFullMemory(void)</div><div class="ttdoc">Lê toda a EEPROM 1 em blocos de 64 B, para depuração.</div><div class="ttdef"><b>Definição</b> <a href="eeprom24lc512_8c_source.html#l00436">eeprom24lc512.c:436</a></div></div>
+<div class="ttc" id="aeeprom24lc512_8h_html_abceec24c6eaa0378357f605b260ff97a"><div class="ttname"><a href="eeprom24lc512_8h.html#abceec24c6eaa0378357f605b260ff97a">EEPROM_Test_PageBoundary</a></div><div class="ttdeci">HAL_StatusTypeDef EEPROM_Test_PageBoundary(void)</div><div class="ttdoc">Grava 32 bytes a partir de 0x0070 da EEPROM 2 (cruza a página de 128 B) e confere a leitura.</div><div class="ttdef"><b>Definição</b> <a href="eeprom24lc512_8c_source.html#l00967">eeprom24lc512.c:967</a></div></div>
+<div class="ttc" id="aeeprom24lc512_8h_html_ad49cf3b13c4bd80318f6068cb7e5084e"><div class="ttname"><a href="eeprom24lc512_8h.html#ad49cf3b13c4bd80318f6068cb7e5084e">EEPROM_Test_AddressBoundaries</a></div><div class="ttdeci">HAL_StatusTypeDef EEPROM_Test_AddressBoundaries(void)</div><div class="ttdoc">Grava e relê um byte em 0x0000, 0x0100, 0x1000, 0x8000 e 0xFFFF da EEPROM 2.</div><div class="ttdef"><b>Definição</b> <a href="eeprom24lc512_8c_source.html#l00914">eeprom24lc512.c:914</a></div></div>
+<div class="ttc" id="aeeprom24lc512_8h_html_ad9d43aabb4a7c0b0166223abe574c814"><div class="ttname"><a href="eeprom24lc512_8h.html#ad9d43aabb4a7c0b0166223abe574c814">EEPROM2_Test</a></div><div class="ttdeci">HAL_StatusTypeDef EEPROM2_Test(void)</div><div class="ttdoc">Grava 32 bytes a partir de 0x0070 da EEPROM 2, atravessando o limite de página, e confere a leitura.</div><div class="ttdef"><b>Definição</b> <a href="eeprom24lc512_8c_source.html#l00778">eeprom24lc512.c:778</a></div></div>
+<div class="ttc" id="astruct_sensor_record_e_e_p_r_o_m_html"><div class="ttname"><a href="struct_sensor_record_e_e_p_r_o_m.html">SensorRecordEEPROM</a></div><div class="ttdoc">Registro de tamanho fixo do formato original (legado).</div><div class="ttdef"><b>Definição</b> <a href="app__state_8h_source.html#l00022">app_state.h:23</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><b>Core</b></li><li class="navelem"><b>Inc</b></li><li class="navelem"><a href="eeprom24lc512_8h.html">eeprom24lc512.h</a></li>
+    <li class="footer">Gerado por <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.18.0 </li>
+  </ul>
+</div>
+</body>
+</html>

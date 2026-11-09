@@ -1,0 +1,194 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pt-BR">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.18.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>PlataformaModular: Código-Fonte de Core/Inc/ens160.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="codefolding.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">PlataformaModular
+   </div>
+   <div id="projectbrief">Plataforma modular embarcada para aquisição e registro de dados de sensores (STM32F411 + FreeRTOS)</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Gerado por Doxygen 1.18.0 -->
+<script type="text/javascript">
+let searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', codefold.init);
+</script>
+<script type="application/json" id="doxygen-config">
+{
+  "relPath": "",
+  "generateTreeView": true,
+  "searchEngine": true,
+  "serverBasedSearch": false,
+  "disableIndex": false,
+  "dynamicMenus": true,
+  "fullSidebar": false
+}
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<div id="main-nav-mobile">
+<div class="sm sm-dox"><input id="main-menu-state" type="checkbox"/>
+<label class="main-menu-btn" for="main-menu-state">
+<span class="main-menu-btn-icon"></span> Toggle main menu visibility</label>
+<span id="searchBoxPos1"></span>
+</div>
+</div><!-- main-nav-mobile -->
+<div id="main-nav">
+  <ul class="sm sm-dox" id="main-menu">
+    <li id="searchBoxPos2">
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect" class="search-icon"><span class="search-icon-dropdown"></span></span>
+          <input type="text" id="MSearchField" value="" placeholder="Busca" accesskey="S"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+          </span>
+        </div>
+    </li>
+  </ul>
+</div><!-- main-nav -->
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded',() => { initNavTree('ens160_8h_source.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Carregando...</div>
+<div class="SRStatus" id="Searching">Procurando...</div>
+<div class="SRStatus" id="NoMatches">Nenhuma entrada encontrado</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">ens160.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="ens160_8h.html">Ir para a documentação desse arquivo.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#ifndef ENS160_H</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#define ENS160_H</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#include &quot;<a class="code" href="app__state_8h.html">app_state.h</a>&quot;</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#include &lt;stdbool.h&gt;</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> {</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span></div>
+<div class="foldopen" id="foldopen00022" data-start="{" data-end="};">
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno"><a class="line" href="struct_e_n_s160___sample.html">   22</a></span><span class="keyword">typedef</span> <span class="keyword">struct</span></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>{</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="struct_e_n_s160___sample.html#a80970dc019d4331aaba72a51474356b5">   24</a></span>    uint8_t <a class="code hl_variable" href="struct_e_n_s160___sample.html#a80970dc019d4331aaba72a51474356b5">aqi</a>;        </div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno"><a class="line" href="struct_e_n_s160___sample.html#a4103af48c2d800d61a183ddc4fc4c78b">   25</a></span>    uint16_t <a class="code hl_variable" href="struct_e_n_s160___sample.html#a4103af48c2d800d61a183ddc4fc4c78b">tvoc_ppb</a>;  </div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno"><a class="line" href="struct_e_n_s160___sample.html#acaaabc0caca1fb64edd1eaf178c67778">   26</a></span>    uint16_t <a class="code hl_variable" href="struct_e_n_s160___sample.html#acaaabc0caca1fb64edd1eaf178c67778">eco2_ppm</a>;  </div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno"><a class="line" href="struct_e_n_s160___sample.html#aa1c5ed3583581deba1840ac65db797ad">   27</a></span>    uint8_t <a class="code hl_variable" href="struct_e_n_s160___sample.html#aa1c5ed3583581deba1840ac65db797ad">validity</a>;   </div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>} <a class="code hl_struct" href="struct_e_n_s160___sample.html">ENS160_Sample</a>;</div>
+</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="keyword">extern</span> <span class="keyword">volatile</span> uint8_t <a class="code hl_variable" href="ens160_8h.html#a0e10f8c689c57b0e149ac2f5fd40f788">ens160_addr</a>;        </div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="keyword">extern</span> <span class="keyword">volatile</span> uint16_t <a class="code hl_variable" href="ens160_8h.html#a3af5500460f13d5b3318b61c9a486a3b">ens160_part_id</a>;    </div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="keyword">extern</span> <span class="keyword">volatile</span> uint8_t <a class="code hl_variable" href="ens160_8h.html#a477fd6f1acd12a23e6dea5e6d58661d0">ens160_last_status</a>; </div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="keyword">extern</span> <span class="keyword">volatile</span> uint8_t <a class="code hl_variable" href="ens160_8h.html#a21fc8c2978f555f147c87130b9f44afa">ens160_opmode</a>;      </div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="keyword">extern</span> <span class="keyword">volatile</span> uint32_t <a class="code hl_variable" href="ens160_8h.html#ad14ad72a9857710821795e9582170df0">ens160_init_count</a>; </div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="keyword">extern</span> <span class="keyword">volatile</span> uint32_t <a class="code hl_variable" href="ens160_8h.html#a8eb85b4b009c73d6937e77e2b351a338">ens160_last_hal</a>;   </div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="keyword">extern</span> <span class="keyword">volatile</span> uint32_t <a class="code hl_variable" href="ens160_8h.html#a19da5bdff0c5a34ae0ccec0469b86971">ens160_timeout_count</a>;   </div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="keyword">extern</span> <span class="keyword">volatile</span> uint32_t <a class="code hl_variable" href="ens160_8h.html#aea6dad7cfa121b0c56fafe3d582b6f98">ens160_error_count</a>;     </div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="keyword">extern</span> <span class="keyword">volatile</span> uint32_t <a class="code hl_variable" href="ens160_8h.html#a2abfad88a1b14c21bf2b0d887e3d318b">ens160_comm_fail_count</a>; </div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="keyword">extern</span> <span class="keyword">volatile</span> uint32_t <a class="code hl_variable" href="ens160_8h.html#a1231b8a0cae2ad03f5ee45b1ec6c7e95">ens160_reset_count</a>;     </div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="keyword">extern</span> <span class="keyword">volatile</span> uint32_t <a class="code hl_variable" href="ens160_8h.html#a4f4594f2691845a78e267955d7d075c7">ens160_zero_count</a>;      </div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno"><a class="line" href="ens160_8h.html#a11beae97fbce77522322282f7d7b91b2">   41</a></span><span class="keyword">extern</span> <span class="keyword">volatile</span> uint8_t ens160_fw_major, ens160_fw_minor, <a class="code hl_variable" href="ens160_8h.html#a11beae97fbce77522322282f7d7b91b2">ens160_fw_build</a>; </div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno"><a class="line" href="ens160_8h.html#acc3b80e400912c59b82f3d330a2de62f">   42</a></span><span class="keyword">extern</span> <span class="keyword">volatile</span> uint16_t ens160_echo_t, <a class="code hl_variable" href="ens160_8h.html#acc3b80e400912c59b82f3d330a2de62f">ens160_echo_rh</a>; </div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno"><a class="line" href="ens160_8h.html#ab0900827dd9030d4f44c452f4fc5970c">   43</a></span><span class="keyword">extern</span> <span class="keyword">volatile</span> uint16_t ens160_last_tvoc, <a class="code hl_variable" href="ens160_8h.html#ab0900827dd9030d4f44c452f4fc5970c">ens160_last_eco2</a>; </div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno"><a class="line" href="ens160_8h.html#a64dd6eb26db638b6b3de2a1c30a396e7">   44</a></span><span class="keyword">extern</span> <span class="keyword">volatile</span> uint8_t ens160_last_aqi, <a class="code hl_variable" href="ens160_8h.html#a64dd6eb26db638b6b3de2a1c30a396e7">ens160_last_validity</a>; </div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span></div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>HAL_StatusTypeDef <a class="code hl_function" href="ens160_8h.html#a463214b42a9d3d333c8f1f449bccbdef">ENS160_Read</a>(<span class="keywordtype">bool</span> compensation_valid, <span class="keywordtype">float</span> temperature_c, <span class="keywordtype">float</span> humidity_pct,</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>                              <a class="code hl_struct" href="struct_e_n_s160___sample.html">ENS160_Sample</a> *out);</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span> </div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span><span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>}</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span> </div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span><span class="preprocessor">#endif</span></div>
+<div class="ttc" id="aapp__state_8h_html"><div class="ttname"><a href="app__state_8h.html">app_state.h</a></div><div class="ttdoc">Tipos, constantes e variáveis globais compartilhadas entre os módulos do firmware.</div></div>
+<div class="ttc" id="aens160_8h_html_a0e10f8c689c57b0e149ac2f5fd40f788"><div class="ttname"><a href="ens160_8h.html#a0e10f8c689c57b0e149ac2f5fd40f788">ens160_addr</a></div><div class="ttdeci">volatile uint8_t ens160_addr</div><div class="ttdoc">Endereço de 7 bits detectado (0 = não detectado).</div><div class="ttdef"><b>Definição</b> <a href="ens160_8c_source.html#l00043">ens160.c:43</a></div></div>
+<div class="ttc" id="aens160_8h_html_a11beae97fbce77522322282f7d7b91b2"><div class="ttname"><a href="ens160_8h.html#a11beae97fbce77522322282f7d7b91b2">ens160_fw_build</a></div><div class="ttdeci">volatile uint8_t ens160_fw_build</div><div class="ttdoc">Versão do firmware interno do sensor.</div><div class="ttdef"><b>Definição</b> <a href="#l00041">ens160.h:41</a></div></div>
+<div class="ttc" id="aens160_8h_html_a1231b8a0cae2ad03f5ee45b1ec6c7e95"><div class="ttname"><a href="ens160_8h.html#a1231b8a0cae2ad03f5ee45b1ec6c7e95">ens160_reset_count</a></div><div class="ttdeci">volatile uint32_t ens160_reset_count</div><div class="ttdoc">Inicializações que usaram RESET.</div><div class="ttdef"><b>Definição</b> <a href="ens160_8c_source.html#l00052">ens160.c:52</a></div></div>
+<div class="ttc" id="aens160_8h_html_a19da5bdff0c5a34ae0ccec0469b86971"><div class="ttname"><a href="ens160_8h.html#a19da5bdff0c5a34ae0ccec0469b86971">ens160_timeout_count</a></div><div class="ttdeci">volatile uint32_t ens160_timeout_count</div><div class="ttdoc">Ciclos sem dado novo.</div><div class="ttdef"><b>Definição</b> <a href="ens160_8c_source.html#l00049">ens160.c:49</a></div></div>
+<div class="ttc" id="aens160_8h_html_a21fc8c2978f555f147c87130b9f44afa"><div class="ttname"><a href="ens160_8h.html#a21fc8c2978f555f147c87130b9f44afa">ens160_opmode</a></div><div class="ttdeci">volatile uint8_t ens160_opmode</div><div class="ttdoc">Último OPMODE lido (0 sono, 1 ocioso, 2 padrão).</div><div class="ttdef"><b>Definição</b> <a href="ens160_8c_source.html#l00046">ens160.c:46</a></div></div>
+<div class="ttc" id="aens160_8h_html_a2abfad88a1b14c21bf2b0d887e3d318b"><div class="ttname"><a href="ens160_8h.html#a2abfad88a1b14c21bf2b0d887e3d318b">ens160_comm_fail_count</a></div><div class="ttdeci">volatile uint32_t ens160_comm_fail_count</div><div class="ttdoc">Falhas de comunicação I²C.</div><div class="ttdef"><b>Definição</b> <a href="ens160_8c_source.html#l00051">ens160.c:51</a></div></div>
+<div class="ttc" id="aens160_8h_html_a3af5500460f13d5b3318b61c9a486a3b"><div class="ttname"><a href="ens160_8h.html#a3af5500460f13d5b3318b61c9a486a3b">ens160_part_id</a></div><div class="ttdeci">volatile uint16_t ens160_part_id</div><div class="ttdoc">Último PART_ID lido (esperado 0x0160).</div><div class="ttdef"><b>Definição</b> <a href="ens160_8c_source.html#l00044">ens160.c:44</a></div></div>
+<div class="ttc" id="aens160_8h_html_a463214b42a9d3d333c8f1f449bccbdef"><div class="ttname"><a href="ens160_8h.html#a463214b42a9d3d333c8f1f449bccbdef">ENS160_Read</a></div><div class="ttdeci">HAL_StatusTypeDef ENS160_Read(bool compensation_valid, float temperature_c, float humidity_pct, ENS160_Sample *out)</div><div class="ttdoc">Lê uma amostra de qualidade do ar.</div><div class="ttdef"><b>Definição</b> <a href="ens160_8c_source.html#l00152">ens160.c:152</a></div></div>
+<div class="ttc" id="aens160_8h_html_a477fd6f1acd12a23e6dea5e6d58661d0"><div class="ttname"><a href="ens160_8h.html#a477fd6f1acd12a23e6dea5e6d58661d0">ens160_last_status</a></div><div class="ttdeci">volatile uint8_t ens160_last_status</div><div class="ttdoc">Último DEVICE_STATUS lido.</div><div class="ttdef"><b>Definição</b> <a href="ens160_8c_source.html#l00045">ens160.c:45</a></div></div>
+<div class="ttc" id="aens160_8h_html_a4f4594f2691845a78e267955d7d075c7"><div class="ttname"><a href="ens160_8h.html#a4f4594f2691845a78e267955d7d075c7">ens160_zero_count</a></div><div class="ttdeci">volatile uint32_t ens160_zero_count</div><div class="ttdoc">Leituras com AQI, TVOC e eCO2 todos nulos (sem medição real).</div><div class="ttdef"><b>Definição</b> <a href="ens160_8c_source.html#l00053">ens160.c:53</a></div></div>
+<div class="ttc" id="aens160_8h_html_a64dd6eb26db638b6b3de2a1c30a396e7"><div class="ttname"><a href="ens160_8h.html#a64dd6eb26db638b6b3de2a1c30a396e7">ens160_last_validity</a></div><div class="ttdeci">volatile uint8_t ens160_last_validity</div><div class="ttdoc">Último AQI e última validade válidos.</div><div class="ttdef"><b>Definição</b> <a href="#l00044">ens160.h:44</a></div></div>
+<div class="ttc" id="aens160_8h_html_a8eb85b4b009c73d6937e77e2b351a338"><div class="ttname"><a href="ens160_8h.html#a8eb85b4b009c73d6937e77e2b351a338">ens160_last_hal</a></div><div class="ttdeci">volatile uint32_t ens160_last_hal</div><div class="ttdoc">Último status da HAL (diagnóstico).</div><div class="ttdef"><b>Definição</b> <a href="ens160_8c_source.html#l00048">ens160.c:48</a></div></div>
+<div class="ttc" id="aens160_8h_html_ab0900827dd9030d4f44c452f4fc5970c"><div class="ttname"><a href="ens160_8h.html#ab0900827dd9030d4f44c452f4fc5970c">ens160_last_eco2</a></div><div class="ttdeci">volatile uint16_t ens160_last_eco2</div><div class="ttdoc">Últimos TVOC (ppb) e eCO2 (ppm) válidos.</div><div class="ttdef"><b>Definição</b> <a href="#l00043">ens160.h:43</a></div></div>
+<div class="ttc" id="aens160_8h_html_acc3b80e400912c59b82f3d330a2de62f"><div class="ttname"><a href="ens160_8h.html#acc3b80e400912c59b82f3d330a2de62f">ens160_echo_rh</a></div><div class="ttdeci">volatile uint16_t ens160_echo_rh</div><div class="ttdoc">Temperatura e umidade que o sensor informa estar usando (DATA_T e DATA_RH).</div><div class="ttdef"><b>Definição</b> <a href="#l00042">ens160.h:42</a></div></div>
+<div class="ttc" id="aens160_8h_html_ad14ad72a9857710821795e9582170df0"><div class="ttname"><a href="ens160_8h.html#ad14ad72a9857710821795e9582170df0">ens160_init_count</a></div><div class="ttdeci">volatile uint32_t ens160_init_count</div><div class="ttdoc">Sequências de inicialização executadas.</div><div class="ttdef"><b>Definição</b> <a href="ens160_8c_source.html#l00047">ens160.c:47</a></div></div>
+<div class="ttc" id="aens160_8h_html_aea6dad7cfa121b0c56fafe3d582b6f98"><div class="ttname"><a href="ens160_8h.html#aea6dad7cfa121b0c56fafe3d582b6f98">ens160_error_count</a></div><div class="ttdeci">volatile uint32_t ens160_error_count</div><div class="ttdoc">Erros internos do sensor (bit STATER).</div><div class="ttdef"><b>Definição</b> <a href="ens160_8c_source.html#l00050">ens160.c:50</a></div></div>
+<div class="ttc" id="astruct_e_n_s160___sample_html"><div class="ttname"><a href="struct_e_n_s160___sample.html">ENS160_Sample</a></div><div class="ttdoc">Amostra do ENS160.</div><div class="ttdef"><b>Definição</b> <a href="#l00022">ens160.h:23</a></div></div>
+<div class="ttc" id="astruct_e_n_s160___sample_html_a4103af48c2d800d61a183ddc4fc4c78b"><div class="ttname"><a href="struct_e_n_s160___sample.html#a4103af48c2d800d61a183ddc4fc4c78b">ENS160_Sample::tvoc_ppb</a></div><div class="ttdeci">uint16_t tvoc_ppb</div><div class="ttdoc">Compostos orgânicos voláteis totais, em ppb.</div><div class="ttdef"><b>Definição</b> <a href="#l00025">ens160.h:25</a></div></div>
+<div class="ttc" id="astruct_e_n_s160___sample_html_a80970dc019d4331aaba72a51474356b5"><div class="ttname"><a href="struct_e_n_s160___sample.html#a80970dc019d4331aaba72a51474356b5">ENS160_Sample::aqi</a></div><div class="ttdeci">uint8_t aqi</div><div class="ttdoc">Índice de qualidade do ar AQI-UBA, de 1 (excelente) a 5 (ruim).</div><div class="ttdef"><b>Definição</b> <a href="#l00024">ens160.h:24</a></div></div>
+<div class="ttc" id="astruct_e_n_s160___sample_html_aa1c5ed3583581deba1840ac65db797ad"><div class="ttname"><a href="struct_e_n_s160___sample.html#aa1c5ed3583581deba1840ac65db797ad">ENS160_Sample::validity</a></div><div class="ttdeci">uint8_t validity</div><div class="ttdoc">0 normal, 1 aquecimento, 2 partida inicial, 3 inválido.</div><div class="ttdef"><b>Definição</b> <a href="#l00027">ens160.h:27</a></div></div>
+<div class="ttc" id="astruct_e_n_s160___sample_html_acaaabc0caca1fb64edd1eaf178c67778"><div class="ttname"><a href="struct_e_n_s160___sample.html#acaaabc0caca1fb64edd1eaf178c67778">ENS160_Sample::eco2_ppm</a></div><div class="ttdeci">uint16_t eco2_ppm</div><div class="ttdoc">CO₂ equivalente, em ppm.</div><div class="ttdef"><b>Definição</b> <a href="#l00026">ens160.h:26</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><b>Core</b></li><li class="navelem"><b>Inc</b></li><li class="navelem"><a href="ens160_8h.html">ens160.h</a></li>
+    <li class="footer">Gerado por <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.18.0 </li>
+  </ul>
+</div>
+</body>
+</html>

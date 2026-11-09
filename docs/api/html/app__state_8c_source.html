@@ -1,0 +1,263 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pt-BR">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.18.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>PlataformaModular: Código-Fonte de Core/Src/app_state.c</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="codefolding.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">PlataformaModular
+   </div>
+   <div id="projectbrief">Plataforma modular embarcada para aquisição e registro de dados de sensores (STM32F411 + FreeRTOS)</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Gerado por Doxygen 1.18.0 -->
+<script type="text/javascript">
+let searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', codefold.init);
+</script>
+<script type="application/json" id="doxygen-config">
+{
+  "relPath": "",
+  "generateTreeView": true,
+  "searchEngine": true,
+  "serverBasedSearch": false,
+  "disableIndex": false,
+  "dynamicMenus": true,
+  "fullSidebar": false
+}
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<div id="main-nav-mobile">
+<div class="sm sm-dox"><input id="main-menu-state" type="checkbox"/>
+<label class="main-menu-btn" for="main-menu-state">
+<span class="main-menu-btn-icon"></span> Toggle main menu visibility</label>
+<span id="searchBoxPos1"></span>
+</div>
+</div><!-- main-nav-mobile -->
+<div id="main-nav">
+  <ul class="sm sm-dox" id="main-menu">
+    <li id="searchBoxPos2">
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect" class="search-icon"><span class="search-icon-dropdown"></span></span>
+          <input type="text" id="MSearchField" value="" placeholder="Busca" accesskey="S"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+          </span>
+        </div>
+    </li>
+  </ul>
+</div><!-- main-nav -->
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded',() => { initNavTree('app__state_8c_source.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Carregando...</div>
+<div class="SRStatus" id="Searching">Procurando...</div>
+<div class="SRStatus" id="NoMatches">Nenhuma entrada encontrado</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">app_state.c</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="app__state_8c.html">Ir para a documentação desse arquivo.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &quot;<a class="code" href="app__state_8h.html">app_state.h</a>&quot;</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &quot;cmsis_os2.h&quot;</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="keywordtype">float</span> aht20_temperature, <a class="code hl_variable" href="app__state_8h.html#ae1154ae5250491d9ed941127edc058bb">aht20_humidity</a>;</div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="keywordtype">float</span> bmp280_temperature, <a class="code hl_variable" href="app__state_8h.html#a91041af11b6e620c485ce77552fb8466">bmp280_pressure</a>;</div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>uint16_t dig_T1, <a class="code hl_variable" href="app__state_8h.html#a14cb8cb6405f1dbd7b96eacb1564f3ac">dig_P1</a>;</div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>int16_t dig_T2, dig_T3, dig_P2, dig_P3, dig_P4, dig_P5, dig_P6, dig_P7, dig_P8, <a class="code hl_variable" href="app__state_8h.html#a361620dc95ad1d56b5d416d9d290c5f4">dig_P9</a>;</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno"><a class="line" href="app__state_8h.html#a8a931f3b6aecdc6cd7d6e2de54ded765">   12</a></span>int32_t <a class="code hl_variable" href="app__state_8h.html#a8a931f3b6aecdc6cd7d6e2de54ded765">bmp280_t_fine</a>;</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno"><a class="line" href="app__state_8h.html#a8ad5c31985f0f97a9b4ce913a7f1870a">   13</a></span>uint8_t <a class="code hl_variable" href="app__state_8h.html#a8ad5c31985f0f97a9b4ce913a7f1870a">mpu6500_who_am_i</a>;</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>int16_t mpu6500_accel_x, mpu6500_accel_y, <a class="code hl_variable" href="app__state_8h.html#af4ee032fd85d1ada351154aff8d0902a">mpu6500_accel_z</a>;</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>int16_t mpu6500_gyro_x, mpu6500_gyro_y, <a class="code hl_variable" href="app__state_8h.html#a5bd1ef9b351103b6c8c56ded1b26b236">mpu6500_gyro_z</a>;</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="keywordtype">float</span> mpu6500_accel_x_g, mpu6500_accel_y_g, <a class="code hl_variable" href="app__state_8h.html#a3c45f95cce673c04fbf2f482c75e4b09">mpu6500_accel_z_g</a>;</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="keywordtype">float</span> mpu6500_gyro_x_dps, mpu6500_gyro_y_dps, <a class="code hl_variable" href="app__state_8h.html#ac92261368ad2d996089491b139c20fcc">mpu6500_gyro_z_dps</a>;</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="keywordtype">float</span> mpu6500_accel_offset_x, mpu6500_accel_offset_y, <a class="code hl_variable" href="app__state_8h.html#a9dc51766a0a3c5b766f843a31a718f30">mpu6500_accel_offset_z</a>;</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="keywordtype">float</span> mpu6500_gyro_offset_x, mpu6500_gyro_offset_y, <a class="code hl_variable" href="app__state_8h.html#abab4f06c5b7b18d0ff22506174aab782">mpu6500_gyro_offset_z</a>;</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno"><a class="line" href="app__state_8h.html#a25c6d63c0716b71ac1cb0688a8800669">   20</a></span>uint8_t <a class="code hl_variable" href="app__state_8h.html#a25c6d63c0716b71ac1cb0688a8800669">ssd1306_buffer</a>[1024];</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>HAL_StatusTypeDef ssd1306_status, <a class="code hl_variable" href="app__state_8h.html#a12d0bc6faf33100d6e7b259ef2aa2489">ssd1306_fill_status</a>;</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno"><a class="line" href="app__state_8h.html#aa4716fb628410ec1b31a4fc636dc93d0">   22</a></span><span class="keyword">volatile</span> uint8_t <a class="code hl_variable" href="app__state_8h.html#aa4716fb628410ec1b31a4fc636dc93d0">i2c2_last_lock_status</a> = 0U;</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="keyword">volatile</span> uint32_t eeprom_read_error_snapshot = 0U, <a class="code hl_variable" href="app__state_8h.html#ad9647b92db1d00a21166af8899287741">eeprom_read_state_snapshot</a> = 0U;</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="keyword">volatile</span> uint32_t oled_lock_fail_count = 0U, <a class="code hl_variable" href="app__state_8h.html#affb17898fabc82f0b6e5032f5d3c8555">oled_page_switch_count</a> = 0U;</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="keyword">volatile</span> uint32_t oled_i2c_error_snapshot = 0U, <a class="code hl_variable" href="app__state_8h.html#af44ce64fa7961a404bb44f428e56a75d">oled_i2c_state_snapshot</a> = 0U;</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="keyword">volatile</span> uint32_t oled_pre_state_snapshot = 0U, <a class="code hl_variable" href="app__state_8h.html#aeca698713574433eb542374a5683c4c6">oled_pre_lock_snapshot</a> = 0U;</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno"><a class="line" href="app__state_8h.html#a781b2b0f132bec84adb28d23c0cb7e69">   27</a></span><span class="keyword">volatile</span> uint32_t <a class="code hl_variable" href="app__state_8h.html#a781b2b0f132bec84adb28d23c0cb7e69">oled_hw_busy_snapshot</a> = 0U;</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="keyword">volatile</span> uint8_t oled_sda_snapshot = 1U, <a class="code hl_variable" href="app__state_8h.html#a452586b8ed9180cce6c209a479e97d36">oled_scl_snapshot</a> = 1U;</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="keyword">volatile</span> uint8_t oled_failed_page = 0xFFU, <a class="code hl_variable" href="app__state_8h.html#a7654fd7bdd7757e9b258a10d67c54724">oled_failed_stage</a> = 0U;</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="keyword">volatile</span> uint32_t oled_render_overlap_count = 0U, <a class="code hl_variable" href="app__state_8h.html#ade818f0d130bac4ff4513a3183748822">oled_buffer_mutation_count</a> = 0U;</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="keyword">volatile</span> uint32_t oled_buffer_checksum_before = 0U, <a class="code hl_variable" href="app__state_8h.html#a42b52c0a1993f3c29f19836762ee9050">oled_buffer_checksum_after</a> = 0U;</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno"><a class="line" href="app__state_8h.html#ac1b58296f24ec3d0db6351a759743bed">   32</a></span>uint8_t <a class="code hl_variable" href="app__state_8h.html#ac1b58296f24ec3d0db6351a759743bed">i2c2_device_found</a>;</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>int32_t display_aht_temp, display_aht_hum, display_pressure, <a class="code hl_variable" href="app__state_8h.html#a28c3b4587553e9ce45a952ed970e19c8">display_accel_z</a>;</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno"><a class="line" href="app__state_8h.html#a0dfdeef7e8ebbaddbdb4507ae3884386">   34</a></span>uint8_t <a class="code hl_variable" href="app__state_8h.html#a0dfdeef7e8ebbaddbdb4507ae3884386">display_page</a> = 0;</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>uint8_t eeprom_write_data, <a class="code hl_variable" href="app__state_8h.html#a91ea8b26998dddd69a2a6dea8d6fd47f">eeprom_read_data</a>;</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>HAL_StatusTypeDef eeprom_write_status, eeprom_read_status, <a class="code hl_variable" href="app__state_8h.html#af5dd366f28ca90970352954752a9762c">eeprom_test_status</a>;</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>uint8_t eeprom_test_write[5], <a class="code hl_variable" href="app__state_8h.html#aa62cb8007c9c872b9be8d827544dd019">eeprom_test_read</a>[5];</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><a class="code hl_struct" href="struct_sensor_record_e_e_p_r_o_m.html">SensorRecordEEPROM</a> eeprom_record, <a class="code hl_variable" href="app__state_8h.html#a3dd576b8ffdc26800c5bc1b5687f2233">eeprom_record_read</a>;</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno"><a class="line" href="app__state_8h.html#a4be7f6688c932c93c285870ac134d00f">   39</a></span>uint16_t <a class="code hl_variable" href="app__state_8h.html#a4be7f6688c932c93c285870ac134d00f">eeprom_record_size</a>;</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno"><a class="line" href="app__state_8h.html#a76905f3785d3bcc2388f742e3350aee3">   40</a></span>uint8_t <a class="code hl_variable" href="app__state_8h.html#a76905f3785d3bcc2388f742e3350aee3">eeprom_records_equal</a>;</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><a class="code hl_struct" href="struct_sensor_record_e_e_p_r_o_m.html">SensorRecordEEPROM</a> eeprom_records_write[5], <a class="code hl_variable" href="app__state_8h.html#a3a2eca52ae6f7e6fa991bf09205a5b55">eeprom_records_read</a>[5];</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno"><a class="line" href="app__state_8h.html#a30d3d69ba26cc057c522039a67c2cde6">   42</a></span>uint8_t <a class="code hl_variable" href="app__state_8h.html#a30d3d69ba26cc057c522039a67c2cde6">eeprom_multi_test_ok</a>;</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno"><a class="line" href="app__state_8h.html#ad5e94eedb67f6426fd969fad75f886be">   43</a></span>uint16_t <a class="code hl_variable" href="app__state_8h.html#ad5e94eedb67f6426fd969fad75f886be">eeprom_next_address</a> = 0x0000U;</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>uint8_t eeprom_full = 0U, eeprom_status_display = 0U, <a class="code hl_variable" href="app__state_8h.html#ade6d834507085d886d456578b1c26b48">eeprom_metadata_load_ok</a> = 0U;</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno"><a class="line" href="app__state_8h.html#a10fc7ffc97c3d6c8b882b907fd66ab63">   45</a></span><span class="keyword">volatile</span> uint8_t <a class="code hl_variable" href="app__state_8h.html#a10fc7ffc97c3d6c8b882b907fd66ab63">usb_export_requested</a> = 0U;</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno"><a class="line" href="app__state_8h.html#a47040bacfe6b9ded1f45153d46f88f89">   46</a></span><span class="keyword">volatile</span> uint8_t <a class="code hl_variable" href="app__state_8h.html#a47040bacfe6b9ded1f45153d46f88f89">usb_clear_requested</a> = 0U;</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno"><a class="line" href="app__state_8h.html#ace4e0a1dbd5828f0ce06c3e283732ec9">   47</a></span><span class="keyword">volatile</span> uint8_t <a class="code hl_variable" href="app__state_8h.html#ace4e0a1dbd5828f0ce06c3e283732ec9">usb_rtc_set_requested</a> = 0U;</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno"><a class="line" href="app__state_8h.html#aa58512c4bddad587a7f26c47ecf58360">   48</a></span><span class="keyword">volatile</span> uint8_t <a class="code hl_variable" href="app__state_8h.html#aa58512c4bddad587a7f26c47ecf58360">usb_diag_requested</a> = 0U;</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno"><a class="line" href="app__state_8h.html#a9a9ecfc353ed8d71e54b3969f62e997f">   49</a></span><span class="keyword">volatile</span> uint8_t <a class="code hl_variable" href="app__state_8h.html#a9a9ecfc353ed8d71e54b3969f62e997f">oled_task_stage</a> = 0U;</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="keyword">volatile</span> uint32_t oled_task_loops = 0U, oled_update_ok_count = 0U, <a class="code hl_variable" href="app__state_8h.html#ac360945c8ba5c0fbad68c5e1ba118e53">oled_update_fail_count</a> = 0U;</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="keyword">volatile</span> uint32_t oled_consecutive_fail = 0U, i2c2_recovery_count = 0U, <a class="code hl_variable" href="app__state_8h.html#a58390c2c043691e6d40347d320e4d603">i2c2_recovery_status</a> = 0U;</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="keyword">volatile</span> uint32_t oled_ff_status = 0U, oled_ff_i2cerr = 0U, <a class="code hl_variable" href="app__state_8h.html#ab3f7d62f45abb5965642a3da68ffa69a">oled_ff_i2cstate</a> = 0U;</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span><span class="keyword">volatile</span> uint8_t oled_ff_sensor_active = 0U, <a class="code hl_variable" href="app__state_8h.html#ae66d0d296777f406e73bc598eaf6898e">sensor_cycle_active</a> = 0U;</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
+<div class="foldopen" id="foldopen00055" data-start="{" data-end="}">
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno"><a class="line" href="app__state_8h.html#a37a3a5a51fd18694f366bc8c8e489c05">   55</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="app__state_8h.html#a37a3a5a51fd18694f366bc8c8e489c05">App_Delay</a>(uint32_t ms)</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>{</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    <span class="keywordflow">if</span> (osKernelGetState() == osKernelRunning)</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>        (void)osDelay(ms);</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    <span class="keywordflow">else</span></div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>        HAL_Delay(ms);</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>}</div>
+</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno"><a class="line" href="app__state_8h.html#a997c28009ebf5d4b1b60d28d19dd1d5e">   62</a></span><span class="keywordtype">char</span> <a class="code hl_variable" href="app__state_8h.html#a997c28009ebf5d4b1b60d28d19dd1d5e">usb_rtc_set_command</a>[32] = {0};</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno"><a class="line" href="app__state_8h.html#a9ce3c7e0c6684a9affd00d99bd579abd">   63</a></span><a class="code hl_struct" href="struct_e_e_p_r_o_m_metadata.html">EEPROMMetadata</a> <a class="code hl_variable" href="app__state_8h.html#a9ce3c7e0c6684a9affd00d99bd579abd">eeprom_metadata</a>;</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span><span class="keywordtype">bool</span> aht20_available = <span class="keyword">false</span>, bmp280_available = <span class="keyword">false</span>, <a class="code hl_variable" href="app__state_8h.html#a0a0fb70056d01f444858058d0ce40a5c">mpu6500_available</a> = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>uint8_t aht20_last_read_ok = 0U, bmp280_last_read_ok = 0U, <a class="code hl_variable" href="app__state_8h.html#adb4a4ee2b719d503256dc2704fda7edc">mpu6500_last_read_ok</a> = 0U;</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno"><a class="line" href="app__state_8h.html#a0e01e5221963e8cc0966e73f45e5ccc1">   66</a></span>uint8_t <a class="code hl_variable" href="app__state_8h.html#a0e01e5221963e8cc0966e73f45e5ccc1">usb_operation_state</a> = 0U;</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno"><a class="line" href="app__state_8h.html#a1422dea54c1ba2f943b97d055ce9f27a">   67</a></span><span class="keyword">volatile</span> uint8_t <a class="code hl_variable" href="app__state_8h.html#a1422dea54c1ba2f943b97d055ce9f27a">diagnostic_sensor_stage</a> = 0U; <span class="comment">/* 1=AHT20, 2=BMP280, 3=MPU6500, 4=EEPROM, 5=LED/ciclo concluido */</span></div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno"><a class="line" href="app__state_8h.html#a46f12eb211279c322e5b80708302ff0c">   68</a></span><span class="keyword">volatile</span> uint8_t <a class="code hl_variable" href="app__state_8h.html#a46f12eb211279c322e5b80708302ff0c">diagnostic_export_stage</a> = 0U; <span class="comment">/* 1=entrada, 2=validacao, 3=EXPORT_BEGIN, 4=cabecalho, 5=registros/fim */</span></div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno"><a class="line" href="app__state_8h.html#a6d46eca7ff32f51031a81713f3671e36">   69</a></span><span class="keyword">volatile</span> int8_t <a class="code hl_variable" href="app__state_8h.html#a6d46eca7ff32f51031a81713f3671e36">diagnostic_export_result</a> = -1; <span class="comment">/* -1=nao terminou; 0=HAL_OK; 1=erro; 2=timeout */</span></div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno"><a class="line" href="app__state_8h.html#a95ef45e83077329633e85dac0c6bf804">   70</a></span><span class="keyword">volatile</span> int8_t <a class="code hl_variable" href="app__state_8h.html#a95ef45e83077329633e85dac0c6bf804">diagnostic_usb_tx_result</a> = -1; <span class="comment">/* -1=sem envio; 0=OK; 1=BUSY; 2=FAIL/outro */</span></div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno"><a class="line" href="app__state_8h.html#a27b3ebe92da7d2eded0e4e9a13bc0102">   71</a></span>uint8_t <a class="code hl_variable" href="app__state_8h.html#a27b3ebe92da7d2eded0e4e9a13bc0102">oled_available</a> = 0U;</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno"><a class="line" href="app__state_8h.html#a3fa5173666ac34207e1a9aa713d75027">   72</a></span>uint8_t <a class="code hl_variable" href="app__state_8h.html#a3fa5173666ac34207e1a9aa713d75027">eeprom_full_read_buffer</a>[64];</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno"><a class="line" href="app__state_8h.html#a5a7a4aad01aca5eba3cd4f3833d5cb94">   73</a></span>uint16_t <a class="code hl_variable" href="app__state_8h.html#a5a7a4aad01aca5eba3cd4f3833d5cb94">eeprom_full_read_address</a>;</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno"><a class="line" href="app__state_8h.html#a83c73a94c6cd6d7e9ca97510aca2216a">   74</a></span>HAL_StatusTypeDef <a class="code hl_variable" href="app__state_8h.html#a83c73a94c6cd6d7e9ca97510aca2216a">eeprom_full_read_status</a>;</div>
+<div class="ttc" id="aapp__state_8h_html"><div class="ttname"><a href="app__state_8h.html">app_state.h</a></div><div class="ttdoc">Tipos, constantes e variáveis globais compartilhadas entre os módulos do firmware.</div></div>
+<div class="ttc" id="aapp__state_8h_html_a0a0fb70056d01f444858058d0ce40a5c"><div class="ttname"><a href="app__state_8h.html#a0a0fb70056d01f444858058d0ce40a5c">mpu6500_available</a></div><div class="ttdeci">bool mpu6500_available</div><div class="ttdoc">1 se o sensor respondeu na última tentativa de leitura.</div><div class="ttdef"><b>Definição</b> <a href="app__state_8h_source.html#l00161">app_state.h:161</a></div></div>
+<div class="ttc" id="aapp__state_8h_html_a0dfdeef7e8ebbaddbdb4507ae3884386"><div class="ttname"><a href="app__state_8h.html#a0dfdeef7e8ebbaddbdb4507ae3884386">display_page</a></div><div class="ttdeci">uint8_t display_page</div><div class="ttdoc">Tela atual do OLED: 0 = estado do sistema; 1 = armazenamento.</div><div class="ttdef"><b>Definição</b> <a href="#l00034">app_state.c:34</a></div></div>
+<div class="ttc" id="aapp__state_8h_html_a0e01e5221963e8cc0966e73f45e5ccc1"><div class="ttname"><a href="app__state_8h.html#a0e01e5221963e8cc0966e73f45e5ccc1">usb_operation_state</a></div><div class="ttdeci">uint8_t usb_operation_state</div><div class="ttdoc">Operação USB em curso: 0 livre, 1 exportando, 2 limpando, 3 erro.</div><div class="ttdef"><b>Definição</b> <a href="#l00066">app_state.c:66</a></div></div>
+<div class="ttc" id="aapp__state_8h_html_a10fc7ffc97c3d6c8b882b907fd66ab63"><div class="ttname"><a href="app__state_8h.html#a10fc7ffc97c3d6c8b882b907fd66ab63">usb_export_requested</a></div><div class="ttdeci">volatile uint8_t usb_export_requested</div><div class="ttdoc">Pedido EXPORT recebido pela USB, atendido pela defaultTask.</div><div class="ttdef"><b>Definição</b> <a href="#l00045">app_state.c:45</a></div></div>
+<div class="ttc" id="aapp__state_8h_html_a12d0bc6faf33100d6e7b259ef2aa2489"><div class="ttname"><a href="app__state_8h.html#a12d0bc6faf33100d6e7b259ef2aa2489">ssd1306_fill_status</a></div><div class="ttdeci">HAL_StatusTypeDef ssd1306_fill_status</div><div class="ttdoc">Status HAL da última atualização e do último preenchimento do OLED.</div><div class="ttdef"><b>Definição</b> <a href="app__state_8h_source.html#l00094">app_state.h:94</a></div></div>
+<div class="ttc" id="aapp__state_8h_html_a1422dea54c1ba2f943b97d055ce9f27a"><div class="ttname"><a href="app__state_8h.html#a1422dea54c1ba2f943b97d055ce9f27a">diagnostic_sensor_stage</a></div><div class="ttdeci">volatile uint8_t diagnostic_sensor_stage</div><div class="ttdoc">Último estágio do ciclo de aquisição: de 1 em diante, leitura do sensor de índice (valor - 1) da tabe...</div><div class="ttdef"><b>Definição</b> <a href="#l00067">app_state.c:67</a></div></div>
+<div class="ttc" id="aapp__state_8h_html_a14cb8cb6405f1dbd7b96eacb1564f3ac"><div class="ttname"><a href="app__state_8h.html#a14cb8cb6405f1dbd7b96eacb1564f3ac">dig_P1</a></div><div class="ttdeci">uint16_t dig_P1</div><div class="ttdoc">Coeficientes de calibração do BMP280 (sem sinal).</div><div class="ttdef"><b>Definição</b> <a href="app__state_8h_source.html#l00083">app_state.h:83</a></div></div>
+<div class="ttc" id="aapp__state_8h_html_a25c6d63c0716b71ac1cb0688a8800669"><div class="ttname"><a href="app__state_8h.html#a25c6d63c0716b71ac1cb0688a8800669">ssd1306_buffer</a></div><div class="ttdeci">uint8_t ssd1306_buffer[1024]</div><div class="ttdoc">Memória de imagem do OLED: 128 x 64 pixels, 8 páginas de 128 bytes.</div><div class="ttdef"><b>Definição</b> <a href="#l00020">app_state.c:20</a></div></div>
+<div class="ttc" id="aapp__state_8h_html_a27b3ebe92da7d2eded0e4e9a13bc0102"><div class="ttname"><a href="app__state_8h.html#a27b3ebe92da7d2eded0e4e9a13bc0102">oled_available</a></div><div class="ttdeci">uint8_t oled_available</div><div class="ttdoc">1 se o SSD1306 respondeu na inicialização.</div><div class="ttdef"><b>Definição</b> <a href="#l00071">app_state.c:71</a></div></div>
+<div class="ttc" id="aapp__state_8h_html_a28c3b4587553e9ce45a952ed970e19c8"><div class="ttname"><a href="app__state_8h.html#a28c3b4587553e9ce45a952ed970e19c8">display_accel_z</a></div><div class="ttdeci">int32_t display_accel_z</div><div class="ttdoc">Valores escalados para o OLED (legado): temperatura e umidade em décimos, pressão em Pa/10 e aceleraç...</div><div class="ttdef"><b>Definição</b> <a href="app__state_8h_source.html#l00106">app_state.h:106</a></div></div>
+<div class="ttc" id="aapp__state_8h_html_a30d3d69ba26cc057c522039a67c2cde6"><div class="ttname"><a href="app__state_8h.html#a30d3d69ba26cc057c522039a67c2cde6">eeprom_multi_test_ok</a></div><div class="ttdeci">uint8_t eeprom_multi_test_ok</div><div class="ttdoc">Resultado do teste de múltiplos registros (legado).</div><div class="ttdef"><b>Definição</b> <a href="#l00042">app_state.c:42</a></div></div>
+<div class="ttc" id="aapp__state_8h_html_a361620dc95ad1d56b5d416d9d290c5f4"><div class="ttname"><a href="app__state_8h.html#a361620dc95ad1d56b5d416d9d290c5f4">dig_P9</a></div><div class="ttdeci">int16_t dig_P9</div><div class="ttdoc">Coeficientes de calibração do BMP280 (com sinal).</div><div class="ttdef"><b>Definição</b> <a href="app__state_8h_source.html#l00084">app_state.h:84</a></div></div>
+<div class="ttc" id="aapp__state_8h_html_a37a3a5a51fd18694f366bc8c8e489c05"><div class="ttname"><a href="app__state_8h.html#a37a3a5a51fd18694f366bc8c8e489c05">App_Delay</a></div><div class="ttdeci">void App_Delay(uint32_t ms)</div><div class="ttdoc">Espera ms milissegundos cedendo a CPU quando o RTOS está em execução.</div><div class="ttdef"><b>Definição</b> <a href="#l00055">app_state.c:55</a></div></div>
+<div class="ttc" id="aapp__state_8h_html_a3a2eca52ae6f7e6fa991bf09205a5b55"><div class="ttname"><a href="app__state_8h.html#a3a2eca52ae6f7e6fa991bf09205a5b55">eeprom_records_read</a></div><div class="ttdeci">SensorRecordEEPROM eeprom_records_read[5]</div><div class="ttdoc">Vetores de registros dos testes manuais (legado).</div><div class="ttdef"><b>Definição</b> <a href="app__state_8h_source.html#l00114">app_state.h:114</a></div></div>
+<div class="ttc" id="aapp__state_8h_html_a3c45f95cce673c04fbf2f482c75e4b09"><div class="ttname"><a href="app__state_8h.html#a3c45f95cce673c04fbf2f482c75e4b09">mpu6500_accel_z_g</a></div><div class="ttdeci">float mpu6500_accel_z_g</div><div class="ttdoc">Aceleração em g, já com o offset removido.</div><div class="ttdef"><b>Definição</b> <a href="app__state_8h_source.html#l00089">app_state.h:89</a></div></div>
+<div class="ttc" id="aapp__state_8h_html_a3dd576b8ffdc26800c5bc1b5687f2233"><div class="ttname"><a href="app__state_8h.html#a3dd576b8ffdc26800c5bc1b5687f2233">eeprom_record_read</a></div><div class="ttdeci">SensorRecordEEPROM eeprom_record_read</div><div class="ttdoc">Registros do formato antigo de tamanho fixo (legado).</div><div class="ttdef"><b>Definição</b> <a href="app__state_8h_source.html#l00111">app_state.h:111</a></div></div>
+<div class="ttc" id="aapp__state_8h_html_a3fa5173666ac34207e1a9aa713d75027"><div class="ttname"><a href="app__state_8h.html#a3fa5173666ac34207e1a9aa713d75027">eeprom_full_read_buffer</a></div><div class="ttdeci">uint8_t eeprom_full_read_buffer[64]</div><div class="ttdoc">Último bloco de 64 bytes lido por EEPROM24C512_ReadFullMemory() (depuração).</div><div class="ttdef"><b>Definição</b> <a href="#l00072">app_state.c:72</a></div></div>
+<div class="ttc" id="aapp__state_8h_html_a42b52c0a1993f3c29f19836762ee9050"><div class="ttname"><a href="app__state_8h.html#a42b52c0a1993f3c29f19836762ee9050">oled_buffer_checksum_after</a></div><div class="ttdeci">volatile uint32_t oled_buffer_checksum_after</div><div class="ttdoc">Checksum (FNV-1a) do buffer do OLED antes e depois da transferência.</div><div class="ttdef"><b>Definição</b> <a href="app__state_8h_source.html#l00104">app_state.h:104</a></div></div>
+<div class="ttc" id="aapp__state_8h_html_a452586b8ed9180cce6c209a479e97d36"><div class="ttname"><a href="app__state_8h.html#a452586b8ed9180cce6c209a479e97d36">oled_scl_snapshot</a></div><div class="ttdeci">volatile uint8_t oled_scl_snapshot</div><div class="ttdoc">Nível lógico das linhas SDA e SCL do I²C2 antes da última transferência do OLED.</div><div class="ttdef"><b>Definição</b> <a href="app__state_8h_source.html#l00101">app_state.h:101</a></div></div>
+<div class="ttc" id="aapp__state_8h_html_a46f12eb211279c322e5b80708302ff0c"><div class="ttname"><a href="app__state_8h.html#a46f12eb211279c322e5b80708302ff0c">diagnostic_export_stage</a></div><div class="ttdeci">volatile uint8_t diagnostic_export_stage</div><div class="ttdoc">Estágio da exportação: 1 entrada, 2 validação, 3 EXPORT_BEGIN, 4 cabeçalho, 5 registros e resumo,...</div><div class="ttdef"><b>Definição</b> <a href="#l00068">app_state.c:68</a></div></div>
+<div class="ttc" id="aapp__state_8h_html_a47040bacfe6b9ded1f45153d46f88f89"><div class="ttname"><a href="app__state_8h.html#a47040bacfe6b9ded1f45153d46f88f89">usb_clear_requested</a></div><div class="ttdeci">volatile uint8_t usb_clear_requested</div><div class="ttdoc">Pedido CLEAR,CONFIRMO recebido pela USB, atendido pela defaultTask.</div><div class="ttdef"><b>Definição</b> <a href="#l00046">app_state.c:46</a></div></div>
+<div class="ttc" id="aapp__state_8h_html_a4be7f6688c932c93c285870ac134d00f"><div class="ttname"><a href="app__state_8h.html#a4be7f6688c932c93c285870ac134d00f">eeprom_record_size</a></div><div class="ttdeci">uint16_t eeprom_record_size</div><div class="ttdoc">Tamanho do último registro serializado nos testes (legado).</div><div class="ttdef"><b>Definição</b> <a href="#l00039">app_state.c:39</a></div></div>
+<div class="ttc" id="aapp__state_8h_html_a58390c2c043691e6d40347d320e4d603"><div class="ttname"><a href="app__state_8h.html#a58390c2c043691e6d40347d320e4d603">i2c2_recovery_status</a></div><div class="ttdeci">volatile uint32_t i2c2_recovery_status</div><div class="ttdoc">Falhas seguidas do OLED, recuperações do I²C2 realizadas e status HAL da última.</div><div class="ttdef"><b>Definição</b> <a href="app__state_8h_source.html#l00125">app_state.h:125</a></div></div>
+<div class="ttc" id="aapp__state_8h_html_a5a7a4aad01aca5eba3cd4f3833d5cb94"><div class="ttname"><a href="app__state_8h.html#a5a7a4aad01aca5eba3cd4f3833d5cb94">eeprom_full_read_address</a></div><div class="ttdeci">uint16_t eeprom_full_read_address</div><div class="ttdoc">Endereço inicial do último bloco lido por EEPROM24C512_ReadFullMemory().</div><div class="ttdef"><b>Definição</b> <a href="#l00073">app_state.c:73</a></div></div>
+<div class="ttc" id="aapp__state_8h_html_a5bd1ef9b351103b6c8c56ded1b26b236"><div class="ttname"><a href="app__state_8h.html#a5bd1ef9b351103b6c8c56ded1b26b236">mpu6500_gyro_z</a></div><div class="ttdeci">int16_t mpu6500_gyro_z</div><div class="ttdoc">Velocidade angular bruta, em contagens (fundo de escala ±250 °/s, 131 LSB/(°/s)).</div><div class="ttdef"><b>Definição</b> <a href="app__state_8h_source.html#l00088">app_state.h:88</a></div></div>
+<div class="ttc" id="aapp__state_8h_html_a6d46eca7ff32f51031a81713f3671e36"><div class="ttname"><a href="app__state_8h.html#a6d46eca7ff32f51031a81713f3671e36">diagnostic_export_result</a></div><div class="ttdeci">volatile int8_t diagnostic_export_result</div><div class="ttdoc">Resultado da exportação: -1 não terminou, 0 HAL_OK, 1 erro, 2 tempo esgotado.</div><div class="ttdef"><b>Definição</b> <a href="#l00069">app_state.c:69</a></div></div>
+<div class="ttc" id="aapp__state_8h_html_a7654fd7bdd7757e9b258a10d67c54724"><div class="ttname"><a href="app__state_8h.html#a7654fd7bdd7757e9b258a10d67c54724">oled_failed_stage</a></div><div class="ttdeci">volatile uint8_t oled_failed_stage</div><div class="ttdoc">Página (0 a 7; 0xFF = nenhuma) e fase da última falha: 1 comando de página, 2 pixels,...</div><div class="ttdef"><b>Definição</b> <a href="app__state_8h_source.html#l00102">app_state.h:102</a></div></div>
+<div class="ttc" id="aapp__state_8h_html_a76905f3785d3bcc2388f742e3350aee3"><div class="ttname"><a href="app__state_8h.html#a76905f3785d3bcc2388f742e3350aee3">eeprom_records_equal</a></div><div class="ttdeci">uint8_t eeprom_records_equal</div><div class="ttdoc">1 = registro lido igual ao gravado no teste (legado).</div><div class="ttdef"><b>Definição</b> <a href="#l00040">app_state.c:40</a></div></div>
+<div class="ttc" id="aapp__state_8h_html_a781b2b0f132bec84adb28d23c0cb7e69"><div class="ttname"><a href="app__state_8h.html#a781b2b0f132bec84adb28d23c0cb7e69">oled_hw_busy_snapshot</a></div><div class="ttdeci">volatile uint32_t oled_hw_busy_snapshot</div><div class="ttdoc">Flag BUSY do periférico I²C2 antes da última transferência do OLED.</div><div class="ttdef"><b>Definição</b> <a href="#l00027">app_state.c:27</a></div></div>
+<div class="ttc" id="aapp__state_8h_html_a83c73a94c6cd6d7e9ca97510aca2216a"><div class="ttname"><a href="app__state_8h.html#a83c73a94c6cd6d7e9ca97510aca2216a">eeprom_full_read_status</a></div><div class="ttdeci">HAL_StatusTypeDef eeprom_full_read_status</div><div class="ttdoc">Status HAL da última leitura de EEPROM24C512_ReadFullMemory().</div><div class="ttdef"><b>Definição</b> <a href="#l00074">app_state.c:74</a></div></div>
+<div class="ttc" id="aapp__state_8h_html_a8a931f3b6aecdc6cd7d6e2de54ded765"><div class="ttname"><a href="app__state_8h.html#a8a931f3b6aecdc6cd7d6e2de54ded765">bmp280_t_fine</a></div><div class="ttdeci">int32_t bmp280_t_fine</div><div class="ttdoc">Temperatura intermediária (t_fine) da compensação do BMP280, reutilizada no cálculo da pressão.</div><div class="ttdef"><b>Definição</b> <a href="#l00012">app_state.c:12</a></div></div>
+<div class="ttc" id="aapp__state_8h_html_a8ad5c31985f0f97a9b4ce913a7f1870a"><div class="ttname"><a href="app__state_8h.html#a8ad5c31985f0f97a9b4ce913a7f1870a">mpu6500_who_am_i</a></div><div class="ttdeci">uint8_t mpu6500_who_am_i</div><div class="ttdoc">Último valor lido do registrador WHO_AM_I do MPU6500 (esperado 0x70).</div><div class="ttdef"><b>Definição</b> <a href="#l00013">app_state.c:13</a></div></div>
+<div class="ttc" id="aapp__state_8h_html_a91041af11b6e620c485ce77552fb8466"><div class="ttname"><a href="app__state_8h.html#a91041af11b6e620c485ce77552fb8466">bmp280_pressure</a></div><div class="ttdeci">float bmp280_pressure</div><div class="ttdoc">Última leitura do BMP280: temperatura (°C) e pressão (Pa).</div><div class="ttdef"><b>Definição</b> <a href="app__state_8h_source.html#l00082">app_state.h:82</a></div></div>
+<div class="ttc" id="aapp__state_8h_html_a91ea8b26998dddd69a2a6dea8d6fd47f"><div class="ttname"><a href="app__state_8h.html#a91ea8b26998dddd69a2a6dea8d6fd47f">eeprom_read_data</a></div><div class="ttdeci">uint8_t eeprom_read_data</div><div class="ttdoc">Variáveis dos testes manuais da EEPROM (legado).</div><div class="ttdef"><b>Definição</b> <a href="app__state_8h_source.html#l00108">app_state.h:108</a></div></div>
+<div class="ttc" id="aapp__state_8h_html_a95ef45e83077329633e85dac0c6bf804"><div class="ttname"><a href="app__state_8h.html#a95ef45e83077329633e85dac0c6bf804">diagnostic_usb_tx_result</a></div><div class="ttdeci">volatile int8_t diagnostic_usb_tx_result</div><div class="ttdoc">Resultado do último envio USB: -1 sem envio, 0 OK, 1 USBD_BUSY, 2 falha ou outro.</div><div class="ttdef"><b>Definição</b> <a href="#l00070">app_state.c:70</a></div></div>
+<div class="ttc" id="aapp__state_8h_html_a997c28009ebf5d4b1b60d28d19dd1d5e"><div class="ttname"><a href="app__state_8h.html#a997c28009ebf5d4b1b60d28d19dd1d5e">usb_rtc_set_command</a></div><div class="ttdeci">char usb_rtc_set_command[32]</div><div class="ttdoc">Linha RTC_SET recebida, copiada da callback USB para ser tratada na defaultTask.</div><div class="ttdef"><b>Definição</b> <a href="#l00062">app_state.c:62</a></div></div>
+<div class="ttc" id="aapp__state_8h_html_a9a9ecfc353ed8d71e54b3969f62e997f"><div class="ttname"><a href="app__state_8h.html#a9a9ecfc353ed8d71e54b3969f62e997f">oled_task_stage</a></div><div class="ttdeci">volatile uint8_t oled_task_stage</div><div class="ttdoc">Etapa da oledTask: 0 ocioso, 1 espera o mutex de sensores, 2 espera o mutex da EEPROM,...</div><div class="ttdef"><b>Definição</b> <a href="#l00049">app_state.c:49</a></div></div>
+<div class="ttc" id="aapp__state_8h_html_a9ce3c7e0c6684a9affd00d99bd579abd"><div class="ttname"><a href="app__state_8h.html#a9ce3c7e0c6684a9affd00d99bd579abd">eeprom_metadata</a></div><div class="ttdeci">EEPROMMetadata eeprom_metadata</div><div class="ttdoc">Cópia em RAM dos metadados gravados na EEPROM 1.</div><div class="ttdef"><b>Definição</b> <a href="#l00063">app_state.c:63</a></div></div>
+<div class="ttc" id="aapp__state_8h_html_a9dc51766a0a3c5b766f843a31a718f30"><div class="ttname"><a href="app__state_8h.html#a9dc51766a0a3c5b766f843a31a718f30">mpu6500_accel_offset_z</a></div><div class="ttdeci">float mpu6500_accel_offset_z</div><div class="ttdoc">Offsets da aceleração (g) calculados por MPU6500_Calibrate().</div><div class="ttdef"><b>Definição</b> <a href="app__state_8h_source.html#l00091">app_state.h:91</a></div></div>
+<div class="ttc" id="aapp__state_8h_html_aa4716fb628410ec1b31a4fc636dc93d0"><div class="ttname"><a href="app__state_8h.html#aa4716fb628410ec1b31a4fc636dc93d0">i2c2_last_lock_status</a></div><div class="ttdeci">volatile uint8_t i2c2_last_lock_status</div><div class="ttdoc">Resultado da última aquisição do mutex do I²C2 em leitura da EEPROM (diagnóstico).</div><div class="ttdef"><b>Definição</b> <a href="#l00022">app_state.c:22</a></div></div>
+<div class="ttc" id="aapp__state_8h_html_aa58512c4bddad587a7f26c47ecf58360"><div class="ttname"><a href="app__state_8h.html#aa58512c4bddad587a7f26c47ecf58360">usb_diag_requested</a></div><div class="ttdeci">volatile uint8_t usb_diag_requested</div><div class="ttdoc">Pedido DIAG recebido pela USB, atendido pela defaultTask.</div><div class="ttdef"><b>Definição</b> <a href="#l00048">app_state.c:48</a></div></div>
+<div class="ttc" id="aapp__state_8h_html_aa62cb8007c9c872b9be8d827544dd019"><div class="ttname"><a href="app__state_8h.html#aa62cb8007c9c872b9be8d827544dd019">eeprom_test_read</a></div><div class="ttdeci">uint8_t eeprom_test_read[5]</div><div class="ttdoc">Buffers dos testes manuais da EEPROM (legado).</div><div class="ttdef"><b>Definição</b> <a href="app__state_8h_source.html#l00110">app_state.h:110</a></div></div>
+<div class="ttc" id="aapp__state_8h_html_ab3f7d62f45abb5965642a3da68ffa69a"><div class="ttname"><a href="app__state_8h.html#ab3f7d62f45abb5965642a3da68ffa69a">oled_ff_i2cstate</a></div><div class="ttdeci">volatile uint32_t oled_ff_i2cstate</div><div class="ttdoc">Primeira falha de cada episódio do OLED: status HAL, ErrorCode e State do I²C2.</div><div class="ttdef"><b>Definição</b> <a href="app__state_8h_source.html#l00127">app_state.h:127</a></div></div>
+<div class="ttc" id="aapp__state_8h_html_abab4f06c5b7b18d0ff22506174aab782"><div class="ttname"><a href="app__state_8h.html#abab4f06c5b7b18d0ff22506174aab782">mpu6500_gyro_offset_z</a></div><div class="ttdeci">float mpu6500_gyro_offset_z</div><div class="ttdoc">Offsets do giroscópio (°/s) calculados por MPU6500_Calibrate().</div><div class="ttdef"><b>Definição</b> <a href="app__state_8h_source.html#l00092">app_state.h:92</a></div></div>
+<div class="ttc" id="aapp__state_8h_html_ac1b58296f24ec3d0db6351a759743bed"><div class="ttname"><a href="app__state_8h.html#ac1b58296f24ec3d0db6351a759743bed">i2c2_device_found</a></div><div class="ttdeci">uint8_t i2c2_device_found</div><div class="ttdoc">Último endereço de 7 bits que respondeu em I2C2_Scan_All().</div><div class="ttdef"><b>Definição</b> <a href="#l00032">app_state.c:32</a></div></div>
+<div class="ttc" id="aapp__state_8h_html_ac360945c8ba5c0fbad68c5e1ba118e53"><div class="ttname"><a href="app__state_8h.html#ac360945c8ba5c0fbad68c5e1ba118e53">oled_update_fail_count</a></div><div class="ttdeci">volatile uint32_t oled_update_fail_count</div><div class="ttdoc">Voltas da oledTask e atualizações do OLED bem-sucedidas e com falha.</div><div class="ttdef"><b>Definição</b> <a href="app__state_8h_source.html#l00124">app_state.h:124</a></div></div>
+<div class="ttc" id="aapp__state_8h_html_ac92261368ad2d996089491b139c20fcc"><div class="ttname"><a href="app__state_8h.html#ac92261368ad2d996089491b139c20fcc">mpu6500_gyro_z_dps</a></div><div class="ttdeci">float mpu6500_gyro_z_dps</div><div class="ttdoc">Velocidade angular em °/s, já com o offset removido.</div><div class="ttdef"><b>Definição</b> <a href="app__state_8h_source.html#l00090">app_state.h:90</a></div></div>
+<div class="ttc" id="aapp__state_8h_html_ace4e0a1dbd5828f0ce06c3e283732ec9"><div class="ttname"><a href="app__state_8h.html#ace4e0a1dbd5828f0ce06c3e283732ec9">usb_rtc_set_requested</a></div><div class="ttdeci">volatile uint8_t usb_rtc_set_requested</div><div class="ttdoc">Pedido RTC_SET recebido pela USB, atendido pela defaultTask.</div><div class="ttdef"><b>Definição</b> <a href="#l00047">app_state.c:47</a></div></div>
+<div class="ttc" id="aapp__state_8h_html_ad5e94eedb67f6426fd969fad75f886be"><div class="ttname"><a href="app__state_8h.html#ad5e94eedb67f6426fd969fad75f886be">eeprom_next_address</a></div><div class="ttdeci">uint16_t eeprom_next_address</div><div class="ttdoc">Próximo endereço livre no chip ativo; 0xFFFF = memória cheia.</div><div class="ttdef"><b>Definição</b> <a href="#l00043">app_state.c:43</a></div></div>
+<div class="ttc" id="aapp__state_8h_html_ad9647b92db1d00a21166af8899287741"><div class="ttname"><a href="app__state_8h.html#ad9647b92db1d00a21166af8899287741">eeprom_read_state_snapshot</a></div><div class="ttdeci">volatile uint32_t eeprom_read_state_snapshot</div><div class="ttdoc">ErrorCode e State do I²C2 logo após a última leitura da EEPROM.</div><div class="ttdef"><b>Definição</b> <a href="app__state_8h_source.html#l00096">app_state.h:96</a></div></div>
+<div class="ttc" id="aapp__state_8h_html_adb4a4ee2b719d503256dc2704fda7edc"><div class="ttname"><a href="app__state_8h.html#adb4a4ee2b719d503256dc2704fda7edc">mpu6500_last_read_ok</a></div><div class="ttdeci">uint8_t mpu6500_last_read_ok</div><div class="ttdoc">1 se a última leitura do sensor foi bem-sucedida.</div><div class="ttdef"><b>Definição</b> <a href="app__state_8h_source.html#l00162">app_state.h:162</a></div></div>
+<div class="ttc" id="aapp__state_8h_html_ade6d834507085d886d456578b1c26b48"><div class="ttname"><a href="app__state_8h.html#ade6d834507085d886d456578b1c26b48">eeprom_metadata_load_ok</a></div><div class="ttdeci">uint8_t eeprom_metadata_load_ok</div><div class="ttdoc">eeprom_full: 1 = as duas EEPROMs cheias.</div><div class="ttdef"><b>Definição</b> <a href="app__state_8h_source.html#l00117">app_state.h:117</a></div></div>
+<div class="ttc" id="aapp__state_8h_html_ade818f0d130bac4ff4513a3183748822"><div class="ttname"><a href="app__state_8h.html#ade818f0d130bac4ff4513a3183748822">oled_buffer_mutation_count</a></div><div class="ttdeci">volatile uint32_t oled_buffer_mutation_count</div><div class="ttdoc">Renderizações sobrepostas e alterações concorrentes do buffer detectadas (instrumentação passiva).</div><div class="ttdef"><b>Definição</b> <a href="app__state_8h_source.html#l00103">app_state.h:103</a></div></div>
+<div class="ttc" id="aapp__state_8h_html_ae1154ae5250491d9ed941127edc058bb"><div class="ttname"><a href="app__state_8h.html#ae1154ae5250491d9ed941127edc058bb">aht20_humidity</a></div><div class="ttdeci">float aht20_humidity</div><div class="ttdoc">Última leitura do AHT20: temperatura (°C) e umidade (%).</div><div class="ttdef"><b>Definição</b> <a href="app__state_8h_source.html#l00081">app_state.h:81</a></div></div>
+<div class="ttc" id="aapp__state_8h_html_ae66d0d296777f406e73bc598eaf6898e"><div class="ttname"><a href="app__state_8h.html#ae66d0d296777f406e73bc598eaf6898e">sensor_cycle_active</a></div><div class="ttdeci">volatile uint8_t sensor_cycle_active</div><div class="ttdoc">sensor_cycle_active: 1 enquanto a sensorTask está em um ciclo de aquisição; oled_ff_sensor_active: va...</div><div class="ttdef"><b>Definição</b> <a href="app__state_8h_source.html#l00128">app_state.h:128</a></div></div>
+<div class="ttc" id="aapp__state_8h_html_aeca698713574433eb542374a5683c4c6"><div class="ttname"><a href="app__state_8h.html#aeca698713574433eb542374a5683c4c6">oled_pre_lock_snapshot</a></div><div class="ttdeci">volatile uint32_t oled_pre_lock_snapshot</div><div class="ttdoc">State e Lock do I²C2 antes da última transferência do OLED.</div><div class="ttdef"><b>Definição</b> <a href="app__state_8h_source.html#l00099">app_state.h:99</a></div></div>
+<div class="ttc" id="aapp__state_8h_html_af44ce64fa7961a404bb44f428e56a75d"><div class="ttname"><a href="app__state_8h.html#af44ce64fa7961a404bb44f428e56a75d">oled_i2c_state_snapshot</a></div><div class="ttdeci">volatile uint32_t oled_i2c_state_snapshot</div><div class="ttdoc">ErrorCode e State do I²C2 na última falha do OLED.</div><div class="ttdef"><b>Definição</b> <a href="app__state_8h_source.html#l00098">app_state.h:98</a></div></div>
+<div class="ttc" id="aapp__state_8h_html_af4ee032fd85d1ada351154aff8d0902a"><div class="ttname"><a href="app__state_8h.html#af4ee032fd85d1ada351154aff8d0902a">mpu6500_accel_z</a></div><div class="ttdeci">int16_t mpu6500_accel_z</div><div class="ttdoc">Aceleração bruta, em contagens (fundo de escala ±2 g, 16384 LSB/g).</div><div class="ttdef"><b>Definição</b> <a href="app__state_8h_source.html#l00087">app_state.h:87</a></div></div>
+<div class="ttc" id="aapp__state_8h_html_af5dd366f28ca90970352954752a9762c"><div class="ttname"><a href="app__state_8h.html#af5dd366f28ca90970352954752a9762c">eeprom_test_status</a></div><div class="ttdeci">HAL_StatusTypeDef eeprom_test_status</div><div class="ttdoc">Status HAL dos testes manuais da EEPROM (legado).</div><div class="ttdef"><b>Definição</b> <a href="app__state_8h_source.html#l00109">app_state.h:109</a></div></div>
+<div class="ttc" id="aapp__state_8h_html_affb17898fabc82f0b6e5032f5d3c8555"><div class="ttname"><a href="app__state_8h.html#affb17898fabc82f0b6e5032f5d3c8555">oled_page_switch_count</a></div><div class="ttdeci">volatile uint32_t oled_page_switch_count</div><div class="ttdoc">Falhas do OLED ao obter o mutex do I²C2 e trocas de tela realizadas.</div><div class="ttdef"><b>Definição</b> <a href="app__state_8h_source.html#l00097">app_state.h:97</a></div></div>
+<div class="ttc" id="astruct_e_e_p_r_o_m_metadata_html"><div class="ttname"><a href="struct_e_e_p_r_o_m_metadata.html">EEPROMMetadata</a></div><div class="ttdoc">Metadados da EEPROM, gravados a partir do endereço 0x0000 da EEPROM 1.</div><div class="ttdef"><b>Definição</b> <a href="app__state_8h_source.html#l00043">app_state.h:44</a></div></div>
+<div class="ttc" id="astruct_sensor_record_e_e_p_r_o_m_html"><div class="ttname"><a href="struct_sensor_record_e_e_p_r_o_m.html">SensorRecordEEPROM</a></div><div class="ttdoc">Registro de tamanho fixo do formato original (legado).</div><div class="ttdef"><b>Definição</b> <a href="app__state_8h_source.html#l00022">app_state.h:23</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><b>Core</b></li><li class="navelem"><b>Src</b></li><li class="navelem"><a href="app__state_8c.html">app_state.c</a></li>
+    <li class="footer">Gerado por <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.18.0 </li>
+  </ul>
+</div>
+</body>
+</html>

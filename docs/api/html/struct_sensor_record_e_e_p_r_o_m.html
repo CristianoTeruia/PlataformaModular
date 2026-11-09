@@ -1,0 +1,372 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pt-BR">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.18.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>PlataformaModular: Referência da Estrutura SensorRecordEEPROM</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="codefolding.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">PlataformaModular
+   </div>
+   <div id="projectbrief">Plataforma modular embarcada para aquisição e registro de dados de sensores (STM32F411 + FreeRTOS)</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Gerado por Doxygen 1.18.0 -->
+<script type="text/javascript">
+let searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', codefold.init);
+</script>
+<script type="application/json" id="doxygen-config">
+{
+  "relPath": "",
+  "generateTreeView": true,
+  "searchEngine": true,
+  "serverBasedSearch": false,
+  "disableIndex": false,
+  "dynamicMenus": true,
+  "fullSidebar": false
+}
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<div id="main-nav-mobile">
+<div class="sm sm-dox"><input id="main-menu-state" type="checkbox"/>
+<label class="main-menu-btn" for="main-menu-state">
+<span class="main-menu-btn-icon"></span> Toggle main menu visibility</label>
+<span id="searchBoxPos1"></span>
+</div>
+</div><!-- main-nav-mobile -->
+<div id="main-nav">
+  <ul class="sm sm-dox" id="main-menu">
+    <li id="searchBoxPos2">
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect" class="search-icon"><span class="search-icon-dropdown"></span></span>
+          <input type="text" id="MSearchField" value="" placeholder="Busca" accesskey="S"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+          </span>
+        </div>
+    </li>
+  </ul>
+</div><!-- main-nav -->
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded',() => { initNavTree('struct_sensor_record_e_e_p_r_o_m.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Carregando...</div>
+<div class="SRStatus" id="Searching">Procurando...</div>
+<div class="SRStatus" id="NoMatches">Nenhuma entrada encontrado</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Referência da Estrutura SensorRecordEEPROM</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Registro de tamanho fixo do formato original (legado).  
+ <a href="#details">Mais...</a></p>
+
+<p><code>#include &lt;<a class="el" href="app__state_8h_source.html">app_state.h</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-pub-attribs" class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
+Campos de Dados</h2></td></tr>
+<tr class="memitem:a799930d996e307096cde7d7fd0dd3977" id="r_a799930d996e307096cde7d7fd0dd3977"><td class="memItemLeft">int16_t&#160;</td><td class="memItemRight"><a class="el" href="#a799930d996e307096cde7d7fd0dd3977">temperature_aht</a></td></tr>
+<tr class="memdesc:a799930d996e307096cde7d7fd0dd3977"><td class="mdescLeft">&#160;</td><td class="mdescRight">Temperatura do AHT20, em centésimos de °C.  <br /></td></tr>
+<tr class="memitem:a7803d102d4b994ab60a04cc467dd3196" id="r_a7803d102d4b994ab60a04cc467dd3196"><td class="memItemLeft">uint16_t&#160;</td><td class="memItemRight"><a class="el" href="#a7803d102d4b994ab60a04cc467dd3196">humidity_aht</a></td></tr>
+<tr class="memdesc:a7803d102d4b994ab60a04cc467dd3196"><td class="mdescLeft">&#160;</td><td class="mdescRight">Umidade do AHT20, em centésimos de %.  <br /></td></tr>
+<tr class="memitem:a720e4ba188b44507738c4d769dbfc16c" id="r_a720e4ba188b44507738c4d769dbfc16c"><td class="memItemLeft">int16_t&#160;</td><td class="memItemRight"><a class="el" href="#a720e4ba188b44507738c4d769dbfc16c">temperature_bmp</a></td></tr>
+<tr class="memdesc:a720e4ba188b44507738c4d769dbfc16c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Temperatura do BMP280, em centésimos de °C.  <br /></td></tr>
+<tr class="memitem:a4c2b74681e6b5d896b3ed3d8e42f4b4d" id="r_a4c2b74681e6b5d896b3ed3d8e42f4b4d"><td class="memItemLeft">uint32_t&#160;</td><td class="memItemRight"><a class="el" href="#a4c2b74681e6b5d896b3ed3d8e42f4b4d">pressure_bmp</a></td></tr>
+<tr class="memdesc:a4c2b74681e6b5d896b3ed3d8e42f4b4d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pressão do BMP280, em Pa (inteiro).  <br /></td></tr>
+<tr class="memitem:a868384a500ba9618aeb696937b095d41" id="r_a868384a500ba9618aeb696937b095d41"><td class="memItemLeft">int16_t&#160;</td><td class="memItemRight"><a class="el" href="#a868384a500ba9618aeb696937b095d41">accel_x</a></td></tr>
+<tr class="memdesc:a868384a500ba9618aeb696937b095d41"><td class="mdescLeft">&#160;</td><td class="mdescRight">Aceleração em X, em milésimos de g.  <br /></td></tr>
+<tr class="memitem:a9d7527f2b32e76e1755dd1629040059a" id="r_a9d7527f2b32e76e1755dd1629040059a"><td class="memItemLeft">int16_t&#160;</td><td class="memItemRight"><a class="el" href="#a9d7527f2b32e76e1755dd1629040059a">accel_y</a></td></tr>
+<tr class="memdesc:a9d7527f2b32e76e1755dd1629040059a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Aceleração em Y, em milésimos de g.  <br /></td></tr>
+<tr class="memitem:a79873eaea008c28f5c5c30a70911099e" id="r_a79873eaea008c28f5c5c30a70911099e"><td class="memItemLeft">int16_t&#160;</td><td class="memItemRight"><a class="el" href="#a79873eaea008c28f5c5c30a70911099e">accel_z</a></td></tr>
+<tr class="memdesc:a79873eaea008c28f5c5c30a70911099e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Aceleração em Z, em milésimos de g.  <br /></td></tr>
+<tr class="memitem:a77fc4d833a8c2164f843831700f93ee4" id="r_a77fc4d833a8c2164f843831700f93ee4"><td class="memItemLeft">int16_t&#160;</td><td class="memItemRight"><a class="el" href="#a77fc4d833a8c2164f843831700f93ee4">gyro_x</a></td></tr>
+<tr class="memdesc:a77fc4d833a8c2164f843831700f93ee4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Velocidade angular em X, em centésimos de °/s.  <br /></td></tr>
+<tr class="memitem:ab656f1afedb0022e15ec5652edb89afb" id="r_ab656f1afedb0022e15ec5652edb89afb"><td class="memItemLeft">int16_t&#160;</td><td class="memItemRight"><a class="el" href="#ab656f1afedb0022e15ec5652edb89afb">gyro_y</a></td></tr>
+<tr class="memdesc:ab656f1afedb0022e15ec5652edb89afb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Velocidade angular em Y, em centésimos de °/s.  <br /></td></tr>
+<tr class="memitem:af3e0ce0e4923ac056e7266491e8ba4ae" id="r_af3e0ce0e4923ac056e7266491e8ba4ae"><td class="memItemLeft">int16_t&#160;</td><td class="memItemRight"><a class="el" href="#af3e0ce0e4923ac056e7266491e8ba4ae">gyro_z</a></td></tr>
+<tr class="memdesc:af3e0ce0e4923ac056e7266491e8ba4ae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Velocidade angular em Z, em centésimos de °/s.  <br /></td></tr>
+</table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Descrição detalhada</h2>
+<div class="textblock"><p>Registro de tamanho fixo do formato original (legado). </p>
+<p>Foi substituído pelo registro de tamanho variável montado por <a class="el" href="eeprom24lc512_8h.html#a7e550f6e0fbbca8e2822268d02574ee1" title="Monta um registro: máscara, dados dos sensores, data e hora do RTC e CRC.">EEPROM_BuildSensorRecord()</a> e permanece apenas nas rotinas de teste manual. Os campos usam inteiros escalados. </p>
+
+<p class="definition">Definição na linha <a class="el" href="app__state_8h_source.html#l00022">22</a> do arquivo <a class="el" href="app__state_8h_source.html">app_state.h</a>.</p>
+</div><a name="doc-variable-members" id="doc-variable-members"></a><h2 id="header-doc-variable-members" class="groupheader">Campos</h2>
+<a id="a868384a500ba9618aeb696937b095d41" name="a868384a500ba9618aeb696937b095d41"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a868384a500ba9618aeb696937b095d41">&#9670;&#160;</a></span>accel_x</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int16_t SensorRecordEEPROM::accel_x</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Aceleração em X, em milésimos de g. </p>
+
+<p class="definition">Definição na linha <a class="el" href="app__state_8h_source.html#l00028">28</a> do arquivo <a class="el" href="app__state_8h_source.html">app_state.h</a>.</p>
+
+<p class="reference">Referenciado(a) por <a class="el" href="eeprom24lc512_8c_source.html#l00217">EEPROM_CreateSensorRecord()</a>.</p>
+
+</div>
+</div>
+<a id="a9d7527f2b32e76e1755dd1629040059a" name="a9d7527f2b32e76e1755dd1629040059a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9d7527f2b32e76e1755dd1629040059a">&#9670;&#160;</a></span>accel_y</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int16_t SensorRecordEEPROM::accel_y</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Aceleração em Y, em milésimos de g. </p>
+
+<p class="definition">Definição na linha <a class="el" href="app__state_8h_source.html#l00029">29</a> do arquivo <a class="el" href="app__state_8h_source.html">app_state.h</a>.</p>
+
+<p class="reference">Referenciado(a) por <a class="el" href="eeprom24lc512_8c_source.html#l00217">EEPROM_CreateSensorRecord()</a>.</p>
+
+</div>
+</div>
+<a id="a79873eaea008c28f5c5c30a70911099e" name="a79873eaea008c28f5c5c30a70911099e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a79873eaea008c28f5c5c30a70911099e">&#9670;&#160;</a></span>accel_z</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int16_t SensorRecordEEPROM::accel_z</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Aceleração em Z, em milésimos de g. </p>
+
+<p class="definition">Definição na linha <a class="el" href="app__state_8h_source.html#l00030">30</a> do arquivo <a class="el" href="app__state_8h_source.html">app_state.h</a>.</p>
+
+<p class="reference">Referenciado(a) por <a class="el" href="eeprom24lc512_8c_source.html#l00217">EEPROM_CreateSensorRecord()</a>.</p>
+
+</div>
+</div>
+<a id="a77fc4d833a8c2164f843831700f93ee4" name="a77fc4d833a8c2164f843831700f93ee4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a77fc4d833a8c2164f843831700f93ee4">&#9670;&#160;</a></span>gyro_x</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int16_t SensorRecordEEPROM::gyro_x</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Velocidade angular em X, em centésimos de °/s. </p>
+
+<p class="definition">Definição na linha <a class="el" href="app__state_8h_source.html#l00031">31</a> do arquivo <a class="el" href="app__state_8h_source.html">app_state.h</a>.</p>
+
+<p class="reference">Referenciado(a) por <a class="el" href="eeprom24lc512_8c_source.html#l00217">EEPROM_CreateSensorRecord()</a>.</p>
+
+</div>
+</div>
+<a id="ab656f1afedb0022e15ec5652edb89afb" name="ab656f1afedb0022e15ec5652edb89afb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab656f1afedb0022e15ec5652edb89afb">&#9670;&#160;</a></span>gyro_y</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int16_t SensorRecordEEPROM::gyro_y</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Velocidade angular em Y, em centésimos de °/s. </p>
+
+<p class="definition">Definição na linha <a class="el" href="app__state_8h_source.html#l00032">32</a> do arquivo <a class="el" href="app__state_8h_source.html">app_state.h</a>.</p>
+
+<p class="reference">Referenciado(a) por <a class="el" href="eeprom24lc512_8c_source.html#l00217">EEPROM_CreateSensorRecord()</a>.</p>
+
+</div>
+</div>
+<a id="af3e0ce0e4923ac056e7266491e8ba4ae" name="af3e0ce0e4923ac056e7266491e8ba4ae"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af3e0ce0e4923ac056e7266491e8ba4ae">&#9670;&#160;</a></span>gyro_z</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int16_t SensorRecordEEPROM::gyro_z</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Velocidade angular em Z, em centésimos de °/s. </p>
+
+<p class="definition">Definição na linha <a class="el" href="app__state_8h_source.html#l00033">33</a> do arquivo <a class="el" href="app__state_8h_source.html">app_state.h</a>.</p>
+
+<p class="reference">Referenciado(a) por <a class="el" href="eeprom24lc512_8c_source.html#l00217">EEPROM_CreateSensorRecord()</a>.</p>
+
+</div>
+</div>
+<a id="a7803d102d4b994ab60a04cc467dd3196" name="a7803d102d4b994ab60a04cc467dd3196"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7803d102d4b994ab60a04cc467dd3196">&#9670;&#160;</a></span>humidity_aht</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint16_t SensorRecordEEPROM::humidity_aht</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Umidade do AHT20, em centésimos de %. </p>
+
+<p class="definition">Definição na linha <a class="el" href="app__state_8h_source.html#l00025">25</a> do arquivo <a class="el" href="app__state_8h_source.html">app_state.h</a>.</p>
+
+<p class="reference">Referenciado(a) por <a class="el" href="eeprom24lc512_8c_source.html#l00217">EEPROM_CreateSensorRecord()</a>.</p>
+
+</div>
+</div>
+<a id="a4c2b74681e6b5d896b3ed3d8e42f4b4d" name="a4c2b74681e6b5d896b3ed3d8e42f4b4d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4c2b74681e6b5d896b3ed3d8e42f4b4d">&#9670;&#160;</a></span>pressure_bmp</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t SensorRecordEEPROM::pressure_bmp</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Pressão do BMP280, em Pa (inteiro). </p>
+
+<p class="definition">Definição na linha <a class="el" href="app__state_8h_source.html#l00027">27</a> do arquivo <a class="el" href="app__state_8h_source.html">app_state.h</a>.</p>
+
+<p class="reference">Referenciado(a) por <a class="el" href="eeprom24lc512_8c_source.html#l00217">EEPROM_CreateSensorRecord()</a>.</p>
+
+</div>
+</div>
+<a id="a799930d996e307096cde7d7fd0dd3977" name="a799930d996e307096cde7d7fd0dd3977"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a799930d996e307096cde7d7fd0dd3977">&#9670;&#160;</a></span>temperature_aht</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int16_t SensorRecordEEPROM::temperature_aht</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Temperatura do AHT20, em centésimos de °C. </p>
+
+<p class="definition">Definição na linha <a class="el" href="app__state_8h_source.html#l00024">24</a> do arquivo <a class="el" href="app__state_8h_source.html">app_state.h</a>.</p>
+
+<p class="reference">Referenciado(a) por <a class="el" href="eeprom24lc512_8c_source.html#l00217">EEPROM_CreateSensorRecord()</a>.</p>
+
+</div>
+</div>
+<a id="a720e4ba188b44507738c4d769dbfc16c" name="a720e4ba188b44507738c4d769dbfc16c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a720e4ba188b44507738c4d769dbfc16c">&#9670;&#160;</a></span>temperature_bmp</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int16_t SensorRecordEEPROM::temperature_bmp</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Temperatura do BMP280, em centésimos de °C. </p>
+
+<p class="definition">Definição na linha <a class="el" href="app__state_8h_source.html#l00026">26</a> do arquivo <a class="el" href="app__state_8h_source.html">app_state.h</a>.</p>
+
+<p class="reference">Referenciado(a) por <a class="el" href="eeprom24lc512_8c_source.html#l00217">EEPROM_CreateSensorRecord()</a>.</p>
+
+</div>
+</div>
+<hr/>A documentação para essa estrutura foi gerada a partir do seguinte arquivo:<ul>
+<li>Core/Inc/<a class="el" href="app__state_8h_source.html">app_state.h</a></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="struct_sensor_record_e_e_p_r_o_m.html">SensorRecordEEPROM</a></li>
+    <li class="footer">Gerado por <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.18.0 </li>
+  </ul>
+</div>
+</body>
+</html>

@@ -1,0 +1,240 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pt-BR">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.18.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>PlataformaModular: Referência da Estrutura EEPROMMetadata</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="codefolding.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">PlataformaModular
+   </div>
+   <div id="projectbrief">Plataforma modular embarcada para aquisição e registro de dados de sensores (STM32F411 + FreeRTOS)</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Gerado por Doxygen 1.18.0 -->
+<script type="text/javascript">
+let searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', codefold.init);
+</script>
+<script type="application/json" id="doxygen-config">
+{
+  "relPath": "",
+  "generateTreeView": true,
+  "searchEngine": true,
+  "serverBasedSearch": false,
+  "disableIndex": false,
+  "dynamicMenus": true,
+  "fullSidebar": false
+}
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<div id="main-nav-mobile">
+<div class="sm sm-dox"><input id="main-menu-state" type="checkbox"/>
+<label class="main-menu-btn" for="main-menu-state">
+<span class="main-menu-btn-icon"></span> Toggle main menu visibility</label>
+<span id="searchBoxPos1"></span>
+</div>
+</div><!-- main-nav-mobile -->
+<div id="main-nav">
+  <ul class="sm sm-dox" id="main-menu">
+    <li id="searchBoxPos2">
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect" class="search-icon"><span class="search-icon-dropdown"></span></span>
+          <input type="text" id="MSearchField" value="" placeholder="Busca" accesskey="S"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+          </span>
+        </div>
+    </li>
+  </ul>
+</div><!-- main-nav -->
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded',() => { initNavTree('struct_e_e_p_r_o_m_metadata.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Carregando...</div>
+<div class="SRStatus" id="Searching">Procurando...</div>
+<div class="SRStatus" id="NoMatches">Nenhuma entrada encontrado</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Referência da Estrutura EEPROMMetadata</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Metadados da EEPROM, gravados a partir do endereço 0x0000 da EEPROM 1.  
+ <a href="#details">Mais...</a></p>
+
+<p><code>#include &lt;<a class="el" href="app__state_8h_source.html">app_state.h</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-pub-attribs" class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
+Campos de Dados</h2></td></tr>
+<tr class="memitem:af7f10c70bce098bf8ad59ec77061e37d" id="r_af7f10c70bce098bf8ad59ec77061e37d"><td class="memItemLeft">uint16_t&#160;</td><td class="memItemRight"><a class="el" href="#af7f10c70bce098bf8ad59ec77061e37d">next_address</a></td></tr>
+<tr class="memdesc:af7f10c70bce098bf8ad59ec77061e37d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Próximo endereço livre no chip ativo; 0xFFFF quando a memória está cheia.  <br /></td></tr>
+<tr class="memitem:a965e1b97519f71d725e0186b30cc6d7a" id="r_a965e1b97519f71d725e0186b30cc6d7a"><td class="memItemLeft">uint8_t&#160;</td><td class="memItemRight"><a class="el" href="#a965e1b97519f71d725e0186b30cc6d7a">full</a></td></tr>
+<tr class="memdesc:a965e1b97519f71d725e0186b30cc6d7a"><td class="mdescLeft">&#160;</td><td class="mdescRight">1 = as duas EEPROMs estão cheias.  <br /></td></tr>
+<tr class="memitem:a6ebd3d33aec06e59ff99b8824cd1056a" id="r_a6ebd3d33aec06e59ff99b8824cd1056a"><td class="memItemLeft">uint8_t&#160;</td><td class="memItemRight"><a class="el" href="#a6ebd3d33aec06e59ff99b8824cd1056a">reserved</a></td></tr>
+<tr class="memdesc:a6ebd3d33aec06e59ff99b8824cd1056a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Seletor do chip ativo (<a class="el" href="app__state_8h.html#a02feeeed6aa89be4acd73ceaad5cb883" title="Valor do seletor de chip ativo: EEPROM 1.">EEPROM_ACTIVE_EEPROM1</a> ou <a class="el" href="app__state_8h.html#ad7a2c7d12af4d86dfb0c3af5b6c4cd84" title="Valor do seletor de chip ativo: EEPROM 2.">EEPROM_ACTIVE_EEPROM2</a>); nome histórico do campo.  <br /></td></tr>
+<tr class="memitem:ab38ea198144d836e8ffad98f81c3c761" id="r_ab38ea198144d836e8ffad98f81c3c761"><td class="memItemLeft">uint16_t&#160;</td><td class="memItemRight"><a class="el" href="#ab38ea198144d836e8ffad98f81c3c761">magic</a></td></tr>
+<tr class="memdesc:ab38ea198144d836e8ffad98f81c3c761"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deve valer <a class="el" href="app__state_8h.html#a1a70d53184ab070e2c4f8e5077873749" title="Valor que identifica metadados válidos.">EEPROM_METADATA_MAGIC</a>.  <br /></td></tr>
+</table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Descrição detalhada</h2>
+<div class="textblock"><p>Metadados da EEPROM, gravados a partir do endereço 0x0000 da EEPROM 1. </p>
+<p>Indicam onde gravar o próximo registro. Só são considerados válidos se <span class="tt"><a class="el" href="#ab38ea198144d836e8ffad98f81c3c761" title="Deve valer EEPROM_METADATA_MAGIC.">magic</a></span> for igual a <a class="el" href="app__state_8h.html#a1a70d53184ab070e2c4f8e5077873749" title="Valor que identifica metadados válidos.">EEPROM_METADATA_MAGIC</a>; metadados inválidos nunca são reinicializados sozinhos, para não perder registros. </p>
+
+<p class="definition">Definição na linha <a class="el" href="app__state_8h_source.html#l00043">43</a> do arquivo <a class="el" href="app__state_8h_source.html">app_state.h</a>.</p>
+</div><a name="doc-variable-members" id="doc-variable-members"></a><h2 id="header-doc-variable-members" class="groupheader">Campos</h2>
+<a id="a965e1b97519f71d725e0186b30cc6d7a" name="a965e1b97519f71d725e0186b30cc6d7a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a965e1b97519f71d725e0186b30cc6d7a">&#9670;&#160;</a></span>full</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t EEPROMMetadata::full</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>1 = as duas EEPROMs estão cheias. </p>
+
+<p class="definition">Definição na linha <a class="el" href="app__state_8h_source.html#l00046">46</a> do arquivo <a class="el" href="app__state_8h_source.html">app_state.h</a>.</p>
+
+<p class="reference">Referenciado(a) por <a class="el" href="eeprom24lc512_8c_source.html#l00721">EEPROM24LC512_EraseAll()</a>, <a class="el" href="eeprom24lc512_8c_source.html#l01361">EEPROM_ExportCSV_USB()</a>, <a class="el" href="eeprom24lc512_8c_source.html#l00482">EEPROM_LoadMetadata()</a> e <a class="el" href="eeprom24lc512_8c_source.html#l00252">EEPROM_SaveSensorRecord()</a>.</p>
+
+</div>
+</div>
+<a id="ab38ea198144d836e8ffad98f81c3c761" name="ab38ea198144d836e8ffad98f81c3c761"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab38ea198144d836e8ffad98f81c3c761">&#9670;&#160;</a></span>magic</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint16_t EEPROMMetadata::magic</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Deve valer <a class="el" href="app__state_8h.html#a1a70d53184ab070e2c4f8e5077873749" title="Valor que identifica metadados válidos.">EEPROM_METADATA_MAGIC</a>. </p>
+
+<p class="definition">Definição na linha <a class="el" href="app__state_8h_source.html#l00048">48</a> do arquivo <a class="el" href="app__state_8h_source.html">app_state.h</a>.</p>
+
+<p class="reference">Referenciado(a) por <a class="el" href="eeprom24lc512_8c_source.html#l00721">EEPROM24LC512_EraseAll()</a> e <a class="el" href="eeprom24lc512_8c_source.html#l00482">EEPROM_LoadMetadata()</a>.</p>
+
+</div>
+</div>
+<a id="af7f10c70bce098bf8ad59ec77061e37d" name="af7f10c70bce098bf8ad59ec77061e37d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af7f10c70bce098bf8ad59ec77061e37d">&#9670;&#160;</a></span>next_address</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint16_t EEPROMMetadata::next_address</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Próximo endereço livre no chip ativo; 0xFFFF quando a memória está cheia. </p>
+
+<p class="definition">Definição na linha <a class="el" href="app__state_8h_source.html#l00045">45</a> do arquivo <a class="el" href="app__state_8h_source.html">app_state.h</a>.</p>
+
+<p class="reference">Referenciado(a) por <a class="el" href="eeprom24lc512_8c_source.html#l00721">EEPROM24LC512_EraseAll()</a>, <a class="el" href="eeprom24lc512_8c_source.html#l01361">EEPROM_ExportCSV_USB()</a>, <a class="el" href="eeprom24lc512_8c_source.html#l00482">EEPROM_LoadMetadata()</a> e <a class="el" href="eeprom24lc512_8c_source.html#l00252">EEPROM_SaveSensorRecord()</a>.</p>
+
+</div>
+</div>
+<a id="a6ebd3d33aec06e59ff99b8824cd1056a" name="a6ebd3d33aec06e59ff99b8824cd1056a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6ebd3d33aec06e59ff99b8824cd1056a">&#9670;&#160;</a></span>reserved</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t EEPROMMetadata::reserved</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Seletor do chip ativo (<a class="el" href="app__state_8h.html#a02feeeed6aa89be4acd73ceaad5cb883" title="Valor do seletor de chip ativo: EEPROM 1.">EEPROM_ACTIVE_EEPROM1</a> ou <a class="el" href="app__state_8h.html#ad7a2c7d12af4d86dfb0c3af5b6c4cd84" title="Valor do seletor de chip ativo: EEPROM 2.">EEPROM_ACTIVE_EEPROM2</a>); nome histórico do campo. </p>
+
+<p class="definition">Definição na linha <a class="el" href="app__state_8h_source.html#l00047">47</a> do arquivo <a class="el" href="app__state_8h_source.html">app_state.h</a>.</p>
+
+<p class="reference">Referenciado(a) por <a class="el" href="eeprom24lc512_8c_source.html#l00721">EEPROM24LC512_EraseAll()</a>, <a class="el" href="eeprom24lc512_8c_source.html#l01361">EEPROM_ExportCSV_USB()</a>, <a class="el" href="eeprom24lc512_8c_source.html#l00482">EEPROM_LoadMetadata()</a>, <a class="el" href="eeprom24lc512_8c_source.html#l00252">EEPROM_SaveSensorRecord()</a>, <a class="el" href="app__tasks_8c_source.html#l00431">StartOledTask()</a> e <a class="el" href="ssd1306_8c_source.html#l00607">UpdateDisplay()</a>.</p>
+
+</div>
+</div>
+<hr/>A documentação para essa estrutura foi gerada a partir do seguinte arquivo:<ul>
+<li>Core/Inc/<a class="el" href="app__state_8h_source.html">app_state.h</a></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="struct_e_e_p_r_o_m_metadata.html">EEPROMMetadata</a></li>
+    <li class="footer">Gerado por <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.18.0 </li>
+  </ul>
+</div>
+</body>
+</html>

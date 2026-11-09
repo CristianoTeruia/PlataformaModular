@@ -1,0 +1,188 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pt-BR">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.18.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>PlataformaModular: Código-Fonte de Core/Src/aht20.c</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="codefolding.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">PlataformaModular
+   </div>
+   <div id="projectbrief">Plataforma modular embarcada para aquisição e registro de dados de sensores (STM32F411 + FreeRTOS)</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Gerado por Doxygen 1.18.0 -->
+<script type="text/javascript">
+let searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', codefold.init);
+</script>
+<script type="application/json" id="doxygen-config">
+{
+  "relPath": "",
+  "generateTreeView": true,
+  "searchEngine": true,
+  "serverBasedSearch": false,
+  "disableIndex": false,
+  "dynamicMenus": true,
+  "fullSidebar": false
+}
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<div id="main-nav-mobile">
+<div class="sm sm-dox"><input id="main-menu-state" type="checkbox"/>
+<label class="main-menu-btn" for="main-menu-state">
+<span class="main-menu-btn-icon"></span> Toggle main menu visibility</label>
+<span id="searchBoxPos1"></span>
+</div>
+</div><!-- main-nav-mobile -->
+<div id="main-nav">
+  <ul class="sm sm-dox" id="main-menu">
+    <li id="searchBoxPos2">
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect" class="search-icon"><span class="search-icon-dropdown"></span></span>
+          <input type="text" id="MSearchField" value="" placeholder="Busca" accesskey="S"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+          </span>
+        </div>
+    </li>
+  </ul>
+</div><!-- main-nav -->
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded',() => { initNavTree('aht20_8c_source.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Carregando...</div>
+<div class="SRStatus" id="Searching">Procurando...</div>
+<div class="SRStatus" id="NoMatches">Nenhuma entrada encontrado</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">aht20.c</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="aht20_8c.html">Ir para a documentação desse arquivo.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &quot;<a class="code" href="aht20_8h.html">aht20.h</a>&quot;</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &quot;<a class="code" href="app__state_8h.html">app_state.h</a>&quot;</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &lt;string.h&gt;</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &lt;stddef.h&gt;</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
+<div class="foldopen" id="foldopen00010" data-start="{" data-end="}">
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno"><a class="line" href="aht20_8h.html#aca4d791785d6503cd1026140ac954010">   10</a></span>HAL_StatusTypeDef <a class="code hl_function" href="aht20_8h.html#aca4d791785d6503cd1026140ac954010">AHT20_Read</a>(<span class="keywordtype">float</span> *temperature, <span class="keywordtype">float</span> *humidity)</div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>{</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>    uint8_t command[3] = {0xAC, 0x33, 0x00};</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>    uint8_t data[6];</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    HAL_StatusTypeDef status;</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    <span class="comment">// Inicia uma medição</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    status = HAL_I2C_Master_Transmit(&amp;<a class="code hl_variable" href="app__state_8h.html#af7b2c26e44dadaaa798a5c3d82914ba7">hi2c1</a>, 0x38 &lt;&lt; 1,</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>                                     command, 3, 100);</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    <span class="keywordflow">if</span> (status != HAL_OK)</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>        <span class="keywordflow">return</span> status;</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    <span class="comment">// Aguarda o AHT20 terminar a medição</span></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    <a class="code hl_function" href="app__state_8h.html#a37a3a5a51fd18694f366bc8c8e489c05">App_Delay</a>(80);</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    <span class="comment">// Lê os 6 bytes de resposta</span></div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    status = HAL_I2C_Master_Receive(&amp;<a class="code hl_variable" href="app__state_8h.html#af7b2c26e44dadaaa798a5c3d82914ba7">hi2c1</a>, 0x38 &lt;&lt; 1,</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>                                    data, 6, 100);</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    <span class="keywordflow">if</span> (status != HAL_OK)</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>        <span class="keywordflow">return</span> status;</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    <span class="comment">// Verifica se o sensor ainda está ocupado</span></div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    <span class="keywordflow">if</span> (data[0] &amp; 0x80)</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>        <span class="keywordflow">return</span> HAL_BUSY;</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    <span class="comment">// Calcula umidade</span></div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    uint32_t raw_humidity =</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>        ((uint32_t)data[1] &lt;&lt; 12) |</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>        ((uint32_t)data[2] &lt;&lt; 4) |</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>        ((uint32_t)data[3] &gt;&gt; 4);</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    *humidity = ((float)raw_humidity * 100.0f) / 1048576.0f;</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    <span class="comment">// Calcula temperatura</span></div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    uint32_t raw_temperature =</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>        (((uint32_t)data[3] &amp; 0x0F) &lt;&lt; 16) |</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>        ((uint32_t)data[4] &lt;&lt; 8) |</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>        data[5];</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    *temperature =</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>        ((float)raw_temperature * 200.0f) / 1048576.0f - 50.0f;</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    <span class="keywordflow">return</span> HAL_OK;</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>}</div>
+</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span> </div>
+<div class="ttc" id="aaht20_8h_html"><div class="ttname"><a href="aht20_8h.html">aht20.h</a></div><div class="ttdoc">Driver do sensor de temperatura e umidade AHT20 (I²C1, endereço 0x38).</div></div>
+<div class="ttc" id="aaht20_8h_html_aca4d791785d6503cd1026140ac954010"><div class="ttname"><a href="aht20_8h.html#aca4d791785d6503cd1026140ac954010">AHT20_Read</a></div><div class="ttdeci">HAL_StatusTypeDef AHT20_Read(float *temperature, float *humidity)</div><div class="ttdoc">Dispara uma medição e lê o resultado.</div><div class="ttdef"><b>Definição</b> <a href="#l00010">aht20.c:10</a></div></div>
+<div class="ttc" id="aapp__state_8h_html"><div class="ttname"><a href="app__state_8h.html">app_state.h</a></div><div class="ttdoc">Tipos, constantes e variáveis globais compartilhadas entre os módulos do firmware.</div></div>
+<div class="ttc" id="aapp__state_8h_html_a37a3a5a51fd18694f366bc8c8e489c05"><div class="ttname"><a href="app__state_8h.html#a37a3a5a51fd18694f366bc8c8e489c05">App_Delay</a></div><div class="ttdeci">void App_Delay(uint32_t ms)</div><div class="ttdoc">Espera ms milissegundos cedendo a CPU quando o RTOS está em execução.</div><div class="ttdef"><b>Definição</b> <a href="app__state_8c_source.html#l00055">app_state.c:55</a></div></div>
+<div class="ttc" id="aapp__state_8h_html_af7b2c26e44dadaaa798a5c3d82914ba7"><div class="ttname"><a href="app__state_8h.html#af7b2c26e44dadaaa798a5c3d82914ba7">hi2c1</a></div><div class="ttdeci">I2C_HandleTypeDef hi2c1</div><div class="ttdoc">I²C1: barramento dos sensores.</div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><b>Core</b></li><li class="navelem"><b>Src</b></li><li class="navelem"><a href="aht20_8c.html">aht20.c</a></li>
+    <li class="footer">Gerado por <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.18.0 </li>
+  </ul>
+</div>
+</body>
+</html>

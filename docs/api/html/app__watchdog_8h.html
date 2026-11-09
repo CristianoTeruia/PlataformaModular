@@ -1,0 +1,460 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pt-BR">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.18.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>PlataformaModular: Referência do Arquivo Core/Inc/app_watchdog.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="codefolding.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">PlataformaModular
+   </div>
+   <div id="projectbrief">Plataforma modular embarcada para aquisição e registro de dados de sensores (STM32F411 + FreeRTOS)</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Gerado por Doxygen 1.18.0 -->
+<script type="text/javascript">
+let searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', codefold.init);
+</script>
+<script type="application/json" id="doxygen-config">
+{
+  "relPath": "",
+  "generateTreeView": true,
+  "searchEngine": true,
+  "serverBasedSearch": false,
+  "disableIndex": false,
+  "dynamicMenus": true,
+  "fullSidebar": false
+}
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<div id="main-nav-mobile">
+<div class="sm sm-dox"><input id="main-menu-state" type="checkbox"/>
+<label class="main-menu-btn" for="main-menu-state">
+<span class="main-menu-btn-icon"></span> Toggle main menu visibility</label>
+<span id="searchBoxPos1"></span>
+</div>
+</div><!-- main-nav-mobile -->
+<div id="main-nav">
+  <ul class="sm sm-dox" id="main-menu">
+    <li id="searchBoxPos2">
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect" class="search-icon"><span class="search-icon-dropdown"></span></span>
+          <input type="text" id="MSearchField" value="" placeholder="Busca" accesskey="S"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+          </span>
+        </div>
+    </li>
+  </ul>
+</div><!-- main-nav -->
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded',() => { initNavTree('app__watchdog_8h.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Carregando...</div>
+<div class="SRStatus" id="Searching">Procurando...</div>
+<div class="SRStatus" id="NoMatches">Nenhuma entrada encontrado</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Referência do Arquivo app_watchdog.h</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Supervisão do watchdog independente (IWDG) por tarefa.  
+<a href="#details">Mais...</a></p>
+<div class="textblock"><code>#include &lt;stdint.h&gt;</code><br />
+</div>
+<p><a href="app__watchdog_8h_source.html">Ir para o código-fonte desse arquivo.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-enum-members" class="groupheader"><a id="enum-members" name="enum-members"></a>
+Enumerações</h2></td></tr>
+<tr class="memitem:a1bd5b6c00e58e57850cd31456681c674" id="r_a1bd5b6c00e58e57850cd31456681c674"><td class="memItemLeft">enum &#160;</td><td class="memItemRight"><a class="el" href="#a1bd5b6c00e58e57850cd31456681c674">wdg_task_t</a> { <a class="el" href="#a1bd5b6c00e58e57850cd31456681c674a3c5cdc93598261a5fe9a9ccbfa725cf6">WDG_TASK_COMMAND</a> = 0
+, <a class="el" href="#a1bd5b6c00e58e57850cd31456681c674a89e445c29adcc5ee48703c12b20224c8">WDG_TASK_SENSOR</a> = 1
+, <a class="el" href="#a1bd5b6c00e58e57850cd31456681c674a0e9213122b52126a14ceb39abc715040">WDG_TASK_OLED</a> = 2
+, <a class="el" href="#a1bd5b6c00e58e57850cd31456681c674af0c9158fb4f25d511f485e5bc5c36f91">WDG_TASK_COUNT</a> = 3
+ }</td></tr>
+<tr class="memdesc:a1bd5b6c00e58e57850cd31456681c674"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tarefas supervisionadas pelo watchdog.  <a href="#a1bd5b6c00e58e57850cd31456681c674">Mais...</a><br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
+Funções</h2></td></tr>
+<tr class="memitem:a874ddfabf9bcd8ca3f1984d03c28237d" id="r_a874ddfabf9bcd8ca3f1984d03c28237d"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a874ddfabf9bcd8ca3f1984d03c28237d">Watchdog_CaptureResetCause</a> (void)</td></tr>
+<tr class="memdesc:a874ddfabf9bcd8ca3f1984d03c28237d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Salva a causa do último reinício.  <br /></td></tr>
+<tr class="memitem:a495a07bd1939981855363ee899e619ed" id="r_a495a07bd1939981855363ee899e619ed"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a495a07bd1939981855363ee899e619ed">Watchdog_Init</a> (void)</td></tr>
+<tr class="memdesc:a495a07bd1939981855363ee899e619ed"><td class="mdescLeft">&#160;</td><td class="mdescRight">Inicializa a supervisão.  <br /></td></tr>
+<tr class="memitem:a6c8f0a6a7e01de26b54bf6f4dcbc9f11" id="r_a6c8f0a6a7e01de26b54bf6f4dcbc9f11"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a6c8f0a6a7e01de26b54bf6f4dcbc9f11">Watchdog_Checkin</a> (<a class="el" href="#a1bd5b6c00e58e57850cd31456681c674">wdg_task_t</a> task)</td></tr>
+<tr class="memdesc:a6c8f0a6a7e01de26b54bf6f4dcbc9f11"><td class="mdescLeft">&#160;</td><td class="mdescRight">Registra que uma tarefa está viva.  <br /></td></tr>
+<tr class="memitem:a911d3989aa5282e60324f711e1f80a89" id="r_a911d3989aa5282e60324f711e1f80a89"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a911d3989aa5282e60324f711e1f80a89">Watchdog_Service</a> (void)</td></tr>
+<tr class="memdesc:a911d3989aa5282e60324f711e1f80a89"><td class="mdescLeft">&#160;</td><td class="mdescRight">Verifica os prazos e, se todas as tarefas estão em dia, realimenta o IWDG.  <br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-var-members" class="groupheader"><a id="var-members" name="var-members"></a>
+Variáveis</h2></td></tr>
+<tr class="memitem:a6ef5a505091641c9719d0ad1420da0a5" id="r_a6ef5a505091641c9719d0ad1420da0a5"><td class="memItemLeft">volatile uint32_t&#160;</td><td class="memItemRight"><a class="el" href="#a6ef5a505091641c9719d0ad1420da0a5">wdg_reset_csr</a></td></tr>
+<tr class="memdesc:a6ef5a505091641c9719d0ad1420da0a5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Valor de <span class="tt">RCC-&gt;CSR</span> lido no boot (flags de reset).  <br /></td></tr>
+<tr class="memitem:a65f6722f966df0d644cf916e1dc936d0" id="r_a65f6722f966df0d644cf916e1dc936d0"><td class="memItemLeft">volatile uint32_t&#160;</td><td class="memItemRight"><a class="el" href="#a65f6722f966df0d644cf916e1dc936d0">wdg_iwdg_reset_count</a></td></tr>
+<tr class="memdesc:a65f6722f966df0d644cf916e1dc936d0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reinícios causados pelo IWDG (persistente em <span class="tt">BKP DR3</span>).  <br /></td></tr>
+<tr class="memitem:a0fd3a81667c66cd2fc946325afc98d10" id="r_a0fd3a81667c66cd2fc946325afc98d10"><td class="memItemLeft">volatile uint32_t&#160;</td><td class="memItemRight"><a class="el" href="#a0fd3a81667c66cd2fc946325afc98d10">wdg_last_fault_code</a></td></tr>
+<tr class="memdesc:a0fd3a81667c66cd2fc946325afc98d10"><td class="mdescLeft">&#160;</td><td class="mdescRight">Última falha fatal (<span class="tt">BKP DR2</span>): 0xFA02 pilha, 0xFA03 heap, 0xFA04 HardFault.  <br /></td></tr>
+<tr class="memitem:ac19b3047bc88e38ef16dd26a314cab2e" id="r_ac19b3047bc88e38ef16dd26a314cab2e"><td class="memItemLeft">volatile uint8_t&#160;</td><td class="memItemRight"><a class="el" href="#ac19b3047bc88e38ef16dd26a314cab2e">wdg_stale_mask</a></td></tr>
+<tr class="memdesc:ac19b3047bc88e38ef16dd26a314cab2e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Bits das tarefas fora do prazo na última verificação.  <br /></td></tr>
+<tr class="memitem:adf08ec845306068c4c5b4360f31fea2c" id="r_adf08ec845306068c4c5b4360f31fea2c"><td class="memItemLeft">volatile uint8_t&#160;</td><td class="memItemRight"><a class="el" href="#adf08ec845306068c4c5b4360f31fea2c">wdg_test_hang</a></td></tr>
+<tr class="memdesc:adf08ec845306068c4c5b4360f31fea2c"><td class="mdescLeft">&#160;</td><td class="mdescRight">1 após o comando <span class="tt">WDTTEST</span> (só com ENABLE_WDT_TEST).  <br /></td></tr>
+</table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Descrição detalhada</h2>
+<div class="textblock"><p>Supervisão do watchdog independente (IWDG) por tarefa. </p>
+<p>O IWDG só é realimentado quando todas as tarefas supervisionadas registraram atividade dentro do prazo de cada uma. Se alguma travar, a realimentação cessa e o IWDG reinicia o sistema, de 11 s a 31 s depois, conforme a frequência real do oscilador LSI do chip.</p>
+<p>O motivo do último reinício fica em registradores de backup do RTC, que sobrevivem ao reset: <span class="tt">BKP DR2</span> guarda o código da última falha fatal e <span class="tt">BKP DR3</span>, o número de reinícios por IWDG. </p>
+
+<p class="definition">Definição no arquivo <a class="el" href="app__watchdog_8h_source.html">app_watchdog.h</a>.</p>
+</div><a name="doc-enum-members" id="doc-enum-members"></a><h2 id="header-doc-enum-members" class="groupheader">Enumerações</h2>
+<a id="a1bd5b6c00e58e57850cd31456681c674" name="a1bd5b6c00e58e57850cd31456681c674"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1bd5b6c00e58e57850cd31456681c674">&#9670;&#160;</a></span>wdg_task_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="#a1bd5b6c00e58e57850cd31456681c674">wdg_task_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Tarefas supervisionadas pelo watchdog. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumeradores</th></tr><tr><td class="fieldname"><a id="a1bd5b6c00e58e57850cd31456681c674a3c5cdc93598261a5fe9a9ccbfa725cf6" name="a1bd5b6c00e58e57850cd31456681c674a3c5cdc93598261a5fe9a9ccbfa725cf6"></a>WDG_TASK_COMMAND&#160;</td><td class="fielddoc"><p><span class="tt">defaultTask</span>: marca a si mesma ao chamar <a class="el" href="#a911d3989aa5282e60324f711e1f80a89" title="Verifica os prazos e, se todas as tarefas estão em dia, realimenta o IWDG.">Watchdog_Service()</a>. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a1bd5b6c00e58e57850cd31456681c674a89e445c29adcc5ee48703c12b20224c8" name="a1bd5b6c00e58e57850cd31456681c674a89e445c29adcc5ee48703c12b20224c8"></a>WDG_TASK_SENSOR&#160;</td><td class="fielddoc"><p><span class="tt">sensorTask</span>: prazo de 30 s (o ciclo normal é de 10 s). </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a1bd5b6c00e58e57850cd31456681c674a0e9213122b52126a14ceb39abc715040" name="a1bd5b6c00e58e57850cd31456681c674a0e9213122b52126a14ceb39abc715040"></a>WDG_TASK_OLED&#160;</td><td class="fielddoc"><p><span class="tt">oledTask</span>: prazo de 10 s (o laço normal é de cerca de 20 ms). </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a1bd5b6c00e58e57850cd31456681c674af0c9158fb4f25d511f485e5bc5c36f91" name="a1bd5b6c00e58e57850cd31456681c674af0c9158fb4f25d511f485e5bc5c36f91"></a>WDG_TASK_COUNT&#160;</td><td class="fielddoc"><p>Número de tarefas supervisionadas. </p>
+</td></tr>
+</table>
+
+<p class="definition">Definição na linha <a class="el" href="app__watchdog_8h_source.html#l00018">18</a> do arquivo <a class="el" href="app__watchdog_8h_source.html">app_watchdog.h</a>.</p>
+
+</div>
+</div>
+<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Funções</h2>
+<a id="a874ddfabf9bcd8ca3f1984d03c28237d" name="a874ddfabf9bcd8ca3f1984d03c28237d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a874ddfabf9bcd8ca3f1984d03c28237d">&#9670;&#160;</a></span>Watchdog_CaptureResetCause()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Watchdog_CaptureResetCause </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Salva a causa do último reinício. </p>
+<p>Copia <span class="tt">RCC-&gt;CSR</span> para <a class="el" href="#a6ef5a505091641c9719d0ad1420da0a5" title="Valor de RCC-&gt;CSR lido no boot (flags de reset).">wdg_reset_csr</a> e limpa as flags de reset. Deve ser a primeira chamada de <span class="tt">main()</span>, antes que algo as apague. </p>
+
+<p class="definition">Definição na linha <a class="el" href="app__watchdog_8c_source.html#l00022">22</a> do arquivo <a class="el" href="app__watchdog_8c_source.html">app_watchdog.c</a>.</p>
+
+<p class="reference">Referencias <a class="el" href="app__watchdog_8c_source.html#l00022">Watchdog_CaptureResetCause()</a> e <a class="el" href="app__watchdog_8c_source.html#l00011">wdg_reset_csr</a>.</p>
+
+<p class="reference">Referenciado(a) por <a class="el" href="app__watchdog_8c_source.html#l00022">Watchdog_CaptureResetCause()</a>.</p>
+
+</div>
+</div>
+<a id="a6c8f0a6a7e01de26b54bf6f4dcbc9f11" name="a6c8f0a6a7e01de26b54bf6f4dcbc9f11"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6c8f0a6a7e01de26b54bf6f4dcbc9f11">&#9670;&#160;</a></span>Watchdog_Checkin()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Watchdog_Checkin </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="#a1bd5b6c00e58e57850cd31456681c674">wdg_task_t</a></td>          <td class="paramname"><span class="paramname"><em>task</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Registra que uma tarefa está viva. </p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">task</td><td>Tarefa que está se apresentando (valores fora do intervalo são ignorados). </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definição na linha <a class="el" href="app__watchdog_8c_source.html#l00050">50</a> do arquivo <a class="el" href="app__watchdog_8c_source.html">app_watchdog.c</a>.</p>
+
+<p class="reference">Referencias <a class="el" href="app__watchdog_8c_source.html#l00050">Watchdog_Checkin()</a> e <a class="el" href="app__watchdog_8h_source.html#l00023">WDG_TASK_COUNT</a>.</p>
+
+<p class="reference">Referenciado(a) por <a class="el" href="app__tasks_8c_source.html#l00655">App_RTOS_Create()</a>, <a class="el" href="app__tasks_8c_source.html#l00431">StartOledTask()</a>, <a class="el" href="app__tasks_8c_source.html#l00552">StartSensorTask()</a> e <a class="el" href="app__watchdog_8c_source.html#l00050">Watchdog_Checkin()</a>.</p>
+
+</div>
+</div>
+<a id="a495a07bd1939981855363ee899e619ed" name="a495a07bd1939981855363ee899e619ed"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a495a07bd1939981855363ee899e619ed">&#9670;&#160;</a></span>Watchdog_Init()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Watchdog_Init </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Inicializa a supervisão. </p>
+<p>Lê os registradores de backup (código da última falha e contador de reinícios), incrementa o contador se o último reset foi do IWDG e inicia os prazos de todas as tarefas. Chamar depois de <span class="tt">MX_RTC_Init()</span>. </p>
+
+<p class="definition">Definição na linha <a class="el" href="app__watchdog_8c_source.html#l00028">28</a> do arquivo <a class="el" href="app__watchdog_8c_source.html">app_watchdog.c</a>.</p>
+
+<p class="reference">Referencias <a class="el" href="app__state_8h.html#aa0c7fca836406ade332e1e3f1039d8ab">hrtc</a>, <a class="el" href="app__watchdog_8c_source.html#l00028">Watchdog_Init()</a>, <a class="el" href="app__watchdog_8c_source.html#l00012">wdg_iwdg_reset_count</a>, <a class="el" href="app__watchdog_8c_source.html#l00013">wdg_last_fault_code</a>, <a class="el" href="app__watchdog_8c_source.html#l00011">wdg_reset_csr</a> e <a class="el" href="app__watchdog_8h_source.html#l00023">WDG_TASK_COUNT</a>.</p>
+
+<p class="reference">Referenciado(a) por <a class="el" href="app__watchdog_8c_source.html#l00028">Watchdog_Init()</a>.</p>
+
+</div>
+</div>
+<a id="a911d3989aa5282e60324f711e1f80a89" name="a911d3989aa5282e60324f711e1f80a89"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a911d3989aa5282e60324f711e1f80a89">&#9670;&#160;</a></span>Watchdog_Service()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Watchdog_Service </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Verifica os prazos e, se todas as tarefas estão em dia, realimenta o IWDG. </p>
+<p>Marca a <span class="tt">defaultTask</span> como viva, atualiza <a class="el" href="#ac19b3047bc88e38ef16dd26a314cab2e" title="Bits das tarefas fora do prazo na última verificação.">wdg_stale_mask</a> e realimenta o IWDG quando nenhuma tarefa está atrasada e já passaram pelo menos 100 ms desde a última realimentação. Deve ser chamada pela <span class="tt">defaultTask</span> e também dentro de operações longas (exportação e limpeza). </p>
+
+<p class="definition">Definição na linha <a class="el" href="app__watchdog_8c_source.html#l00055">55</a> do arquivo <a class="el" href="app__watchdog_8c_source.html">app_watchdog.c</a>.</p>
+
+<p class="reference">Referencias <a class="el" href="app__watchdog_8c_source.html#l00055">Watchdog_Service()</a>, <a class="el" href="app__watchdog_8c_source.html#l00014">wdg_stale_mask</a>, <a class="el" href="app__watchdog_8h_source.html#l00020">WDG_TASK_COMMAND</a> e <a class="el" href="app__watchdog_8h_source.html#l00023">WDG_TASK_COUNT</a>.</p>
+
+<p class="reference">Referenciado(a) por <a class="el" href="app__tasks_8c_source.html#l00223">App_CommandTask()</a>, <a class="el" href="eeprom24lc512_8c_source.html#l00721">EEPROM24LC512_EraseAll()</a>, <a class="el" href="eeprom24lc512_8c_source.html#l01259">EEPROM_ExportOneChip()</a>, <a class="el" href="eeprom24lc512_8c_source.html#l01135">EEPROM_USB_SendText()</a> e <a class="el" href="app__watchdog_8c_source.html#l00055">Watchdog_Service()</a>.</p>
+
+</div>
+</div>
+<a name="doc-var-members" id="doc-var-members"></a><h2 id="header-doc-var-members" class="groupheader">Variáveis</h2>
+<a id="a65f6722f966df0d644cf916e1dc936d0" name="a65f6722f966df0d644cf916e1dc936d0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a65f6722f966df0d644cf916e1dc936d0">&#9670;&#160;</a></span>wdg_iwdg_reset_count</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">volatile uint32_t wdg_iwdg_reset_count</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel extern">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Reinícios causados pelo IWDG (persistente em <span class="tt">BKP DR3</span>). </p>
+
+<p class="definition">Definição na linha <a class="el" href="app__watchdog_8c_source.html#l00012">12</a> do arquivo <a class="el" href="app__watchdog_8c_source.html">app_watchdog.c</a>.</p>
+
+<p class="reference">Referenciado(a) por <a class="el" href="app__tasks_8c_source.html#l00223">App_CommandTask()</a> e <a class="el" href="app__watchdog_8c_source.html#l00028">Watchdog_Init()</a>.</p>
+
+</div>
+</div>
+<a id="a0fd3a81667c66cd2fc946325afc98d10" name="a0fd3a81667c66cd2fc946325afc98d10"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0fd3a81667c66cd2fc946325afc98d10">&#9670;&#160;</a></span>wdg_last_fault_code</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">volatile uint32_t wdg_last_fault_code</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel extern">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Última falha fatal (<span class="tt">BKP DR2</span>): 0xFA02 pilha, 0xFA03 heap, 0xFA04 HardFault. </p>
+
+<p class="definition">Definição na linha <a class="el" href="app__watchdog_8c_source.html#l00013">13</a> do arquivo <a class="el" href="app__watchdog_8c_source.html">app_watchdog.c</a>.</p>
+
+<p class="reference">Referenciado(a) por <a class="el" href="app__tasks_8c_source.html#l00223">App_CommandTask()</a> e <a class="el" href="app__watchdog_8c_source.html#l00028">Watchdog_Init()</a>.</p>
+
+</div>
+</div>
+<a id="a6ef5a505091641c9719d0ad1420da0a5" name="a6ef5a505091641c9719d0ad1420da0a5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6ef5a505091641c9719d0ad1420da0a5">&#9670;&#160;</a></span>wdg_reset_csr</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">volatile uint32_t wdg_reset_csr</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel extern">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Valor de <span class="tt">RCC-&gt;CSR</span> lido no boot (flags de reset). </p>
+
+<p class="definition">Definição na linha <a class="el" href="app__watchdog_8c_source.html#l00011">11</a> do arquivo <a class="el" href="app__watchdog_8c_source.html">app_watchdog.c</a>.</p>
+
+<p class="reference">Referenciado(a) por <a class="el" href="app__tasks_8c_source.html#l00223">App_CommandTask()</a>, <a class="el" href="app__watchdog_8c_source.html#l00022">Watchdog_CaptureResetCause()</a> e <a class="el" href="app__watchdog_8c_source.html#l00028">Watchdog_Init()</a>.</p>
+
+</div>
+</div>
+<a id="ac19b3047bc88e38ef16dd26a314cab2e" name="ac19b3047bc88e38ef16dd26a314cab2e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac19b3047bc88e38ef16dd26a314cab2e">&#9670;&#160;</a></span>wdg_stale_mask</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">volatile uint8_t wdg_stale_mask</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel extern">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Bits das tarefas fora do prazo na última verificação. </p>
+
+<p class="definition">Definição na linha <a class="el" href="app__watchdog_8c_source.html#l00014">14</a> do arquivo <a class="el" href="app__watchdog_8c_source.html">app_watchdog.c</a>.</p>
+
+<p class="reference">Referenciado(a) por <a class="el" href="app__tasks_8c_source.html#l00223">App_CommandTask()</a> e <a class="el" href="app__watchdog_8c_source.html#l00055">Watchdog_Service()</a>.</p>
+
+</div>
+</div>
+<a id="adf08ec845306068c4c5b4360f31fea2c" name="adf08ec845306068c4c5b4360f31fea2c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adf08ec845306068c4c5b4360f31fea2c">&#9670;&#160;</a></span>wdg_test_hang</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">volatile uint8_t wdg_test_hang</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel extern">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>1 após o comando <span class="tt">WDTTEST</span> (só com ENABLE_WDT_TEST). </p>
+
+<p class="definition">Definição na linha <a class="el" href="app__watchdog_8c_source.html#l00015">15</a> do arquivo <a class="el" href="app__watchdog_8c_source.html">app_watchdog.c</a>.</p>
+
+<p class="reference">Referenciado(a) por <a class="el" href="app__tasks_8c_source.html#l00552">StartSensorTask()</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><b>Core</b></li><li class="navelem"><b>Inc</b></li><li class="navelem"><a href="app__watchdog_8h.html">app_watchdog.h</a></li>
+    <li class="footer">Gerado por <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.18.0 </li>
+  </ul>
+</div>
+</body>
+</html>

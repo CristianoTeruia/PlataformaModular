@@ -1,0 +1,193 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pt-BR">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.18.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>PlataformaModular: Código-Fonte de Core/Inc/sensor_registry.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="codefolding.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">PlataformaModular
+   </div>
+   <div id="projectbrief">Plataforma modular embarcada para aquisição e registro de dados de sensores (STM32F411 + FreeRTOS)</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Gerado por Doxygen 1.18.0 -->
+<script type="text/javascript">
+let searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', codefold.init);
+</script>
+<script type="application/json" id="doxygen-config">
+{
+  "relPath": "",
+  "generateTreeView": true,
+  "searchEngine": true,
+  "serverBasedSearch": false,
+  "disableIndex": false,
+  "dynamicMenus": true,
+  "fullSidebar": false
+}
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<div id="main-nav-mobile">
+<div class="sm sm-dox"><input id="main-menu-state" type="checkbox"/>
+<label class="main-menu-btn" for="main-menu-state">
+<span class="main-menu-btn-icon"></span> Toggle main menu visibility</label>
+<span id="searchBoxPos1"></span>
+</div>
+</div><!-- main-nav-mobile -->
+<div id="main-nav">
+  <ul class="sm sm-dox" id="main-menu">
+    <li id="searchBoxPos2">
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect" class="search-icon"><span class="search-icon-dropdown"></span></span>
+          <input type="text" id="MSearchField" value="" placeholder="Busca" accesskey="S"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+          </span>
+        </div>
+    </li>
+  </ul>
+</div><!-- main-nav -->
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded',() => { initNavTree('sensor__registry_8h_source.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Carregando...</div>
+<div class="SRStatus" id="Searching">Procurando...</div>
+<div class="SRStatus" id="NoMatches">Nenhuma entrada encontrado</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">sensor_registry.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="sensor__registry_8h.html">Ir para a documentação desse arquivo.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#ifndef SENSOR_REGISTRY_H</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">#define SENSOR_REGISTRY_H</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="preprocessor">#include &lt;stdint.h&gt;</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="preprocessor">#include &lt;stddef.h&gt;</span></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="preprocessor">#include &quot;main.h&quot;</span></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span></div>
+<div class="foldopen" id="foldopen00025" data-start="{" data-end="};">
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno"><a class="line" href="struct_sensor_driver.html">   25</a></span><span class="keyword">typedef</span> <span class="keyword">struct</span></div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>{</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno"><a class="line" href="struct_sensor_driver.html#a21b8d022b5c4747967c40f88b51e8826">   27</a></span>    <span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code hl_variable" href="struct_sensor_driver.html#a21b8d022b5c4747967c40f88b51e8826">name</a>;         </div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno"><a class="line" href="struct_sensor_driver.html#a8664ac8f3486dfc4bd7175583a920f88">   28</a></span>    uint8_t <a class="code hl_variable" href="struct_sensor_driver.html#a8664ac8f3486dfc4bd7175583a920f88">mask_bit</a>;         </div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno"><a class="line" href="struct_sensor_driver.html#a665daaf97ed528f93802f56176096730">   29</a></span>    uint8_t <a class="code hl_variable" href="struct_sensor_driver.html#a665daaf97ed528f93802f56176096730">payload_size</a>;     </div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno"><a class="line" href="struct_sensor_driver.html#a33f2c16be482db1b2b929aa76555a7df">   30</a></span>    HAL_StatusTypeDef (*<a class="code hl_variable" href="struct_sensor_driver.html#a33f2c16be482db1b2b929aa76555a7df">read</a>)(void);          </div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno"><a class="line" href="struct_sensor_driver.html#a1d93473d3f0418d0b8edab22a8564cb6">   31</a></span>    void (*<a class="code hl_variable" href="struct_sensor_driver.html#a1d93473d3f0418d0b8edab22a8564cb6">serialize</a>)(uint8_t *out);          </div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno"><a class="line" href="struct_sensor_driver.html#a4b9a79e14065b8a47191c7a49fb732a4">   32</a></span>    <span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code hl_variable" href="struct_sensor_driver.html#a4b9a79e14065b8a47191c7a49fb732a4">csv_header</a>;                   </div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno"><a class="line" href="struct_sensor_driver.html#a1a2cb644d29b65fe2ceac7c170e60c39">   37</a></span>    int (*<a class="code hl_variable" href="struct_sensor_driver.html#a1a2cb644d29b65fe2ceac7c170e60c39">csv_format</a>)(<span class="keyword">const</span> uint8_t *payload, <span class="keywordtype">char</span> *out, <span class="keywordtype">size_t</span> capacity);</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>} <a class="code hl_struct" href="struct_sensor_driver.html">SensorDriver</a>;</div>
+</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span></div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>uint8_t <a class="code hl_function" href="sensor__registry_8h.html#acd7b7af14ae011dbfed7e19ec3d42b79">Sensors_Count</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span></div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="keyword">const</span> <a class="code hl_struct" href="struct_sensor_driver.html">SensorDriver</a> *<a class="code hl_function" href="sensor__registry_8h.html#acf85c823f914ea7e3c458d7ccd7b2cf8">Sensors_Get</a>(uint8_t index);</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span></div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span><span class="keywordtype">void</span> <a class="code hl_function" href="sensor__registry_8h.html#af9bd5dd7935c13d815be548dd9ccd967">Sensors_ReadOne</a>(uint8_t index);</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span></div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>uint8_t <a class="code hl_function" href="sensor__registry_8h.html#a2c882d85f0ec5887841ab171232ee9c5">Sensors_AvailableMask</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span></div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>uint8_t <a class="code hl_function" href="sensor__registry_8h.html#ac53551032a5e8347c9eadf7c44af066d">Sensors_DetectedMask</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span></div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span><span class="keywordtype">void</span> <a class="code hl_function" href="sensor__registry_8h.html#a23c1e8ff03595881c86650c6ea025098">Sensors_UpdateDisplayValues</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span></div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>uint8_t <a class="code hl_function" href="sensor__registry_8h.html#add508f17781de3fa7d4fc698b282d93d">Sensors_RecordSizeFromMask</a>(uint8_t mask, uint8_t *size);</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span></div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>uint8_t <a class="code hl_function" href="sensor__registry_8h.html#ae0dffa239fa10b4184f17e7af4cdfba7">Sensors_Serialize</a>(uint8_t mask, uint8_t *buffer, uint8_t index);</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span></div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span><span class="keywordtype">int</span> <a class="code hl_function" href="sensor__registry_8h.html#ae7ae641cba461f405573a82582f74aa1">Sensors_CsvHeader</a>(<span class="keywordtype">char</span> *out, <span class="keywordtype">size_t</span> capacity);</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span></div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span><span class="keywordtype">int</span> <a class="code hl_function" href="sensor__registry_8h.html#a4ef906e3abcffc9a16e53f7f97cd5323">Sensors_CsvFormatRow</a>(uint8_t mask, <span class="keyword">const</span> uint8_t *payload, <span class="keywordtype">char</span> *out, <span class="keywordtype">size_t</span> capacity);</div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span></div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>uint8_t <a class="code hl_function" href="sensor__registry_8h.html#a56d452310676cc238d3ba54320cd2cbd">Sensors_PopCount</a>(uint8_t value);</div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span></div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span><span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code hl_function" href="sensor__registry_8h.html#abf3b7825d2f2f25be8e4d7c190309bdc">Sensors_FirstMissingName</a>(uint8_t detected_mask, uint8_t present_mask);</div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span> </div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span><span class="preprocessor">#endif </span><span class="comment">/* SENSOR_REGISTRY_H */</span><span class="preprocessor"></span></div>
+<div class="ttc" id="asensor__registry_8h_html_a23c1e8ff03595881c86650c6ea025098"><div class="ttname"><a href="sensor__registry_8h.html#a23c1e8ff03595881c86650c6ea025098">Sensors_UpdateDisplayValues</a></div><div class="ttdeci">void Sensors_UpdateDisplayValues(void)</div><div class="ttdoc">Atualiza as variáveis escaladas usadas pelo OLED (display_*) a partir das últimas leituras.</div><div class="ttdef"><b>Definição</b> <a href="sensor__registry_8c_source.html#l00308">sensor_registry.c:308</a></div></div>
+<div class="ttc" id="asensor__registry_8h_html_a2c882d85f0ec5887841ab171232ee9c5"><div class="ttname"><a href="sensor__registry_8h.html#a2c882d85f0ec5887841ab171232ee9c5">Sensors_AvailableMask</a></div><div class="ttdeci">uint8_t Sensors_AvailableMask(void)</div><div class="ttdoc">Máscara dos sensores que responderam na última tentativa.</div><div class="ttdef"><b>Definição</b> <a href="sensor__registry_8c_source.html#l00305">sensor_registry.c:305</a></div></div>
+<div class="ttc" id="asensor__registry_8h_html_a4ef906e3abcffc9a16e53f7f97cd5323"><div class="ttname"><a href="sensor__registry_8h.html#a4ef906e3abcffc9a16e53f7f97cd5323">Sensors_CsvFormatRow</a></div><div class="ttdeci">int Sensors_CsvFormatRow(uint8_t mask, const uint8_t *payload, char *out, size_t capacity)</div><div class="ttdoc">Formata as colunas de sensores de uma linha do CSV.</div><div class="ttdef"><b>Definição</b> <a href="sensor__registry_8c_source.html#l00366">sensor_registry.c:366</a></div></div>
+<div class="ttc" id="asensor__registry_8h_html_a56d452310676cc238d3ba54320cd2cbd"><div class="ttname"><a href="sensor__registry_8h.html#a56d452310676cc238d3ba54320cd2cbd">Sensors_PopCount</a></div><div class="ttdeci">uint8_t Sensors_PopCount(uint8_t value)</div><div class="ttdoc">Conta os bits em 1 de um byte.</div><div class="ttdef"><b>Definição</b> <a href="sensor__registry_8c_source.html#l00391">sensor_registry.c:391</a></div></div>
+<div class="ttc" id="asensor__registry_8h_html_abf3b7825d2f2f25be8e4d7c190309bdc"><div class="ttname"><a href="sensor__registry_8h.html#abf3b7825d2f2f25be8e4d7c190309bdc">Sensors_FirstMissingName</a></div><div class="ttdeci">const char * Sensors_FirstMissingName(uint8_t detected_mask, uint8_t present_mask)</div><div class="ttdoc">Nome do primeiro sensor detectado que não está respondendo agora.</div><div class="ttdef"><b>Definição</b> <a href="sensor__registry_8c_source.html#l00399">sensor_registry.c:399</a></div></div>
+<div class="ttc" id="asensor__registry_8h_html_ac53551032a5e8347c9eadf7c44af066d"><div class="ttname"><a href="sensor__registry_8h.html#ac53551032a5e8347c9eadf7c44af066d">Sensors_DetectedMask</a></div><div class="ttdeci">uint8_t Sensors_DetectedMask(void)</div><div class="ttdoc">Máscara dos sensores que já responderam desde o boot.</div><div class="ttdef"><b>Definição</b> <a href="sensor__registry_8c_source.html#l00306">sensor_registry.c:306</a></div></div>
+<div class="ttc" id="asensor__registry_8h_html_acd7b7af14ae011dbfed7e19ec3d42b79"><div class="ttname"><a href="sensor__registry_8h.html#acd7b7af14ae011dbfed7e19ec3d42b79">Sensors_Count</a></div><div class="ttdeci">uint8_t Sensors_Count(void)</div><div class="ttdoc">Número de sensores da tabela.</div><div class="ttdef"><b>Definição</b> <a href="sensor__registry_8c_source.html#l00280">sensor_registry.c:280</a></div></div>
+<div class="ttc" id="asensor__registry_8h_html_acf85c823f914ea7e3c458d7ccd7b2cf8"><div class="ttname"><a href="sensor__registry_8h.html#acf85c823f914ea7e3c458d7ccd7b2cf8">Sensors_Get</a></div><div class="ttdeci">const SensorDriver * Sensors_Get(uint8_t index)</div><div class="ttdoc">Obtém uma entrada da tabela.</div><div class="ttdef"><b>Definição</b> <a href="sensor__registry_8c_source.html#l00282">sensor_registry.c:282</a></div></div>
+<div class="ttc" id="asensor__registry_8h_html_add508f17781de3fa7d4fc698b282d93d"><div class="ttname"><a href="sensor__registry_8h.html#add508f17781de3fa7d4fc698b282d93d">Sensors_RecordSizeFromMask</a></div><div class="ttdeci">uint8_t Sensors_RecordSizeFromMask(uint8_t mask, uint8_t *size)</div><div class="ttdoc">Calcula o tamanho do registro para uma máscara de sensores.</div><div class="ttdef"><b>Definição</b> <a href="sensor__registry_8c_source.html#l00319">sensor_registry.c:319</a></div></div>
+<div class="ttc" id="asensor__registry_8h_html_ae0dffa239fa10b4184f17e7af4cdfba7"><div class="ttname"><a href="sensor__registry_8h.html#ae0dffa239fa10b4184f17e7af4cdfba7">Sensors_Serialize</a></div><div class="ttdeci">uint8_t Sensors_Serialize(uint8_t mask, uint8_t *buffer, uint8_t index)</div><div class="ttdoc">Serializa os dados dos sensores da máscara, na ordem da tabela.</div><div class="ttdef"><b>Definição</b> <a href="sensor__registry_8c_source.html#l00338">sensor_registry.c:338</a></div></div>
+<div class="ttc" id="asensor__registry_8h_html_ae7ae641cba461f405573a82582f74aa1"><div class="ttname"><a href="sensor__registry_8h.html#ae7ae641cba461f405573a82582f74aa1">Sensors_CsvHeader</a></div><div class="ttdeci">int Sensors_CsvHeader(char *out, size_t capacity)</div><div class="ttdoc">Monta a linha de cabeçalho do CSV.</div><div class="ttdef"><b>Definição</b> <a href="sensor__registry_8c_source.html#l00354">sensor_registry.c:354</a></div></div>
+<div class="ttc" id="asensor__registry_8h_html_af9bd5dd7935c13d815be548dd9ccd967"><div class="ttname"><a href="sensor__registry_8h.html#af9bd5dd7935c13d815be548dd9ccd967">Sensors_ReadOne</a></div><div class="ttdeci">void Sensors_ReadOne(uint8_t index)</div><div class="ttdoc">Lê um sensor e atualiza as máscaras &quot;disponível agora&quot; e &quot;detectado desde o boot&quot;.</div><div class="ttdef"><b>Definição</b> <a href="sensor__registry_8c_source.html#l00287">sensor_registry.c:287</a></div></div>
+<div class="ttc" id="astruct_sensor_driver_html"><div class="ttname"><a href="struct_sensor_driver.html">SensorDriver</a></div><div class="ttdoc">Entrada da tabela de sensores.</div><div class="ttdef"><b>Definição</b> <a href="#l00025">sensor_registry.h:26</a></div></div>
+<div class="ttc" id="astruct_sensor_driver_html_a1a2cb644d29b65fe2ceac7c170e60c39"><div class="ttname"><a href="struct_sensor_driver.html#a1a2cb644d29b65fe2ceac7c170e60c39">SensorDriver::csv_format</a></div><div class="ttdeci">int(*) csv_format(const uint8_t *payload, char *out, size_t capacity)</div><div class="ttdoc">Escreve as colunas do CSV (sem vírgula inicial nem final).</div><div class="ttdef"><b>Definição</b> <a href="#l00037">sensor_registry.h:37</a></div></div>
+<div class="ttc" id="astruct_sensor_driver_html_a1d93473d3f0418d0b8edab22a8564cb6"><div class="ttname"><a href="struct_sensor_driver.html#a1d93473d3f0418d0b8edab22a8564cb6">SensorDriver::serialize</a></div><div class="ttdeci">void(*) serialize(uint8_t *out)</div><div class="ttdoc">Grava payload_size bytes da última amostra em out.</div><div class="ttdef"><b>Definição</b> <a href="#l00031">sensor_registry.h:31</a></div></div>
+<div class="ttc" id="astruct_sensor_driver_html_a21b8d022b5c4747967c40f88b51e8826"><div class="ttname"><a href="struct_sensor_driver.html#a21b8d022b5c4747967c40f88b51e8826">SensorDriver::name</a></div><div class="ttdeci">const char * name</div><div class="ttdoc">Nome curto, usado no OLED (ERRO:&lt;nome&gt;).</div><div class="ttdef"><b>Definição</b> <a href="#l00027">sensor_registry.h:27</a></div></div>
+<div class="ttc" id="astruct_sensor_driver_html_a33f2c16be482db1b2b929aa76555a7df"><div class="ttname"><a href="struct_sensor_driver.html#a33f2c16be482db1b2b929aa76555a7df">SensorDriver::read</a></div><div class="ttdeci">HAL_StatusTypeDef(*) read(void)</div><div class="ttdoc">Lê o sensor; HAL_OK = amostra válida obtida.</div><div class="ttdef"><b>Definição</b> <a href="#l00030">sensor_registry.h:30</a></div></div>
+<div class="ttc" id="astruct_sensor_driver_html_a4b9a79e14065b8a47191c7a49fb732a4"><div class="ttname"><a href="struct_sensor_driver.html#a4b9a79e14065b8a47191c7a49fb732a4">SensorDriver::csv_header</a></div><div class="ttdeci">const char * csv_header</div><div class="ttdoc">Colunas deste sensor no CSV, separadas por vírgula.</div><div class="ttdef"><b>Definição</b> <a href="#l00032">sensor_registry.h:32</a></div></div>
+<div class="ttc" id="astruct_sensor_driver_html_a665daaf97ed528f93802f56176096730"><div class="ttname"><a href="struct_sensor_driver.html#a665daaf97ed528f93802f56176096730">SensorDriver::payload_size</a></div><div class="ttdeci">uint8_t payload_size</div><div class="ttdoc">Bytes deste sensor no registro.</div><div class="ttdef"><b>Definição</b> <a href="#l00029">sensor_registry.h:29</a></div></div>
+<div class="ttc" id="astruct_sensor_driver_html_a8664ac8f3486dfc4bd7175583a920f88"><div class="ttname"><a href="struct_sensor_driver.html#a8664ac8f3486dfc4bd7175583a920f88">SensorDriver::mask_bit</a></div><div class="ttdeci">uint8_t mask_bit</div><div class="ttdoc">Bit deste sensor na máscara do registro.</div><div class="ttdef"><b>Definição</b> <a href="#l00028">sensor_registry.h:28</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><b>Core</b></li><li class="navelem"><b>Inc</b></li><li class="navelem"><a href="sensor__registry_8h.html">sensor_registry.h</a></li>
+    <li class="footer">Gerado por <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.18.0 </li>
+  </ul>
+</div>
+</body>
+</html>

@@ -1,0 +1,223 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pt-BR">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.18.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>PlataformaModular: Código-Fonte de Core/Inc/ssd1306.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="codefolding.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">PlataformaModular
+   </div>
+   <div id="projectbrief">Plataforma modular embarcada para aquisição e registro de dados de sensores (STM32F411 + FreeRTOS)</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Gerado por Doxygen 1.18.0 -->
+<script type="text/javascript">
+let searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', codefold.init);
+</script>
+<script type="application/json" id="doxygen-config">
+{
+  "relPath": "",
+  "generateTreeView": true,
+  "searchEngine": true,
+  "serverBasedSearch": false,
+  "disableIndex": false,
+  "dynamicMenus": true,
+  "fullSidebar": false
+}
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<div id="main-nav-mobile">
+<div class="sm sm-dox"><input id="main-menu-state" type="checkbox"/>
+<label class="main-menu-btn" for="main-menu-state">
+<span class="main-menu-btn-icon"></span> Toggle main menu visibility</label>
+<span id="searchBoxPos1"></span>
+</div>
+</div><!-- main-nav-mobile -->
+<div id="main-nav">
+  <ul class="sm sm-dox" id="main-menu">
+    <li id="searchBoxPos2">
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect" class="search-icon"><span class="search-icon-dropdown"></span></span>
+          <input type="text" id="MSearchField" value="" placeholder="Busca" accesskey="S"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+          </span>
+        </div>
+    </li>
+  </ul>
+</div><!-- main-nav -->
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded',() => { initNavTree('ssd1306_8h_source.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Carregando...</div>
+<div class="SRStatus" id="Searching">Procurando...</div>
+<div class="SRStatus" id="NoMatches">Nenhuma entrada encontrado</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">ssd1306.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="ssd1306_8h.html">Ir para a documentação desse arquivo.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#ifndef SSD1306_H</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#define SSD1306_H</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &quot;<a class="code" href="app__state_8h.html">app_state.h</a>&quot;</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> {</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span></div>
+<div class="foldopen" id="foldopen00022" data-start="{" data-end="};">
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno"><a class="line" href="struct_display_snapshot.html">   22</a></span><span class="keyword">typedef</span> <span class="keyword">struct</span></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>{</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="struct_display_snapshot.html#ad79246c3ba05da4d367615aaaf1da10a">   24</a></span>    uint8_t <a class="code hl_variable" href="struct_display_snapshot.html#ad79246c3ba05da4d367615aaaf1da10a">oled_available</a>;       </div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno"><a class="line" href="struct_display_snapshot.html#af519895d4a834ab774d20c6f54a1630d">   25</a></span>    uint8_t <a class="code hl_variable" href="struct_display_snapshot.html#af519895d4a834ab774d20c6f54a1630d">display_page</a>;         </div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno"><a class="line" href="struct_display_snapshot.html#aeb40bcadb2c3a07e4cf980ebd29970f1">   26</a></span>    uint8_t <a class="code hl_variable" href="struct_display_snapshot.html#aeb40bcadb2c3a07e4cf980ebd29970f1">sensor_present_mask</a>;  </div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno"><a class="line" href="struct_display_snapshot.html#af873d756470d9f20dda1e49a78f59631">   27</a></span>    uint8_t <a class="code hl_variable" href="struct_display_snapshot.html#af873d756470d9f20dda1e49a78f59631">sensor_detected_mask</a>; </div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno"><a class="line" href="struct_display_snapshot.html#ae946d8384e25a0e2b98f050705658e27">   28</a></span>    uint8_t <a class="code hl_variable" href="struct_display_snapshot.html#ae946d8384e25a0e2b98f050705658e27">rtc_time_valid</a>;       </div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno"><a class="line" href="struct_display_snapshot.html#a3fa243f0ceee773484df053eead92893">   29</a></span>    uint8_t <a class="code hl_variable" href="struct_display_snapshot.html#a3fa243f0ceee773484df053eead92893">eeprom_status_display</a>;</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno"><a class="line" href="struct_display_snapshot.html#a7d2cf29dda32315b3d44d3ed69996b6d">   30</a></span>    uint8_t <a class="code hl_variable" href="struct_display_snapshot.html#a7d2cf29dda32315b3d44d3ed69996b6d">eeprom_metadata_load_ok</a>; </div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno"><a class="line" href="struct_display_snapshot.html#a1225b95f5a3f1213aa1e5ff42b960b6e">   31</a></span>    uint8_t <a class="code hl_variable" href="struct_display_snapshot.html#a1225b95f5a3f1213aa1e5ff42b960b6e">eeprom_full</a>;          </div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno"><a class="line" href="struct_display_snapshot.html#a4e13e9e222d86e43e5aab6f0a09374dd">   32</a></span>    uint8_t <a class="code hl_variable" href="struct_display_snapshot.html#a4e13e9e222d86e43e5aab6f0a09374dd">eeprom_active</a>;        </div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno"><a class="line" href="struct_display_snapshot.html#ade216588463e2e221865e730f44a0bcc">   33</a></span>    uint16_t <a class="code hl_variable" href="struct_display_snapshot.html#ade216588463e2e221865e730f44a0bcc">eeprom_next_address</a>; </div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno"><a class="line" href="struct_display_snapshot.html#a91f3c1d3b3fc7d411f4d43469331741e">   34</a></span>    uint8_t <a class="code hl_variable" href="struct_display_snapshot.html#a91f3c1d3b3fc7d411f4d43469331741e">usb_operation_state</a>;  </div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno"><a class="line" href="struct_display_snapshot.html#a1becc05ff36d739aa29ecd7df7cffaa7">   35</a></span>    uint8_t <a class="code hl_variable" href="struct_display_snapshot.html#a1becc05ff36d739aa29ecd7df7cffaa7">diagnostic_sensor_stage</a>;   </div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno"><a class="line" href="struct_display_snapshot.html#a99f0016c61da52d8c62e6deee47e7b02">   36</a></span>    uint8_t <a class="code hl_variable" href="struct_display_snapshot.html#a99f0016c61da52d8c62e6deee47e7b02">diagnostic_export_stage</a>;   </div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno"><a class="line" href="struct_display_snapshot.html#ac8aafeaa839b65d086247641f849e021">   37</a></span>    int8_t <a class="code hl_variable" href="struct_display_snapshot.html#ac8aafeaa839b65d086247641f849e021">diagnostic_export_result</a>;   </div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno"><a class="line" href="struct_display_snapshot.html#af2f0b2947c2e567da92bb1dba9b61ede">   38</a></span>    int8_t <a class="code hl_variable" href="struct_display_snapshot.html#af2f0b2947c2e567da92bb1dba9b61ede">diagnostic_usb_tx_result</a>;   </div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno"><a class="line" href="struct_display_snapshot.html#aa9f1f4f0a7bccf5d9d00f63c1a2cbaee">   39</a></span>    HAL_StatusTypeDef <a class="code hl_variable" href="struct_display_snapshot.html#aa9f1f4f0a7bccf5d9d00f63c1a2cbaee">ssd1306_status</a>;  </div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>} <a class="code hl_struct" href="struct_display_snapshot.html">DisplaySnapshot</a>;</div>
+</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span></div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="keywordtype">void</span> <a class="code hl_function" href="ssd1306_8h.html#a7cff6fd84a93d390b6b93a6ad958d5d9">UpdateDisplaySnapshot</a>(<span class="keyword">const</span> <a class="code hl_struct" href="struct_display_snapshot.html">DisplaySnapshot</a> *snapshot);</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span></div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>HAL_StatusTypeDef <a class="code hl_function" href="ssd1306_8h.html#a53e897e578721808fd808a71bb71af5e">SSD1306_Init</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span></div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>HAL_StatusTypeDef <a class="code hl_function" href="ssd1306_8h.html#a8f7d3418c1783e05ffb24ce81d5dc5be">SSD1306_SetPower</a>(<span class="keywordtype">bool</span> on);</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span></div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>HAL_StatusTypeDef <a class="code hl_function" href="ssd1306_8h.html#a4ba059917c6cfe59ed693fe698453966">SSD1306_TestConnection</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span></div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span><span class="keywordtype">void</span> <a class="code hl_function" href="ssd1306_8h.html#ad2bc6421efd7f9a129e76de9c1fde825">I2C2_Scan_All</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span></div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>HAL_StatusTypeDef <a class="code hl_function" href="ssd1306_8h.html#ac4087e2fcfc1b202e9c718e4fae5abb4">SSD1306_Fill</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span></div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span><span class="keywordtype">void</span> <a class="code hl_function" href="ssd1306_8h.html#a618c2638077b6eeed2f754994c490d36">SSD1306_Clear</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span></div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span><span class="keywordtype">void</span> <a class="code hl_function" href="ssd1306_8h.html#a969984b1c2445969e1e5458b00d22bf6">SSD1306_UpdateScreen</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span></div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span><span class="keywordtype">void</span> <a class="code hl_function" href="ssd1306_8h.html#ac9399094bb32348f1069a3ccea35efd7">SSD1306_DrawPixel</a>(uint8_t x, uint8_t y, uint8_t color);</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span></div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span><span class="keywordtype">void</span> <a class="code hl_function" href="ssd1306_8h.html#aec58b935ee9fc5da2c673cbd5f98fc7b">SSD1306_DrawChar</a>(uint8_t x, uint8_t y, <span class="keywordtype">char</span> c);</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span></div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span><span class="keywordtype">void</span> <a class="code hl_function" href="ssd1306_8h.html#a196474c2e28a49e1c5e95cf7bab74dc7">SSD1306_DrawString</a>(uint8_t x, uint8_t y, <span class="keyword">const</span> <span class="keywordtype">char</span> *str);</div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span></div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span><span class="keywordtype">void</span> <a class="code hl_function" href="ssd1306_8h.html#aed3886843722fbe68c3193b755abae03">SSD1306_DrawUInt</a>(uint8_t x, uint8_t y, uint32_t number);</div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span></div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span><span class="keywordtype">void</span> <a class="code hl_function" href="ssd1306_8h.html#a2c5bbcb7e514a6c8f1d69043ac81f0b7">SSD1306_DrawFixed1</a>(uint8_t x, uint8_t y, int32_t value);</div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span></div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span><span class="keywordtype">void</span> <a class="code hl_function" href="ssd1306_8h.html#ace58ee95637a8f220527dc8b20dbb662">UpdateDisplay</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span></div>
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span><span class="keywordtype">void</span> <a class="code hl_function" href="ssd1306_8h.html#ae8a7e76562de9ef48f1e2bd7a17df515">SSD1306_DrawEEPROMStatus</a>(uint8_t x, uint8_t y);</div>
+<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span><span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>}</div>
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span><span class="preprocessor">#endif</span></div>
+<div class="ttc" id="aapp__state_8h_html"><div class="ttname"><a href="app__state_8h.html">app_state.h</a></div><div class="ttdoc">Tipos, constantes e variáveis globais compartilhadas entre os módulos do firmware.</div></div>
+<div class="ttc" id="assd1306_8h_html_a196474c2e28a49e1c5e95cf7bab74dc7"><div class="ttname"><a href="ssd1306_8h.html#a196474c2e28a49e1c5e95cf7bab74dc7">SSD1306_DrawString</a></div><div class="ttdeci">void SSD1306_DrawString(uint8_t x, uint8_t y, const char *str)</div><div class="ttdoc">Desenha uma cadeia de caracteres no buffer (6 pixels por caractere).</div><div class="ttdef"><b>Definição</b> <a href="ssd1306_8c_source.html#l00361">ssd1306.c:361</a></div></div>
+<div class="ttc" id="assd1306_8h_html_a2c5bbcb7e514a6c8f1d69043ac81f0b7"><div class="ttname"><a href="ssd1306_8h.html#a2c5bbcb7e514a6c8f1d69043ac81f0b7">SSD1306_DrawFixed1</a></div><div class="ttdeci">void SSD1306_DrawFixed1(uint8_t x, uint8_t y, int32_t value)</div><div class="ttdoc">Desenha um valor com uma casa decimal a partir de um inteiro em décimos (-123 vira -12....</div><div class="ttdef"><b>Definição</b> <a href="ssd1306_8c_source.html#l00498">ssd1306.c:498</a></div></div>
+<div class="ttc" id="assd1306_8h_html_a4ba059917c6cfe59ed693fe698453966"><div class="ttname"><a href="ssd1306_8h.html#a4ba059917c6cfe59ed693fe698453966">SSD1306_TestConnection</a></div><div class="ttdeci">HAL_StatusTypeDef SSD1306_TestConnection(void)</div><div class="ttdoc">Verifica se o display responde no barramento.</div><div class="ttdef"><b>Definição</b> <a href="ssd1306_8c_source.html#l00234">ssd1306.c:234</a></div></div>
+<div class="ttc" id="assd1306_8h_html_a53e897e578721808fd808a71bb71af5e"><div class="ttname"><a href="ssd1306_8h.html#a53e897e578721808fd808a71bb71af5e">SSD1306_Init</a></div><div class="ttdeci">HAL_StatusTypeDef SSD1306_Init(void)</div><div class="ttdoc">Inicializa o SSD1306 (clock, multiplexação de 64 linhas, bomba de carga e display ligado).</div><div class="ttdef"><b>Definição</b> <a href="ssd1306_8c_source.html#l00081">ssd1306.c:81</a></div></div>
+<div class="ttc" id="assd1306_8h_html_a618c2638077b6eeed2f754994c490d36"><div class="ttname"><a href="ssd1306_8h.html#a618c2638077b6eeed2f754994c490d36">SSD1306_Clear</a></div><div class="ttdeci">void SSD1306_Clear(void)</div><div class="ttdoc">Apaga o buffer na RAM; o display só muda após SSD1306_UpdateScreen().</div><div class="ttdef"><b>Definição</b> <a href="ssd1306_8c_source.html#l00288">ssd1306.c:288</a></div></div>
+<div class="ttc" id="assd1306_8h_html_a7cff6fd84a93d390b6b93a6ad958d5d9"><div class="ttname"><a href="ssd1306_8h.html#a7cff6fd84a93d390b6b93a6ad958d5d9">UpdateDisplaySnapshot</a></div><div class="ttdeci">void UpdateDisplaySnapshot(const DisplaySnapshot *snapshot)</div><div class="ttdoc">Desenha uma das duas telas e a envia ao display.</div><div class="ttdef"><b>Definição</b> <a href="ssd1306_8c_source.html#l00521">ssd1306.c:521</a></div></div>
+<div class="ttc" id="assd1306_8h_html_a8f7d3418c1783e05ffb24ce81d5dc5be"><div class="ttname"><a href="ssd1306_8h.html#a8f7d3418c1783e05ffb24ce81d5dc5be">SSD1306_SetPower</a></div><div class="ttdeci">HAL_StatusTypeDef SSD1306_SetPower(bool on)</div><div class="ttdoc">Liga ou desliga o display e a bomba de carga, para economizar energia.</div><div class="ttdef"><b>Definição</b> <a href="ssd1306_8c_source.html#l00216">ssd1306.c:216</a></div></div>
+<div class="ttc" id="assd1306_8h_html_a969984b1c2445969e1e5458b00d22bf6"><div class="ttname"><a href="ssd1306_8h.html#a969984b1c2445969e1e5458b00d22bf6">SSD1306_UpdateScreen</a></div><div class="ttdeci">void SSD1306_UpdateScreen(void)</div><div class="ttdoc">Envia o buffer ao display, página a página (8 páginas de 128 bytes), sob o mutex do I²C2.</div><div class="ttdef"><b>Definição</b> <a href="ssd1306_8c_source.html#l00391">ssd1306.c:391</a></div></div>
+<div class="ttc" id="assd1306_8h_html_ac4087e2fcfc1b202e9c718e4fae5abb4"><div class="ttname"><a href="ssd1306_8h.html#ac4087e2fcfc1b202e9c718e4fae5abb4">SSD1306_Fill</a></div><div class="ttdeci">HAL_StatusTypeDef SSD1306_Fill(void)</div><div class="ttdoc">Acende todos os pixels do display (teste), enviando diretamente, sem usar o buffer.</div><div class="ttdef"><b>Definição</b> <a href="ssd1306_8c_source.html#l00262">ssd1306.c:262</a></div></div>
+<div class="ttc" id="assd1306_8h_html_ac9399094bb32348f1069a3ccea35efd7"><div class="ttname"><a href="ssd1306_8h.html#ac9399094bb32348f1069a3ccea35efd7">SSD1306_DrawPixel</a></div><div class="ttdeci">void SSD1306_DrawPixel(uint8_t x, uint8_t y, uint8_t color)</div><div class="ttdoc">Acende ou apaga um pixel no buffer.</div><div class="ttdef"><b>Definição</b> <a href="ssd1306_8c_source.html#l00297">ssd1306.c:297</a></div></div>
+<div class="ttc" id="assd1306_8h_html_ace58ee95637a8f220527dc8b20dbb662"><div class="ttname"><a href="ssd1306_8h.html#ace58ee95637a8f220527dc8b20dbb662">UpdateDisplay</a></div><div class="ttdeci">void UpdateDisplay(void)</div><div class="ttdoc">Monta o estado a partir das variáveis globais e renderiza.</div><div class="ttdef"><b>Definição</b> <a href="ssd1306_8c_source.html#l00607">ssd1306.c:607</a></div></div>
+<div class="ttc" id="assd1306_8h_html_ad2bc6421efd7f9a129e76de9c1fde825"><div class="ttname"><a href="ssd1306_8h.html#ad2bc6421efd7f9a129e76de9c1fde825">I2C2_Scan_All</a></div><div class="ttdeci">void I2C2_Scan_All(void)</div><div class="ttdoc">Varre os endereços 1 a 127 do I²C2 e guarda em i2c2_device_found o último que respondeu (depuração).</div><div class="ttdef"><b>Definição</b> <a href="ssd1306_8c_source.html#l00245">ssd1306.c:245</a></div></div>
+<div class="ttc" id="assd1306_8h_html_ae8a7e76562de9ef48f1e2bd7a17df515"><div class="ttname"><a href="ssd1306_8h.html#ae8a7e76562de9ef48f1e2bd7a17df515">SSD1306_DrawEEPROMStatus</a></div><div class="ttdeci">void SSD1306_DrawEEPROMStatus(uint8_t x, uint8_t y)</div><div class="ttdoc">Desenha o estado da EEPROM no formato curto EEPROM:OK, EEPROM:ERR ou EEPROM:FULL (legado).</div><div class="ttdef"><b>Definição</b> <a href="ssd1306_8c_source.html#l00625">ssd1306.c:625</a></div></div>
+<div class="ttc" id="assd1306_8h_html_aec58b935ee9fc5da2c673cbd5f98fc7b"><div class="ttname"><a href="ssd1306_8h.html#aec58b935ee9fc5da2c673cbd5f98fc7b">SSD1306_DrawChar</a></div><div class="ttdeci">void SSD1306_DrawChar(uint8_t x, uint8_t y, char c)</div><div class="ttdoc">Desenha um caractere de 5 x 7 pixels no buffer.</div><div class="ttdef"><b>Definição</b> <a href="ssd1306_8c_source.html#l00313">ssd1306.c:313</a></div></div>
+<div class="ttc" id="assd1306_8h_html_aed3886843722fbe68c3193b755abae03"><div class="ttname"><a href="ssd1306_8h.html#aed3886843722fbe68c3193b755abae03">SSD1306_DrawUInt</a></div><div class="ttdeci">void SSD1306_DrawUInt(uint8_t x, uint8_t y, uint32_t number)</div><div class="ttdoc">Desenha um inteiro sem sinal em decimal.</div><div class="ttdef"><b>Definição</b> <a href="ssd1306_8c_source.html#l00488">ssd1306.c:488</a></div></div>
+<div class="ttc" id="astruct_display_snapshot_html"><div class="ttname"><a href="struct_display_snapshot.html">DisplaySnapshot</a></div><div class="ttdoc">Cópia do estado do sistema usada para renderizar as telas.</div><div class="ttdef"><b>Definição</b> <a href="#l00022">ssd1306.h:23</a></div></div>
+<div class="ttc" id="astruct_display_snapshot_html_a1225b95f5a3f1213aa1e5ff42b960b6e"><div class="ttname"><a href="struct_display_snapshot.html#a1225b95f5a3f1213aa1e5ff42b960b6e">DisplaySnapshot::eeprom_full</a></div><div class="ttdeci">uint8_t eeprom_full</div><div class="ttdoc">1 se as duas EEPROMs estão cheias.</div><div class="ttdef"><b>Definição</b> <a href="#l00031">ssd1306.h:31</a></div></div>
+<div class="ttc" id="astruct_display_snapshot_html_a1becc05ff36d739aa29ecd7df7cffaa7"><div class="ttname"><a href="struct_display_snapshot.html#a1becc05ff36d739aa29ecd7df7cffaa7">DisplaySnapshot::diagnostic_sensor_stage</a></div><div class="ttdeci">uint8_t diagnostic_sensor_stage</div><div class="ttdoc">Estágio do ciclo de aquisição (ver diagnostic_sensor_stage).</div><div class="ttdef"><b>Definição</b> <a href="#l00035">ssd1306.h:35</a></div></div>
+<div class="ttc" id="astruct_display_snapshot_html_a3fa243f0ceee773484df053eead92893"><div class="ttname"><a href="struct_display_snapshot.html#a3fa243f0ceee773484df053eead92893">DisplaySnapshot::eeprom_status_display</a></div><div class="ttdeci">uint8_t eeprom_status_display</div><div class="ttdoc">0 OK, 1 erro, 2 memória cheia.</div><div class="ttdef"><b>Definição</b> <a href="#l00029">ssd1306.h:29</a></div></div>
+<div class="ttc" id="astruct_display_snapshot_html_a4e13e9e222d86e43e5aab6f0a09374dd"><div class="ttname"><a href="struct_display_snapshot.html#a4e13e9e222d86e43e5aab6f0a09374dd">DisplaySnapshot::eeprom_active</a></div><div class="ttdeci">uint8_t eeprom_active</div><div class="ttdoc">Chip ativo (EEPROM_ACTIVE_EEPROM1 ou EEPROM_ACTIVE_EEPROM2).</div><div class="ttdef"><b>Definição</b> <a href="#l00032">ssd1306.h:32</a></div></div>
+<div class="ttc" id="astruct_display_snapshot_html_a7d2cf29dda32315b3d44d3ed69996b6d"><div class="ttname"><a href="struct_display_snapshot.html#a7d2cf29dda32315b3d44d3ed69996b6d">DisplaySnapshot::eeprom_metadata_load_ok</a></div><div class="ttdeci">uint8_t eeprom_metadata_load_ok</div><div class="ttdoc">1 se os metadados da EEPROM foram carregados.</div><div class="ttdef"><b>Definição</b> <a href="#l00030">ssd1306.h:30</a></div></div>
+<div class="ttc" id="astruct_display_snapshot_html_a91f3c1d3b3fc7d411f4d43469331741e"><div class="ttname"><a href="struct_display_snapshot.html#a91f3c1d3b3fc7d411f4d43469331741e">DisplaySnapshot::usb_operation_state</a></div><div class="ttdeci">uint8_t usb_operation_state</div><div class="ttdoc">0 livre, 1 exportando, 2 limpando, 3 erro.</div><div class="ttdef"><b>Definição</b> <a href="#l00034">ssd1306.h:34</a></div></div>
+<div class="ttc" id="astruct_display_snapshot_html_a99f0016c61da52d8c62e6deee47e7b02"><div class="ttname"><a href="struct_display_snapshot.html#a99f0016c61da52d8c62e6deee47e7b02">DisplaySnapshot::diagnostic_export_stage</a></div><div class="ttdeci">uint8_t diagnostic_export_stage</div><div class="ttdoc">Estágio da exportação (ver diagnostic_export_stage).</div><div class="ttdef"><b>Definição</b> <a href="#l00036">ssd1306.h:36</a></div></div>
+<div class="ttc" id="astruct_display_snapshot_html_aa9f1f4f0a7bccf5d9d00f63c1a2cbaee"><div class="ttname"><a href="struct_display_snapshot.html#aa9f1f4f0a7bccf5d9d00f63c1a2cbaee">DisplaySnapshot::ssd1306_status</a></div><div class="ttdeci">HAL_StatusTypeDef ssd1306_status</div><div class="ttdoc">Status HAL da última atualização do display.</div><div class="ttdef"><b>Definição</b> <a href="#l00039">ssd1306.h:39</a></div></div>
+<div class="ttc" id="astruct_display_snapshot_html_ac8aafeaa839b65d086247641f849e021"><div class="ttname"><a href="struct_display_snapshot.html#ac8aafeaa839b65d086247641f849e021">DisplaySnapshot::diagnostic_export_result</a></div><div class="ttdeci">int8_t diagnostic_export_result</div><div class="ttdoc">Resultado da exportação (ver diagnostic_export_result).</div><div class="ttdef"><b>Definição</b> <a href="#l00037">ssd1306.h:37</a></div></div>
+<div class="ttc" id="astruct_display_snapshot_html_ad79246c3ba05da4d367615aaaf1da10a"><div class="ttname"><a href="struct_display_snapshot.html#ad79246c3ba05da4d367615aaaf1da10a">DisplaySnapshot::oled_available</a></div><div class="ttdeci">uint8_t oled_available</div><div class="ttdoc">1 se o display respondeu na inicialização.</div><div class="ttdef"><b>Definição</b> <a href="#l00024">ssd1306.h:24</a></div></div>
+<div class="ttc" id="astruct_display_snapshot_html_ade216588463e2e221865e730f44a0bcc"><div class="ttname"><a href="struct_display_snapshot.html#ade216588463e2e221865e730f44a0bcc">DisplaySnapshot::eeprom_next_address</a></div><div class="ttdeci">uint16_t eeprom_next_address</div><div class="ttdoc">Próximo endereço livre no chip ativo.</div><div class="ttdef"><b>Definição</b> <a href="#l00033">ssd1306.h:33</a></div></div>
+<div class="ttc" id="astruct_display_snapshot_html_ae946d8384e25a0e2b98f050705658e27"><div class="ttname"><a href="struct_display_snapshot.html#ae946d8384e25a0e2b98f050705658e27">DisplaySnapshot::rtc_time_valid</a></div><div class="ttdeci">uint8_t rtc_time_valid</div><div class="ttdoc">1 se a hora do RTC é válida.</div><div class="ttdef"><b>Definição</b> <a href="#l00028">ssd1306.h:28</a></div></div>
+<div class="ttc" id="astruct_display_snapshot_html_aeb40bcadb2c3a07e4cf980ebd29970f1"><div class="ttname"><a href="struct_display_snapshot.html#aeb40bcadb2c3a07e4cf980ebd29970f1">DisplaySnapshot::sensor_present_mask</a></div><div class="ttdeci">uint8_t sensor_present_mask</div><div class="ttdoc">Sensores respondendo agora (bits do registro).</div><div class="ttdef"><b>Definição</b> <a href="#l00026">ssd1306.h:26</a></div></div>
+<div class="ttc" id="astruct_display_snapshot_html_af2f0b2947c2e567da92bb1dba9b61ede"><div class="ttname"><a href="struct_display_snapshot.html#af2f0b2947c2e567da92bb1dba9b61ede">DisplaySnapshot::diagnostic_usb_tx_result</a></div><div class="ttdeci">int8_t diagnostic_usb_tx_result</div><div class="ttdoc">Resultado do último envio USB (ver diagnostic_usb_tx_result).</div><div class="ttdef"><b>Definição</b> <a href="#l00038">ssd1306.h:38</a></div></div>
+<div class="ttc" id="astruct_display_snapshot_html_af519895d4a834ab774d20c6f54a1630d"><div class="ttname"><a href="struct_display_snapshot.html#af519895d4a834ab774d20c6f54a1630d">DisplaySnapshot::display_page</a></div><div class="ttdeci">uint8_t display_page</div><div class="ttdoc">Tela a desenhar: 0 = estado do sistema; 1 = armazenamento.</div><div class="ttdef"><b>Definição</b> <a href="#l00025">ssd1306.h:25</a></div></div>
+<div class="ttc" id="astruct_display_snapshot_html_af873d756470d9f20dda1e49a78f59631"><div class="ttname"><a href="struct_display_snapshot.html#af873d756470d9f20dda1e49a78f59631">DisplaySnapshot::sensor_detected_mask</a></div><div class="ttdeci">uint8_t sensor_detected_mask</div><div class="ttdoc">Sensores que já responderam desde o boot.</div><div class="ttdef"><b>Definição</b> <a href="#l00027">ssd1306.h:27</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><b>Core</b></li><li class="navelem"><b>Inc</b></li><li class="navelem"><a href="ssd1306_8h.html">ssd1306.h</a></li>
+    <li class="footer">Gerado por <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.18.0 </li>
+  </ul>
+</div>
+</body>
+</html>

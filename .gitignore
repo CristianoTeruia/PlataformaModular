@@ -1,0 +1,25 @@
+# Build do STM32CubeIDE
+Debug/
+Release/
+*.o
+*.d
+*.su
+*.cyclo
+*.map
+*.list
+*.elf
+*.bin
+*.hex
+# Arquivos temporarios
+__pycache__/
+*.bak
+Backup/
+tests/build/
+# Dados exportados e relatorios: ignorados em qualquer pasta, exceto as evidencias versionadas
+*.csv
+*_verificacao.txt
+!docs/evidencias/*.csv
+!docs/evidencias/*_verificacao.txt
+# Documentacao HTML do Doxygen e versionada; intermediarios LaTeX ficam fora
+docs/api/latex/
+docs/api/doxygen_warnings.txt

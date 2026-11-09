@@ -1,0 +1,13 @@
+ETAPA 3 - INSTRUMENTACAO ADICIONAL I2C2
+
+Objetivo: registrar a falha de leitura da EEPROM1 com snapshots coletados imediatamente apos a chamada HAL, além de distinguir falha ao adquirir o mutex e acompanhar progresso da tarefa OLED.
+
+Campos novos no erro de exportacao:
+- LOCK: retorno de I2C2_BusAcquire() da ultima leitura EEPROM (0=HAL_OK; outros valores indicam falha ao adquirir o lock).
+- I2CERR: hi2c2.ErrorCode capturado imediatamente apos a chamada de leitura.
+- I2CSTATE: hi2c2.State capturado imediatamente apos a chamada de leitura.
+- OLEDLOCKFAIL: contador de falhas ao adquirir o mutex na atualizacao OLED.
+- PAGINAS: contador de trocas de pagina executadas pela tarefa OLED.
+- OLED: status da ultima atualizacao OLED, incluindo falha ao adquirir o mutex.
+
+Nao executa apagamento/formatação de EEPROM e nao implementa recuperação automática do barramento. A compilação e o teste na placa devem ser realizados no STM32CubeIDE/hardware.

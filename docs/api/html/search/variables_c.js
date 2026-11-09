@@ -1,0 +1,22 @@
+var searchData=
+[
+  ['oled_5favailable_0',['oled_available',['../struct_display_snapshot.html#ad79246c3ba05da4d367615aaaf1da10a',1,'DisplaySnapshot::oled_available'],['../app__state_8h.html#a27b3ebe92da7d2eded0e4e9a13bc0102',1,'oled_available:&#160;app_state.c'],['../app__state_8c.html#a27b3ebe92da7d2eded0e4e9a13bc0102',1,'oled_available:&#160;app_state.c']]],
+  ['oled_5fbuffer_5fchecksum_5fafter_1',['oled_buffer_checksum_after',['../app__state_8h.html#a42b52c0a1993f3c29f19836762ee9050',1,'app_state.h']]],
+  ['oled_5fbuffer_5fmutation_5fcount_2',['oled_buffer_mutation_count',['../app__state_8h.html#ade818f0d130bac4ff4513a3183748822',1,'app_state.h']]],
+  ['oled_5ffailed_5fstage_3',['oled_failed_stage',['../app__state_8h.html#a7654fd7bdd7757e9b258a10d67c54724',1,'app_state.h']]],
+  ['oled_5fff_5fi2cstate_4',['oled_ff_i2cstate',['../app__state_8h.html#ab3f7d62f45abb5965642a3da68ffa69a',1,'app_state.h']]],
+  ['oled_5fhw_5fbusy_5fsnapshot_5',['oled_hw_busy_snapshot',['../app__state_8h.html#a781b2b0f132bec84adb28d23c0cb7e69',1,'oled_hw_busy_snapshot:&#160;app_state.c'],['../app__state_8c.html#a781b2b0f132bec84adb28d23c0cb7e69',1,'oled_hw_busy_snapshot:&#160;app_state.c']]],
+  ['oled_5fi2c_5fstate_5fsnapshot_6',['oled_i2c_state_snapshot',['../app__state_8h.html#af44ce64fa7961a404bb44f428e56a75d',1,'app_state.h']]],
+  ['oled_5foff_5fcount_7',['oled_off_count',['../app__tasks_8c.html#a3dd2accb82037534a030698fd603b98f',1,'app_tasks.c']]],
+  ['oled_5fpage_5fswitch_5fcount_8',['oled_page_switch_count',['../app__state_8h.html#affb17898fabc82f0b6e5032f5d3c8555',1,'app_state.h']]],
+  ['oled_5fpower_5fstate_9',['oled_power_state',['../app__tasks_8c.html#ad26573d0a50075a5cdd1ec44632b44ac',1,'app_tasks.c']]],
+  ['oled_5fpre_5flock_5fsnapshot_10',['oled_pre_lock_snapshot',['../app__state_8h.html#aeca698713574433eb542374a5683c4c6',1,'app_state.h']]],
+  ['oled_5frender_5factive_11',['oled_render_active',['../ssd1306_8c.html#a95fe4f758a57a1caaa577a7414b55a63',1,'ssd1306.c']]],
+  ['oled_5fscl_5fsnapshot_12',['oled_scl_snapshot',['../app__state_8h.html#a452586b8ed9180cce6c209a479e97d36',1,'app_state.h']]],
+  ['oled_5ftask_5fstage_13',['oled_task_stage',['../app__state_8h.html#a9a9ecfc353ed8d71e54b3969f62e997f',1,'oled_task_stage:&#160;app_state.c'],['../app__state_8c.html#a9a9ecfc353ed8d71e54b3969f62e997f',1,'oled_task_stage:&#160;app_state.c']]],
+  ['oled_5fupdate_5ffail_5fcount_14',['oled_update_fail_count',['../app__state_8h.html#ac360945c8ba5c0fbad68c5e1ba118e53',1,'app_state.h']]],
+  ['oledrefreshrequested_15',['oledRefreshRequested',['../app__tasks_8c.html#a7d172141ff3ec8a5aa8685c7cc83234b',1,'app_tasks.c']]],
+  ['oledtask_5fattributes_16',['oledTask_attributes',['../app__tasks_8c.html#ab55ba4d35057e7fafb16c6fbb417ba21',1,'app_tasks.c']]],
+  ['oledtaskhandle_17',['oledTaskHandle',['../app__tasks_8c.html#ae1ea03ddc5ed56d593c195ad4a3c6b10',1,'app_tasks.c']]],
+  ['on_18',['on',['../struct_oled_power.html#ad24678aa308526e32d796e8459fb5e3a',1,'OledPower']]]
+];

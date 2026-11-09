@@ -1,0 +1,15 @@
+# Normaliza os fins de linha do codigo proprio (o CubeIDE no Windows usa CRLF).
+* text=auto
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.pdf binary
+
+# Evidencias: preservar os bytes exatos (permite conferir o hash SHA-256 dos arquivos originais).
+docs/evidencias/*.csv -text
+docs/evidencias/*_verificacao.txt -text
+
+# Codigo de terceiros (HAL, CMSIS, FreeRTOS, USB): nao alterar.
+Drivers/** -text
+Middlewares/** -text

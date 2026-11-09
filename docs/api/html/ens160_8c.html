@@ -1,0 +1,1353 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pt-BR">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.18.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>PlataformaModular: Referência do Arquivo Core/Src/ens160.c</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="codefolding.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">PlataformaModular
+   </div>
+   <div id="projectbrief">Plataforma modular embarcada para aquisição e registro de dados de sensores (STM32F411 + FreeRTOS)</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Gerado por Doxygen 1.18.0 -->
+<script type="text/javascript">
+let searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', codefold.init);
+</script>
+<script type="application/json" id="doxygen-config">
+{
+  "relPath": "",
+  "generateTreeView": true,
+  "searchEngine": true,
+  "serverBasedSearch": false,
+  "disableIndex": false,
+  "dynamicMenus": true,
+  "fullSidebar": false
+}
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<div id="main-nav-mobile">
+<div class="sm sm-dox"><input id="main-menu-state" type="checkbox"/>
+<label class="main-menu-btn" for="main-menu-state">
+<span class="main-menu-btn-icon"></span> Toggle main menu visibility</label>
+<span id="searchBoxPos1"></span>
+</div>
+</div><!-- main-nav-mobile -->
+<div id="main-nav">
+  <ul class="sm sm-dox" id="main-menu">
+    <li id="searchBoxPos2">
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect" class="search-icon"><span class="search-icon-dropdown"></span></span>
+          <input type="text" id="MSearchField" value="" placeholder="Busca" accesskey="S"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+          </span>
+        </div>
+    </li>
+  </ul>
+</div><!-- main-nav -->
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded',() => { initNavTree('ens160_8c.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Carregando...</div>
+<div class="SRStatus" id="Searching">Procurando...</div>
+<div class="SRStatus" id="NoMatches">Nenhuma entrada encontrado</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Referência do Arquivo ens160.c</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Implementação do driver do ENS160 (ver <a class="el" href="ens160_8h.html" title="Driver do sensor de qualidade do ar ENS160 (I²C1).">ens160.h</a>).  
+<a href="#details">Mais...</a></p>
+<div class="textblock"><code>#include &quot;<a class="el" href="ens160_8h_source.html">ens160.h</a>&quot;</code><br />
+<code>#include &lt;stddef.h&gt;</code><br />
+</div>
+<p><a href="ens160_8c_source.html">Ir para o código-fonte desse arquivo.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-define-members" class="groupheader"><a id="define-members" name="define-members"></a>
+Definições e Macros</h2></td></tr>
+<tr class="memitem:a1291b6353f86259a0b3d8e2971511995" id="r_a1291b6353f86259a0b3d8e2971511995"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a1291b6353f86259a0b3d8e2971511995">ENS160_ADDR_HIGH</a>&#160;&#160;&#160;0x53U</td></tr>
+<tr class="memitem:a010c86b98370792fb1aacb53349253ad" id="r_a010c86b98370792fb1aacb53349253ad"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a010c86b98370792fb1aacb53349253ad">ENS160_ADDR_LOW</a>&#160;&#160;&#160;0x52U</td></tr>
+<tr class="memitem:ad423f351f3ffa8ec1326fafa81a8da85" id="r_ad423f351f3ffa8ec1326fafa81a8da85"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#ad423f351f3ffa8ec1326fafa81a8da85">ENS160_PART_ID_EXPECTED</a>&#160;&#160;&#160;0x0160U</td></tr>
+<tr class="memitem:ac15157da955a1aea672cd28a44d63f7c" id="r_ac15157da955a1aea672cd28a44d63f7c"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#ac15157da955a1aea672cd28a44d63f7c">ENS160_REG_PART_ID</a>&#160;&#160;&#160;0x00U</td></tr>
+<tr class="memitem:a266e289a83eadcac8375ff7a8314a4a1" id="r_a266e289a83eadcac8375ff7a8314a4a1"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a266e289a83eadcac8375ff7a8314a4a1">ENS160_REG_OPMODE</a>&#160;&#160;&#160;0x10U</td></tr>
+<tr class="memitem:a27f6f847e131408cf11aacb8733f6d63" id="r_a27f6f847e131408cf11aacb8733f6d63"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a27f6f847e131408cf11aacb8733f6d63">ENS160_REG_COMMAND</a>&#160;&#160;&#160;0x12U</td></tr>
+<tr class="memitem:aaaaabf244164c53624922de96a319fdf" id="r_aaaaabf244164c53624922de96a319fdf"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#aaaaabf244164c53624922de96a319fdf">ENS160_REG_TEMP_IN</a>&#160;&#160;&#160;0x13U</td></tr>
+<tr class="memitem:aa82e1b6b9f3cfeaca78077c1fd86705f" id="r_aa82e1b6b9f3cfeaca78077c1fd86705f"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#aa82e1b6b9f3cfeaca78077c1fd86705f">ENS160_REG_STATUS</a>&#160;&#160;&#160;0x20U</td></tr>
+<tr class="memitem:a2e0dcbb54933501a439d88413bbdc629" id="r_a2e0dcbb54933501a439d88413bbdc629"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a2e0dcbb54933501a439d88413bbdc629">ENS160_REG_DATA_T</a>&#160;&#160;&#160;0x30U</td></tr>
+<tr class="memitem:afb90b37c2905fcf2823ec703bc322b5e" id="r_afb90b37c2905fcf2823ec703bc322b5e"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#afb90b37c2905fcf2823ec703bc322b5e">ENS160_REG_GPR_READ_4</a>&#160;&#160;&#160;0x4CU</td></tr>
+<tr class="memitem:aa6a0eb5b9b171854ebfc00c15bae0979" id="r_aa6a0eb5b9b171854ebfc00c15bae0979"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#aa6a0eb5b9b171854ebfc00c15bae0979">ENS160_REG_DATA_AQI</a>&#160;&#160;&#160;0x21U</td></tr>
+<tr class="memitem:a66330983dd51b187851193c6fad0c362" id="r_a66330983dd51b187851193c6fad0c362"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a66330983dd51b187851193c6fad0c362">ENS160_OPMODE_IDLE</a>&#160;&#160;&#160;0x01U</td></tr>
+<tr class="memitem:a34a36e819806e7bab63b4eeff2a180bf" id="r_a34a36e819806e7bab63b4eeff2a180bf"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a34a36e819806e7bab63b4eeff2a180bf">ENS160_OPMODE_STANDARD</a>&#160;&#160;&#160;0x02U</td></tr>
+<tr class="memitem:af5dd2e9f48b04e243cc8a0e5bac08865" id="r_af5dd2e9f48b04e243cc8a0e5bac08865"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#af5dd2e9f48b04e243cc8a0e5bac08865">ENS160_OPMODE_RESET</a>&#160;&#160;&#160;0xF0U</td></tr>
+<tr class="memitem:a3aee43097d49026590f851213f20a274" id="r_a3aee43097d49026590f851213f20a274"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a3aee43097d49026590f851213f20a274">ENS160_CMD_NOP</a>&#160;&#160;&#160;0x00U</td></tr>
+<tr class="memitem:a952aa8ef2272b55f4e643a003c8a7f64" id="r_a952aa8ef2272b55f4e643a003c8a7f64"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a952aa8ef2272b55f4e643a003c8a7f64">ENS160_CMD_CLRGPR</a>&#160;&#160;&#160;0xCCU</td></tr>
+<tr class="memitem:abf9410d54123317793c1358eadda1768" id="r_abf9410d54123317793c1358eadda1768"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#abf9410d54123317793c1358eadda1768">ENS160_CMD_GET_APPVER</a>&#160;&#160;&#160;0x0EU</td></tr>
+<tr class="memitem:affa4d1c2a8e54ab4593efdd9a7b33ad6" id="r_affa4d1c2a8e54ab4593efdd9a7b33ad6"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#affa4d1c2a8e54ab4593efdd9a7b33ad6">ENS160_STATUS_STATAS</a>&#160;&#160;&#160;0x80U</td></tr>
+<tr class="memitem:ae1279d525e724c1160f7cb86a5621fae" id="r_ae1279d525e724c1160f7cb86a5621fae"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#ae1279d525e724c1160f7cb86a5621fae">ENS160_STATUS_STATER</a>&#160;&#160;&#160;0x40U</td></tr>
+<tr class="memitem:ac2f47f4333d2f16ef48d839cb4894c49" id="r_ac2f47f4333d2f16ef48d839cb4894c49"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#ac2f47f4333d2f16ef48d839cb4894c49">ENS160_STATUS_NEWDAT</a>&#160;&#160;&#160;0x02U</td></tr>
+<tr class="memitem:a02bdfbcaff3ccdc1958534ce6ae94d16" id="r_a02bdfbcaff3ccdc1958534ce6ae94d16"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a02bdfbcaff3ccdc1958534ce6ae94d16">ENS160_TIMEOUT_MS</a>&#160;&#160;&#160;50U</td></tr>
+<tr class="memitem:a788eb7e72623a503107fd30a8c279098" id="r_a788eb7e72623a503107fd30a8c279098"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a788eb7e72623a503107fd30a8c279098">ENS160_BOOT_MS</a>&#160;&#160;&#160;11U</td></tr>
+<tr class="memitem:af071cb82525b8524ce785c75bc4113dd" id="r_af071cb82525b8524ce785c75bc4113dd"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#af071cb82525b8524ce785c75bc4113dd">ENS160_MODE_MS</a>&#160;&#160;&#160;20U</td></tr>
+<tr class="memitem:a2fb3bca4723cb0f140c803f85cadb570" id="r_a2fb3bca4723cb0f140c803f85cadb570"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a2fb3bca4723cb0f140c803f85cadb570">ENS160_DATA_STEP_MS</a>&#160;&#160;&#160;100U</td></tr>
+<tr class="memitem:a376deb4acf03b43da72cf66528ba179c" id="r_a376deb4acf03b43da72cf66528ba179c"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a376deb4acf03b43da72cf66528ba179c">ENS160_DATA_STEPS</a>&#160;&#160;&#160;16U</td></tr>
+<tr class="memitem:a92dc3ec0bdfad593abec325df7e312bd" id="r_a92dc3ec0bdfad593abec325df7e312bd"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a92dc3ec0bdfad593abec325df7e312bd">ENS160_FIRST_DATA_STEPS</a>&#160;&#160;&#160;32U</td></tr>
+<tr class="memitem:a18f898da9c66506ad2c3b26194bbcfd8" id="r_a18f898da9c66506ad2c3b26194bbcfd8"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a18f898da9c66506ad2c3b26194bbcfd8">ENS160_STUCK_CYCLES</a>&#160;&#160;&#160;3U</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
+Funções</h2></td></tr>
+<tr class="memitem:acf00c92e5a02d8b5b9b63e4f85c582f6" id="r_acf00c92e5a02d8b5b9b63e4f85c582f6"><td class="memItemLeft">static HAL_StatusTypeDef&#160;</td><td class="memItemRight"><a class="el" href="#acf00c92e5a02d8b5b9b63e4f85c582f6">RegRead</a> (uint8_t reg, uint8_t *data, uint16_t length)</td></tr>
+<tr class="memdesc:acf00c92e5a02d8b5b9b63e4f85c582f6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lê registradores do ENS160.  <br /></td></tr>
+<tr class="memitem:af5e7c4a1a72199b82f8a6f4991c64a59" id="r_af5e7c4a1a72199b82f8a6f4991c64a59"><td class="memItemLeft">static HAL_StatusTypeDef&#160;</td><td class="memItemRight"><a class="el" href="#af5e7c4a1a72199b82f8a6f4991c64a59">RegWrite</a> (uint8_t reg, uint8_t value)</td></tr>
+<tr class="memdesc:af5e7c4a1a72199b82f8a6f4991c64a59"><td class="mdescLeft">&#160;</td><td class="mdescRight">Escreve um registrador do ENS160.  <br /></td></tr>
+<tr class="memitem:aac3a27906b85c1304582fdf695e51de0" id="r_aac3a27906b85c1304582fdf695e51de0"><td class="memItemLeft">static HAL_StatusTypeDef&#160;</td><td class="memItemRight"><a class="el" href="#aac3a27906b85c1304582fdf695e51de0">CommFail</a> (HAL_StatusTypeDef status)</td></tr>
+<tr class="memdesc:aac3a27906b85c1304582fdf695e51de0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Falha de comunicacao: esquece o endereco para procurar de novo no proximo ciclo.  <br /></td></tr>
+<tr class="memitem:a07766db983e05aa8a9dde46c158ea5b7" id="r_a07766db983e05aa8a9dde46c158ea5b7"><td class="memItemLeft">static HAL_StatusTypeDef&#160;</td><td class="memItemRight"><a class="el" href="#a07766db983e05aa8a9dde46c158ea5b7">EnterStandardMode</a> (bool with_reset)</td></tr>
+<tr class="memdesc:a07766db983e05aa8a9dde46c158ea5b7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sequencia de inicializacao usada pelos drivers de referencia: [RESET] -&gt; IDLE -&gt; limpa os registradores de uso geral (NOP + CLRGPR, apaga o flag NEWGPR) -&gt; STANDARD.  <br /></td></tr>
+<tr class="memitem:afcbec8ef65f1acbf13dc3fe18b4d8efd" id="r_afcbec8ef65f1acbf13dc3fe18b4d8efd"><td class="memItemLeft">static void&#160;</td><td class="memItemRight"><a class="el" href="#afcbec8ef65f1acbf13dc3fe18b4d8efd">ReadEcho</a> (void)</td></tr>
+<tr class="memdesc:afcbec8ef65f1acbf13dc3fe18b4d8efd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Le a temperatura e a umidade que o sensor informa estar usando (so diagnostico).  <br /></td></tr>
+<tr class="memitem:a463214b42a9d3d333c8f1f449bccbdef" id="r_a463214b42a9d3d333c8f1f449bccbdef"><td class="memItemLeft">HAL_StatusTypeDef&#160;</td><td class="memItemRight"><a class="el" href="#a463214b42a9d3d333c8f1f449bccbdef">ENS160_Read</a> (bool compensation_valid, float temperature_c, float humidity_pct, <a class="el" href="struct_e_n_s160___sample.html">ENS160_Sample</a> *out)</td></tr>
+<tr class="memdesc:a463214b42a9d3d333c8f1f449bccbdef"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lê uma amostra de qualidade do ar.  <br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-var-members" class="groupheader"><a id="var-members" name="var-members"></a>
+Variáveis</h2></td></tr>
+<tr class="memitem:a0e10f8c689c57b0e149ac2f5fd40f788" id="r_a0e10f8c689c57b0e149ac2f5fd40f788"><td class="memItemLeft">volatile uint8_t&#160;</td><td class="memItemRight"><a class="el" href="#a0e10f8c689c57b0e149ac2f5fd40f788">ens160_addr</a> = 0U</td></tr>
+<tr class="memdesc:a0e10f8c689c57b0e149ac2f5fd40f788"><td class="mdescLeft">&#160;</td><td class="mdescRight">Endereço de 7 bits detectado (0 = não detectado).  <br /></td></tr>
+<tr class="memitem:a3af5500460f13d5b3318b61c9a486a3b" id="r_a3af5500460f13d5b3318b61c9a486a3b"><td class="memItemLeft">volatile uint16_t&#160;</td><td class="memItemRight"><a class="el" href="#a3af5500460f13d5b3318b61c9a486a3b">ens160_part_id</a> = 0U</td></tr>
+<tr class="memdesc:a3af5500460f13d5b3318b61c9a486a3b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Último PART_ID lido (esperado 0x0160).  <br /></td></tr>
+<tr class="memitem:a477fd6f1acd12a23e6dea5e6d58661d0" id="r_a477fd6f1acd12a23e6dea5e6d58661d0"><td class="memItemLeft">volatile uint8_t&#160;</td><td class="memItemRight"><a class="el" href="#a477fd6f1acd12a23e6dea5e6d58661d0">ens160_last_status</a> = 0U</td></tr>
+<tr class="memdesc:a477fd6f1acd12a23e6dea5e6d58661d0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Último DEVICE_STATUS lido.  <br /></td></tr>
+<tr class="memitem:a21fc8c2978f555f147c87130b9f44afa" id="r_a21fc8c2978f555f147c87130b9f44afa"><td class="memItemLeft">volatile uint8_t&#160;</td><td class="memItemRight"><a class="el" href="#a21fc8c2978f555f147c87130b9f44afa">ens160_opmode</a> = 0U</td></tr>
+<tr class="memdesc:a21fc8c2978f555f147c87130b9f44afa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Último OPMODE lido (0 sono, 1 ocioso, 2 padrão).  <br /></td></tr>
+<tr class="memitem:ad14ad72a9857710821795e9582170df0" id="r_ad14ad72a9857710821795e9582170df0"><td class="memItemLeft">volatile uint32_t&#160;</td><td class="memItemRight"><a class="el" href="#ad14ad72a9857710821795e9582170df0">ens160_init_count</a> = 0U</td></tr>
+<tr class="memdesc:ad14ad72a9857710821795e9582170df0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sequências de inicialização executadas.  <br /></td></tr>
+<tr class="memitem:a8eb85b4b009c73d6937e77e2b351a338" id="r_a8eb85b4b009c73d6937e77e2b351a338"><td class="memItemLeft">volatile uint32_t&#160;</td><td class="memItemRight"><a class="el" href="#a8eb85b4b009c73d6937e77e2b351a338">ens160_last_hal</a> = 0U</td></tr>
+<tr class="memdesc:a8eb85b4b009c73d6937e77e2b351a338"><td class="mdescLeft">&#160;</td><td class="mdescRight">Último status da HAL (diagnóstico).  <br /></td></tr>
+<tr class="memitem:a19da5bdff0c5a34ae0ccec0469b86971" id="r_a19da5bdff0c5a34ae0ccec0469b86971"><td class="memItemLeft">volatile uint32_t&#160;</td><td class="memItemRight"><a class="el" href="#a19da5bdff0c5a34ae0ccec0469b86971">ens160_timeout_count</a> = 0U</td></tr>
+<tr class="memdesc:a19da5bdff0c5a34ae0ccec0469b86971"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ciclos sem dado novo.  <br /></td></tr>
+<tr class="memitem:aea6dad7cfa121b0c56fafe3d582b6f98" id="r_aea6dad7cfa121b0c56fafe3d582b6f98"><td class="memItemLeft">volatile uint32_t&#160;</td><td class="memItemRight"><a class="el" href="#aea6dad7cfa121b0c56fafe3d582b6f98">ens160_error_count</a> = 0U</td></tr>
+<tr class="memdesc:aea6dad7cfa121b0c56fafe3d582b6f98"><td class="mdescLeft">&#160;</td><td class="mdescRight">Erros internos do sensor (bit STATER).  <br /></td></tr>
+<tr class="memitem:a2abfad88a1b14c21bf2b0d887e3d318b" id="r_a2abfad88a1b14c21bf2b0d887e3d318b"><td class="memItemLeft">volatile uint32_t&#160;</td><td class="memItemRight"><a class="el" href="#a2abfad88a1b14c21bf2b0d887e3d318b">ens160_comm_fail_count</a> = 0U</td></tr>
+<tr class="memdesc:a2abfad88a1b14c21bf2b0d887e3d318b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Falhas de comunicação I²C.  <br /></td></tr>
+<tr class="memitem:a1231b8a0cae2ad03f5ee45b1ec6c7e95" id="r_a1231b8a0cae2ad03f5ee45b1ec6c7e95"><td class="memItemLeft">volatile uint32_t&#160;</td><td class="memItemRight"><a class="el" href="#a1231b8a0cae2ad03f5ee45b1ec6c7e95">ens160_reset_count</a> = 0U</td></tr>
+<tr class="memdesc:a1231b8a0cae2ad03f5ee45b1ec6c7e95"><td class="mdescLeft">&#160;</td><td class="mdescRight">Inicializações que usaram RESET.  <br /></td></tr>
+<tr class="memitem:a4f4594f2691845a78e267955d7d075c7" id="r_a4f4594f2691845a78e267955d7d075c7"><td class="memItemLeft">volatile uint32_t&#160;</td><td class="memItemRight"><a class="el" href="#a4f4594f2691845a78e267955d7d075c7">ens160_zero_count</a> = 0U</td></tr>
+<tr class="memdesc:a4f4594f2691845a78e267955d7d075c7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Leituras com AQI, TVOC e eCO2 todos nulos (sem medição real).  <br /></td></tr>
+<tr class="memitem:a7de0a6cec8aad467be81b8d72387d867" id="r_a7de0a6cec8aad467be81b8d72387d867"><td class="memItemLeft">volatile uint8_t&#160;</td><td class="memItemRight"><a class="el" href="#a7de0a6cec8aad467be81b8d72387d867">ens160_fw_major</a> = 0U</td></tr>
+<tr class="memitem:a677d90c3fe26977b1789e7e33cbd46fd" id="r_a677d90c3fe26977b1789e7e33cbd46fd"><td class="memItemLeft">volatile uint8_t&#160;</td><td class="memItemRight"><a class="el" href="#a677d90c3fe26977b1789e7e33cbd46fd">ens160_fw_minor</a> = 0U</td></tr>
+<tr class="memitem:a11beae97fbce77522322282f7d7b91b2" id="r_a11beae97fbce77522322282f7d7b91b2"><td class="memItemLeft">volatile uint8_t&#160;</td><td class="memItemRight"><a class="el" href="#a11beae97fbce77522322282f7d7b91b2">ens160_fw_build</a> = 0U</td></tr>
+<tr class="memitem:affa97856149201889fd8f627516fd0b0" id="r_affa97856149201889fd8f627516fd0b0"><td class="memItemLeft">volatile uint16_t&#160;</td><td class="memItemRight"><a class="el" href="#affa97856149201889fd8f627516fd0b0">ens160_echo_t</a> = 0U</td></tr>
+<tr class="memitem:acc3b80e400912c59b82f3d330a2de62f" id="r_acc3b80e400912c59b82f3d330a2de62f"><td class="memItemLeft">volatile uint16_t&#160;</td><td class="memItemRight"><a class="el" href="#acc3b80e400912c59b82f3d330a2de62f">ens160_echo_rh</a> = 0U</td></tr>
+<tr class="memitem:a99dd37f34f2ed5f7f46e5bae34722eda" id="r_a99dd37f34f2ed5f7f46e5bae34722eda"><td class="memItemLeft">volatile uint16_t&#160;</td><td class="memItemRight"><a class="el" href="#a99dd37f34f2ed5f7f46e5bae34722eda">ens160_last_tvoc</a> = 0U</td></tr>
+<tr class="memitem:ab0900827dd9030d4f44c452f4fc5970c" id="r_ab0900827dd9030d4f44c452f4fc5970c"><td class="memItemLeft">volatile uint16_t&#160;</td><td class="memItemRight"><a class="el" href="#ab0900827dd9030d4f44c452f4fc5970c">ens160_last_eco2</a> = 0U</td></tr>
+<tr class="memitem:add4422133285107d4d2391a59d519183" id="r_add4422133285107d4d2391a59d519183"><td class="memItemLeft">volatile uint8_t&#160;</td><td class="memItemRight"><a class="el" href="#add4422133285107d4d2391a59d519183">ens160_last_aqi</a> = 0U</td></tr>
+<tr class="memitem:a64dd6eb26db638b6b3de2a1c30a396e7" id="r_a64dd6eb26db638b6b3de2a1c30a396e7"><td class="memItemLeft">volatile uint8_t&#160;</td><td class="memItemRight"><a class="el" href="#a64dd6eb26db638b6b3de2a1c30a396e7">ens160_last_validity</a> = 0U</td></tr>
+<tr class="memitem:a8f73a1ee7a49bc908c5f97f90d99e8ac" id="r_a8f73a1ee7a49bc908c5f97f90d99e8ac"><td class="memItemLeft">static uint8_t&#160;</td><td class="memItemRight"><a class="el" href="#a8f73a1ee7a49bc908c5f97f90d99e8ac">init_failures</a> = 0U</td></tr>
+<tr class="memitem:a078aca5eb443c76355b3ba4326100236" id="r_a078aca5eb443c76355b3ba4326100236"><td class="memItemLeft">static uint8_t&#160;</td><td class="memItemRight"><a class="el" href="#a078aca5eb443c76355b3ba4326100236">timeout_streak</a> = 0U</td></tr>
+<tr class="memitem:a050a2e9685e8fb14d21baca30608993a" id="r_a050a2e9685e8fb14d21baca30608993a"><td class="memItemLeft">static bool&#160;</td><td class="memItemRight"><a class="el" href="#a050a2e9685e8fb14d21baca30608993a">need_init</a> = false</td></tr>
+</table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Descrição detalhada</h2>
+<div class="textblock"><p>Implementação do driver do ENS160 (ver <a class="el" href="ens160_8h.html" title="Driver do sensor de qualidade do ar ENS160 (I²C1).">ens160.h</a>). </p>
+<p>O driver é uma máquina de estados enxuta: detecta o sensor, só o coloca em modo padrão se ele não estiver medindo, espera dado novo e, após ciclos seguidos sem dado, reinicializa com RESET. </p>
+
+<p class="definition">Definição no arquivo <a class="el" href="ens160_8c_source.html">ens160.c</a>.</p>
+</div><a name="doc-define-members" id="doc-define-members"></a><h2 id="header-doc-define-members" class="groupheader">Definições e macros</h2>
+<a id="a1291b6353f86259a0b3d8e2971511995" name="a1291b6353f86259a0b3d8e2971511995"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1291b6353f86259a0b3d8e2971511995">&#9670;&#160;</a></span>ENS160_ADDR_HIGH</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ENS160_ADDR_HIGH&#160;&#160;&#160;0x53U</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definição na linha <a class="el" href="ens160_8c_source.html#l00011">11</a> do arquivo <a class="el" href="ens160_8c_source.html">ens160.c</a>.</p>
+
+</div>
+</div>
+<a id="a010c86b98370792fb1aacb53349253ad" name="a010c86b98370792fb1aacb53349253ad"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a010c86b98370792fb1aacb53349253ad">&#9670;&#160;</a></span>ENS160_ADDR_LOW</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ENS160_ADDR_LOW&#160;&#160;&#160;0x52U</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definição na linha <a class="el" href="ens160_8c_source.html#l00012">12</a> do arquivo <a class="el" href="ens160_8c_source.html">ens160.c</a>.</p>
+
+</div>
+</div>
+<a id="a788eb7e72623a503107fd30a8c279098" name="a788eb7e72623a503107fd30a8c279098"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a788eb7e72623a503107fd30a8c279098">&#9670;&#160;</a></span>ENS160_BOOT_MS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ENS160_BOOT_MS&#160;&#160;&#160;11U</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definição na linha <a class="el" href="ens160_8c_source.html#l00036">36</a> do arquivo <a class="el" href="ens160_8c_source.html">ens160.c</a>.</p>
+
+</div>
+</div>
+<a id="a952aa8ef2272b55f4e643a003c8a7f64" name="a952aa8ef2272b55f4e643a003c8a7f64"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a952aa8ef2272b55f4e643a003c8a7f64">&#9670;&#160;</a></span>ENS160_CMD_CLRGPR</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ENS160_CMD_CLRGPR&#160;&#160;&#160;0xCCU</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definição na linha <a class="el" href="ens160_8c_source.html#l00028">28</a> do arquivo <a class="el" href="ens160_8c_source.html">ens160.c</a>.</p>
+
+</div>
+</div>
+<a id="abf9410d54123317793c1358eadda1768" name="abf9410d54123317793c1358eadda1768"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abf9410d54123317793c1358eadda1768">&#9670;&#160;</a></span>ENS160_CMD_GET_APPVER</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ENS160_CMD_GET_APPVER&#160;&#160;&#160;0x0EU</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definição na linha <a class="el" href="ens160_8c_source.html#l00029">29</a> do arquivo <a class="el" href="ens160_8c_source.html">ens160.c</a>.</p>
+
+</div>
+</div>
+<a id="a3aee43097d49026590f851213f20a274" name="a3aee43097d49026590f851213f20a274"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3aee43097d49026590f851213f20a274">&#9670;&#160;</a></span>ENS160_CMD_NOP</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ENS160_CMD_NOP&#160;&#160;&#160;0x00U</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definição na linha <a class="el" href="ens160_8c_source.html#l00027">27</a> do arquivo <a class="el" href="ens160_8c_source.html">ens160.c</a>.</p>
+
+</div>
+</div>
+<a id="a2fb3bca4723cb0f140c803f85cadb570" name="a2fb3bca4723cb0f140c803f85cadb570"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2fb3bca4723cb0f140c803f85cadb570">&#9670;&#160;</a></span>ENS160_DATA_STEP_MS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ENS160_DATA_STEP_MS&#160;&#160;&#160;100U</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definição na linha <a class="el" href="ens160_8c_source.html#l00038">38</a> do arquivo <a class="el" href="ens160_8c_source.html">ens160.c</a>.</p>
+
+</div>
+</div>
+<a id="a376deb4acf03b43da72cf66528ba179c" name="a376deb4acf03b43da72cf66528ba179c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a376deb4acf03b43da72cf66528ba179c">&#9670;&#160;</a></span>ENS160_DATA_STEPS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ENS160_DATA_STEPS&#160;&#160;&#160;16U</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definição na linha <a class="el" href="ens160_8c_source.html#l00039">39</a> do arquivo <a class="el" href="ens160_8c_source.html">ens160.c</a>.</p>
+
+</div>
+</div>
+<a id="a92dc3ec0bdfad593abec325df7e312bd" name="a92dc3ec0bdfad593abec325df7e312bd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a92dc3ec0bdfad593abec325df7e312bd">&#9670;&#160;</a></span>ENS160_FIRST_DATA_STEPS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ENS160_FIRST_DATA_STEPS&#160;&#160;&#160;32U</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definição na linha <a class="el" href="ens160_8c_source.html#l00040">40</a> do arquivo <a class="el" href="ens160_8c_source.html">ens160.c</a>.</p>
+
+</div>
+</div>
+<a id="af071cb82525b8524ce785c75bc4113dd" name="af071cb82525b8524ce785c75bc4113dd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af071cb82525b8524ce785c75bc4113dd">&#9670;&#160;</a></span>ENS160_MODE_MS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ENS160_MODE_MS&#160;&#160;&#160;20U</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definição na linha <a class="el" href="ens160_8c_source.html#l00037">37</a> do arquivo <a class="el" href="ens160_8c_source.html">ens160.c</a>.</p>
+
+</div>
+</div>
+<a id="a66330983dd51b187851193c6fad0c362" name="a66330983dd51b187851193c6fad0c362"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a66330983dd51b187851193c6fad0c362">&#9670;&#160;</a></span>ENS160_OPMODE_IDLE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ENS160_OPMODE_IDLE&#160;&#160;&#160;0x01U</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definição na linha <a class="el" href="ens160_8c_source.html#l00024">24</a> do arquivo <a class="el" href="ens160_8c_source.html">ens160.c</a>.</p>
+
+</div>
+</div>
+<a id="af5dd2e9f48b04e243cc8a0e5bac08865" name="af5dd2e9f48b04e243cc8a0e5bac08865"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af5dd2e9f48b04e243cc8a0e5bac08865">&#9670;&#160;</a></span>ENS160_OPMODE_RESET</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ENS160_OPMODE_RESET&#160;&#160;&#160;0xF0U</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definição na linha <a class="el" href="ens160_8c_source.html#l00026">26</a> do arquivo <a class="el" href="ens160_8c_source.html">ens160.c</a>.</p>
+
+</div>
+</div>
+<a id="a34a36e819806e7bab63b4eeff2a180bf" name="a34a36e819806e7bab63b4eeff2a180bf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a34a36e819806e7bab63b4eeff2a180bf">&#9670;&#160;</a></span>ENS160_OPMODE_STANDARD</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ENS160_OPMODE_STANDARD&#160;&#160;&#160;0x02U</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definição na linha <a class="el" href="ens160_8c_source.html#l00025">25</a> do arquivo <a class="el" href="ens160_8c_source.html">ens160.c</a>.</p>
+
+</div>
+</div>
+<a id="ad423f351f3ffa8ec1326fafa81a8da85" name="ad423f351f3ffa8ec1326fafa81a8da85"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad423f351f3ffa8ec1326fafa81a8da85">&#9670;&#160;</a></span>ENS160_PART_ID_EXPECTED</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ENS160_PART_ID_EXPECTED&#160;&#160;&#160;0x0160U</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definição na linha <a class="el" href="ens160_8c_source.html#l00013">13</a> do arquivo <a class="el" href="ens160_8c_source.html">ens160.c</a>.</p>
+
+</div>
+</div>
+<a id="a27f6f847e131408cf11aacb8733f6d63" name="a27f6f847e131408cf11aacb8733f6d63"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a27f6f847e131408cf11aacb8733f6d63">&#9670;&#160;</a></span>ENS160_REG_COMMAND</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ENS160_REG_COMMAND&#160;&#160;&#160;0x12U</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definição na linha <a class="el" href="ens160_8c_source.html#l00017">17</a> do arquivo <a class="el" href="ens160_8c_source.html">ens160.c</a>.</p>
+
+</div>
+</div>
+<a id="aa6a0eb5b9b171854ebfc00c15bae0979" name="aa6a0eb5b9b171854ebfc00c15bae0979"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa6a0eb5b9b171854ebfc00c15bae0979">&#9670;&#160;</a></span>ENS160_REG_DATA_AQI</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ENS160_REG_DATA_AQI&#160;&#160;&#160;0x21U</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definição na linha <a class="el" href="ens160_8c_source.html#l00022">22</a> do arquivo <a class="el" href="ens160_8c_source.html">ens160.c</a>.</p>
+
+</div>
+</div>
+<a id="a2e0dcbb54933501a439d88413bbdc629" name="a2e0dcbb54933501a439d88413bbdc629"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2e0dcbb54933501a439d88413bbdc629">&#9670;&#160;</a></span>ENS160_REG_DATA_T</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ENS160_REG_DATA_T&#160;&#160;&#160;0x30U</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definição na linha <a class="el" href="ens160_8c_source.html#l00020">20</a> do arquivo <a class="el" href="ens160_8c_source.html">ens160.c</a>.</p>
+
+</div>
+</div>
+<a id="afb90b37c2905fcf2823ec703bc322b5e" name="afb90b37c2905fcf2823ec703bc322b5e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afb90b37c2905fcf2823ec703bc322b5e">&#9670;&#160;</a></span>ENS160_REG_GPR_READ_4</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ENS160_REG_GPR_READ_4&#160;&#160;&#160;0x4CU</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definição na linha <a class="el" href="ens160_8c_source.html#l00021">21</a> do arquivo <a class="el" href="ens160_8c_source.html">ens160.c</a>.</p>
+
+</div>
+</div>
+<a id="a266e289a83eadcac8375ff7a8314a4a1" name="a266e289a83eadcac8375ff7a8314a4a1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a266e289a83eadcac8375ff7a8314a4a1">&#9670;&#160;</a></span>ENS160_REG_OPMODE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ENS160_REG_OPMODE&#160;&#160;&#160;0x10U</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definição na linha <a class="el" href="ens160_8c_source.html#l00016">16</a> do arquivo <a class="el" href="ens160_8c_source.html">ens160.c</a>.</p>
+
+</div>
+</div>
+<a id="ac15157da955a1aea672cd28a44d63f7c" name="ac15157da955a1aea672cd28a44d63f7c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac15157da955a1aea672cd28a44d63f7c">&#9670;&#160;</a></span>ENS160_REG_PART_ID</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ENS160_REG_PART_ID&#160;&#160;&#160;0x00U</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definição na linha <a class="el" href="ens160_8c_source.html#l00015">15</a> do arquivo <a class="el" href="ens160_8c_source.html">ens160.c</a>.</p>
+
+</div>
+</div>
+<a id="aa82e1b6b9f3cfeaca78077c1fd86705f" name="aa82e1b6b9f3cfeaca78077c1fd86705f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa82e1b6b9f3cfeaca78077c1fd86705f">&#9670;&#160;</a></span>ENS160_REG_STATUS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ENS160_REG_STATUS&#160;&#160;&#160;0x20U</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definição na linha <a class="el" href="ens160_8c_source.html#l00019">19</a> do arquivo <a class="el" href="ens160_8c_source.html">ens160.c</a>.</p>
+
+</div>
+</div>
+<a id="aaaaabf244164c53624922de96a319fdf" name="aaaaabf244164c53624922de96a319fdf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaaaabf244164c53624922de96a319fdf">&#9670;&#160;</a></span>ENS160_REG_TEMP_IN</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ENS160_REG_TEMP_IN&#160;&#160;&#160;0x13U</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definição na linha <a class="el" href="ens160_8c_source.html#l00018">18</a> do arquivo <a class="el" href="ens160_8c_source.html">ens160.c</a>.</p>
+
+</div>
+</div>
+<a id="ac2f47f4333d2f16ef48d839cb4894c49" name="ac2f47f4333d2f16ef48d839cb4894c49"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac2f47f4333d2f16ef48d839cb4894c49">&#9670;&#160;</a></span>ENS160_STATUS_NEWDAT</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ENS160_STATUS_NEWDAT&#160;&#160;&#160;0x02U</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definição na linha <a class="el" href="ens160_8c_source.html#l00033">33</a> do arquivo <a class="el" href="ens160_8c_source.html">ens160.c</a>.</p>
+
+</div>
+</div>
+<a id="affa4d1c2a8e54ab4593efdd9a7b33ad6" name="affa4d1c2a8e54ab4593efdd9a7b33ad6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#affa4d1c2a8e54ab4593efdd9a7b33ad6">&#9670;&#160;</a></span>ENS160_STATUS_STATAS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ENS160_STATUS_STATAS&#160;&#160;&#160;0x80U</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definição na linha <a class="el" href="ens160_8c_source.html#l00031">31</a> do arquivo <a class="el" href="ens160_8c_source.html">ens160.c</a>.</p>
+
+</div>
+</div>
+<a id="ae1279d525e724c1160f7cb86a5621fae" name="ae1279d525e724c1160f7cb86a5621fae"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae1279d525e724c1160f7cb86a5621fae">&#9670;&#160;</a></span>ENS160_STATUS_STATER</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ENS160_STATUS_STATER&#160;&#160;&#160;0x40U</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definição na linha <a class="el" href="ens160_8c_source.html#l00032">32</a> do arquivo <a class="el" href="ens160_8c_source.html">ens160.c</a>.</p>
+
+</div>
+</div>
+<a id="a18f898da9c66506ad2c3b26194bbcfd8" name="a18f898da9c66506ad2c3b26194bbcfd8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a18f898da9c66506ad2c3b26194bbcfd8">&#9670;&#160;</a></span>ENS160_STUCK_CYCLES</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ENS160_STUCK_CYCLES&#160;&#160;&#160;3U</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definição na linha <a class="el" href="ens160_8c_source.html#l00041">41</a> do arquivo <a class="el" href="ens160_8c_source.html">ens160.c</a>.</p>
+
+</div>
+</div>
+<a id="a02bdfbcaff3ccdc1958534ce6ae94d16" name="a02bdfbcaff3ccdc1958534ce6ae94d16"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a02bdfbcaff3ccdc1958534ce6ae94d16">&#9670;&#160;</a></span>ENS160_TIMEOUT_MS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ENS160_TIMEOUT_MS&#160;&#160;&#160;50U</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definição na linha <a class="el" href="ens160_8c_source.html#l00035">35</a> do arquivo <a class="el" href="ens160_8c_source.html">ens160.c</a>.</p>
+
+</div>
+</div>
+<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Funções</h2>
+<a id="aac3a27906b85c1304582fdf695e51de0" name="aac3a27906b85c1304582fdf695e51de0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aac3a27906b85c1304582fdf695e51de0">&#9670;&#160;</a></span>CommFail()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">HAL_StatusTypeDef CommFail </td>
+          <td>(</td>
+          <td class="paramtype">HAL_StatusTypeDef</td>          <td class="paramname"><span class="paramname"><em>status</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Falha de comunicacao: esquece o endereco para procurar de novo no proximo ciclo. </p>
+
+<p class="definition">Definição na linha <a class="el" href="ens160_8c_source.html#l00089">89</a> do arquivo <a class="el" href="ens160_8c_source.html">ens160.c</a>.</p>
+
+<p class="reference">Referencias <a class="el" href="ens160_8c_source.html#l00089">CommFail()</a>, <a class="el" href="ens160_8c_source.html#l00043">ens160_addr</a>, <a class="el" href="ens160_8c_source.html#l00051">ens160_comm_fail_count</a> e <a class="el" href="ens160_8c_source.html#l00048">ens160_last_hal</a>.</p>
+
+<p class="reference">Referenciado(a) por <a class="el" href="ens160_8c_source.html#l00089">CommFail()</a> e <a class="el" href="ens160_8c_source.html#l00152">ENS160_Read()</a>.</p>
+
+</div>
+</div>
+<a id="a463214b42a9d3d333c8f1f449bccbdef" name="a463214b42a9d3d333c8f1f449bccbdef"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a463214b42a9d3d333c8f1f449bccbdef">&#9670;&#160;</a></span>ENS160_Read()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">HAL_StatusTypeDef ENS160_Read </td>
+          <td>(</td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>compensation_valid</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>temperature_c</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>humidity_pct</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="struct_e_n_s160___sample.html">ENS160_Sample</a> *</td>          <td class="paramname"><span class="paramname"><em>out</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Lê uma amostra de qualidade do ar. </p>
+<p>Detecta o sensor (confirmando o PART_ID), coloca-o em modo padrão se não estiver medindo, envia a compensação de temperatura e umidade, aguarda dado novo (cedendo a CPU) e lê AQI, TVOC e eCO2. Leituras com os três valores nulos não são medições e retornam <span class="tt">HAL_BUSY</span>. Após falhas seguidas, a próxima inicialização usa RESET.</p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">compensation_valid</td><td>Se verdadeiro, envia <code class="param">temperature_c</code> e <code class="param">humidity_pct</code> ao sensor. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">temperature_c</td><td>Temperatura de compensação, em °C (limitada a -40 a 85). </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">humidity_pct</td><td>Umidade de compensação, em % (limitada a 0 a 100). </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">out</td><td>Amostra lida. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="retval"><dt>Valores Retornados</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">HAL_OK</td><td>Amostra válida. </td></tr>
+    <tr><td class="paramname">HAL_BUSY</td><td>O sensor ainda não produziu dado válido. </td></tr>
+    <tr><td class="paramname">HAL_ERROR</td><td><code class="param">out</code> nulo, sensor não encontrado ou erro interno do sensor. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Retorna</dt><dd>Outro status da HAL em caso de falha de comunicação I²C. </dd></dl>
+
+<p class="definition">Definição na linha <a class="el" href="ens160_8c_source.html#l00152">152</a> do arquivo <a class="el" href="ens160_8c_source.html">ens160.c</a>.</p>
+
+<p class="reference">Referencias <a class="el" href="app__state_8c_source.html#l00055">App_Delay()</a>, <a class="el" href="ens160_8h_source.html#l00024">ENS160_Sample::aqi</a>, <a class="el" href="ens160_8c_source.html#l00089">CommFail()</a>, <a class="el" href="ens160_8h_source.html#l00026">ENS160_Sample::eco2_ppm</a>, <a class="el" href="ens160_8c_source.html#l00043">ens160_addr</a>, <a class="el" href="ens160_8c_source.html#l00050">ens160_error_count</a>, <a class="el" href="ens160_8h_source.html#l00043">ens160_last_eco2</a>, <a class="el" href="ens160_8c_source.html#l00048">ens160_last_hal</a>, <a class="el" href="ens160_8c_source.html#l00045">ens160_last_status</a>, <a class="el" href="ens160_8h_source.html#l00044">ens160_last_validity</a>, <a class="el" href="ens160_8c_source.html#l00046">ens160_opmode</a>, <a class="el" href="ens160_8c_source.html#l00044">ens160_part_id</a>, <a class="el" href="ens160_8c_source.html#l00152">ENS160_Read()</a>, <a class="el" href="ens160_8c_source.html#l00049">ens160_timeout_count</a>, <a class="el" href="ens160_8c_source.html#l00053">ens160_zero_count</a>, <a class="el" href="ens160_8c_source.html#l00099">EnterStandardMode()</a>, <a class="el" href="app__state_8h.html#af7b2c26e44dadaaa798a5c3d82914ba7">hi2c1</a>, <a class="el" href="ens160_8c_source.html#l00142">ReadEcho()</a>, <a class="el" href="ens160_8c_source.html#l00070">RegRead()</a>, <a class="el" href="ens160_8h_source.html#l00025">ENS160_Sample::tvoc_ppb</a> e <a class="el" href="ens160_8h_source.html#l00027">ENS160_Sample::validity</a>.</p>
+
+<p class="reference">Referenciado(a) por <a class="el" href="ens160_8c_source.html#l00152">ENS160_Read()</a> e <a class="el" href="sensor__registry_8c_source.html#l00232">Ens_Read()</a>.</p>
+
+</div>
+</div>
+<a id="a07766db983e05aa8a9dde46c158ea5b7" name="a07766db983e05aa8a9dde46c158ea5b7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a07766db983e05aa8a9dde46c158ea5b7">&#9670;&#160;</a></span>EnterStandardMode()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">HAL_StatusTypeDef EnterStandardMode </td>
+          <td>(</td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>with_reset</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Sequencia de inicializacao usada pelos drivers de referencia: [RESET] -&gt; IDLE -&gt; limpa os registradores de uso geral (NOP + CLRGPR, apaga o flag NEWGPR) -&gt; STANDARD. </p>
+
+<p class="definition">Definição na linha <a class="el" href="ens160_8c_source.html#l00099">99</a> do arquivo <a class="el" href="ens160_8c_source.html">ens160.c</a>.</p>
+
+<p class="reference">Referencias <a class="el" href="app__state_8c_source.html#l00055">App_Delay()</a>, <a class="el" href="ens160_8h_source.html#l00041">ens160_fw_build</a>, <a class="el" href="ens160_8c_source.html#l00047">ens160_init_count</a>, <a class="el" href="ens160_8c_source.html#l00052">ens160_reset_count</a>, <a class="el" href="ens160_8c_source.html#l00099">EnterStandardMode()</a>, <a class="el" href="ens160_8c_source.html#l00070">RegRead()</a> e <a class="el" href="ens160_8c_source.html#l00082">RegWrite()</a>.</p>
+
+<p class="reference">Referenciado(a) por <a class="el" href="ens160_8c_source.html#l00152">ENS160_Read()</a> e <a class="el" href="ens160_8c_source.html#l00099">EnterStandardMode()</a>.</p>
+
+</div>
+</div>
+<a id="afcbec8ef65f1acbf13dc3fe18b4d8efd" name="afcbec8ef65f1acbf13dc3fe18b4d8efd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afcbec8ef65f1acbf13dc3fe18b4d8efd">&#9670;&#160;</a></span>ReadEcho()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ReadEcho </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Le a temperatura e a umidade que o sensor informa estar usando (so diagnostico). </p>
+
+<p class="definition">Definição na linha <a class="el" href="ens160_8c_source.html#l00142">142</a> do arquivo <a class="el" href="ens160_8c_source.html">ens160.c</a>.</p>
+
+<p class="reference">Referencias <a class="el" href="ens160_8h_source.html#l00042">ens160_echo_rh</a>, <a class="el" href="ens160_8c_source.html#l00142">ReadEcho()</a> e <a class="el" href="ens160_8c_source.html#l00070">RegRead()</a>.</p>
+
+<p class="reference">Referenciado(a) por <a class="el" href="ens160_8c_source.html#l00152">ENS160_Read()</a> e <a class="el" href="ens160_8c_source.html#l00142">ReadEcho()</a>.</p>
+
+</div>
+</div>
+<a id="acf00c92e5a02d8b5b9b63e4f85c582f6" name="acf00c92e5a02d8b5b9b63e4f85c582f6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acf00c92e5a02d8b5b9b63e4f85c582f6">&#9670;&#160;</a></span>RegRead()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">HAL_StatusTypeDef RegRead </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>reg</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t *</td>          <td class="paramname"><span class="paramname"><em>data</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint16_t</td>          <td class="paramname"><span class="paramname"><em>length</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Lê registradores do ENS160. </p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">reg</td><td>Registrador inicial. </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">data</td><td>Destino. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">length</td><td>Quantidade de bytes. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Retorna</dt><dd>Status da HAL. </dd></dl>
+
+<p class="definition">Definição na linha <a class="el" href="ens160_8c_source.html#l00070">70</a> do arquivo <a class="el" href="ens160_8c_source.html">ens160.c</a>.</p>
+
+<p class="reference">Referencias <a class="el" href="ens160_8c_source.html#l00043">ens160_addr</a>, <a class="el" href="app__state_8h.html#af7b2c26e44dadaaa798a5c3d82914ba7">hi2c1</a> e <a class="el" href="ens160_8c_source.html#l00070">RegRead()</a>.</p>
+
+<p class="reference">Referenciado(a) por <a class="el" href="ens160_8c_source.html#l00152">ENS160_Read()</a>, <a class="el" href="ens160_8c_source.html#l00099">EnterStandardMode()</a>, <a class="el" href="ens160_8c_source.html#l00142">ReadEcho()</a> e <a class="el" href="ens160_8c_source.html#l00070">RegRead()</a>.</p>
+
+</div>
+</div>
+<a id="af5e7c4a1a72199b82f8a6f4991c64a59" name="af5e7c4a1a72199b82f8a6f4991c64a59"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af5e7c4a1a72199b82f8a6f4991c64a59">&#9670;&#160;</a></span>RegWrite()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">HAL_StatusTypeDef RegWrite </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>reg</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>value</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Escreve um registrador do ENS160. </p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">reg</td><td>Registrador. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">value</td><td>Valor. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Retorna</dt><dd>Status da HAL. </dd></dl>
+
+<p class="definition">Definição na linha <a class="el" href="ens160_8c_source.html#l00082">82</a> do arquivo <a class="el" href="ens160_8c_source.html">ens160.c</a>.</p>
+
+<p class="reference">Referencias <a class="el" href="ens160_8c_source.html#l00043">ens160_addr</a>, <a class="el" href="app__state_8h.html#af7b2c26e44dadaaa798a5c3d82914ba7">hi2c1</a> e <a class="el" href="ens160_8c_source.html#l00082">RegWrite()</a>.</p>
+
+<p class="reference">Referenciado(a) por <a class="el" href="ens160_8c_source.html#l00099">EnterStandardMode()</a> e <a class="el" href="ens160_8c_source.html#l00082">RegWrite()</a>.</p>
+
+</div>
+</div>
+<a name="doc-var-members" id="doc-var-members"></a><h2 id="header-doc-var-members" class="groupheader">Variáveis</h2>
+<a id="a0e10f8c689c57b0e149ac2f5fd40f788" name="a0e10f8c689c57b0e149ac2f5fd40f788"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0e10f8c689c57b0e149ac2f5fd40f788">&#9670;&#160;</a></span>ens160_addr</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">volatile uint8_t ens160_addr = 0U</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Endereço de 7 bits detectado (0 = não detectado). </p>
+
+<p class="definition">Definição na linha <a class="el" href="ens160_8c_source.html#l00043">43</a> do arquivo <a class="el" href="ens160_8c_source.html">ens160.c</a>.</p>
+
+<p class="reference">Referenciado(a) por <a class="el" href="app__tasks_8c_source.html#l00223">App_CommandTask()</a>, <a class="el" href="ens160_8c_source.html#l00089">CommFail()</a>, <a class="el" href="ens160_8c_source.html#l00152">ENS160_Read()</a>, <a class="el" href="ens160_8c_source.html#l00070">RegRead()</a> e <a class="el" href="ens160_8c_source.html#l00082">RegWrite()</a>.</p>
+
+</div>
+</div>
+<a id="a2abfad88a1b14c21bf2b0d887e3d318b" name="a2abfad88a1b14c21bf2b0d887e3d318b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2abfad88a1b14c21bf2b0d887e3d318b">&#9670;&#160;</a></span>ens160_comm_fail_count</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">volatile uint32_t ens160_comm_fail_count = 0U</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Falhas de comunicação I²C. </p>
+
+<p class="definition">Definição na linha <a class="el" href="ens160_8c_source.html#l00051">51</a> do arquivo <a class="el" href="ens160_8c_source.html">ens160.c</a>.</p>
+
+<p class="reference">Referenciado(a) por <a class="el" href="app__tasks_8c_source.html#l00223">App_CommandTask()</a> e <a class="el" href="ens160_8c_source.html#l00089">CommFail()</a>.</p>
+
+</div>
+</div>
+<a id="acc3b80e400912c59b82f3d330a2de62f" name="acc3b80e400912c59b82f3d330a2de62f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acc3b80e400912c59b82f3d330a2de62f">&#9670;&#160;</a></span>ens160_echo_rh</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">volatile uint16_t ens160_echo_rh = 0U</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definição na linha <a class="el" href="ens160_8c_source.html#l00055">55</a> do arquivo <a class="el" href="ens160_8c_source.html">ens160.c</a>.</p>
+
+</div>
+</div>
+<a id="affa97856149201889fd8f627516fd0b0" name="affa97856149201889fd8f627516fd0b0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#affa97856149201889fd8f627516fd0b0">&#9670;&#160;</a></span>ens160_echo_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">volatile uint16_t ens160_echo_t = 0U</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definição na linha <a class="el" href="ens160_8c_source.html#l00055">55</a> do arquivo <a class="el" href="ens160_8c_source.html">ens160.c</a>.</p>
+
+</div>
+</div>
+<a id="aea6dad7cfa121b0c56fafe3d582b6f98" name="aea6dad7cfa121b0c56fafe3d582b6f98"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aea6dad7cfa121b0c56fafe3d582b6f98">&#9670;&#160;</a></span>ens160_error_count</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">volatile uint32_t ens160_error_count = 0U</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Erros internos do sensor (bit STATER). </p>
+
+<p class="definition">Definição na linha <a class="el" href="ens160_8c_source.html#l00050">50</a> do arquivo <a class="el" href="ens160_8c_source.html">ens160.c</a>.</p>
+
+<p class="reference">Referenciado(a) por <a class="el" href="app__tasks_8c_source.html#l00223">App_CommandTask()</a> e <a class="el" href="ens160_8c_source.html#l00152">ENS160_Read()</a>.</p>
+
+</div>
+</div>
+<a id="a11beae97fbce77522322282f7d7b91b2" name="a11beae97fbce77522322282f7d7b91b2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a11beae97fbce77522322282f7d7b91b2">&#9670;&#160;</a></span>ens160_fw_build</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">volatile uint8_t ens160_fw_build = 0U</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definição na linha <a class="el" href="ens160_8c_source.html#l00054">54</a> do arquivo <a class="el" href="ens160_8c_source.html">ens160.c</a>.</p>
+
+</div>
+</div>
+<a id="a7de0a6cec8aad467be81b8d72387d867" name="a7de0a6cec8aad467be81b8d72387d867"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7de0a6cec8aad467be81b8d72387d867">&#9670;&#160;</a></span>ens160_fw_major</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">volatile uint8_t ens160_fw_major = 0U</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definição na linha <a class="el" href="ens160_8c_source.html#l00054">54</a> do arquivo <a class="el" href="ens160_8c_source.html">ens160.c</a>.</p>
+
+</div>
+</div>
+<a id="a677d90c3fe26977b1789e7e33cbd46fd" name="a677d90c3fe26977b1789e7e33cbd46fd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a677d90c3fe26977b1789e7e33cbd46fd">&#9670;&#160;</a></span>ens160_fw_minor</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">volatile uint8_t ens160_fw_minor = 0U</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definição na linha <a class="el" href="ens160_8c_source.html#l00054">54</a> do arquivo <a class="el" href="ens160_8c_source.html">ens160.c</a>.</p>
+
+</div>
+</div>
+<a id="ad14ad72a9857710821795e9582170df0" name="ad14ad72a9857710821795e9582170df0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad14ad72a9857710821795e9582170df0">&#9670;&#160;</a></span>ens160_init_count</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">volatile uint32_t ens160_init_count = 0U</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sequências de inicialização executadas. </p>
+
+<p class="definition">Definição na linha <a class="el" href="ens160_8c_source.html#l00047">47</a> do arquivo <a class="el" href="ens160_8c_source.html">ens160.c</a>.</p>
+
+<p class="reference">Referenciado(a) por <a class="el" href="app__tasks_8c_source.html#l00223">App_CommandTask()</a> e <a class="el" href="ens160_8c_source.html#l00099">EnterStandardMode()</a>.</p>
+
+</div>
+</div>
+<a id="add4422133285107d4d2391a59d519183" name="add4422133285107d4d2391a59d519183"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#add4422133285107d4d2391a59d519183">&#9670;&#160;</a></span>ens160_last_aqi</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">volatile uint8_t ens160_last_aqi = 0U</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definição na linha <a class="el" href="ens160_8c_source.html#l00057">57</a> do arquivo <a class="el" href="ens160_8c_source.html">ens160.c</a>.</p>
+
+</div>
+</div>
+<a id="ab0900827dd9030d4f44c452f4fc5970c" name="ab0900827dd9030d4f44c452f4fc5970c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab0900827dd9030d4f44c452f4fc5970c">&#9670;&#160;</a></span>ens160_last_eco2</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">volatile uint16_t ens160_last_eco2 = 0U</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definição na linha <a class="el" href="ens160_8c_source.html#l00056">56</a> do arquivo <a class="el" href="ens160_8c_source.html">ens160.c</a>.</p>
+
+</div>
+</div>
+<a id="a8eb85b4b009c73d6937e77e2b351a338" name="a8eb85b4b009c73d6937e77e2b351a338"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8eb85b4b009c73d6937e77e2b351a338">&#9670;&#160;</a></span>ens160_last_hal</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">volatile uint32_t ens160_last_hal = 0U</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Último status da HAL (diagnóstico). </p>
+
+<p class="definition">Definição na linha <a class="el" href="ens160_8c_source.html#l00048">48</a> do arquivo <a class="el" href="ens160_8c_source.html">ens160.c</a>.</p>
+
+<p class="reference">Referenciado(a) por <a class="el" href="app__tasks_8c_source.html#l00223">App_CommandTask()</a>, <a class="el" href="ens160_8c_source.html#l00089">CommFail()</a> e <a class="el" href="ens160_8c_source.html#l00152">ENS160_Read()</a>.</p>
+
+</div>
+</div>
+<a id="a477fd6f1acd12a23e6dea5e6d58661d0" name="a477fd6f1acd12a23e6dea5e6d58661d0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a477fd6f1acd12a23e6dea5e6d58661d0">&#9670;&#160;</a></span>ens160_last_status</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">volatile uint8_t ens160_last_status = 0U</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Último DEVICE_STATUS lido. </p>
+
+<p class="definition">Definição na linha <a class="el" href="ens160_8c_source.html#l00045">45</a> do arquivo <a class="el" href="ens160_8c_source.html">ens160.c</a>.</p>
+
+<p class="reference">Referenciado(a) por <a class="el" href="app__tasks_8c_source.html#l00223">App_CommandTask()</a> e <a class="el" href="ens160_8c_source.html#l00152">ENS160_Read()</a>.</p>
+
+</div>
+</div>
+<a id="a99dd37f34f2ed5f7f46e5bae34722eda" name="a99dd37f34f2ed5f7f46e5bae34722eda"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a99dd37f34f2ed5f7f46e5bae34722eda">&#9670;&#160;</a></span>ens160_last_tvoc</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">volatile uint16_t ens160_last_tvoc = 0U</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definição na linha <a class="el" href="ens160_8c_source.html#l00056">56</a> do arquivo <a class="el" href="ens160_8c_source.html">ens160.c</a>.</p>
+
+</div>
+</div>
+<a id="a64dd6eb26db638b6b3de2a1c30a396e7" name="a64dd6eb26db638b6b3de2a1c30a396e7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a64dd6eb26db638b6b3de2a1c30a396e7">&#9670;&#160;</a></span>ens160_last_validity</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">volatile uint8_t ens160_last_validity = 0U</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definição na linha <a class="el" href="ens160_8c_source.html#l00057">57</a> do arquivo <a class="el" href="ens160_8c_source.html">ens160.c</a>.</p>
+
+</div>
+</div>
+<a id="a21fc8c2978f555f147c87130b9f44afa" name="a21fc8c2978f555f147c87130b9f44afa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a21fc8c2978f555f147c87130b9f44afa">&#9670;&#160;</a></span>ens160_opmode</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">volatile uint8_t ens160_opmode = 0U</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Último OPMODE lido (0 sono, 1 ocioso, 2 padrão). </p>
+
+<p class="definition">Definição na linha <a class="el" href="ens160_8c_source.html#l00046">46</a> do arquivo <a class="el" href="ens160_8c_source.html">ens160.c</a>.</p>
+
+<p class="reference">Referenciado(a) por <a class="el" href="app__tasks_8c_source.html#l00223">App_CommandTask()</a> e <a class="el" href="ens160_8c_source.html#l00152">ENS160_Read()</a>.</p>
+
+</div>
+</div>
+<a id="a3af5500460f13d5b3318b61c9a486a3b" name="a3af5500460f13d5b3318b61c9a486a3b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3af5500460f13d5b3318b61c9a486a3b">&#9670;&#160;</a></span>ens160_part_id</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">volatile uint16_t ens160_part_id = 0U</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Último PART_ID lido (esperado 0x0160). </p>
+
+<p class="definition">Definição na linha <a class="el" href="ens160_8c_source.html#l00044">44</a> do arquivo <a class="el" href="ens160_8c_source.html">ens160.c</a>.</p>
+
+<p class="reference">Referenciado(a) por <a class="el" href="app__tasks_8c_source.html#l00223">App_CommandTask()</a> e <a class="el" href="ens160_8c_source.html#l00152">ENS160_Read()</a>.</p>
+
+</div>
+</div>
+<a id="a1231b8a0cae2ad03f5ee45b1ec6c7e95" name="a1231b8a0cae2ad03f5ee45b1ec6c7e95"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1231b8a0cae2ad03f5ee45b1ec6c7e95">&#9670;&#160;</a></span>ens160_reset_count</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">volatile uint32_t ens160_reset_count = 0U</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Inicializações que usaram RESET. </p>
+
+<p class="definition">Definição na linha <a class="el" href="ens160_8c_source.html#l00052">52</a> do arquivo <a class="el" href="ens160_8c_source.html">ens160.c</a>.</p>
+
+<p class="reference">Referenciado(a) por <a class="el" href="app__tasks_8c_source.html#l00223">App_CommandTask()</a> e <a class="el" href="ens160_8c_source.html#l00099">EnterStandardMode()</a>.</p>
+
+</div>
+</div>
+<a id="a19da5bdff0c5a34ae0ccec0469b86971" name="a19da5bdff0c5a34ae0ccec0469b86971"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a19da5bdff0c5a34ae0ccec0469b86971">&#9670;&#160;</a></span>ens160_timeout_count</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">volatile uint32_t ens160_timeout_count = 0U</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Ciclos sem dado novo. </p>
+
+<p class="definition">Definição na linha <a class="el" href="ens160_8c_source.html#l00049">49</a> do arquivo <a class="el" href="ens160_8c_source.html">ens160.c</a>.</p>
+
+<p class="reference">Referenciado(a) por <a class="el" href="app__tasks_8c_source.html#l00223">App_CommandTask()</a> e <a class="el" href="ens160_8c_source.html#l00152">ENS160_Read()</a>.</p>
+
+</div>
+</div>
+<a id="a4f4594f2691845a78e267955d7d075c7" name="a4f4594f2691845a78e267955d7d075c7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4f4594f2691845a78e267955d7d075c7">&#9670;&#160;</a></span>ens160_zero_count</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">volatile uint32_t ens160_zero_count = 0U</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Leituras com AQI, TVOC e eCO2 todos nulos (sem medição real). </p>
+
+<p class="definition">Definição na linha <a class="el" href="ens160_8c_source.html#l00053">53</a> do arquivo <a class="el" href="ens160_8c_source.html">ens160.c</a>.</p>
+
+<p class="reference">Referenciado(a) por <a class="el" href="app__tasks_8c_source.html#l00223">App_CommandTask()</a> e <a class="el" href="ens160_8c_source.html#l00152">ENS160_Read()</a>.</p>
+
+</div>
+</div>
+<a id="a8f73a1ee7a49bc908c5f97f90d99e8ac" name="a8f73a1ee7a49bc908c5f97f90d99e8ac"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8f73a1ee7a49bc908c5f97f90d99e8ac">&#9670;&#160;</a></span>init_failures</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t init_failures = 0U</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definição na linha <a class="el" href="ens160_8c_source.html#l00059">59</a> do arquivo <a class="el" href="ens160_8c_source.html">ens160.c</a>.</p>
+
+</div>
+</div>
+<a id="a050a2e9685e8fb14d21baca30608993a" name="a050a2e9685e8fb14d21baca30608993a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a050a2e9685e8fb14d21baca30608993a">&#9670;&#160;</a></span>need_init</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool need_init = false</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definição na linha <a class="el" href="ens160_8c_source.html#l00061">61</a> do arquivo <a class="el" href="ens160_8c_source.html">ens160.c</a>.</p>
+
+</div>
+</div>
+<a id="a078aca5eb443c76355b3ba4326100236" name="a078aca5eb443c76355b3ba4326100236"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a078aca5eb443c76355b3ba4326100236">&#9670;&#160;</a></span>timeout_streak</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t timeout_streak = 0U</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definição na linha <a class="el" href="ens160_8c_source.html#l00060">60</a> do arquivo <a class="el" href="ens160_8c_source.html">ens160.c</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><b>Core</b></li><li class="navelem"><b>Src</b></li><li class="navelem"><a href="ens160_8c.html">ens160.c</a></li>
+    <li class="footer">Gerado por <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.18.0 </li>
+  </ul>
+</div>
+</body>
+</html>

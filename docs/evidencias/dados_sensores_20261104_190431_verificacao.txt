@@ -1,0 +1,49 @@
+Arquivo: dados_sensores_20261104_190431.csv
+Gerado em: 2026-11-04 19:05:04
+Colunas (17): sensor_mask, timestamp, aht_present, aht_temp_c, aht_humidity_pct, bmp_pressure, accel_x_g, accel_y_g, accel_z_g, gyro_x_dps, gyro_y_dps, gyro_z_dps, bh_lux, ens_aqi, ens_tvoc_ppb, ens_eco2_ppm, ens_validity
+Registros de dados: 181
+
+[Mascara de sensores]
+  mascara   7:    181 registros (AHT, BMP280, MPU6500)
+Registros com mascara incoerente com os campos preenchidos: 0
+
+[Horarios]
+Horarios ilegiveis: 0
+Primeiro: 2026-11-04 18:34:24   Ultimo: 2026-11-04 19:04:23   Duracao: 0:29:59
+Registros com ano 2000 (data padrao do firmware = RTC nao ajustado): 0
+Horario retrocedeu (fora de ordem ou RTC reajustado para tras): 0
+Horarios repetidos em sequencia (diferenca 0 s): 0
+Linhas totalmente identicas (duplicatas exatas): 0
+Periodo esperado: 10.0 s (+- 2.0 s)
+Intervalos dentro do esperado: 180 de 180
+Intervalos curtos (< periodo): 0
+Lacunas (> periodo, ate 24 h): 0
+Saltos de relogio (> 24 h entre registros seguidos): 0
+Registros esperados pela duracao (1799 s / 10.0 s + 1): 180 | encontrados: 181
+Mediana dos intervalos: 10.0 s (o RTC tem resolucao de 1 s)
+Intervalo medio global (duracao / (n-1)): 9.994 s (-0.06 % do periodo nominal)
+Intervalo medio sem as lacunas: 9.994 s (-0.06 %)
+
+[Valores]
+Faixas usadas (edite em FAIXAS): aht_temp_c -40..85; aht_humidity_pct 0..100; bmp_pressure 30000..110000; accel_x_g -2..2; accel_y_g -2..2; accel_z_g -2..2; gyro_x_dps -250..250; gyro_y_dps -250..250; gyro_z_dps -250..250; bh_lux 0..54612.5
+  aht_temp_c         n=   181 vazios=     0 min=    31.700 max=    31.930 media=    31.774 zeros=0 fora_da_faixa=0
+  aht_humidity_pct   n=   181 vazios=     0 min=    74.320 max=    75.490 media=    74.954 zeros=0 fora_da_faixa=0
+  bmp_pressure       n=   181 vazios=     0 min= 94078.000 max= 94144.000 media= 94115.934 zeros=0 fora_da_faixa=0
+  accel_x_g          n=   181 vazios=     0 min=    -0.125 max=     0.140 media=     0.007 zeros=3 fora_da_faixa=0
+  accel_y_g          n=   181 vazios=     0 min=    -0.032 max=     0.028 media=    -0.002 zeros=8 fora_da_faixa=0
+  accel_z_g          n=   181 vazios=     0 min=     0.896 max=     1.110 media=     0.994 zeros=0 fora_da_faixa=0
+  gyro_x_dps         n=   181 vazios=     0 min=    -2.040 max=     2.210 media=     0.153 zeros=1 fora_da_faixa=0
+  gyro_y_dps         n=   181 vazios=     0 min=    -7.790 max=     8.470 media=    -0.645 zeros=0 fora_da_faixa=0
+  gyro_z_dps         n=   181 vazios=     0 min=    -0.530 max=     0.950 media=     0.029 zeros=4 fora_da_faixa=0
+  bh_lux             sem dados (vazio em 181)
+  ens_aqi            sem dados (vazio em 181)
+  ens_tvoc_ppb       sem dados (vazio em 181)
+  ens_eco2_ppm       sem dados (vazio em 181)
+  ens_validity       sem dados (vazio em 181)
+Registros com TODAS as colunas do AHT em zero: 0
+Registros com TODAS as colunas do BMP280 em zero: 0
+Registros com TODAS as colunas do MPU6500 em zero: 0
+
+[Resumo]
+Nenhum problema encontrado pelas verificacoes acima.
+Observacao: este relatorio verifica a coerencia do CSV; nao prova que os valores correspondem a grandezas fisicas reais.

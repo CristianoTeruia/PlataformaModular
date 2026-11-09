@@ -1,0 +1,11 @@
+name: Testes no PC
+on:
+  push:
+  pull_request:
+jobs:
+  host-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Compilar e rodar os testes
+        run: make -C tests

@@ -1,0 +1,434 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pt-BR">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.18.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>PlataformaModular: Código-Fonte de Core/Src/ens160.c</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="codefolding.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">PlataformaModular
+   </div>
+   <div id="projectbrief">Plataforma modular embarcada para aquisição e registro de dados de sensores (STM32F411 + FreeRTOS)</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Gerado por Doxygen 1.18.0 -->
+<script type="text/javascript">
+let searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', codefold.init);
+</script>
+<script type="application/json" id="doxygen-config">
+{
+  "relPath": "",
+  "generateTreeView": true,
+  "searchEngine": true,
+  "serverBasedSearch": false,
+  "disableIndex": false,
+  "dynamicMenus": true,
+  "fullSidebar": false
+}
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<div id="main-nav-mobile">
+<div class="sm sm-dox"><input id="main-menu-state" type="checkbox"/>
+<label class="main-menu-btn" for="main-menu-state">
+<span class="main-menu-btn-icon"></span> Toggle main menu visibility</label>
+<span id="searchBoxPos1"></span>
+</div>
+</div><!-- main-nav-mobile -->
+<div id="main-nav">
+  <ul class="sm sm-dox" id="main-menu">
+    <li id="searchBoxPos2">
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect" class="search-icon"><span class="search-icon-dropdown"></span></span>
+          <input type="text" id="MSearchField" value="" placeholder="Busca" accesskey="S"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+          </span>
+        </div>
+    </li>
+  </ul>
+</div><!-- main-nav -->
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded',() => { initNavTree('ens160_8c_source.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Carregando...</div>
+<div class="SRStatus" id="Searching">Procurando...</div>
+<div class="SRStatus" id="NoMatches">Nenhuma entrada encontrado</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">ens160.c</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="ens160_8c.html">Ir para a documentação desse arquivo.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &quot;<a class="code" href="ens160_8h.html">ens160.h</a>&quot;</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &lt;stddef.h&gt;</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#define ENS160_ADDR_HIGH        0x53U</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#define ENS160_ADDR_LOW         0x52U</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#define ENS160_PART_ID_EXPECTED 0x0160U</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#define ENS160_REG_PART_ID      0x00U</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#define ENS160_REG_OPMODE       0x10U</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#define ENS160_REG_COMMAND      0x12U</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">#define ENS160_REG_TEMP_IN      0x13U </span><span class="comment">/* 2 B, seguido de RH_IN (0x15, 2 B) */</span><span class="preprocessor"></span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="preprocessor">#define ENS160_REG_STATUS       0x20U</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="preprocessor">#define ENS160_REG_DATA_T       0x30U </span><span class="comment">/* T(2) + RH(2) usados pelo sensor nos calculos */</span><span class="preprocessor"></span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="preprocessor">#define ENS160_REG_GPR_READ_4   0x4CU </span><span class="comment">/* versao do firmware: maior, menor, build */</span><span class="preprocessor"></span></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="preprocessor">#define ENS160_REG_DATA_AQI     0x21U </span><span class="comment">/* AQI(1) + TVOC(2) + eCO2(2), em sequencia */</span><span class="preprocessor"></span></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="preprocessor">#define ENS160_OPMODE_IDLE      0x01U</span></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="preprocessor">#define ENS160_OPMODE_STANDARD  0x02U</span></div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="preprocessor">#define ENS160_OPMODE_RESET     0xF0U</span></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="preprocessor">#define ENS160_CMD_NOP          0x00U</span></div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="preprocessor">#define ENS160_CMD_CLRGPR       0xCCU</span></div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="preprocessor">#define ENS160_CMD_GET_APPVER   0x0EU</span></div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="preprocessor">#define ENS160_STATUS_STATAS    0x80U </span><span class="comment">/* modo de operacao em execucao */</span><span class="preprocessor"></span></div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="preprocessor">#define ENS160_STATUS_STATER    0x40U </span><span class="comment">/* erro */</span><span class="preprocessor"></span></div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="preprocessor">#define ENS160_STATUS_NEWDAT    0x02U </span><span class="comment">/* dado novo nos registradores DATA_* */</span><span class="preprocessor"></span></div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="preprocessor">#define ENS160_TIMEOUT_MS       50U</span></div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="preprocessor">#define ENS160_BOOT_MS          11U   </span><span class="comment">/* o datasheet indica 10 ms; 11 ms e o valor seguro usado por outros drivers */</span><span class="preprocessor"></span></div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="preprocessor">#define ENS160_MODE_MS          20U</span></div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="preprocessor">#define ENS160_DATA_STEP_MS     100U  </span><span class="comment">/* o modo STANDARD gera uma medicao por segundo */</span><span class="preprocessor"></span></div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="preprocessor">#define ENS160_DATA_STEPS       16U   </span><span class="comment">/* espera maxima por dado novo em regime: 1,6 s */</span><span class="preprocessor"></span></div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="preprocessor">#define ENS160_FIRST_DATA_STEPS 32U   </span><span class="comment">/* logo apos iniciar o modo STANDARD: 3,2 s */</span><span class="preprocessor"></span></div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="preprocessor">#define ENS160_STUCK_CYCLES     3U    </span><span class="comment">/* ciclos seguidos sem dado =&gt; reinicializa com RESET */</span><span class="preprocessor"></span></div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno"><a class="line" href="ens160_8h.html#a0e10f8c689c57b0e149ac2f5fd40f788">   43</a></span><span class="keyword">volatile</span> uint8_t <a class="code hl_variable" href="ens160_8h.html#a0e10f8c689c57b0e149ac2f5fd40f788">ens160_addr</a> = 0U;</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno"><a class="line" href="ens160_8h.html#a3af5500460f13d5b3318b61c9a486a3b">   44</a></span><span class="keyword">volatile</span> uint16_t <a class="code hl_variable" href="ens160_8h.html#a3af5500460f13d5b3318b61c9a486a3b">ens160_part_id</a> = 0U;</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno"><a class="line" href="ens160_8h.html#a477fd6f1acd12a23e6dea5e6d58661d0">   45</a></span><span class="keyword">volatile</span> uint8_t <a class="code hl_variable" href="ens160_8h.html#a477fd6f1acd12a23e6dea5e6d58661d0">ens160_last_status</a> = 0U;</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno"><a class="line" href="ens160_8h.html#a21fc8c2978f555f147c87130b9f44afa">   46</a></span><span class="keyword">volatile</span> uint8_t <a class="code hl_variable" href="ens160_8h.html#a21fc8c2978f555f147c87130b9f44afa">ens160_opmode</a> = 0U;</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno"><a class="line" href="ens160_8h.html#ad14ad72a9857710821795e9582170df0">   47</a></span><span class="keyword">volatile</span> uint32_t <a class="code hl_variable" href="ens160_8h.html#ad14ad72a9857710821795e9582170df0">ens160_init_count</a> = 0U;</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno"><a class="line" href="ens160_8h.html#a8eb85b4b009c73d6937e77e2b351a338">   48</a></span><span class="keyword">volatile</span> uint32_t <a class="code hl_variable" href="ens160_8h.html#a8eb85b4b009c73d6937e77e2b351a338">ens160_last_hal</a> = 0U;</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno"><a class="line" href="ens160_8h.html#a19da5bdff0c5a34ae0ccec0469b86971">   49</a></span><span class="keyword">volatile</span> uint32_t <a class="code hl_variable" href="ens160_8h.html#a19da5bdff0c5a34ae0ccec0469b86971">ens160_timeout_count</a> = 0U;</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno"><a class="line" href="ens160_8h.html#aea6dad7cfa121b0c56fafe3d582b6f98">   50</a></span><span class="keyword">volatile</span> uint32_t <a class="code hl_variable" href="ens160_8h.html#aea6dad7cfa121b0c56fafe3d582b6f98">ens160_error_count</a> = 0U;</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno"><a class="line" href="ens160_8h.html#a2abfad88a1b14c21bf2b0d887e3d318b">   51</a></span><span class="keyword">volatile</span> uint32_t <a class="code hl_variable" href="ens160_8h.html#a2abfad88a1b14c21bf2b0d887e3d318b">ens160_comm_fail_count</a> = 0U;</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno"><a class="line" href="ens160_8h.html#a1231b8a0cae2ad03f5ee45b1ec6c7e95">   52</a></span><span class="keyword">volatile</span> uint32_t <a class="code hl_variable" href="ens160_8h.html#a1231b8a0cae2ad03f5ee45b1ec6c7e95">ens160_reset_count</a> = 0U;</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno"><a class="line" href="ens160_8h.html#a4f4594f2691845a78e267955d7d075c7">   53</a></span><span class="keyword">volatile</span> uint32_t <a class="code hl_variable" href="ens160_8h.html#a4f4594f2691845a78e267955d7d075c7">ens160_zero_count</a> = 0U;</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span><span class="keyword">volatile</span> uint8_t ens160_fw_major = 0U, ens160_fw_minor = 0U, <a class="code hl_variable" href="ens160_8h.html#a11beae97fbce77522322282f7d7b91b2">ens160_fw_build</a> = 0U;</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span><span class="keyword">volatile</span> uint16_t ens160_echo_t = 0U, <a class="code hl_variable" href="ens160_8h.html#acc3b80e400912c59b82f3d330a2de62f">ens160_echo_rh</a> = 0U;</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span><span class="keyword">volatile</span> uint16_t ens160_last_tvoc = 0U, <a class="code hl_variable" href="ens160_8h.html#ab0900827dd9030d4f44c452f4fc5970c">ens160_last_eco2</a> = 0U;</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span><span class="keyword">volatile</span> uint8_t ens160_last_aqi = 0U, <a class="code hl_variable" href="ens160_8h.html#a64dd6eb26db638b6b3de2a1c30a396e7">ens160_last_validity</a> = 0U;</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span> </div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span><span class="keyword">static</span> uint8_t init_failures = 0U;    <span class="comment">/* tentativas sem sucesso: a proxima inicializacao usa RESET */</span></div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span><span class="keyword">static</span> uint8_t timeout_streak = 0U;   <span class="comment">/* ciclos seguidos sem dado novo */</span></div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span><span class="keyword">static</span> <span class="keywordtype">bool</span> need_init = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span></div>
+<div class="foldopen" id="foldopen00070" data-start="{" data-end="}">
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno"><a class="line" href="ens160_8c.html#acf00c92e5a02d8b5b9b63e4f85c582f6">   70</a></span><span class="keyword">static</span> HAL_StatusTypeDef <a class="code hl_function" href="ens160_8c.html#acf00c92e5a02d8b5b9b63e4f85c582f6">RegRead</a>(uint8_t reg, uint8_t *data, uint16_t length)</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>{</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    <span class="keywordflow">return</span> HAL_I2C_Mem_Read(&amp;<a class="code hl_variable" href="app__state_8h.html#af7b2c26e44dadaaa798a5c3d82914ba7">hi2c1</a>, (uint16_t)(<a class="code hl_variable" href="ens160_8h.html#a0e10f8c689c57b0e149ac2f5fd40f788">ens160_addr</a> &lt;&lt; 1), reg, I2C_MEMADD_SIZE_8BIT,</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>                            data, length, ENS160_TIMEOUT_MS);</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>}</div>
+</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span></div>
+<div class="foldopen" id="foldopen00082" data-start="{" data-end="}">
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno"><a class="line" href="ens160_8c.html#af5e7c4a1a72199b82f8a6f4991c64a59">   82</a></span><span class="keyword">static</span> HAL_StatusTypeDef <a class="code hl_function" href="ens160_8c.html#af5e7c4a1a72199b82f8a6f4991c64a59">RegWrite</a>(uint8_t reg, uint8_t value)</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>{</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>    <span class="keywordflow">return</span> HAL_I2C_Mem_Write(&amp;<a class="code hl_variable" href="app__state_8h.html#af7b2c26e44dadaaa798a5c3d82914ba7">hi2c1</a>, (uint16_t)(<a class="code hl_variable" href="ens160_8h.html#a0e10f8c689c57b0e149ac2f5fd40f788">ens160_addr</a> &lt;&lt; 1), reg, I2C_MEMADD_SIZE_8BIT,</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>                             &amp;value, 1U, ENS160_TIMEOUT_MS);</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>}</div>
+</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span></div>
+<div class="foldopen" id="foldopen00089" data-start="{" data-end="}">
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno"><a class="line" href="ens160_8c.html#aac3a27906b85c1304582fdf695e51de0">   89</a></span><span class="keyword">static</span> HAL_StatusTypeDef <a class="code hl_function" href="ens160_8c.html#aac3a27906b85c1304582fdf695e51de0">CommFail</a>(HAL_StatusTypeDef status)</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>{</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>    <a class="code hl_variable" href="ens160_8h.html#a0e10f8c689c57b0e149ac2f5fd40f788">ens160_addr</a> = 0U;</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>    <a class="code hl_variable" href="ens160_8h.html#a8eb85b4b009c73d6937e77e2b351a338">ens160_last_hal</a> = (uint32_t)status;</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>    <a class="code hl_variable" href="ens160_8h.html#a2abfad88a1b14c21bf2b0d887e3d318b">ens160_comm_fail_count</a>++;</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>    <span class="keywordflow">return</span> status;</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>}</div>
+</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span></div>
+<div class="foldopen" id="foldopen00099" data-start="{" data-end="}">
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno"><a class="line" href="ens160_8c.html#a07766db983e05aa8a9dde46c158ea5b7">   99</a></span><span class="keyword">static</span> HAL_StatusTypeDef <a class="code hl_function" href="ens160_8c.html#a07766db983e05aa8a9dde46c158ea5b7">EnterStandardMode</a>(<span class="keywordtype">bool</span> with_reset)</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>{</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>    HAL_StatusTypeDef status;</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span> </div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>    <span class="keywordflow">if</span> (with_reset)</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>    {</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>        status = <a class="code hl_function" href="ens160_8c.html#af5e7c4a1a72199b82f8a6f4991c64a59">RegWrite</a>(ENS160_REG_OPMODE, ENS160_OPMODE_RESET);</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>        <span class="keywordflow">if</span> (status != HAL_OK) <span class="keywordflow">return</span> status;</div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>        <a class="code hl_variable" href="ens160_8h.html#a1231b8a0cae2ad03f5ee45b1ec6c7e95">ens160_reset_count</a>++;</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>        <a class="code hl_function" href="app__state_8h.html#a37a3a5a51fd18694f366bc8c8e489c05">App_Delay</a>(ENS160_BOOT_MS);</div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>    }</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>    status = <a class="code hl_function" href="ens160_8c.html#af5e7c4a1a72199b82f8a6f4991c64a59">RegWrite</a>(ENS160_REG_OPMODE, ENS160_OPMODE_IDLE);</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>    <span class="keywordflow">if</span> (status != HAL_OK) <span class="keywordflow">return</span> status;</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>    <a class="code hl_function" href="app__state_8h.html#a37a3a5a51fd18694f366bc8c8e489c05">App_Delay</a>(ENS160_BOOT_MS);</div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span> </div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>    status = <a class="code hl_function" href="ens160_8c.html#af5e7c4a1a72199b82f8a6f4991c64a59">RegWrite</a>(ENS160_REG_COMMAND, ENS160_CMD_NOP);</div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>    <span class="keywordflow">if</span> (status != HAL_OK) <span class="keywordflow">return</span> status;</div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>    status = <a class="code hl_function" href="ens160_8c.html#af5e7c4a1a72199b82f8a6f4991c64a59">RegWrite</a>(ENS160_REG_COMMAND, ENS160_CMD_CLRGPR);</div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>    <span class="keywordflow">if</span> (status != HAL_OK) <span class="keywordflow">return</span> status;</div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>    <a class="code hl_function" href="app__state_8h.html#a37a3a5a51fd18694f366bc8c8e489c05">App_Delay</a>(ENS160_BOOT_MS);</div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span> </div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>    <span class="comment">/* Le a versao do firmware do sensor (como o ESPHome). So diagnostico: falha aqui nao interrompe. */</span></div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>    <span class="keywordflow">if</span> (<a class="code hl_function" href="ens160_8c.html#af5e7c4a1a72199b82f8a6f4991c64a59">RegWrite</a>(ENS160_REG_COMMAND, ENS160_CMD_GET_APPVER) == HAL_OK)</div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>    {</div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>        uint8_t version[3];</div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>        <a class="code hl_function" href="app__state_8h.html#a37a3a5a51fd18694f366bc8c8e489c05">App_Delay</a>(ENS160_BOOT_MS);</div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>        <span class="keywordflow">if</span> (<a class="code hl_function" href="ens160_8c.html#acf00c92e5a02d8b5b9b63e4f85c582f6">RegRead</a>(ENS160_REG_GPR_READ_4, version, 3U) == HAL_OK)</div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>        {</div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>            ens160_fw_major = version[0];</div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>            ens160_fw_minor = version[1];</div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>            <a class="code hl_variable" href="ens160_8h.html#a11beae97fbce77522322282f7d7b91b2">ens160_fw_build</a> = version[2];</div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>        }</div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>    }</div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span> </div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>    status = <a class="code hl_function" href="ens160_8c.html#af5e7c4a1a72199b82f8a6f4991c64a59">RegWrite</a>(ENS160_REG_OPMODE, ENS160_OPMODE_STANDARD);</div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>    <span class="keywordflow">if</span> (status != HAL_OK) <span class="keywordflow">return</span> status;</div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>    <a class="code hl_function" href="app__state_8h.html#a37a3a5a51fd18694f366bc8c8e489c05">App_Delay</a>(ENS160_MODE_MS);</div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span> </div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>    <a class="code hl_variable" href="ens160_8h.html#ad14ad72a9857710821795e9582170df0">ens160_init_count</a>++;</div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span>    <span class="keywordflow">return</span> HAL_OK;</div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>}</div>
+</div>
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span></div>
+<div class="foldopen" id="foldopen00142" data-start="{" data-end="}">
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno"><a class="line" href="ens160_8c.html#afcbec8ef65f1acbf13dc3fe18b4d8efd">  142</a></span><span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code hl_function" href="ens160_8c.html#afcbec8ef65f1acbf13dc3fe18b4d8efd">ReadEcho</a>(<span class="keywordtype">void</span>)</div>
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>{</div>
+<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>    uint8_t e[4];</div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>    <span class="keywordflow">if</span> (<a class="code hl_function" href="ens160_8c.html#acf00c92e5a02d8b5b9b63e4f85c582f6">RegRead</a>(ENS160_REG_DATA_T, e, 4U) == HAL_OK)</div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>    {</div>
+<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span>        ens160_echo_t = (uint16_t)((uint16_t)e[0] | ((uint16_t)e[1] &lt;&lt; 8));</div>
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>        <a class="code hl_variable" href="ens160_8h.html#acc3b80e400912c59b82f3d330a2de62f">ens160_echo_rh</a> = (uint16_t)((uint16_t)e[2] | ((uint16_t)e[3] &lt;&lt; 8));</div>
+<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span>    }</div>
+<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>}</div>
+</div>
+<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span> </div>
+<div class="foldopen" id="foldopen00152" data-start="{" data-end="}">
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno"><a class="line" href="ens160_8h.html#a463214b42a9d3d333c8f1f449bccbdef">  152</a></span>HAL_StatusTypeDef <a class="code hl_function" href="ens160_8h.html#a463214b42a9d3d333c8f1f449bccbdef">ENS160_Read</a>(<span class="keywordtype">bool</span> compensation_valid, <span class="keywordtype">float</span> temperature_c, <span class="keywordtype">float</span> humidity_pct,</div>
+<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>                              <a class="code hl_struct" href="struct_e_n_s160___sample.html">ENS160_Sample</a> *out)</div>
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>{</div>
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>    <span class="keyword">static</span> <span class="keyword">const</span> uint8_t candidates[2] = { ENS160_ADDR_HIGH, ENS160_ADDR_LOW };</div>
+<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>    uint8_t data[5];</div>
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>    uint8_t status_reg = 0U;</div>
+<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>    HAL_StatusTypeDef status = HAL_ERROR;</div>
+<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>    <span class="keywordtype">bool</span> fresh_init = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>    uint8_t max_steps;</div>
+<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span> </div>
+<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>    <span class="keywordflow">if</span> (out == NULL) <span class="keywordflow">return</span> HAL_ERROR;</div>
+<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span> </div>
+<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>    <span class="comment">/* Detecta o sensor (confirmando o PART_ID) enquanto ele nao foi encontrado. */</span></div>
+<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="ens160_8h.html#a0e10f8c689c57b0e149ac2f5fd40f788">ens160_addr</a> == 0U)</div>
+<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span>    {</div>
+<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span>        <span class="keywordflow">for</span> (uint8_t i = 0U; i &lt; 2U; i++)</div>
+<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span>        {</div>
+<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span>            <a class="code hl_variable" href="ens160_8h.html#a0e10f8c689c57b0e149ac2f5fd40f788">ens160_addr</a> = candidates[i];</div>
+<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span>            status = <a class="code hl_function" href="ens160_8c.html#acf00c92e5a02d8b5b9b63e4f85c582f6">RegRead</a>(ENS160_REG_PART_ID, data, 2U);</div>
+<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span>            <span class="keywordflow">if</span> (status == HAL_OK)</div>
+<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>            {</div>
+<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span>                <a class="code hl_variable" href="ens160_8h.html#a3af5500460f13d5b3318b61c9a486a3b">ens160_part_id</a> = (uint16_t)((uint16_t)data[0] | ((uint16_t)data[1] &lt;&lt; 8));</div>
+<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span>                <span class="keywordflow">if</span> (<a class="code hl_variable" href="ens160_8h.html#a3af5500460f13d5b3318b61c9a486a3b">ens160_part_id</a> == ENS160_PART_ID_EXPECTED) <span class="keywordflow">break</span>;</div>
+<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span>            }</div>
+<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span>            <a class="code hl_variable" href="ens160_8h.html#a0e10f8c689c57b0e149ac2f5fd40f788">ens160_addr</a> = 0U;</div>
+<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span>        }</div>
+<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="ens160_8h.html#a0e10f8c689c57b0e149ac2f5fd40f788">ens160_addr</a> == 0U)</div>
+<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span>        {</div>
+<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span>            <a class="code hl_variable" href="ens160_8h.html#a8eb85b4b009c73d6937e77e2b351a338">ens160_last_hal</a> = (uint32_t)status;</div>
+<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span>            <span class="keywordflow">return</span> HAL_ERROR;</div>
+<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span>        }</div>
+<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span>    }</div>
+<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span> </div>
+<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span>    <span class="comment">/* Coloca o sensor em STANDARD somente se ele NAO esta medindo. Um sensor que ja esta em STANDARD</span></div>
+<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span><span class="comment">     * (inclusive apos reiniciar a placa) nao e tocado. A 1a tentativa nao usa RESET; depois de uma</span></div>
+<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span><span class="comment">     * tentativa sem sucesso, a proxima usa RESET. */</span></div>
+<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span>    status = <a class="code hl_function" href="ens160_8c.html#acf00c92e5a02d8b5b9b63e4f85c582f6">RegRead</a>(ENS160_REG_OPMODE, data, 1U);</div>
+<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span>    <span class="keywordflow">if</span> (status != HAL_OK) <span class="keywordflow">return</span> <a class="code hl_function" href="ens160_8c.html#aac3a27906b85c1304582fdf695e51de0">CommFail</a>(status);</div>
+<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span>    <a class="code hl_variable" href="ens160_8h.html#a21fc8c2978f555f147c87130b9f44afa">ens160_opmode</a> = data[0];</div>
+<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span>    <span class="keywordflow">if</span> ((data[0] != ENS160_OPMODE_STANDARD) || need_init)</div>
+<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span>    {</div>
+<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span>        status = <a class="code hl_function" href="ens160_8c.html#a07766db983e05aa8a9dde46c158ea5b7">EnterStandardMode</a>(init_failures &gt; 0U);</div>
+<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span>        <span class="keywordflow">if</span> (status != HAL_OK) <span class="keywordflow">return</span> <a class="code hl_function" href="ens160_8c.html#aac3a27906b85c1304582fdf695e51de0">CommFail</a>(status);</div>
+<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span>        need_init = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span>        fresh_init = <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span>    }</div>
+<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span> </div>
+<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span>    <span class="comment">/* Compensacao com a temperatura e umidade medidas (AHT): T = (C + 273,15) x 64, RH = % x 512. */</span></div>
+<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span>    <span class="keywordflow">if</span> (compensation_valid)</div>
+<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span>    {</div>
+<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span>        <span class="keywordtype">float</span> t = temperature_c;</div>
+<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span>        <span class="keywordtype">float</span> rh = humidity_pct;</div>
+<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span>        uint16_t t_raw, rh_raw;</div>
+<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span>        <span class="keywordflow">if</span> (t &lt; -40.0f) t = -40.0f;</div>
+<div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span>        <span class="keywordflow">if</span> (t &gt; 85.0f) t = 85.0f;</div>
+<div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span>        <span class="keywordflow">if</span> (rh &lt; 0.0f) rh = 0.0f;</div>
+<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span>        <span class="keywordflow">if</span> (rh &gt; 100.0f) rh = 100.0f;</div>
+<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span>        t_raw = (uint16_t)((t + 273.15f) * 64.0f);</div>
+<div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span>        rh_raw = (uint16_t)(rh * 512.0f);</div>
+<div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span>        data[0] = (uint8_t)(t_raw &amp; 0xFFU);</div>
+<div class="line"><a id="l00212" name="l00212"></a><span class="lineno">  212</span>        data[1] = (uint8_t)(t_raw &gt;&gt; 8);</div>
+<div class="line"><a id="l00213" name="l00213"></a><span class="lineno">  213</span>        data[2] = (uint8_t)(rh_raw &amp; 0xFFU);</div>
+<div class="line"><a id="l00214" name="l00214"></a><span class="lineno">  214</span>        data[3] = (uint8_t)(rh_raw &gt;&gt; 8);</div>
+<div class="line"><a id="l00215" name="l00215"></a><span class="lineno">  215</span>        status = HAL_I2C_Mem_Write(&amp;<a class="code hl_variable" href="app__state_8h.html#af7b2c26e44dadaaa798a5c3d82914ba7">hi2c1</a>, (uint16_t)(<a class="code hl_variable" href="ens160_8h.html#a0e10f8c689c57b0e149ac2f5fd40f788">ens160_addr</a> &lt;&lt; 1), ENS160_REG_TEMP_IN,</div>
+<div class="line"><a id="l00216" name="l00216"></a><span class="lineno">  216</span>                                   I2C_MEMADD_SIZE_8BIT, data, 4U, ENS160_TIMEOUT_MS);</div>
+<div class="line"><a id="l00217" name="l00217"></a><span class="lineno">  217</span>        <span class="keywordflow">if</span> (status != HAL_OK) <span class="keywordflow">return</span> <a class="code hl_function" href="ens160_8c.html#aac3a27906b85c1304582fdf695e51de0">CommFail</a>(status);</div>
+<div class="line"><a id="l00218" name="l00218"></a><span class="lineno">  218</span>    }</div>
+<div class="line"><a id="l00219" name="l00219"></a><span class="lineno">  219</span> </div>
+<div class="line"><a id="l00220" name="l00220"></a><span class="lineno">  220</span>    <span class="comment">/* Aguarda dado novo (NEWDAT). Em regime normal ele ja esta pronto; logo apos iniciar o modo</span></div>
+<div class="line"><a id="l00221" name="l00221"></a><span class="lineno">  221</span><span class="comment">     * STANDARD a primeira medicao leva cerca de 1 s ou mais. A espera cede a CPU.</span></div>
+<div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span><span class="comment">     * O bit STATAS (0x80) NAO e usado como criterio: neste modulo ele permanece desligado mesmo com</span></div>
+<div class="line"><a id="l00223" name="l00223"></a><span class="lineno">  223</span><span class="comment">     * o sensor medindo (DEVICE_STATUS = 0x03). */</span></div>
+<div class="line"><a id="l00224" name="l00224"></a><span class="lineno">  224</span>    max_steps = fresh_init ? ENS160_FIRST_DATA_STEPS : ENS160_DATA_STEPS;</div>
+<div class="line"><a id="l00225" name="l00225"></a><span class="lineno">  225</span>    <span class="keywordflow">for</span> (uint8_t step = 0U; ; step++)</div>
+<div class="line"><a id="l00226" name="l00226"></a><span class="lineno">  226</span>    {</div>
+<div class="line"><a id="l00227" name="l00227"></a><span class="lineno">  227</span>        status = <a class="code hl_function" href="ens160_8c.html#acf00c92e5a02d8b5b9b63e4f85c582f6">RegRead</a>(ENS160_REG_STATUS, &amp;status_reg, 1U);</div>
+<div class="line"><a id="l00228" name="l00228"></a><span class="lineno">  228</span>        <span class="keywordflow">if</span> (status != HAL_OK) <span class="keywordflow">return</span> <a class="code hl_function" href="ens160_8c.html#aac3a27906b85c1304582fdf695e51de0">CommFail</a>(status);</div>
+<div class="line"><a id="l00229" name="l00229"></a><span class="lineno">  229</span>        <a class="code hl_variable" href="ens160_8h.html#a477fd6f1acd12a23e6dea5e6d58661d0">ens160_last_status</a> = status_reg;</div>
+<div class="line"><a id="l00230" name="l00230"></a><span class="lineno">  230</span>        <a class="code hl_variable" href="ens160_8h.html#a8eb85b4b009c73d6937e77e2b351a338">ens160_last_hal</a> = (uint32_t)HAL_OK;</div>
+<div class="line"><a id="l00231" name="l00231"></a><span class="lineno">  231</span> </div>
+<div class="line"><a id="l00232" name="l00232"></a><span class="lineno">  232</span>        <span class="keywordflow">if</span> ((status_reg &amp; ENS160_STATUS_STATER) != 0U)</div>
+<div class="line"><a id="l00233" name="l00233"></a><span class="lineno">  233</span>        {</div>
+<div class="line"><a id="l00234" name="l00234"></a><span class="lineno">  234</span>            <span class="comment">/* Erro interno do sensor: tenta de novo, desta vez com RESET. */</span></div>
+<div class="line"><a id="l00235" name="l00235"></a><span class="lineno">  235</span>            <a class="code hl_variable" href="ens160_8h.html#aea6dad7cfa121b0c56fafe3d582b6f98">ens160_error_count</a>++;</div>
+<div class="line"><a id="l00236" name="l00236"></a><span class="lineno">  236</span>            need_init = <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00237" name="l00237"></a><span class="lineno">  237</span>            <span class="keywordflow">if</span> (init_failures &lt; 255U) init_failures++;</div>
+<div class="line"><a id="l00238" name="l00238"></a><span class="lineno">  238</span>            <span class="keywordflow">return</span> HAL_ERROR;</div>
+<div class="line"><a id="l00239" name="l00239"></a><span class="lineno">  239</span>        }</div>
+<div class="line"><a id="l00240" name="l00240"></a><span class="lineno">  240</span>        <span class="keywordflow">if</span> ((status_reg &amp; ENS160_STATUS_NEWDAT) != 0U) <span class="keywordflow">break</span>;</div>
+<div class="line"><a id="l00241" name="l00241"></a><span class="lineno">  241</span>        <span class="keywordflow">if</span> (step &gt;= max_steps)</div>
+<div class="line"><a id="l00242" name="l00242"></a><span class="lineno">  242</span>        {</div>
+<div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span>            <a class="code hl_function" href="ens160_8c.html#afcbec8ef65f1acbf13dc3fe18b4d8efd">ReadEcho</a>();</div>
+<div class="line"><a id="l00244" name="l00244"></a><span class="lineno">  244</span>            <a class="code hl_variable" href="ens160_8h.html#a19da5bdff0c5a34ae0ccec0469b86971">ens160_timeout_count</a>++;</div>
+<div class="line"><a id="l00245" name="l00245"></a><span class="lineno">  245</span>            <span class="keywordflow">if</span> (fresh_init &amp;&amp; (init_failures &lt; 255U)) init_failures++; <span class="comment">/* proxima inicializacao com RESET */</span></div>
+<div class="line"><a id="l00246" name="l00246"></a><span class="lineno">  246</span>            <span class="keywordflow">if</span> (++timeout_streak &gt;= ENS160_STUCK_CYCLES)</div>
+<div class="line"><a id="l00247" name="l00247"></a><span class="lineno">  247</span>            {</div>
+<div class="line"><a id="l00248" name="l00248"></a><span class="lineno">  248</span>                <span class="comment">/* Medindo ha varios ciclos sem entregar dado: reinicializa com RESET. */</span></div>
+<div class="line"><a id="l00249" name="l00249"></a><span class="lineno">  249</span>                need_init = <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00250" name="l00250"></a><span class="lineno">  250</span>                <span class="keywordflow">if</span> (init_failures &lt; 255U) init_failures++;</div>
+<div class="line"><a id="l00251" name="l00251"></a><span class="lineno">  251</span>                timeout_streak = 0U;</div>
+<div class="line"><a id="l00252" name="l00252"></a><span class="lineno">  252</span>            }</div>
+<div class="line"><a id="l00253" name="l00253"></a><span class="lineno">  253</span>            <span class="keywordflow">return</span> HAL_BUSY;</div>
+<div class="line"><a id="l00254" name="l00254"></a><span class="lineno">  254</span>        }</div>
+<div class="line"><a id="l00255" name="l00255"></a><span class="lineno">  255</span>        <a class="code hl_function" href="app__state_8h.html#a37a3a5a51fd18694f366bc8c8e489c05">App_Delay</a>(ENS160_DATA_STEP_MS);</div>
+<div class="line"><a id="l00256" name="l00256"></a><span class="lineno">  256</span>    }</div>
+<div class="line"><a id="l00257" name="l00257"></a><span class="lineno">  257</span> </div>
+<div class="line"><a id="l00258" name="l00258"></a><span class="lineno">  258</span>    status = <a class="code hl_function" href="ens160_8c.html#acf00c92e5a02d8b5b9b63e4f85c582f6">RegRead</a>(ENS160_REG_DATA_AQI, data, 5U);</div>
+<div class="line"><a id="l00259" name="l00259"></a><span class="lineno">  259</span>    <span class="keywordflow">if</span> (status != HAL_OK) <span class="keywordflow">return</span> <a class="code hl_function" href="ens160_8c.html#aac3a27906b85c1304582fdf695e51de0">CommFail</a>(status);</div>
+<div class="line"><a id="l00260" name="l00260"></a><span class="lineno">  260</span> </div>
+<div class="line"><a id="l00261" name="l00261"></a><span class="lineno">  261</span>    out-&gt;<a class="code hl_variable" href="struct_e_n_s160___sample.html#a80970dc019d4331aaba72a51474356b5">aqi</a> = (uint8_t)(data[0] &amp; 0x07U);</div>
+<div class="line"><a id="l00262" name="l00262"></a><span class="lineno">  262</span>    out-&gt;<a class="code hl_variable" href="struct_e_n_s160___sample.html#a4103af48c2d800d61a183ddc4fc4c78b">tvoc_ppb</a> = (uint16_t)((uint16_t)data[1] | ((uint16_t)data[2] &lt;&lt; 8));</div>
+<div class="line"><a id="l00263" name="l00263"></a><span class="lineno">  263</span>    out-&gt;<a class="code hl_variable" href="struct_e_n_s160___sample.html#acaaabc0caca1fb64edd1eaf178c67778">eco2_ppm</a> = (uint16_t)((uint16_t)data[3] | ((uint16_t)data[4] &lt;&lt; 8));</div>
+<div class="line"><a id="l00264" name="l00264"></a><span class="lineno">  264</span>    out-&gt;<a class="code hl_variable" href="struct_e_n_s160___sample.html#aa1c5ed3583581deba1840ac65db797ad">validity</a> = (uint8_t)((status_reg &gt;&gt; 2) &amp; 0x03U);</div>
+<div class="line"><a id="l00265" name="l00265"></a><span class="lineno">  265</span>    <a class="code hl_function" href="ens160_8c.html#afcbec8ef65f1acbf13dc3fe18b4d8efd">ReadEcho</a>();</div>
+<div class="line"><a id="l00266" name="l00266"></a><span class="lineno">  266</span> </div>
+<div class="line"><a id="l00267" name="l00267"></a><span class="lineno">  267</span>    <span class="keywordflow">if</span> ((out-&gt;<a class="code hl_variable" href="struct_e_n_s160___sample.html#a80970dc019d4331aaba72a51474356b5">aqi</a> == 0U) &amp;&amp; (out-&gt;<a class="code hl_variable" href="struct_e_n_s160___sample.html#a4103af48c2d800d61a183ddc4fc4c78b">tvoc_ppb</a> == 0U) &amp;&amp; (out-&gt;<a class="code hl_variable" href="struct_e_n_s160___sample.html#acaaabc0caca1fb64edd1eaf178c67778">eco2_ppm</a> == 0U))</div>
+<div class="line"><a id="l00268" name="l00268"></a><span class="lineno">  268</span>    {</div>
+<div class="line"><a id="l00269" name="l00269"></a><span class="lineno">  269</span>        <span class="comment">/* Nao e medicao: um ENS160 em operacao informa eCO2 &gt;= 400 ppm e AQI de 1 a 5, mesmo em aquecimento.</span></div>
+<div class="line"><a id="l00270" name="l00270"></a><span class="lineno">  270</span><span class="comment">         * Trata como &quot;sem dado&quot; (nao e gravado) e conta para uma eventual reinicializacao. */</span></div>
+<div class="line"><a id="l00271" name="l00271"></a><span class="lineno">  271</span>        <a class="code hl_variable" href="ens160_8h.html#a4f4594f2691845a78e267955d7d075c7">ens160_zero_count</a>++;</div>
+<div class="line"><a id="l00272" name="l00272"></a><span class="lineno">  272</span>        <span class="keywordflow">if</span> (fresh_init &amp;&amp; (init_failures &lt; 255U)) init_failures++;</div>
+<div class="line"><a id="l00273" name="l00273"></a><span class="lineno">  273</span>        <span class="keywordflow">if</span> (++timeout_streak &gt;= ENS160_STUCK_CYCLES)</div>
+<div class="line"><a id="l00274" name="l00274"></a><span class="lineno">  274</span>        {</div>
+<div class="line"><a id="l00275" name="l00275"></a><span class="lineno">  275</span>            need_init = <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00276" name="l00276"></a><span class="lineno">  276</span>            <span class="keywordflow">if</span> (init_failures &lt; 255U) init_failures++;</div>
+<div class="line"><a id="l00277" name="l00277"></a><span class="lineno">  277</span>            timeout_streak = 0U;</div>
+<div class="line"><a id="l00278" name="l00278"></a><span class="lineno">  278</span>        }</div>
+<div class="line"><a id="l00279" name="l00279"></a><span class="lineno">  279</span>        <span class="keywordflow">return</span> HAL_BUSY;</div>
+<div class="line"><a id="l00280" name="l00280"></a><span class="lineno">  280</span>    }</div>
+<div class="line"><a id="l00281" name="l00281"></a><span class="lineno">  281</span> </div>
+<div class="line"><a id="l00282" name="l00282"></a><span class="lineno">  282</span>    init_failures = 0U;</div>
+<div class="line"><a id="l00283" name="l00283"></a><span class="lineno">  283</span>    timeout_streak = 0U;</div>
+<div class="line"><a id="l00284" name="l00284"></a><span class="lineno">  284</span>    ens160_last_aqi = out-&gt;<a class="code hl_variable" href="struct_e_n_s160___sample.html#a80970dc019d4331aaba72a51474356b5">aqi</a>;</div>
+<div class="line"><a id="l00285" name="l00285"></a><span class="lineno">  285</span>    ens160_last_tvoc = out-&gt;<a class="code hl_variable" href="struct_e_n_s160___sample.html#a4103af48c2d800d61a183ddc4fc4c78b">tvoc_ppb</a>;</div>
+<div class="line"><a id="l00286" name="l00286"></a><span class="lineno">  286</span>    <a class="code hl_variable" href="ens160_8h.html#ab0900827dd9030d4f44c452f4fc5970c">ens160_last_eco2</a> = out-&gt;<a class="code hl_variable" href="struct_e_n_s160___sample.html#acaaabc0caca1fb64edd1eaf178c67778">eco2_ppm</a>;</div>
+<div class="line"><a id="l00287" name="l00287"></a><span class="lineno">  287</span>    <a class="code hl_variable" href="ens160_8h.html#a64dd6eb26db638b6b3de2a1c30a396e7">ens160_last_validity</a> = out-&gt;<a class="code hl_variable" href="struct_e_n_s160___sample.html#aa1c5ed3583581deba1840ac65db797ad">validity</a>;</div>
+<div class="line"><a id="l00288" name="l00288"></a><span class="lineno">  288</span>    <span class="keywordflow">return</span> HAL_OK;</div>
+<div class="line"><a id="l00289" name="l00289"></a><span class="lineno">  289</span>}</div>
+</div>
+<div class="ttc" id="aapp__state_8h_html_a37a3a5a51fd18694f366bc8c8e489c05"><div class="ttname"><a href="app__state_8h.html#a37a3a5a51fd18694f366bc8c8e489c05">App_Delay</a></div><div class="ttdeci">void App_Delay(uint32_t ms)</div><div class="ttdoc">Espera ms milissegundos cedendo a CPU quando o RTOS está em execução.</div><div class="ttdef"><b>Definição</b> <a href="app__state_8c_source.html#l00055">app_state.c:55</a></div></div>
+<div class="ttc" id="aapp__state_8h_html_af7b2c26e44dadaaa798a5c3d82914ba7"><div class="ttname"><a href="app__state_8h.html#af7b2c26e44dadaaa798a5c3d82914ba7">hi2c1</a></div><div class="ttdeci">I2C_HandleTypeDef hi2c1</div><div class="ttdoc">I²C1: barramento dos sensores.</div></div>
+<div class="ttc" id="aens160_8c_html_a07766db983e05aa8a9dde46c158ea5b7"><div class="ttname"><a href="ens160_8c.html#a07766db983e05aa8a9dde46c158ea5b7">EnterStandardMode</a></div><div class="ttdeci">static HAL_StatusTypeDef EnterStandardMode(bool with_reset)</div><div class="ttdoc">Sequencia de inicializacao usada pelos drivers de referencia: [RESET] -&gt; IDLE -&gt; limpa os registrador...</div><div class="ttdef"><b>Definição</b> <a href="#l00099">ens160.c:99</a></div></div>
+<div class="ttc" id="aens160_8c_html_aac3a27906b85c1304582fdf695e51de0"><div class="ttname"><a href="ens160_8c.html#aac3a27906b85c1304582fdf695e51de0">CommFail</a></div><div class="ttdeci">static HAL_StatusTypeDef CommFail(HAL_StatusTypeDef status)</div><div class="ttdoc">Falha de comunicacao: esquece o endereco para procurar de novo no proximo ciclo.</div><div class="ttdef"><b>Definição</b> <a href="#l00089">ens160.c:89</a></div></div>
+<div class="ttc" id="aens160_8c_html_acf00c92e5a02d8b5b9b63e4f85c582f6"><div class="ttname"><a href="ens160_8c.html#acf00c92e5a02d8b5b9b63e4f85c582f6">RegRead</a></div><div class="ttdeci">static HAL_StatusTypeDef RegRead(uint8_t reg, uint8_t *data, uint16_t length)</div><div class="ttdoc">Lê registradores do ENS160.</div><div class="ttdef"><b>Definição</b> <a href="#l00070">ens160.c:70</a></div></div>
+<div class="ttc" id="aens160_8c_html_af5e7c4a1a72199b82f8a6f4991c64a59"><div class="ttname"><a href="ens160_8c.html#af5e7c4a1a72199b82f8a6f4991c64a59">RegWrite</a></div><div class="ttdeci">static HAL_StatusTypeDef RegWrite(uint8_t reg, uint8_t value)</div><div class="ttdoc">Escreve um registrador do ENS160.</div><div class="ttdef"><b>Definição</b> <a href="#l00082">ens160.c:82</a></div></div>
+<div class="ttc" id="aens160_8c_html_afcbec8ef65f1acbf13dc3fe18b4d8efd"><div class="ttname"><a href="ens160_8c.html#afcbec8ef65f1acbf13dc3fe18b4d8efd">ReadEcho</a></div><div class="ttdeci">static void ReadEcho(void)</div><div class="ttdoc">Le a temperatura e a umidade que o sensor informa estar usando (so diagnostico).</div><div class="ttdef"><b>Definição</b> <a href="#l00142">ens160.c:142</a></div></div>
+<div class="ttc" id="aens160_8h_html"><div class="ttname"><a href="ens160_8h.html">ens160.h</a></div><div class="ttdoc">Driver do sensor de qualidade do ar ENS160 (I²C1).</div></div>
+<div class="ttc" id="aens160_8h_html_a0e10f8c689c57b0e149ac2f5fd40f788"><div class="ttname"><a href="ens160_8h.html#a0e10f8c689c57b0e149ac2f5fd40f788">ens160_addr</a></div><div class="ttdeci">volatile uint8_t ens160_addr</div><div class="ttdoc">Endereço de 7 bits detectado (0 = não detectado).</div><div class="ttdef"><b>Definição</b> <a href="#l00043">ens160.c:43</a></div></div>
+<div class="ttc" id="aens160_8h_html_a11beae97fbce77522322282f7d7b91b2"><div class="ttname"><a href="ens160_8h.html#a11beae97fbce77522322282f7d7b91b2">ens160_fw_build</a></div><div class="ttdeci">volatile uint8_t ens160_fw_build</div><div class="ttdoc">Versão do firmware interno do sensor.</div><div class="ttdef"><b>Definição</b> <a href="ens160_8h_source.html#l00041">ens160.h:41</a></div></div>
+<div class="ttc" id="aens160_8h_html_a1231b8a0cae2ad03f5ee45b1ec6c7e95"><div class="ttname"><a href="ens160_8h.html#a1231b8a0cae2ad03f5ee45b1ec6c7e95">ens160_reset_count</a></div><div class="ttdeci">volatile uint32_t ens160_reset_count</div><div class="ttdoc">Inicializações que usaram RESET.</div><div class="ttdef"><b>Definição</b> <a href="#l00052">ens160.c:52</a></div></div>
+<div class="ttc" id="aens160_8h_html_a19da5bdff0c5a34ae0ccec0469b86971"><div class="ttname"><a href="ens160_8h.html#a19da5bdff0c5a34ae0ccec0469b86971">ens160_timeout_count</a></div><div class="ttdeci">volatile uint32_t ens160_timeout_count</div><div class="ttdoc">Ciclos sem dado novo.</div><div class="ttdef"><b>Definição</b> <a href="#l00049">ens160.c:49</a></div></div>
+<div class="ttc" id="aens160_8h_html_a21fc8c2978f555f147c87130b9f44afa"><div class="ttname"><a href="ens160_8h.html#a21fc8c2978f555f147c87130b9f44afa">ens160_opmode</a></div><div class="ttdeci">volatile uint8_t ens160_opmode</div><div class="ttdoc">Último OPMODE lido (0 sono, 1 ocioso, 2 padrão).</div><div class="ttdef"><b>Definição</b> <a href="#l00046">ens160.c:46</a></div></div>
+<div class="ttc" id="aens160_8h_html_a2abfad88a1b14c21bf2b0d887e3d318b"><div class="ttname"><a href="ens160_8h.html#a2abfad88a1b14c21bf2b0d887e3d318b">ens160_comm_fail_count</a></div><div class="ttdeci">volatile uint32_t ens160_comm_fail_count</div><div class="ttdoc">Falhas de comunicação I²C.</div><div class="ttdef"><b>Definição</b> <a href="#l00051">ens160.c:51</a></div></div>
+<div class="ttc" id="aens160_8h_html_a3af5500460f13d5b3318b61c9a486a3b"><div class="ttname"><a href="ens160_8h.html#a3af5500460f13d5b3318b61c9a486a3b">ens160_part_id</a></div><div class="ttdeci">volatile uint16_t ens160_part_id</div><div class="ttdoc">Último PART_ID lido (esperado 0x0160).</div><div class="ttdef"><b>Definição</b> <a href="#l00044">ens160.c:44</a></div></div>
+<div class="ttc" id="aens160_8h_html_a463214b42a9d3d333c8f1f449bccbdef"><div class="ttname"><a href="ens160_8h.html#a463214b42a9d3d333c8f1f449bccbdef">ENS160_Read</a></div><div class="ttdeci">HAL_StatusTypeDef ENS160_Read(bool compensation_valid, float temperature_c, float humidity_pct, ENS160_Sample *out)</div><div class="ttdoc">Lê uma amostra de qualidade do ar.</div><div class="ttdef"><b>Definição</b> <a href="#l00152">ens160.c:152</a></div></div>
+<div class="ttc" id="aens160_8h_html_a477fd6f1acd12a23e6dea5e6d58661d0"><div class="ttname"><a href="ens160_8h.html#a477fd6f1acd12a23e6dea5e6d58661d0">ens160_last_status</a></div><div class="ttdeci">volatile uint8_t ens160_last_status</div><div class="ttdoc">Último DEVICE_STATUS lido.</div><div class="ttdef"><b>Definição</b> <a href="#l00045">ens160.c:45</a></div></div>
+<div class="ttc" id="aens160_8h_html_a4f4594f2691845a78e267955d7d075c7"><div class="ttname"><a href="ens160_8h.html#a4f4594f2691845a78e267955d7d075c7">ens160_zero_count</a></div><div class="ttdeci">volatile uint32_t ens160_zero_count</div><div class="ttdoc">Leituras com AQI, TVOC e eCO2 todos nulos (sem medição real).</div><div class="ttdef"><b>Definição</b> <a href="#l00053">ens160.c:53</a></div></div>
+<div class="ttc" id="aens160_8h_html_a64dd6eb26db638b6b3de2a1c30a396e7"><div class="ttname"><a href="ens160_8h.html#a64dd6eb26db638b6b3de2a1c30a396e7">ens160_last_validity</a></div><div class="ttdeci">volatile uint8_t ens160_last_validity</div><div class="ttdoc">Último AQI e última validade válidos.</div><div class="ttdef"><b>Definição</b> <a href="ens160_8h_source.html#l00044">ens160.h:44</a></div></div>
+<div class="ttc" id="aens160_8h_html_a8eb85b4b009c73d6937e77e2b351a338"><div class="ttname"><a href="ens160_8h.html#a8eb85b4b009c73d6937e77e2b351a338">ens160_last_hal</a></div><div class="ttdeci">volatile uint32_t ens160_last_hal</div><div class="ttdoc">Último status da HAL (diagnóstico).</div><div class="ttdef"><b>Definição</b> <a href="#l00048">ens160.c:48</a></div></div>
+<div class="ttc" id="aens160_8h_html_ab0900827dd9030d4f44c452f4fc5970c"><div class="ttname"><a href="ens160_8h.html#ab0900827dd9030d4f44c452f4fc5970c">ens160_last_eco2</a></div><div class="ttdeci">volatile uint16_t ens160_last_eco2</div><div class="ttdoc">Últimos TVOC (ppb) e eCO2 (ppm) válidos.</div><div class="ttdef"><b>Definição</b> <a href="ens160_8h_source.html#l00043">ens160.h:43</a></div></div>
+<div class="ttc" id="aens160_8h_html_acc3b80e400912c59b82f3d330a2de62f"><div class="ttname"><a href="ens160_8h.html#acc3b80e400912c59b82f3d330a2de62f">ens160_echo_rh</a></div><div class="ttdeci">volatile uint16_t ens160_echo_rh</div><div class="ttdoc">Temperatura e umidade que o sensor informa estar usando (DATA_T e DATA_RH).</div><div class="ttdef"><b>Definição</b> <a href="ens160_8h_source.html#l00042">ens160.h:42</a></div></div>
+<div class="ttc" id="aens160_8h_html_ad14ad72a9857710821795e9582170df0"><div class="ttname"><a href="ens160_8h.html#ad14ad72a9857710821795e9582170df0">ens160_init_count</a></div><div class="ttdeci">volatile uint32_t ens160_init_count</div><div class="ttdoc">Sequências de inicialização executadas.</div><div class="ttdef"><b>Definição</b> <a href="#l00047">ens160.c:47</a></div></div>
+<div class="ttc" id="aens160_8h_html_aea6dad7cfa121b0c56fafe3d582b6f98"><div class="ttname"><a href="ens160_8h.html#aea6dad7cfa121b0c56fafe3d582b6f98">ens160_error_count</a></div><div class="ttdeci">volatile uint32_t ens160_error_count</div><div class="ttdoc">Erros internos do sensor (bit STATER).</div><div class="ttdef"><b>Definição</b> <a href="#l00050">ens160.c:50</a></div></div>
+<div class="ttc" id="astruct_e_n_s160___sample_html"><div class="ttname"><a href="struct_e_n_s160___sample.html">ENS160_Sample</a></div><div class="ttdoc">Amostra do ENS160.</div><div class="ttdef"><b>Definição</b> <a href="ens160_8h_source.html#l00022">ens160.h:23</a></div></div>
+<div class="ttc" id="astruct_e_n_s160___sample_html_a4103af48c2d800d61a183ddc4fc4c78b"><div class="ttname"><a href="struct_e_n_s160___sample.html#a4103af48c2d800d61a183ddc4fc4c78b">ENS160_Sample::tvoc_ppb</a></div><div class="ttdeci">uint16_t tvoc_ppb</div><div class="ttdoc">Compostos orgânicos voláteis totais, em ppb.</div><div class="ttdef"><b>Definição</b> <a href="ens160_8h_source.html#l00025">ens160.h:25</a></div></div>
+<div class="ttc" id="astruct_e_n_s160___sample_html_a80970dc019d4331aaba72a51474356b5"><div class="ttname"><a href="struct_e_n_s160___sample.html#a80970dc019d4331aaba72a51474356b5">ENS160_Sample::aqi</a></div><div class="ttdeci">uint8_t aqi</div><div class="ttdoc">Índice de qualidade do ar AQI-UBA, de 1 (excelente) a 5 (ruim).</div><div class="ttdef"><b>Definição</b> <a href="ens160_8h_source.html#l00024">ens160.h:24</a></div></div>
+<div class="ttc" id="astruct_e_n_s160___sample_html_aa1c5ed3583581deba1840ac65db797ad"><div class="ttname"><a href="struct_e_n_s160___sample.html#aa1c5ed3583581deba1840ac65db797ad">ENS160_Sample::validity</a></div><div class="ttdeci">uint8_t validity</div><div class="ttdoc">0 normal, 1 aquecimento, 2 partida inicial, 3 inválido.</div><div class="ttdef"><b>Definição</b> <a href="ens160_8h_source.html#l00027">ens160.h:27</a></div></div>
+<div class="ttc" id="astruct_e_n_s160___sample_html_acaaabc0caca1fb64edd1eaf178c67778"><div class="ttname"><a href="struct_e_n_s160___sample.html#acaaabc0caca1fb64edd1eaf178c67778">ENS160_Sample::eco2_ppm</a></div><div class="ttdeci">uint16_t eco2_ppm</div><div class="ttdoc">CO₂ equivalente, em ppm.</div><div class="ttdef"><b>Definição</b> <a href="ens160_8h_source.html#l00026">ens160.h:26</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><b>Core</b></li><li class="navelem"><b>Src</b></li><li class="navelem"><a href="ens160_8c.html">ens160.c</a></li>
+    <li class="footer">Gerado por <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.18.0 </li>
+  </ul>
+</div>
+</body>
+</html>

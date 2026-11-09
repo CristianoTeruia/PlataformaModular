@@ -1,0 +1,1430 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pt-BR">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.18.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>PlataformaModular: Referência do Arquivo Core/Src/eeprom24lc512.c</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="codefolding.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">PlataformaModular
+   </div>
+   <div id="projectbrief">Plataforma modular embarcada para aquisição e registro de dados de sensores (STM32F411 + FreeRTOS)</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Gerado por Doxygen 1.18.0 -->
+<script type="text/javascript">
+let searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', codefold.init);
+</script>
+<script type="application/json" id="doxygen-config">
+{
+  "relPath": "",
+  "generateTreeView": true,
+  "searchEngine": true,
+  "serverBasedSearch": false,
+  "disableIndex": false,
+  "dynamicMenus": true,
+  "fullSidebar": false
+}
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<div id="main-nav-mobile">
+<div class="sm sm-dox"><input id="main-menu-state" type="checkbox"/>
+<label class="main-menu-btn" for="main-menu-state">
+<span class="main-menu-btn-icon"></span> Toggle main menu visibility</label>
+<span id="searchBoxPos1"></span>
+</div>
+</div><!-- main-nav-mobile -->
+<div id="main-nav">
+  <ul class="sm sm-dox" id="main-menu">
+    <li id="searchBoxPos2">
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect" class="search-icon"><span class="search-icon-dropdown"></span></span>
+          <input type="text" id="MSearchField" value="" placeholder="Busca" accesskey="S"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+          </span>
+        </div>
+    </li>
+  </ul>
+</div><!-- main-nav -->
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded',() => { initNavTree('eeprom24lc512_8c.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Carregando...</div>
+<div class="SRStatus" id="Searching">Procurando...</div>
+<div class="SRStatus" id="NoMatches">Nenhuma entrada encontrado</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Referência do Arquivo eeprom24lc512.c</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Implementação do armazenamento nas EEPROMs 24LC512 e da exportação CSV (ver <a class="el" href="eeprom24lc512_8h.html" title="Armazenamento de registros nas duas EEPROMs 24LC512 (I²C2) e exportação para a USB.">eeprom24lc512.h</a>).  
+<a href="#details">Mais...</a></p>
+<div class="textblock"><code>#include &quot;<a class="el" href="eeprom24lc512_8h_source.html">eeprom24lc512.h</a>&quot;</code><br />
+<code>#include &lt;string.h&gt;</code><br />
+<code>#include &lt;stddef.h&gt;</code><br />
+<code>#include &lt;stdio.h&gt;</code><br />
+<code>#include &quot;usbd_cdc_if.h&quot;</code><br />
+<code>#include &quot;<a class="el" href="i2c2__bus__lock_8h_source.html">i2c2_bus_lock.h</a>&quot;</code><br />
+<code>#include &quot;cmsis_os2.h&quot;</code><br />
+<code>#include &quot;<a class="el" href="app__watchdog_8h_source.html">app_watchdog.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="sensor__registry_8h_source.html">sensor_registry.h</a>&quot;</code><br />
+</div>
+<p><a href="eeprom24lc512_8c_source.html">Ir para o código-fonte desse arquivo.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-define-members" class="groupheader"><a id="define-members" name="define-members"></a>
+Definições e Macros</h2></td></tr>
+<tr class="memitem:aef4ad766f95eb2ff591ec940c7ce8cc5" id="r_aef4ad766f95eb2ff591ec940c7ce8cc5"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#aef4ad766f95eb2ff591ec940c7ce8cc5">EXPORT_CACHE_SIZE</a>&#160;&#160;&#160;128U</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
+Funções</h2></td></tr>
+<tr class="memitem:adf78c56ba22cebc51139098d772e49f3" id="r_adf78c56ba22cebc51139098d772e49f3"><td class="memItemLeft">static void&#160;</td><td class="memItemRight"><a class="el" href="#adf78c56ba22cebc51139098d772e49f3">EEPROM_YieldDelay</a> (uint32_t ms)</td></tr>
+<tr class="memdesc:adf78c56ba22cebc51139098d772e49f3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Espera <code class="param">ms</code> milissegundos cedendo a CPU quando o RTOS está em execução.  <br /></td></tr>
+<tr class="memitem:a463c2abe90877b2471a08cba75274439" id="r_a463c2abe90877b2471a08cba75274439"><td class="memItemLeft">HAL_StatusTypeDef&#160;</td><td class="memItemRight"><a class="el" href="#a463c2abe90877b2471a08cba75274439">EEPROM24LC512_WriteBuffer</a> (uint16_t address, uint8_t *data, uint16_t size, uint16_t i2c_address)</td></tr>
+<tr class="memdesc:a463c2abe90877b2471a08cba75274439"><td class="mdescLeft">&#160;</td><td class="mdescRight">Grava um bloco de bytes em um dos chips.  <br /></td></tr>
+<tr class="memitem:a844398a3e9a655590f69aaf46a47233e" id="r_a844398a3e9a655590f69aaf46a47233e"><td class="memItemLeft">HAL_StatusTypeDef&#160;</td><td class="memItemRight"><a class="el" href="#a844398a3e9a655590f69aaf46a47233e">EEPROM24LC512_ReadBuffer</a> (uint16_t address, uint8_t *data, uint16_t size, uint16_t i2c_address)</td></tr>
+<tr class="memdesc:a844398a3e9a655590f69aaf46a47233e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lê um bloco de bytes de um dos chips.  <br /></td></tr>
+<tr class="memitem:a8bc81fbaa44af07005751569fd0a390d" id="r_a8bc81fbaa44af07005751569fd0a390d"><td class="memItemLeft">HAL_StatusTypeDef&#160;</td><td class="memItemRight"><a class="el" href="#a8bc81fbaa44af07005751569fd0a390d">EEPROM24LC512_WriteByte</a> (uint16_t address, uint8_t data)</td></tr>
+<tr class="memdesc:a8bc81fbaa44af07005751569fd0a390d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Grava um byte na EEPROM 1.  <br /></td></tr>
+<tr class="memitem:a0ffd22360967cfa9e25f48f0ca8a8c17" id="r_a0ffd22360967cfa9e25f48f0ca8a8c17"><td class="memItemLeft">HAL_StatusTypeDef&#160;</td><td class="memItemRight"><a class="el" href="#a0ffd22360967cfa9e25f48f0ca8a8c17">EEPROM24LC512_ReadByte</a> (uint16_t address, uint8_t *data)</td></tr>
+<tr class="memdesc:a0ffd22360967cfa9e25f48f0ca8a8c17"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lê um byte da EEPROM 1.  <br /></td></tr>
+<tr class="memitem:a3f556bea17e6286c006a548ca51470c0" id="r_a3f556bea17e6286c006a548ca51470c0"><td class="memItemLeft">HAL_StatusTypeDef&#160;</td><td class="memItemRight"><a class="el" href="#a3f556bea17e6286c006a548ca51470c0">EEPROM24LC512_WriteRecord</a> (uint16_t address, uint8_t *data, uint8_t size)</td></tr>
+<tr class="memdesc:a3f556bea17e6286c006a548ca51470c0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Grava um registro de tamanho qualquer na EEPROM 1 (função simples, sem metadados).  <br /></td></tr>
+<tr class="memitem:a85dba059fc69fb1601c533fb961d2f2e" id="r_a85dba059fc69fb1601c533fb961d2f2e"><td class="memItemLeft">HAL_StatusTypeDef&#160;</td><td class="memItemRight"><a class="el" href="#a85dba059fc69fb1601c533fb961d2f2e">EEPROM24LC512_ReadRecord</a> (uint16_t address, <a class="el" href="struct_sensor_record_e_e_p_r_o_m.html">SensorRecordEEPROM</a> *record)</td></tr>
+<tr class="memdesc:a85dba059fc69fb1601c533fb961d2f2e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lê da EEPROM 1 um registro do formato antigo de tamanho fixo (legado).  <br /></td></tr>
+<tr class="memitem:a9ce45678ac2a598caa5b0416a2f23033" id="r_a9ce45678ac2a598caa5b0416a2f23033"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a9ce45678ac2a598caa5b0416a2f23033">EEPROM_CreateSensorRecord</a> (<a class="el" href="struct_sensor_record_e_e_p_r_o_m.html">SensorRecordEEPROM</a> *record)</td></tr>
+<tr class="memdesc:a9ce45678ac2a598caa5b0416a2f23033"><td class="mdescLeft">&#160;</td><td class="mdescRight">Preenche um registro do formato antigo com as últimas leituras escaladas (legado).  <br /></td></tr>
+<tr class="memitem:a3bdee773136462d85fd2547023d62c42" id="r_a3bdee773136462d85fd2547023d62c42"><td class="memItemLeft">HAL_StatusTypeDef&#160;</td><td class="memItemRight"><a class="el" href="#a3bdee773136462d85fd2547023d62c42">EEPROM_SaveSensorRecord</a> (void)</td></tr>
+<tr class="memdesc:a3bdee773136462d85fd2547023d62c42"><td class="mdescLeft">&#160;</td><td class="mdescRight">Grava na EEPROM um registro com as últimas leituras dos sensores disponíveis.  <br /></td></tr>
+<tr class="memitem:ab83e49947ce34753469ff505b77ef87d" id="r_ab83e49947ce34753469ff505b77ef87d"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#ab83e49947ce34753469ff505b77ef87d">EEPROM24C512_ReadFullMemory</a> (void)</td></tr>
+<tr class="memdesc:ab83e49947ce34753469ff505b77ef87d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lê toda a EEPROM 1 em blocos de 64 B, para depuração.  <br /></td></tr>
+<tr class="memitem:a5faed85c58392ae27658715071d9c0c8" id="r_a5faed85c58392ae27658715071d9c0c8"><td class="memItemLeft">HAL_StatusTypeDef&#160;</td><td class="memItemRight"><a class="el" href="#a5faed85c58392ae27658715071d9c0c8">EEPROM_SaveMetadata</a> (void)</td></tr>
+<tr class="memdesc:a5faed85c58392ae27658715071d9c0c8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Grava os metadados (<span class="tt"><a class="el" href="app__state_8h.html#a9ce3c7e0c6684a9affd00d99bd579abd" title="Cópia em RAM dos metadados gravados na EEPROM 1.">eeprom_metadata</a></span>) no endereço 0x0000 da EEPROM 1.  <br /></td></tr>
+<tr class="memitem:a88c1d3e7f600cf8094f7858fdc9f6546" id="r_a88c1d3e7f600cf8094f7858fdc9f6546"><td class="memItemLeft">HAL_StatusTypeDef&#160;</td><td class="memItemRight"><a class="el" href="#a88c1d3e7f600cf8094f7858fdc9f6546">EEPROM_LoadMetadata</a> (void)</td></tr>
+<tr class="memdesc:a88c1d3e7f600cf8094f7858fdc9f6546"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lê e valida os metadados gravados na EEPROM 1.  <br /></td></tr>
+<tr class="memitem:a521d6ae3daac4f726fbbacb1c09afd9d" id="r_a521d6ae3daac4f726fbbacb1c09afd9d"><td class="memItemLeft">uint16_t&#160;</td><td class="memItemRight"><a class="el" href="#a521d6ae3daac4f726fbbacb1c09afd9d">EEPROM_CalculateCRC16</a> (const uint8_t *data, uint16_t length)</td></tr>
+<tr class="memdesc:a521d6ae3daac4f726fbbacb1c09afd9d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calcula o CRC-16/CCITT-FALSE de um bloco de bytes.  <br /></td></tr>
+<tr class="memitem:a7d71581bbe3b5317e1ddfa34f1ca9486" id="r_a7d71581bbe3b5317e1ddfa34f1ca9486"><td class="memItemLeft">HAL_StatusTypeDef&#160;</td><td class="memItemRight"><a class="el" href="#a7d71581bbe3b5317e1ddfa34f1ca9486">EEPROM_Test_CRC16</a> (void)</td></tr>
+<tr class="memdesc:a7d71581bbe3b5317e1ddfa34f1ca9486"><td class="mdescLeft">&#160;</td><td class="mdescRight">Autoteste do CRC com o vetor padrão <span class="tt">"123456789"</span> (esperado 0x29B1).  <br /></td></tr>
+<tr class="memitem:a7e550f6e0fbbca8e2822268d02574ee1" id="r_a7e550f6e0fbbca8e2822268d02574ee1"><td class="memItemLeft">HAL_StatusTypeDef&#160;</td><td class="memItemRight"><a class="el" href="#a7e550f6e0fbbca8e2822268d02574ee1">EEPROM_BuildSensorRecord</a> (uint8_t *buffer, uint8_t *record_size, uint8_t sensor_mask)</td></tr>
+<tr class="memdesc:a7e550f6e0fbbca8e2822268d02574ee1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Monta um registro: máscara, dados dos sensores, data e hora do RTC e CRC.  <br /></td></tr>
+<tr class="memitem:a8e0a1900749e1cb61c5ebf06a1197d95" id="r_a8e0a1900749e1cb61c5ebf06a1197d95"><td class="memItemLeft">HAL_StatusTypeDef&#160;</td><td class="memItemRight"><a class="el" href="#a8e0a1900749e1cb61c5ebf06a1197d95">EEPROM24LC512_EraseAll</a> (void)</td></tr>
+<tr class="memdesc:a8e0a1900749e1cb61c5ebf06a1197d95"><td class="mdescLeft">&#160;</td><td class="mdescRight">Apaga as duas EEPROMs e reinicia os metadados.  <br /></td></tr>
+<tr class="memitem:ad9d43aabb4a7c0b0166223abe574c814" id="r_ad9d43aabb4a7c0b0166223abe574c814"><td class="memItemLeft">HAL_StatusTypeDef&#160;</td><td class="memItemRight"><a class="el" href="#ad9d43aabb4a7c0b0166223abe574c814">EEPROM2_Test</a> (void)</td></tr>
+<tr class="memdesc:ad9d43aabb4a7c0b0166223abe574c814"><td class="mdescLeft">&#160;</td><td class="mdescRight">Grava 32 bytes a partir de 0x0070 da EEPROM 2, atravessando o limite de página, e confere a leitura.  <br /></td></tr>
+<tr class="memitem:a390477998631dcf2039b8f8452f9431f" id="r_a390477998631dcf2039b8f8452f9431f"><td class="memItemLeft">HAL_StatusTypeDef&#160;</td><td class="memItemRight"><a class="el" href="#a390477998631dcf2039b8f8452f9431f">EEPROM_Test_Independence</a> (void)</td></tr>
+<tr class="memdesc:a390477998631dcf2039b8f8452f9431f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Grava valores diferentes no endereço 0x0020 de cada chip e confere que são independentes.  <br /></td></tr>
+<tr class="memitem:ad49cf3b13c4bd80318f6068cb7e5084e" id="r_ad49cf3b13c4bd80318f6068cb7e5084e"><td class="memItemLeft">HAL_StatusTypeDef&#160;</td><td class="memItemRight"><a class="el" href="#ad49cf3b13c4bd80318f6068cb7e5084e">EEPROM_Test_AddressBoundaries</a> (void)</td></tr>
+<tr class="memdesc:ad49cf3b13c4bd80318f6068cb7e5084e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Grava e relê um byte em 0x0000, 0x0100, 0x1000, 0x8000 e 0xFFFF da EEPROM 2.  <br /></td></tr>
+<tr class="memitem:abceec24c6eaa0378357f605b260ff97a" id="r_abceec24c6eaa0378357f605b260ff97a"><td class="memItemLeft">HAL_StatusTypeDef&#160;</td><td class="memItemRight"><a class="el" href="#abceec24c6eaa0378357f605b260ff97a">EEPROM_Test_PageBoundary</a> (void)</td></tr>
+<tr class="memdesc:abceec24c6eaa0378357f605b260ff97a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Grava 32 bytes a partir de 0x0070 da EEPROM 2 (cruza a página de 128 B) e confere a leitura.  <br /></td></tr>
+<tr class="memitem:a5aba544c59517a9257be40fd6b60a01c" id="r_a5aba544c59517a9257be40fd6b60a01c"><td class="memItemLeft">HAL_StatusTypeDef&#160;</td><td class="memItemRight"><a class="el" href="#a5aba544c59517a9257be40fd6b60a01c">EEPROM_Test_SerializedRecordRoundTrip</a> (void)</td></tr>
+<tr class="memdesc:a5aba544c59517a9257be40fd6b60a01c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Monta um registro com os sensores disponíveis, grava em 0x0200 da EEPROM 2, relê e confere byte a byte e pelo CRC.  <br /></td></tr>
+<tr class="memitem:a51813c06a8ebbbd1fb1455e6775cd06f" id="r_a51813c06a8ebbbd1fb1455e6775cd06f"><td class="memItemLeft">static HAL_StatusTypeDef&#160;</td><td class="memItemRight"><a class="el" href="#a51813c06a8ebbbd1fb1455e6775cd06f">EEPROM_USB_SendText</a> (const char *text)</td></tr>
+<tr class="memdesc:a51813c06a8ebbbd1fb1455e6775cd06f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Envia um texto pela USB CDC e espera a transmissão terminar.  <br /></td></tr>
+<tr class="memitem:aa9e2b298219e959b95063e66154224a2" id="r_aa9e2b298219e959b95063e66154224a2"><td class="memItemLeft">static uint8_t&#160;</td><td class="memItemRight"><a class="el" href="#aa9e2b298219e959b95063e66154224a2">EEPROM_RecordSizeFromMask</a> (uint8_t mask, uint8_t *size)</td></tr>
+<tr class="memdesc:aa9e2b298219e959b95063e66154224a2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Atalho para <a class="el" href="sensor__registry_8h.html#add508f17781de3fa7d4fc698b282d93d" title="Calcula o tamanho do registro para uma máscara de sensores.">Sensors_RecordSizeFromMask()</a>.  <br /></td></tr>
+<tr class="memitem:ab6ab2e108c9c6a9d73fdb6dc37e355f5" id="r_ab6ab2e108c9c6a9d73fdb6dc37e355f5"><td class="memItemLeft">static uint8_t&#160;</td><td class="memItemRight"><a class="el" href="#ab6ab2e108c9c6a9d73fdb6dc37e355f5">EEPROM_RecordCRCValid</a> (const uint8_t *record, uint8_t size)</td></tr>
+<tr class="memdesc:ab6ab2e108c9c6a9d73fdb6dc37e355f5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Confere o CRC de um registro.  <br /></td></tr>
+<tr class="memitem:a78b2eaab18d7bcbf5c3f9c3b3005a2dd" id="r_a78b2eaab18d7bcbf5c3f9c3b3005a2dd"><td class="memItemLeft">static uint16_t&#160;</td><td class="memItemRight"><a class="el" href="#a78b2eaab18d7bcbf5c3f9c3b3005a2dd">EEPROM_ReadLE16</a> (const uint8_t *p)</td></tr>
+<tr class="memdesc:a78b2eaab18d7bcbf5c3f9c3b3005a2dd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lê um inteiro de 16 bits sem sinal em little-endian.  <br /></td></tr>
+<tr class="memitem:abd01cfd0038e3a58db5e3e9104f5db78" id="r_abd01cfd0038e3a58db5e3e9104f5db78"><td class="memItemLeft">static HAL_StatusTypeDef&#160;</td><td class="memItemRight"><a class="el" href="#abd01cfd0038e3a58db5e3e9104f5db78">EEPROM_ExportRead</a> (uint16_t chip_address, uint32_t address, uint32_t end_address, uint8_t *out, uint8_t len)</td></tr>
+<tr class="memdesc:abd01cfd0038e3a58db5e3e9104f5db78"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lê bytes de um chip usando um cache de 128 B.  <br /></td></tr>
+<tr class="memitem:aea5462fb663ceec9738d4e038fba7f91" id="r_aea5462fb663ceec9738d4e038fba7f91"><td class="memItemLeft">static HAL_StatusTypeDef&#160;</td><td class="memItemRight"><a class="el" href="#aea5462fb663ceec9738d4e038fba7f91">EEPROM_ExportOneChip</a> (uint16_t chip_address, uint32_t start_address, uint32_t end_address, uint32_t *records_sent, uint32_t *invalid_records)</td></tr>
+<tr class="memdesc:aea5462fb663ceec9738d4e038fba7f91"><td class="mdescLeft">&#160;</td><td class="mdescRight">Exporta em CSV os registros de um chip, de <code class="param">start_address</code> até <code class="param">end_address</code>.  <br /></td></tr>
+<tr class="memitem:a1435936f9c34d0d830872b6ae81da659" id="r_a1435936f9c34d0d830872b6ae81da659"><td class="memItemLeft">HAL_StatusTypeDef&#160;</td><td class="memItemRight"><a class="el" href="#a1435936f9c34d0d830872b6ae81da659">EEPROM_ExportCSV_USB</a> (void)</td></tr>
+<tr class="memdesc:a1435936f9c34d0d830872b6ae81da659"><td class="mdescLeft">&#160;</td><td class="mdescRight">Exporta todos os registros gravados, em CSV, pela USB (CDC).  <br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-var-members" class="groupheader"><a id="var-members" name="var-members"></a>
+Variáveis</h2></td></tr>
+<tr class="memitem:ae49d648b08d7909282a811be5c02c758" id="r_ae49d648b08d7909282a811be5c02c758"><td class="memItemLeft">static uint8_t&#160;</td><td class="memItemRight"><a class="el" href="#ae49d648b08d7909282a811be5c02c758">export_cache</a> [EXPORT_CACHE_SIZE]</td></tr>
+<tr class="memitem:a6735d780d7a2eeff6a28164a03968292" id="r_a6735d780d7a2eeff6a28164a03968292"><td class="memItemLeft">static uint32_t&#160;</td><td class="memItemRight"><a class="el" href="#a6735d780d7a2eeff6a28164a03968292">export_cache_base</a></td></tr>
+<tr class="memitem:ab954dd6a8286dc01ba189418bd136444" id="r_ab954dd6a8286dc01ba189418bd136444"><td class="memItemLeft">static uint32_t&#160;</td><td class="memItemRight"><a class="el" href="#ab954dd6a8286dc01ba189418bd136444">export_cache_len</a></td></tr>
+</table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Descrição detalhada</h2>
+<div class="textblock"><p>Implementação do armazenamento nas EEPROMs 24LC512 e da exportação CSV (ver <a class="el" href="eeprom24lc512_8h.html" title="Armazenamento de registros nas duas EEPROMs 24LC512 (I²C2) e exportação para a USB.">eeprom24lc512.h</a>). </p>
+<p>Organização do arquivo: acesso por página (escrita e leitura), registro e ponteiro de gravação (metadados), CRC-16, rotinas de teste manual e, ao final, a exportação CSV pela USB. </p>
+
+<p class="definition">Definição no arquivo <a class="el" href="eeprom24lc512_8c_source.html">eeprom24lc512.c</a>.</p>
+</div><a name="doc-define-members" id="doc-define-members"></a><h2 id="header-doc-define-members" class="groupheader">Definições e macros</h2>
+<a id="aef4ad766f95eb2ff591ec940c7ce8cc5" name="aef4ad766f95eb2ff591ec940c7ce8cc5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aef4ad766f95eb2ff591ec940c7ce8cc5">&#9670;&#160;</a></span>EXPORT_CACHE_SIZE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EXPORT_CACHE_SIZE&#160;&#160;&#160;128U</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definição na linha <a class="el" href="eeprom24lc512_8c_source.html#l01203">1203</a> do arquivo <a class="el" href="eeprom24lc512_8c_source.html">eeprom24lc512.c</a>.</p>
+
+</div>
+</div>
+<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Funções</h2>
+<a id="ab83e49947ce34753469ff505b77ef87d" name="ab83e49947ce34753469ff505b77ef87d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab83e49947ce34753469ff505b77ef87d">&#9670;&#160;</a></span>EEPROM24C512_ReadFullMemory()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void EEPROM24C512_ReadFullMemory </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Lê toda a EEPROM 1 em blocos de 64 B, para depuração. </p>
+<p>Cada bloco fica em <span class="tt"><a class="el" href="app__state_8h.html#a3fa5173666ac34207e1a9aa713d75027" title="Último bloco de 64 bytes lido por EEPROM24C512_ReadFullMemory() (depuração).">eeprom_full_read_buffer</a></span>; para ao primeiro erro. Não é usada em operação. </p>
+
+<p class="definition">Definição na linha <a class="el" href="eeprom24lc512_8c_source.html#l00436">436</a> do arquivo <a class="el" href="eeprom24lc512_8c_source.html">eeprom24lc512.c</a>.</p>
+
+<p class="reference">Referencias <a class="el" href="eeprom24lc512_8c_source.html#l00436">EEPROM24C512_ReadFullMemory()</a>, <a class="el" href="app__state_8h_source.html#l00051">EEPROM24LC512_ADDRESS_1</a>, <a class="el" href="eeprom24lc512_8c_source.html#l00105">EEPROM24LC512_ReadBuffer()</a>, <a class="el" href="app__state_8c_source.html#l00073">eeprom_full_read_address</a>, <a class="el" href="app__state_8c_source.html#l00072">eeprom_full_read_buffer</a> e <a class="el" href="app__state_8c_source.html#l00074">eeprom_full_read_status</a>.</p>
+
+<p class="reference">Referenciado(a) por <a class="el" href="eeprom24lc512_8c_source.html#l00436">EEPROM24C512_ReadFullMemory()</a>.</p>
+
+</div>
+</div>
+<a id="a8e0a1900749e1cb61c5ebf06a1197d95" name="a8e0a1900749e1cb61c5ebf06a1197d95"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8e0a1900749e1cb61c5ebf06a1197d95">&#9670;&#160;</a></span>EEPROM24LC512_EraseAll()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">HAL_StatusTypeDef EEPROM24LC512_EraseAll </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Apaga as duas EEPROMs e reinicia os metadados. </p>
+<p>Grava 0xFF em todas as páginas dos dois chips (leva vários segundos, e por isso realimenta o watchdog) e depois regrava metadados iniciais válidos, com o ponteiro em 0x0100 da EEPROM 1. </p><dl class="section warning"><dt>Aviso</dt><dd>Operação destrutiva: todos os registros são perdidos. </dd></dl>
+<dl class="retval"><dt>Valores Retornados</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">HAL_OK</td><td>Memórias apagadas e metadados reiniciados. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Retorna</dt><dd>Status da HAL em caso de falha de comunicação I²C. </dd></dl>
+
+<p class="definition">Definição na linha <a class="el" href="eeprom24lc512_8c_source.html#l00721">721</a> do arquivo <a class="el" href="eeprom24lc512_8c_source.html">eeprom24lc512.c</a>.</p>
+
+<p class="reference">Referencias <a class="el" href="app__state_8h_source.html#l00051">EEPROM24LC512_ADDRESS_1</a>, <a class="el" href="app__state_8h_source.html#l00052">EEPROM24LC512_ADDRESS_2</a>, <a class="el" href="app__state_8h_source.html#l00056">EEPROM24LC512_CAPACITY</a>, <a class="el" href="eeprom24lc512_8c_source.html#l00721">EEPROM24LC512_EraseAll()</a>, <a class="el" href="app__state_8h_source.html#l00054">EEPROM24LC512_PAGE_SIZE</a>, <a class="el" href="eeprom24lc512_8c_source.html#l00032">EEPROM24LC512_WriteBuffer()</a>, <a class="el" href="app__state_8h_source.html#l00057">EEPROM_ACTIVE_EEPROM1</a>, <a class="el" href="app__state_8h_source.html#l00061">EEPROM_DATA_START_ADDRESS</a>, <a class="el" href="app__state_8c_source.html#l00063">eeprom_metadata</a>, <a class="el" href="app__state_8h_source.html#l00117">eeprom_metadata_load_ok</a>, <a class="el" href="app__state_8h_source.html#l00062">EEPROM_METADATA_MAGIC</a>, <a class="el" href="app__state_8c_source.html#l00043">eeprom_next_address</a>, <a class="el" href="eeprom24lc512_8c_source.html#l00471">EEPROM_SaveMetadata()</a>, <a class="el" href="app__state_8h_source.html#l00046">EEPROMMetadata::full</a>, <a class="el" href="app__state_8h_source.html#l00048">EEPROMMetadata::magic</a>, <a class="el" href="app__state_8h_source.html#l00045">EEPROMMetadata::next_address</a>, <a class="el" href="app__state_8h_source.html#l00047">EEPROMMetadata::reserved</a> e <a class="el" href="app__watchdog_8c_source.html#l00055">Watchdog_Service()</a>.</p>
+
+<p class="reference">Referenciado(a) por <a class="el" href="app__tasks_8c_source.html#l00223">App_CommandTask()</a> e <a class="el" href="eeprom24lc512_8c_source.html#l00721">EEPROM24LC512_EraseAll()</a>.</p>
+
+</div>
+</div>
+<a id="a844398a3e9a655590f69aaf46a47233e" name="a844398a3e9a655590f69aaf46a47233e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a844398a3e9a655590f69aaf46a47233e">&#9670;&#160;</a></span>EEPROM24LC512_ReadBuffer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">HAL_StatusTypeDef EEPROM24LC512_ReadBuffer </td>
+          <td>(</td>
+          <td class="paramtype">uint16_t</td>          <td class="paramname"><span class="paramname"><em>address</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t *</td>          <td class="paramname"><span class="paramname"><em>data</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint16_t</td>          <td class="paramname"><span class="paramname"><em>size</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint16_t</td>          <td class="paramname"><span class="paramname"><em>i2c_address</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Lê um bloco de bytes de um dos chips. </p>
+<p>Logo após a leitura guarda <span class="tt">ErrorCode</span> e <span class="tt">State</span> do I²C2 em <span class="tt">eeprom_read_error_snapshot</span> e <span class="tt"><a class="el" href="app__state_8h.html#ad9647b92db1d00a21166af8899287741" title="ErrorCode e State do I²C2 logo após a última leitura da EEPROM.">eeprom_read_state_snapshot</a></span>, para diagnóstico.</p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">address</td><td>Endereço inicial no chip. </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">data</td><td>Destino dos dados lidos. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">size</td><td>Quantidade de bytes (0 não faz nada e retorna <span class="tt">HAL_OK</span>). </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">i2c_address</td><td>Endereço I²C do chip (<a class="el" href="app__state_8h.html#a590e412b8bbac3a239cf1e71c276e99a" title="Endereço I²C da EEPROM 1 (0x50 de 7 bits, já deslocado para a HAL).">EEPROM24LC512_ADDRESS_1</a> ou <a class="el" href="app__state_8h.html#ab31699d9f25dcb5836de598de3cd58b3" title="Endereço I²C da EEPROM 2 (0x51 de 7 bits, já deslocado para a HAL).">EEPROM24LC512_ADDRESS_2</a>). </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="retval"><dt>Valores Retornados</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">HAL_OK</td><td>Leitura concluída. </td></tr>
+    <tr><td class="paramname">HAL_ERROR</td><td><code class="param">data</code> nulo, ou <code class="param">address</code> + <code class="param">size</code> acima de 64 KiB, ou falha ao obter o barramento. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Retorna</dt><dd>Status da HAL em caso de falha de comunicação I²C. </dd></dl>
+
+<p class="definition">Definição na linha <a class="el" href="eeprom24lc512_8c_source.html#l00105">105</a> do arquivo <a class="el" href="eeprom24lc512_8c_source.html">eeprom24lc512.c</a>.</p>
+
+<p class="reference">Referencias <a class="el" href="eeprom24lc512_8c_source.html#l00105">EEPROM24LC512_ReadBuffer()</a>, <a class="el" href="app__state_8h_source.html#l00096">eeprom_read_state_snapshot</a>, <a class="el" href="app__state_8h.html#ac379bcc152d860f08b1279fd3e232295">hi2c2</a>, <a class="el" href="app__tasks_8c_source.html#l00057">I2C2_BusAcquire()</a>, <a class="el" href="app__tasks_8c_source.html#l00082">I2C2_BusRelease()</a> e <a class="el" href="app__state_8c_source.html#l00022">i2c2_last_lock_status</a>.</p>
+
+<p class="reference">Referenciado(a) por <a class="el" href="eeprom24lc512_8c_source.html#l00436">EEPROM24C512_ReadFullMemory()</a>, <a class="el" href="eeprom24lc512_8c_source.html#l00105">EEPROM24LC512_ReadBuffer()</a>, <a class="el" href="eeprom24lc512_8c_source.html#l00170">EEPROM24LC512_ReadByte()</a>, <a class="el" href="eeprom24lc512_8c_source.html#l00199">EEPROM24LC512_ReadRecord()</a>, <a class="el" href="eeprom24lc512_8c_source.html#l00778">EEPROM2_Test()</a>, <a class="el" href="eeprom24lc512_8c_source.html#l01222">EEPROM_ExportRead()</a>, <a class="el" href="eeprom24lc512_8c_source.html#l00482">EEPROM_LoadMetadata()</a>, <a class="el" href="eeprom24lc512_8c_source.html#l00252">EEPROM_SaveSensorRecord()</a>, <a class="el" href="eeprom24lc512_8c_source.html#l00914">EEPROM_Test_AddressBoundaries()</a>, <a class="el" href="eeprom24lc512_8c_source.html#l00832">EEPROM_Test_Independence()</a>, <a class="el" href="eeprom24lc512_8c_source.html#l00967">EEPROM_Test_PageBoundary()</a> e <a class="el" href="eeprom24lc512_8c_source.html#l01008">EEPROM_Test_SerializedRecordRoundTrip()</a>.</p>
+
+</div>
+</div>
+<a id="a0ffd22360967cfa9e25f48f0ca8a8c17" name="a0ffd22360967cfa9e25f48f0ca8a8c17"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0ffd22360967cfa9e25f48f0ca8a8c17">&#9670;&#160;</a></span>EEPROM24LC512_ReadByte()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">HAL_StatusTypeDef EEPROM24LC512_ReadByte </td>
+          <td>(</td>
+          <td class="paramtype">uint16_t</td>          <td class="paramname"><span class="paramname"><em>address</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t *</td>          <td class="paramname"><span class="paramname"><em>data</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Lê um byte da EEPROM 1. </p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">address</td><td>Endereço no chip. </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">data</td><td>Byte lido. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Retorna</dt><dd>Status de <a class="el" href="eeprom24lc512_8h.html#a844398a3e9a655590f69aaf46a47233e" title="Lê um bloco de bytes de um dos chips.">EEPROM24LC512_ReadBuffer()</a>. </dd></dl>
+
+<p class="definition">Definição na linha <a class="el" href="eeprom24lc512_8c_source.html#l00170">170</a> do arquivo <a class="el" href="eeprom24lc512_8c_source.html">eeprom24lc512.c</a>.</p>
+
+<p class="reference">Referencias <a class="el" href="app__state_8h_source.html#l00051">EEPROM24LC512_ADDRESS_1</a>, <a class="el" href="eeprom24lc512_8c_source.html#l00105">EEPROM24LC512_ReadBuffer()</a> e <a class="el" href="eeprom24lc512_8c_source.html#l00170">EEPROM24LC512_ReadByte()</a>.</p>
+
+<p class="reference">Referenciado(a) por <a class="el" href="eeprom24lc512_8c_source.html#l00170">EEPROM24LC512_ReadByte()</a>.</p>
+
+</div>
+</div>
+<a id="a85dba059fc69fb1601c533fb961d2f2e" name="a85dba059fc69fb1601c533fb961d2f2e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a85dba059fc69fb1601c533fb961d2f2e">&#9670;&#160;</a></span>EEPROM24LC512_ReadRecord()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">HAL_StatusTypeDef EEPROM24LC512_ReadRecord </td>
+          <td>(</td>
+          <td class="paramtype">uint16_t</td>          <td class="paramname"><span class="paramname"><em>address</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="struct_sensor_record_e_e_p_r_o_m.html">SensorRecordEEPROM</a> *</td>          <td class="paramname"><span class="paramname"><em>record</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Lê da EEPROM 1 um registro do formato antigo de tamanho fixo (legado). </p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">address</td><td>Endereço no chip. </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">record</td><td>Registro lido (<span class="tt">sizeof(SensorRecordEEPROM)</span> bytes). </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="retval"><dt>Valores Retornados</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">HAL_ERROR</td><td><code class="param">record</code> nulo. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Retorna</dt><dd>Status de <a class="el" href="eeprom24lc512_8h.html#a844398a3e9a655590f69aaf46a47233e" title="Lê um bloco de bytes de um dos chips.">EEPROM24LC512_ReadBuffer()</a>. </dd></dl>
+
+<p class="definition">Definição na linha <a class="el" href="eeprom24lc512_8c_source.html#l00199">199</a> do arquivo <a class="el" href="eeprom24lc512_8c_source.html">eeprom24lc512.c</a>.</p>
+
+<p class="reference">Referencias <a class="el" href="app__state_8h_source.html#l00051">EEPROM24LC512_ADDRESS_1</a>, <a class="el" href="eeprom24lc512_8c_source.html#l00105">EEPROM24LC512_ReadBuffer()</a> e <a class="el" href="eeprom24lc512_8c_source.html#l00199">EEPROM24LC512_ReadRecord()</a>.</p>
+
+<p class="reference">Referenciado(a) por <a class="el" href="eeprom24lc512_8c_source.html#l00199">EEPROM24LC512_ReadRecord()</a>.</p>
+
+</div>
+</div>
+<a id="a463c2abe90877b2471a08cba75274439" name="a463c2abe90877b2471a08cba75274439"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a463c2abe90877b2471a08cba75274439">&#9670;&#160;</a></span>EEPROM24LC512_WriteBuffer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">HAL_StatusTypeDef EEPROM24LC512_WriteBuffer </td>
+          <td>(</td>
+          <td class="paramtype">uint16_t</td>          <td class="paramname"><span class="paramname"><em>address</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t *</td>          <td class="paramname"><span class="paramname"><em>data</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint16_t</td>          <td class="paramname"><span class="paramname"><em>size</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint16_t</td>          <td class="paramname"><span class="paramname"><em>i2c_address</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Grava um bloco de bytes em um dos chips. </p>
+<p>A escrita é dividida nos limites de página de 128 B, porque uma escrita que cruza o limite da página reiniciaria o endereço dentro dela e sobrescreveria dados. Após cada trecho espera 10 ms (ciclo interno de gravação), cedendo a CPU.</p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">address</td><td>Endereço inicial no chip. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">data</td><td>Dados a gravar. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">size</td><td>Quantidade de bytes (0 não faz nada e retorna <span class="tt">HAL_OK</span>). </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">i2c_address</td><td>Endereço I²C do chip (<a class="el" href="app__state_8h.html#a590e412b8bbac3a239cf1e71c276e99a" title="Endereço I²C da EEPROM 1 (0x50 de 7 bits, já deslocado para a HAL).">EEPROM24LC512_ADDRESS_1</a> ou <a class="el" href="app__state_8h.html#ab31699d9f25dcb5836de598de3cd58b3" title="Endereço I²C da EEPROM 2 (0x51 de 7 bits, já deslocado para a HAL).">EEPROM24LC512_ADDRESS_2</a>). </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="retval"><dt>Valores Retornados</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">HAL_OK</td><td>Gravação concluída. </td></tr>
+    <tr><td class="paramname">HAL_ERROR</td><td><code class="param">data</code> nulo, ou <code class="param">address</code> + <code class="param">size</code> acima de 64 KiB, ou falha ao obter o barramento. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Retorna</dt><dd>Status da HAL em caso de falha de comunicação I²C. </dd></dl>
+
+<p class="definition">Definição na linha <a class="el" href="eeprom24lc512_8c_source.html#l00032">32</a> do arquivo <a class="el" href="eeprom24lc512_8c_source.html">eeprom24lc512.c</a>.</p>
+
+<p class="reference">Referencias <a class="el" href="app__state_8h_source.html#l00054">EEPROM24LC512_PAGE_SIZE</a>, <a class="el" href="app__state_8h_source.html#l00055">EEPROM24LC512_WRITE_DELAY</a>, <a class="el" href="eeprom24lc512_8c_source.html#l00032">EEPROM24LC512_WriteBuffer()</a>, <a class="el" href="eeprom24lc512_8c_source.html#l00024">EEPROM_YieldDelay()</a>, <a class="el" href="app__state_8h.html#ac379bcc152d860f08b1279fd3e232295">hi2c2</a>, <a class="el" href="app__tasks_8c_source.html#l00057">I2C2_BusAcquire()</a> e <a class="el" href="app__tasks_8c_source.html#l00082">I2C2_BusRelease()</a>.</p>
+
+<p class="reference">Referenciado(a) por <a class="el" href="eeprom24lc512_8c_source.html#l00721">EEPROM24LC512_EraseAll()</a>, <a class="el" href="eeprom24lc512_8c_source.html#l00032">EEPROM24LC512_WriteBuffer()</a>, <a class="el" href="eeprom24lc512_8c_source.html#l00156">EEPROM24LC512_WriteByte()</a>, <a class="el" href="eeprom24lc512_8c_source.html#l00183">EEPROM24LC512_WriteRecord()</a>, <a class="el" href="eeprom24lc512_8c_source.html#l00778">EEPROM2_Test()</a>, <a class="el" href="eeprom24lc512_8c_source.html#l00471">EEPROM_SaveMetadata()</a>, <a class="el" href="eeprom24lc512_8c_source.html#l00252">EEPROM_SaveSensorRecord()</a>, <a class="el" href="eeprom24lc512_8c_source.html#l00914">EEPROM_Test_AddressBoundaries()</a>, <a class="el" href="eeprom24lc512_8c_source.html#l00832">EEPROM_Test_Independence()</a>, <a class="el" href="eeprom24lc512_8c_source.html#l00967">EEPROM_Test_PageBoundary()</a> e <a class="el" href="eeprom24lc512_8c_source.html#l01008">EEPROM_Test_SerializedRecordRoundTrip()</a>.</p>
+
+</div>
+</div>
+<a id="a8bc81fbaa44af07005751569fd0a390d" name="a8bc81fbaa44af07005751569fd0a390d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8bc81fbaa44af07005751569fd0a390d">&#9670;&#160;</a></span>EEPROM24LC512_WriteByte()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">HAL_StatusTypeDef EEPROM24LC512_WriteByte </td>
+          <td>(</td>
+          <td class="paramtype">uint16_t</td>          <td class="paramname"><span class="paramname"><em>address</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>data</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Grava um byte na EEPROM 1. </p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">address</td><td>Endereço no chip. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">data</td><td>Byte a gravar. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Retorna</dt><dd>Status de <a class="el" href="eeprom24lc512_8h.html#a463c2abe90877b2471a08cba75274439" title="Grava um bloco de bytes em um dos chips.">EEPROM24LC512_WriteBuffer()</a>. </dd></dl>
+
+<p class="definition">Definição na linha <a class="el" href="eeprom24lc512_8c_source.html#l00156">156</a> do arquivo <a class="el" href="eeprom24lc512_8c_source.html">eeprom24lc512.c</a>.</p>
+
+<p class="reference">Referencias <a class="el" href="app__state_8h_source.html#l00051">EEPROM24LC512_ADDRESS_1</a>, <a class="el" href="eeprom24lc512_8c_source.html#l00032">EEPROM24LC512_WriteBuffer()</a> e <a class="el" href="eeprom24lc512_8c_source.html#l00156">EEPROM24LC512_WriteByte()</a>.</p>
+
+<p class="reference">Referenciado(a) por <a class="el" href="eeprom24lc512_8c_source.html#l00156">EEPROM24LC512_WriteByte()</a>.</p>
+
+</div>
+</div>
+<a id="a3f556bea17e6286c006a548ca51470c0" name="a3f556bea17e6286c006a548ca51470c0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3f556bea17e6286c006a548ca51470c0">&#9670;&#160;</a></span>EEPROM24LC512_WriteRecord()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">HAL_StatusTypeDef EEPROM24LC512_WriteRecord </td>
+          <td>(</td>
+          <td class="paramtype">uint16_t</td>          <td class="paramname"><span class="paramname"><em>address</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t *</td>          <td class="paramname"><span class="paramname"><em>data</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>size</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Grava um registro de tamanho qualquer na EEPROM 1 (função simples, sem metadados). </p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">address</td><td>Endereço no chip. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">data</td><td>Bytes do registro. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">size</td><td>Tamanho do registro, em bytes. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Retorna</dt><dd>Status de <a class="el" href="eeprom24lc512_8h.html#a463c2abe90877b2471a08cba75274439" title="Grava um bloco de bytes em um dos chips.">EEPROM24LC512_WriteBuffer()</a>. </dd></dl>
+
+<p class="definition">Definição na linha <a class="el" href="eeprom24lc512_8c_source.html#l00183">183</a> do arquivo <a class="el" href="eeprom24lc512_8c_source.html">eeprom24lc512.c</a>.</p>
+
+<p class="reference">Referencias <a class="el" href="app__state_8h_source.html#l00051">EEPROM24LC512_ADDRESS_1</a>, <a class="el" href="eeprom24lc512_8c_source.html#l00032">EEPROM24LC512_WriteBuffer()</a> e <a class="el" href="eeprom24lc512_8c_source.html#l00183">EEPROM24LC512_WriteRecord()</a>.</p>
+
+<p class="reference">Referenciado(a) por <a class="el" href="eeprom24lc512_8c_source.html#l00183">EEPROM24LC512_WriteRecord()</a>.</p>
+
+</div>
+</div>
+<a id="ad9d43aabb4a7c0b0166223abe574c814" name="ad9d43aabb4a7c0b0166223abe574c814"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad9d43aabb4a7c0b0166223abe574c814">&#9670;&#160;</a></span>EEPROM2_Test()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">HAL_StatusTypeDef EEPROM2_Test </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Grava 32 bytes a partir de 0x0070 da EEPROM 2, atravessando o limite de página, e confere a leitura. </p>
+<dl class="retval"><dt>Valores Retornados</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">HAL_OK</td><td>Dados lidos iguais aos gravados. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definição na linha <a class="el" href="eeprom24lc512_8c_source.html#l00778">778</a> do arquivo <a class="el" href="eeprom24lc512_8c_source.html">eeprom24lc512.c</a>.</p>
+
+<p class="reference">Referencias <a class="el" href="app__state_8h_source.html#l00052">EEPROM24LC512_ADDRESS_2</a>, <a class="el" href="eeprom24lc512_8c_source.html#l00105">EEPROM24LC512_ReadBuffer()</a>, <a class="el" href="eeprom24lc512_8c_source.html#l00032">EEPROM24LC512_WriteBuffer()</a> e <a class="el" href="eeprom24lc512_8c_source.html#l00778">EEPROM2_Test()</a>.</p>
+
+<p class="reference">Referenciado(a) por <a class="el" href="eeprom24lc512_8c_source.html#l00778">EEPROM2_Test()</a>.</p>
+
+</div>
+</div>
+<a id="a7e550f6e0fbbca8e2822268d02574ee1" name="a7e550f6e0fbbca8e2822268d02574ee1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7e550f6e0fbbca8e2822268d02574ee1">&#9670;&#160;</a></span>EEPROM_BuildSensorRecord()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">HAL_StatusTypeDef EEPROM_BuildSensorRecord </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t *</td>          <td class="paramname"><span class="paramname"><em>buffer</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t *</td>          <td class="paramname"><span class="paramname"><em>record_size</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>sensor_mask</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Monta um registro: máscara, dados dos sensores, data e hora do RTC e CRC. </p>
+<p>Os dados dos sensores seguem a ordem da tabela de <a class="el" href="sensor__registry_8h.html" title="Registro de sensores: tabela que descreve cada sensor I²C do sistema.">sensor_registry.h</a>. A data e a hora são lidas do RTC sob <a class="el" href="app__state_8h.html#a6ad3b26b83d91841bf92dedbb7c731bb" title="Obtém o mutex que protege o acesso ao RTC interno (leitura e ajuste) entre tarefas.">App_RTC_Lock()</a> (ano completo em 2 bytes, igual a 2000 + <span class="tt">Year</span>). O CRC cobre todos os bytes anteriores e é gravado em little-endian.</p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[out]</td><td class="paramname">buffer</td><td>Buffer de pelo menos <a class="el" href="app__state_8h.html#a7ff8e0adc3ff2769f7fdb1455940eb64" title="Tamanho máximo de um registro, em bytes (o maior possível, com todos os sensores, tem 38 B).">EEPROM_MAX_RECORD_SIZE</a> bytes. </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">record_size</td><td>Tamanho do registro montado, em bytes. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">sensor_mask</td><td>Sensores que fazem parte do registro. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="retval"><dt>Valores Retornados</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">HAL_OK</td><td>Registro montado. </td></tr>
+    <tr><td class="paramname">HAL_ERROR</td><td>Parâmetro nulo, máscara nula ou inválida, falha de leitura do RTC ou campos de calendário fora da faixa. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definição na linha <a class="el" href="eeprom24lc512_8c_source.html#l00635">635</a> do arquivo <a class="el" href="eeprom24lc512_8c_source.html">eeprom24lc512.c</a>.</p>
+
+<p class="reference">Referencias <a class="el" href="app__tasks_8c_source.html#l00070">App_RTC_Lock()</a>, <a class="el" href="app__tasks_8c_source.html#l00076">App_RTC_Unlock()</a>, <a class="el" href="eeprom24lc512_8c_source.html#l00635">EEPROM_BuildSensorRecord()</a>, <a class="el" href="eeprom24lc512_8c_source.html#l00592">EEPROM_CalculateCRC16()</a>, <a class="el" href="app__state_8h_source.html#l00071">EEPROM_MAX_RECORD_SIZE</a>, <a class="el" href="app__state_8h.html#aa0c7fca836406ade332e1e3f1039d8ab">hrtc</a>, <a class="el" href="sensor__registry_8c_source.html#l00319">Sensors_RecordSizeFromMask()</a> e <a class="el" href="sensor__registry_8c_source.html#l00338">Sensors_Serialize()</a>.</p>
+
+<p class="reference">Referenciado(a) por <a class="el" href="eeprom24lc512_8c_source.html#l00635">EEPROM_BuildSensorRecord()</a>, <a class="el" href="eeprom24lc512_8c_source.html#l00252">EEPROM_SaveSensorRecord()</a> e <a class="el" href="eeprom24lc512_8c_source.html#l01008">EEPROM_Test_SerializedRecordRoundTrip()</a>.</p>
+
+</div>
+</div>
+<a id="a521d6ae3daac4f726fbbacb1c09afd9d" name="a521d6ae3daac4f726fbbacb1c09afd9d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a521d6ae3daac4f726fbbacb1c09afd9d">&#9670;&#160;</a></span>EEPROM_CalculateCRC16()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint16_t EEPROM_CalculateCRC16 </td>
+          <td>(</td>
+          <td class="paramtype">const uint8_t *</td>          <td class="paramname"><span class="paramname"><em>data</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint16_t</td>          <td class="paramname"><span class="paramname"><em>length</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Calcula o CRC-16/CCITT-FALSE de um bloco de bytes. </p>
+<p>Polinômio 0x1021, valor inicial 0xFFFF, sem reflexão de bits e sem XOR final. Para a sequência ASCII <span class="tt">"123456789"</span> o resultado é 0x29B1.</p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">data</td><td>Bytes a processar. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">length</td><td>Quantidade de bytes. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Retorna</dt><dd>CRC calculado, ou 0 se <code class="param">data</code> for nulo. </dd></dl>
+
+<p class="definition">Definição na linha <a class="el" href="eeprom24lc512_8c_source.html#l00592">592</a> do arquivo <a class="el" href="eeprom24lc512_8c_source.html">eeprom24lc512.c</a>.</p>
+
+<p class="reference">Referencias <a class="el" href="eeprom24lc512_8c_source.html#l00592">EEPROM_CalculateCRC16()</a>.</p>
+
+<p class="reference">Referenciado(a) por <a class="el" href="eeprom24lc512_8c_source.html#l00635">EEPROM_BuildSensorRecord()</a>, <a class="el" href="eeprom24lc512_8c_source.html#l00592">EEPROM_CalculateCRC16()</a>, <a class="el" href="eeprom24lc512_8c_source.html#l01183">EEPROM_RecordCRCValid()</a>, <a class="el" href="eeprom24lc512_8c_source.html#l00252">EEPROM_SaveSensorRecord()</a>, <a class="el" href="eeprom24lc512_8c_source.html#l00622">EEPROM_Test_CRC16()</a> e <a class="el" href="eeprom24lc512_8c_source.html#l01008">EEPROM_Test_SerializedRecordRoundTrip()</a>.</p>
+
+</div>
+</div>
+<a id="a9ce45678ac2a598caa5b0416a2f23033" name="a9ce45678ac2a598caa5b0416a2f23033"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9ce45678ac2a598caa5b0416a2f23033">&#9670;&#160;</a></span>EEPROM_CreateSensorRecord()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void EEPROM_CreateSensorRecord </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_sensor_record_e_e_p_r_o_m.html">SensorRecordEEPROM</a> *</td>          <td class="paramname"><span class="paramname"><em>record</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Preenche um registro do formato antigo com as últimas leituras escaladas (legado). </p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[out]</td><td class="paramname">record</td><td>Registro a preencher. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definição na linha <a class="el" href="eeprom24lc512_8c_source.html#l00217">217</a> do arquivo <a class="el" href="eeprom24lc512_8c_source.html">eeprom24lc512.c</a>.</p>
+
+<p class="reference">Referencias <a class="el" href="app__state_8h_source.html#l00028">SensorRecordEEPROM::accel_x</a>, <a class="el" href="app__state_8h_source.html#l00029">SensorRecordEEPROM::accel_y</a>, <a class="el" href="app__state_8h_source.html#l00030">SensorRecordEEPROM::accel_z</a>, <a class="el" href="app__state_8h_source.html#l00081">aht20_humidity</a>, <a class="el" href="app__state_8h_source.html#l00082">bmp280_pressure</a>, <a class="el" href="eeprom24lc512_8c_source.html#l00217">EEPROM_CreateSensorRecord()</a>, <a class="el" href="app__state_8h_source.html#l00031">SensorRecordEEPROM::gyro_x</a>, <a class="el" href="app__state_8h_source.html#l00032">SensorRecordEEPROM::gyro_y</a>, <a class="el" href="app__state_8h_source.html#l00033">SensorRecordEEPROM::gyro_z</a>, <a class="el" href="app__state_8h_source.html#l00025">SensorRecordEEPROM::humidity_aht</a>, <a class="el" href="app__state_8h_source.html#l00089">mpu6500_accel_z_g</a>, <a class="el" href="app__state_8h_source.html#l00090">mpu6500_gyro_z_dps</a>, <a class="el" href="app__state_8h_source.html#l00027">SensorRecordEEPROM::pressure_bmp</a>, <a class="el" href="app__state_8h_source.html#l00024">SensorRecordEEPROM::temperature_aht</a> e <a class="el" href="app__state_8h_source.html#l00026">SensorRecordEEPROM::temperature_bmp</a>.</p>
+
+<p class="reference">Referenciado(a) por <a class="el" href="eeprom24lc512_8c_source.html#l00217">EEPROM_CreateSensorRecord()</a>.</p>
+
+</div>
+</div>
+<a id="a1435936f9c34d0d830872b6ae81da659" name="a1435936f9c34d0d830872b6ae81da659"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1435936f9c34d0d830872b6ae81da659">&#9670;&#160;</a></span>EEPROM_ExportCSV_USB()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">HAL_StatusTypeDef EEPROM_ExportCSV_USB </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Exporta todos os registros gravados, em CSV, pela USB (CDC). </p>
+<p>Envia, nesta ordem: <span class="tt">EXPORT_BEGIN</span>, o cabeçalho do CSV, uma linha por registro válido (EEPROM 1 de 0x0100 até o ponteiro; EEPROM 2 de 0x0000 até o ponteiro) e <span class="tt">EXPORT_END,&lt;enviados&gt;,&lt;suspeitos&gt;</span>. Cada linha começa por <span class="tt">sensor_mask,timestamp</span> e segue com as colunas dos sensores presentes.</p>
+<p>O CRC e a máscara de cada registro são validados. Um registro inválido é contado como suspeito e a varredura avança um byte para procurar o próximo início válido (ressincronização). Se nada é enviado por 500 ms, envia <span class="tt">PROGRESS,&lt;endereço&gt;</span> para o computador não dar tempo esgotado. Realimenta o watchdog durante a operação e não escreve na memória. Em falha, envia uma linha <span class="tt">ERRO,...</span> com o motivo.</p>
+<dl class="retval"><dt>Valores Retornados</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">HAL_OK</td><td>Exportação concluída. </td></tr>
+    <tr><td class="paramname">HAL_ERROR</td><td>Metadados inválidos ou ponteiros inconsistentes. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Retorna</dt><dd>Status da HAL em caso de falha de leitura ou de envio pela USB. </dd></dl>
+
+<p class="definition">Definição na linha <a class="el" href="eeprom24lc512_8c_source.html#l01361">1361</a> do arquivo <a class="el" href="eeprom24lc512_8c_source.html">eeprom24lc512.c</a>.</p>
+
+<p class="reference">Referencias <a class="el" href="app__state_8c_source.html#l00068">diagnostic_export_stage</a>, <a class="el" href="app__state_8h_source.html#l00051">EEPROM24LC512_ADDRESS_1</a>, <a class="el" href="app__state_8h_source.html#l00052">EEPROM24LC512_ADDRESS_2</a>, <a class="el" href="app__state_8h_source.html#l00056">EEPROM24LC512_CAPACITY</a>, <a class="el" href="app__state_8h_source.html#l00059">EEPROM2_DATA_START_ADDRESS</a>, <a class="el" href="app__state_8h_source.html#l00057">EEPROM_ACTIVE_EEPROM1</a>, <a class="el" href="app__state_8h_source.html#l00058">EEPROM_ACTIVE_EEPROM2</a>, <a class="el" href="app__state_8h_source.html#l00061">EEPROM_DATA_START_ADDRESS</a>, <a class="el" href="eeprom24lc512_8c_source.html#l01361">EEPROM_ExportCSV_USB()</a>, <a class="el" href="eeprom24lc512_8c_source.html#l01259">EEPROM_ExportOneChip()</a>, <a class="el" href="app__state_8c_source.html#l00063">eeprom_metadata</a>, <a class="el" href="app__state_8h_source.html#l00117">eeprom_metadata_load_ok</a>, <a class="el" href="app__state_8h_source.html#l00096">eeprom_read_state_snapshot</a>, <a class="el" href="eeprom24lc512_8c_source.html#l01135">EEPROM_USB_SendText()</a>, <a class="el" href="app__state_8h_source.html#l00046">EEPROMMetadata::full</a>, <a class="el" href="app__state_8c_source.html#l00022">i2c2_last_lock_status</a>, <a class="el" href="app__state_8h_source.html#l00045">EEPROMMetadata::next_address</a>, <a class="el" href="app__state_8h_source.html#l00104">oled_buffer_checksum_after</a>, <a class="el" href="app__state_8h_source.html#l00103">oled_buffer_mutation_count</a>, <a class="el" href="app__state_8h_source.html#l00102">oled_failed_stage</a>, <a class="el" href="app__state_8c_source.html#l00027">oled_hw_busy_snapshot</a>, <a class="el" href="app__state_8h_source.html#l00098">oled_i2c_state_snapshot</a>, <a class="el" href="app__state_8h_source.html#l00097">oled_page_switch_count</a>, <a class="el" href="app__state_8h_source.html#l00099">oled_pre_lock_snapshot</a>, <a class="el" href="app__state_8h_source.html#l00101">oled_scl_snapshot</a>, <a class="el" href="app__state_8h_source.html#l00047">EEPROMMetadata::reserved</a> e <a class="el" href="sensor__registry_8c_source.html#l00354">Sensors_CsvHeader()</a>.</p>
+
+<p class="reference">Referenciado(a) por <a class="el" href="app__tasks_8c_source.html#l00223">App_CommandTask()</a> e <a class="el" href="eeprom24lc512_8c_source.html#l01361">EEPROM_ExportCSV_USB()</a>.</p>
+
+</div>
+</div>
+<a id="aea5462fb663ceec9738d4e038fba7f91" name="aea5462fb663ceec9738d4e038fba7f91"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aea5462fb663ceec9738d4e038fba7f91">&#9670;&#160;</a></span>EEPROM_ExportOneChip()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">HAL_StatusTypeDef EEPROM_ExportOneChip </td>
+          <td>(</td>
+          <td class="paramtype">uint16_t</td>          <td class="paramname"><span class="paramname"><em>chip_address</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>start_address</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>end_address</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t *</td>          <td class="paramname"><span class="paramname"><em>records_sent</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t *</td>          <td class="paramname"><span class="paramname"><em>invalid_records</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Exporta em CSV os registros de um chip, de <code class="param">start_address</code> até <code class="param">end_address</code>. </p>
+<p>Lê a máscara no endereço atual. Máscara desconhecida (diferente de 0xFF, que é memória em branco e não conta), registro que passa do fim da área ou CRC inválido contam como suspeitos e fazem a varredura avançar 1 byte. Um registro válido é decodificado (data e hora e colunas pela tabela de sensores), enviado como uma linha e a varredura avança o tamanho do registro.</p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">chip_address</td><td>Endereço I²C do chip. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">start_address</td><td>Primeiro endereço a examinar. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">end_address</td><td>Fim da área gravada (exclusivo). </td></tr>
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">records_sent</td><td>Acumula os registros enviados. </td></tr>
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">invalid_records</td><td>Acumula os registros suspeitos ignorados. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="retval"><dt>Valores Retornados</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">HAL_OK</td><td>Área percorrida. </td></tr>
+    <tr><td class="paramname">HAL_ERROR</td><td>Parâmetros inválidos ou linha CSV que não coube no buffer. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Retorna</dt><dd>Status da HAL em caso de falha de leitura ou de envio pela USB. </dd></dl>
+
+<p class="definition">Definição na linha <a class="el" href="eeprom24lc512_8c_source.html#l01259">1259</a> do arquivo <a class="el" href="eeprom24lc512_8c_source.html">eeprom24lc512.c</a>.</p>
+
+<p class="reference">Referencias <a class="el" href="app__state_8h_source.html#l00056">EEPROM24LC512_CAPACITY</a>, <a class="el" href="eeprom24lc512_8c_source.html#l01259">EEPROM_ExportOneChip()</a>, <a class="el" href="eeprom24lc512_8c_source.html#l01222">EEPROM_ExportRead()</a>, <a class="el" href="app__state_8h_source.html#l00071">EEPROM_MAX_RECORD_SIZE</a>, <a class="el" href="eeprom24lc512_8c_source.html#l01196">EEPROM_ReadLE16()</a>, <a class="el" href="eeprom24lc512_8c_source.html#l01183">EEPROM_RecordCRCValid()</a>, <a class="el" href="eeprom24lc512_8c_source.html#l01171">EEPROM_RecordSizeFromMask()</a>, <a class="el" href="eeprom24lc512_8c_source.html#l01135">EEPROM_USB_SendText()</a>, <a class="el" href="sensor__registry_8c_source.html#l00366">Sensors_CsvFormatRow()</a> e <a class="el" href="app__watchdog_8c_source.html#l00055">Watchdog_Service()</a>.</p>
+
+<p class="reference">Referenciado(a) por <a class="el" href="eeprom24lc512_8c_source.html#l01361">EEPROM_ExportCSV_USB()</a> e <a class="el" href="eeprom24lc512_8c_source.html#l01259">EEPROM_ExportOneChip()</a>.</p>
+
+</div>
+</div>
+<a id="abd01cfd0038e3a58db5e3e9104f5db78" name="abd01cfd0038e3a58db5e3e9104f5db78"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abd01cfd0038e3a58db5e3e9104f5db78">&#9670;&#160;</a></span>EEPROM_ExportRead()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">HAL_StatusTypeDef EEPROM_ExportRead </td>
+          <td>(</td>
+          <td class="paramtype">uint16_t</td>          <td class="paramname"><span class="paramname"><em>chip_address</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>address</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>end_address</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t *</td>          <td class="paramname"><span class="paramname"><em>out</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>len</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Lê bytes de um chip usando um cache de 128 B. </p>
+<p>Faz uma única transação I²C de até 128 B em vez de uma leitura por byte; recarrega o cache quando o trecho pedido não está nele. </p><dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">chip_address</td><td>Endereço I²C do chip. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">address</td><td>Endereço inicial da leitura. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">end_address</td><td>Limite superior da área válida (exclusivo). </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">out</td><td>Destino. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">len</td><td>Quantidade de bytes. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="retval"><dt>Valores Retornados</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">HAL_OK</td><td>Bytes lidos. </td></tr>
+    <tr><td class="paramname">HAL_ERROR</td><td>O trecho ultrapassa <code class="param">end_address</code>. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Retorna</dt><dd>Status da HAL em caso de falha de leitura. </dd></dl>
+
+<p class="definition">Definição na linha <a class="el" href="eeprom24lc512_8c_source.html#l01222">1222</a> do arquivo <a class="el" href="eeprom24lc512_8c_source.html">eeprom24lc512.c</a>.</p>
+
+<p class="reference">Referencias <a class="el" href="eeprom24lc512_8c_source.html#l00105">EEPROM24LC512_ReadBuffer()</a> e <a class="el" href="eeprom24lc512_8c_source.html#l01222">EEPROM_ExportRead()</a>.</p>
+
+<p class="reference">Referenciado(a) por <a class="el" href="eeprom24lc512_8c_source.html#l01259">EEPROM_ExportOneChip()</a> e <a class="el" href="eeprom24lc512_8c_source.html#l01222">EEPROM_ExportRead()</a>.</p>
+
+</div>
+</div>
+<a id="a88c1d3e7f600cf8094f7858fdc9f6546" name="a88c1d3e7f600cf8094f7858fdc9f6546"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a88c1d3e7f600cf8094f7858fdc9f6546">&#9670;&#160;</a></span>EEPROM_LoadMetadata()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">HAL_StatusTypeDef EEPROM_LoadMetadata </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Lê e valida os metadados gravados na EEPROM 1. </p>
+<p>Metadados em branco (todos os bytes 0xFF) indicam a primeira utilização e são inicializados (dados a partir de 0x0100 da EEPROM 1). Metadados com <span class="tt">magic</span> inválido ou campos inconsistentes retornam <span class="tt">HAL_ERROR</span> sem alterar nada, para não perder registros. Metadados da versão anterior (<span class="tt">full = 1</span> com a EEPROM 1 ativa) são migrados para a EEPROM 2. Atualiza <span class="tt"><a class="el" href="app__state_8h.html#ade6d834507085d886d456578b1c26b48" title="eeprom_full: 1 = as duas EEPROMs cheias.">eeprom_metadata_load_ok</a></span>.</p>
+<dl class="retval"><dt>Valores Retornados</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">HAL_OK</td><td>Metadados válidos carregados. </td></tr>
+    <tr><td class="paramname">HAL_ERROR</td><td>Metadados inválidos. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Retorna</dt><dd>Status da HAL em caso de falha de comunicação I²C. </dd></dl>
+
+<p class="definition">Definição na linha <a class="el" href="eeprom24lc512_8c_source.html#l00482">482</a> do arquivo <a class="el" href="eeprom24lc512_8c_source.html">eeprom24lc512.c</a>.</p>
+
+<p class="reference">Referencias <a class="el" href="app__state_8h_source.html#l00051">EEPROM24LC512_ADDRESS_1</a>, <a class="el" href="eeprom24lc512_8c_source.html#l00105">EEPROM24LC512_ReadBuffer()</a>, <a class="el" href="app__state_8h_source.html#l00059">EEPROM2_DATA_START_ADDRESS</a>, <a class="el" href="app__state_8h_source.html#l00057">EEPROM_ACTIVE_EEPROM1</a>, <a class="el" href="app__state_8h_source.html#l00058">EEPROM_ACTIVE_EEPROM2</a>, <a class="el" href="app__state_8h_source.html#l00061">EEPROM_DATA_START_ADDRESS</a>, <a class="el" href="eeprom24lc512_8c_source.html#l00482">EEPROM_LoadMetadata()</a>, <a class="el" href="app__state_8c_source.html#l00063">eeprom_metadata</a>, <a class="el" href="app__state_8h_source.html#l00060">EEPROM_METADATA_ADDRESS</a>, <a class="el" href="app__state_8h_source.html#l00117">eeprom_metadata_load_ok</a>, <a class="el" href="app__state_8h_source.html#l00062">EEPROM_METADATA_MAGIC</a>, <a class="el" href="app__state_8c_source.html#l00043">eeprom_next_address</a>, <a class="el" href="eeprom24lc512_8c_source.html#l00471">EEPROM_SaveMetadata()</a>, <a class="el" href="app__state_8h_source.html#l00046">EEPROMMetadata::full</a>, <a class="el" href="app__state_8h_source.html#l00048">EEPROMMetadata::magic</a>, <a class="el" href="app__state_8h_source.html#l00045">EEPROMMetadata::next_address</a> e <a class="el" href="app__state_8h_source.html#l00047">EEPROMMetadata::reserved</a>.</p>
+
+<p class="reference">Referenciado(a) por <a class="el" href="app__tasks_8c_source.html#l00223">App_CommandTask()</a> e <a class="el" href="eeprom24lc512_8c_source.html#l00482">EEPROM_LoadMetadata()</a>.</p>
+
+</div>
+</div>
+<a id="a78b2eaab18d7bcbf5c3f9c3b3005a2dd" name="a78b2eaab18d7bcbf5c3f9c3b3005a2dd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a78b2eaab18d7bcbf5c3f9c3b3005a2dd">&#9670;&#160;</a></span>EEPROM_ReadLE16()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint16_t EEPROM_ReadLE16 </td>
+          <td>(</td>
+          <td class="paramtype">const uint8_t *</td>          <td class="paramname"><span class="paramname"><em>p</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Lê um inteiro de 16 bits sem sinal em little-endian. </p>
+
+<p class="definition">Definição na linha <a class="el" href="eeprom24lc512_8c_source.html#l01196">1196</a> do arquivo <a class="el" href="eeprom24lc512_8c_source.html">eeprom24lc512.c</a>.</p>
+
+<p class="reference">Referencias <a class="el" href="eeprom24lc512_8c_source.html#l01196">EEPROM_ReadLE16()</a>.</p>
+
+<p class="reference">Referenciado(a) por <a class="el" href="eeprom24lc512_8c_source.html#l01259">EEPROM_ExportOneChip()</a> e <a class="el" href="eeprom24lc512_8c_source.html#l01196">EEPROM_ReadLE16()</a>.</p>
+
+</div>
+</div>
+<a id="ab6ab2e108c9c6a9d73fdb6dc37e355f5" name="ab6ab2e108c9c6a9d73fdb6dc37e355f5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab6ab2e108c9c6a9d73fdb6dc37e355f5">&#9670;&#160;</a></span>EEPROM_RecordCRCValid()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t EEPROM_RecordCRCValid </td>
+          <td>(</td>
+          <td class="paramtype">const uint8_t *</td>          <td class="paramname"><span class="paramname"><em>record</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>size</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Confere o CRC de um registro. </p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">record</td><td>Registro completo, com o CRC nos 2 últimos bytes (little-endian). </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">size</td><td>Tamanho do registro, em bytes. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="retval"><dt>Valores Retornados</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">1</td><td>CRC gravado igual ao calculado sobre os bytes anteriores. </td></tr>
+    <tr><td class="paramname">0</td><td>CRC diferente, <code class="param">record</code> nulo ou <code class="param">size</code> menor que 3. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definição na linha <a class="el" href="eeprom24lc512_8c_source.html#l01183">1183</a> do arquivo <a class="el" href="eeprom24lc512_8c_source.html">eeprom24lc512.c</a>.</p>
+
+<p class="reference">Referencias <a class="el" href="eeprom24lc512_8c_source.html#l00592">EEPROM_CalculateCRC16()</a> e <a class="el" href="eeprom24lc512_8c_source.html#l01183">EEPROM_RecordCRCValid()</a>.</p>
+
+<p class="reference">Referenciado(a) por <a class="el" href="eeprom24lc512_8c_source.html#l01259">EEPROM_ExportOneChip()</a> e <a class="el" href="eeprom24lc512_8c_source.html#l01183">EEPROM_RecordCRCValid()</a>.</p>
+
+</div>
+</div>
+<a id="aa9e2b298219e959b95063e66154224a2" name="aa9e2b298219e959b95063e66154224a2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa9e2b298219e959b95063e66154224a2">&#9670;&#160;</a></span>EEPROM_RecordSizeFromMask()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t EEPROM_RecordSizeFromMask </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>mask</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t *</td>          <td class="paramname"><span class="paramname"><em>size</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Atalho para <a class="el" href="sensor__registry_8h.html#add508f17781de3fa7d4fc698b282d93d" title="Calcula o tamanho do registro para uma máscara de sensores.">Sensors_RecordSizeFromMask()</a>. </p>
+
+<p class="definition">Definição na linha <a class="el" href="eeprom24lc512_8c_source.html#l01171">1171</a> do arquivo <a class="el" href="eeprom24lc512_8c_source.html">eeprom24lc512.c</a>.</p>
+
+<p class="reference">Referencias <a class="el" href="eeprom24lc512_8c_source.html#l01171">EEPROM_RecordSizeFromMask()</a> e <a class="el" href="sensor__registry_8c_source.html#l00319">Sensors_RecordSizeFromMask()</a>.</p>
+
+<p class="reference">Referenciado(a) por <a class="el" href="eeprom24lc512_8c_source.html#l01259">EEPROM_ExportOneChip()</a> e <a class="el" href="eeprom24lc512_8c_source.html#l01171">EEPROM_RecordSizeFromMask()</a>.</p>
+
+</div>
+</div>
+<a id="a5faed85c58392ae27658715071d9c0c8" name="a5faed85c58392ae27658715071d9c0c8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5faed85c58392ae27658715071d9c0c8">&#9670;&#160;</a></span>EEPROM_SaveMetadata()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">HAL_StatusTypeDef EEPROM_SaveMetadata </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Grava os metadados (<span class="tt"><a class="el" href="app__state_8h.html#a9ce3c7e0c6684a9affd00d99bd579abd" title="Cópia em RAM dos metadados gravados na EEPROM 1.">eeprom_metadata</a></span>) no endereço 0x0000 da EEPROM 1. </p>
+<dl class="section return"><dt>Retorna</dt><dd>Status de <a class="el" href="eeprom24lc512_8h.html#a463c2abe90877b2471a08cba75274439" title="Grava um bloco de bytes em um dos chips.">EEPROM24LC512_WriteBuffer()</a>. </dd></dl>
+
+<p class="definition">Definição na linha <a class="el" href="eeprom24lc512_8c_source.html#l00471">471</a> do arquivo <a class="el" href="eeprom24lc512_8c_source.html">eeprom24lc512.c</a>.</p>
+
+<p class="reference">Referencias <a class="el" href="app__state_8h_source.html#l00051">EEPROM24LC512_ADDRESS_1</a>, <a class="el" href="eeprom24lc512_8c_source.html#l00032">EEPROM24LC512_WriteBuffer()</a>, <a class="el" href="app__state_8c_source.html#l00063">eeprom_metadata</a>, <a class="el" href="app__state_8h_source.html#l00060">EEPROM_METADATA_ADDRESS</a> e <a class="el" href="eeprom24lc512_8c_source.html#l00471">EEPROM_SaveMetadata()</a>.</p>
+
+<p class="reference">Referenciado(a) por <a class="el" href="eeprom24lc512_8c_source.html#l00721">EEPROM24LC512_EraseAll()</a>, <a class="el" href="eeprom24lc512_8c_source.html#l00482">EEPROM_LoadMetadata()</a>, <a class="el" href="eeprom24lc512_8c_source.html#l00471">EEPROM_SaveMetadata()</a> e <a class="el" href="eeprom24lc512_8c_source.html#l00252">EEPROM_SaveSensorRecord()</a>.</p>
+
+</div>
+</div>
+<a id="a3bdee773136462d85fd2547023d62c42" name="a3bdee773136462d85fd2547023d62c42"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3bdee773136462d85fd2547023d62c42">&#9670;&#160;</a></span>EEPROM_SaveSensorRecord()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">HAL_StatusTypeDef EEPROM_SaveSensorRecord </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Grava na EEPROM um registro com as últimas leituras dos sensores disponíveis. </p>
+<p>Etapas: valida os metadados; migra metadados da versão anterior, se for o caso; monta o registro com os sensores que responderam no ciclo (<a class="el" href="eeprom24lc512_8h.html#a7e550f6e0fbbca8e2822268d02574ee1" title="Monta um registro: máscara, dados dos sensores, data e hora do RTC e CRC.">EEPROM_BuildSensorRecord()</a>); escolhe o chip e o endereço (passa para a EEPROM 2 se o registro não couber na 1 e marca a memória como cheia se também não couber na 2); grava; relê o que gravou e confere byte a byte e pelo CRC; avança o ponteiro e salva os metadados. Atualiza <span class="tt">eeprom_status_display</span> (0 OK, 1 erro, 2 cheia).</p>
+<dl class="retval"><dt>Valores Retornados</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">HAL_OK</td><td>Registro gravado e verificado, e ponteiro persistido. </td></tr>
+    <tr><td class="paramname">HAL_ERROR</td><td>Metadados inválidos, memória cheia, nenhum sensor disponível ou verificação da gravação falhou. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Retorna</dt><dd>Status da HAL em caso de falha de comunicação I²C. </dd></dl>
+
+<p class="definition">Definição na linha <a class="el" href="eeprom24lc512_8c_source.html#l00252">252</a> do arquivo <a class="el" href="eeprom24lc512_8c_source.html">eeprom24lc512.c</a>.</p>
+
+<p class="reference">Referencias <a class="el" href="app__state_8c_source.html#l00068">diagnostic_export_stage</a>, <a class="el" href="app__state_8h_source.html#l00051">EEPROM24LC512_ADDRESS_1</a>, <a class="el" href="app__state_8h_source.html#l00052">EEPROM24LC512_ADDRESS_2</a>, <a class="el" href="app__state_8h_source.html#l00056">EEPROM24LC512_CAPACITY</a>, <a class="el" href="eeprom24lc512_8c_source.html#l00105">EEPROM24LC512_ReadBuffer()</a>, <a class="el" href="eeprom24lc512_8c_source.html#l00032">EEPROM24LC512_WriteBuffer()</a>, <a class="el" href="app__state_8h_source.html#l00059">EEPROM2_DATA_START_ADDRESS</a>, <a class="el" href="app__state_8h_source.html#l00057">EEPROM_ACTIVE_EEPROM1</a>, <a class="el" href="app__state_8h_source.html#l00058">EEPROM_ACTIVE_EEPROM2</a>, <a class="el" href="eeprom24lc512_8c_source.html#l00635">EEPROM_BuildSensorRecord()</a>, <a class="el" href="eeprom24lc512_8c_source.html#l00592">EEPROM_CalculateCRC16()</a>, <a class="el" href="app__state_8h_source.html#l00071">EEPROM_MAX_RECORD_SIZE</a>, <a class="el" href="app__state_8c_source.html#l00063">eeprom_metadata</a>, <a class="el" href="app__state_8h_source.html#l00117">eeprom_metadata_load_ok</a>, <a class="el" href="app__state_8c_source.html#l00043">eeprom_next_address</a>, <a class="el" href="eeprom24lc512_8c_source.html#l00471">EEPROM_SaveMetadata()</a>, <a class="el" href="eeprom24lc512_8c_source.html#l00252">EEPROM_SaveSensorRecord()</a>, <a class="el" href="app__state_8h_source.html#l00046">EEPROMMetadata::full</a>, <a class="el" href="app__state_8h_source.html#l00045">EEPROMMetadata::next_address</a>, <a class="el" href="app__state_8h_source.html#l00047">EEPROMMetadata::reserved</a> e <a class="el" href="sensor__registry_8c_source.html#l00305">Sensors_AvailableMask()</a>.</p>
+
+<p class="reference">Referenciado(a) por <a class="el" href="eeprom24lc512_8c_source.html#l00252">EEPROM_SaveSensorRecord()</a> e <a class="el" href="app__tasks_8c_source.html#l00552">StartSensorTask()</a>.</p>
+
+</div>
+</div>
+<a id="ad49cf3b13c4bd80318f6068cb7e5084e" name="ad49cf3b13c4bd80318f6068cb7e5084e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad49cf3b13c4bd80318f6068cb7e5084e">&#9670;&#160;</a></span>EEPROM_Test_AddressBoundaries()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">HAL_StatusTypeDef EEPROM_Test_AddressBoundaries </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Grava e relê um byte em 0x0000, 0x0100, 0x1000, 0x8000 e 0xFFFF da EEPROM 2. </p>
+<dl class="retval"><dt>Valores Retornados</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">HAL_OK</td><td>Todos os valores conferem. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definição na linha <a class="el" href="eeprom24lc512_8c_source.html#l00914">914</a> do arquivo <a class="el" href="eeprom24lc512_8c_source.html">eeprom24lc512.c</a>.</p>
+
+<p class="reference">Referencias <a class="el" href="app__state_8h_source.html#l00052">EEPROM24LC512_ADDRESS_2</a>, <a class="el" href="eeprom24lc512_8c_source.html#l00105">EEPROM24LC512_ReadBuffer()</a>, <a class="el" href="eeprom24lc512_8c_source.html#l00032">EEPROM24LC512_WriteBuffer()</a> e <a class="el" href="eeprom24lc512_8c_source.html#l00914">EEPROM_Test_AddressBoundaries()</a>.</p>
+
+<p class="reference">Referenciado(a) por <a class="el" href="eeprom24lc512_8c_source.html#l00914">EEPROM_Test_AddressBoundaries()</a>.</p>
+
+</div>
+</div>
+<a id="a7d71581bbe3b5317e1ddfa34f1ca9486" name="a7d71581bbe3b5317e1ddfa34f1ca9486"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7d71581bbe3b5317e1ddfa34f1ca9486">&#9670;&#160;</a></span>EEPROM_Test_CRC16()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">HAL_StatusTypeDef EEPROM_Test_CRC16 </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Autoteste do CRC com o vetor padrão <span class="tt">"123456789"</span> (esperado 0x29B1). </p>
+<dl class="retval"><dt>Valores Retornados</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">HAL_OK</td><td>CRC correto. </td></tr>
+    <tr><td class="paramname">HAL_ERROR</td><td>CRC diferente do esperado. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definição na linha <a class="el" href="eeprom24lc512_8c_source.html#l00622">622</a> do arquivo <a class="el" href="eeprom24lc512_8c_source.html">eeprom24lc512.c</a>.</p>
+
+<p class="reference">Referencias <a class="el" href="eeprom24lc512_8c_source.html#l00592">EEPROM_CalculateCRC16()</a> e <a class="el" href="eeprom24lc512_8c_source.html#l00622">EEPROM_Test_CRC16()</a>.</p>
+
+<p class="reference">Referenciado(a) por <a class="el" href="eeprom24lc512_8c_source.html#l00622">EEPROM_Test_CRC16()</a>.</p>
+
+</div>
+</div>
+<a id="a390477998631dcf2039b8f8452f9431f" name="a390477998631dcf2039b8f8452f9431f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a390477998631dcf2039b8f8452f9431f">&#9670;&#160;</a></span>EEPROM_Test_Independence()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">HAL_StatusTypeDef EEPROM_Test_Independence </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Grava valores diferentes no endereço 0x0020 de cada chip e confere que são independentes. </p>
+<dl class="retval"><dt>Valores Retornados</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">HAL_OK</td><td>Cada chip devolveu o valor que recebeu. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definição na linha <a class="el" href="eeprom24lc512_8c_source.html#l00832">832</a> do arquivo <a class="el" href="eeprom24lc512_8c_source.html">eeprom24lc512.c</a>.</p>
+
+<p class="reference">Referencias <a class="el" href="app__state_8h_source.html#l00051">EEPROM24LC512_ADDRESS_1</a>, <a class="el" href="app__state_8h_source.html#l00052">EEPROM24LC512_ADDRESS_2</a>, <a class="el" href="eeprom24lc512_8c_source.html#l00105">EEPROM24LC512_ReadBuffer()</a>, <a class="el" href="eeprom24lc512_8c_source.html#l00032">EEPROM24LC512_WriteBuffer()</a> e <a class="el" href="eeprom24lc512_8c_source.html#l00832">EEPROM_Test_Independence()</a>.</p>
+
+<p class="reference">Referenciado(a) por <a class="el" href="eeprom24lc512_8c_source.html#l00832">EEPROM_Test_Independence()</a>.</p>
+
+</div>
+</div>
+<a id="abceec24c6eaa0378357f605b260ff97a" name="abceec24c6eaa0378357f605b260ff97a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abceec24c6eaa0378357f605b260ff97a">&#9670;&#160;</a></span>EEPROM_Test_PageBoundary()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">HAL_StatusTypeDef EEPROM_Test_PageBoundary </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Grava 32 bytes a partir de 0x0070 da EEPROM 2 (cruza a página de 128 B) e confere a leitura. </p>
+<dl class="retval"><dt>Valores Retornados</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">HAL_OK</td><td>Dados lidos iguais aos gravados. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definição na linha <a class="el" href="eeprom24lc512_8c_source.html#l00967">967</a> do arquivo <a class="el" href="eeprom24lc512_8c_source.html">eeprom24lc512.c</a>.</p>
+
+<p class="reference">Referencias <a class="el" href="app__state_8h_source.html#l00052">EEPROM24LC512_ADDRESS_2</a>, <a class="el" href="eeprom24lc512_8c_source.html#l00105">EEPROM24LC512_ReadBuffer()</a>, <a class="el" href="eeprom24lc512_8c_source.html#l00032">EEPROM24LC512_WriteBuffer()</a> e <a class="el" href="eeprom24lc512_8c_source.html#l00967">EEPROM_Test_PageBoundary()</a>.</p>
+
+<p class="reference">Referenciado(a) por <a class="el" href="eeprom24lc512_8c_source.html#l00967">EEPROM_Test_PageBoundary()</a>.</p>
+
+</div>
+</div>
+<a id="a5aba544c59517a9257be40fd6b60a01c" name="a5aba544c59517a9257be40fd6b60a01c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5aba544c59517a9257be40fd6b60a01c">&#9670;&#160;</a></span>EEPROM_Test_SerializedRecordRoundTrip()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">HAL_StatusTypeDef EEPROM_Test_SerializedRecordRoundTrip </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Monta um registro com os sensores disponíveis, grava em 0x0200 da EEPROM 2, relê e confere byte a byte e pelo CRC. </p>
+<dl class="retval"><dt>Valores Retornados</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">HAL_OK</td><td>Registro idêntico e com CRC válido. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definição na linha <a class="el" href="eeprom24lc512_8c_source.html#l01008">1008</a> do arquivo <a class="el" href="eeprom24lc512_8c_source.html">eeprom24lc512.c</a>.</p>
+
+<p class="reference">Referencias <a class="el" href="app__state_8h_source.html#l00052">EEPROM24LC512_ADDRESS_2</a>, <a class="el" href="eeprom24lc512_8c_source.html#l00105">EEPROM24LC512_ReadBuffer()</a>, <a class="el" href="eeprom24lc512_8c_source.html#l00032">EEPROM24LC512_WriteBuffer()</a>, <a class="el" href="eeprom24lc512_8c_source.html#l00635">EEPROM_BuildSensorRecord()</a>, <a class="el" href="eeprom24lc512_8c_source.html#l00592">EEPROM_CalculateCRC16()</a>, <a class="el" href="app__state_8h_source.html#l00071">EEPROM_MAX_RECORD_SIZE</a>, <a class="el" href="eeprom24lc512_8c_source.html#l01008">EEPROM_Test_SerializedRecordRoundTrip()</a>, <a class="el" href="app__state_8h_source.html#l00161">mpu6500_available</a>, <a class="el" href="app__state_8h_source.html#l00065">SENSOR_AHT20</a>, <a class="el" href="app__state_8h_source.html#l00066">SENSOR_BMP280</a> e <a class="el" href="app__state_8h_source.html#l00067">SENSOR_MPU6500</a>.</p>
+
+<p class="reference">Referenciado(a) por <a class="el" href="eeprom24lc512_8c_source.html#l01008">EEPROM_Test_SerializedRecordRoundTrip()</a>.</p>
+
+</div>
+</div>
+<a id="a51813c06a8ebbbd1fb1455e6775cd06f" name="a51813c06a8ebbbd1fb1455e6775cd06f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a51813c06a8ebbbd1fb1455e6775cd06f">&#9670;&#160;</a></span>EEPROM_USB_SendText()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">HAL_StatusTypeDef EEPROM_USB_SendText </td>
+          <td>(</td>
+          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>text</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Envia um texto pela USB CDC e espera a transmissão terminar. </p>
+<p>Repete a tentativa enquanto o endpoint está ocupado (até 5 s), cedendo a CPU e realimentando o watchdog. Atualiza <span class="tt"><a class="el" href="app__state_8h.html#a95ef45e83077329633e85dac0c6bf804" title="Resultado do último envio USB: -1 sem envio, 0 OK, 1 USBD_BUSY, 2 falha ou outro.">diagnostic_usb_tx_result</a></span>. </p><dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">text</td><td>Texto terminado em zero; o buffer deve permanecer válido durante a chamada. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="retval"><dt>Valores Retornados</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">HAL_OK</td><td>Texto enviado. </td></tr>
+    <tr><td class="paramname">HAL_ERROR</td><td><code class="param">text</code> nulo ou erro da USB. </td></tr>
+    <tr><td class="paramname">HAL_TIMEOUT</td><td>Transmissão não concluída em 5 s. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definição na linha <a class="el" href="eeprom24lc512_8c_source.html#l01135">1135</a> do arquivo <a class="el" href="eeprom24lc512_8c_source.html">eeprom24lc512.c</a>.</p>
+
+<p class="reference">Referencias <a class="el" href="app__state_8c_source.html#l00070">diagnostic_usb_tx_result</a>, <a class="el" href="eeprom24lc512_8c_source.html#l01135">EEPROM_USB_SendText()</a>, <a class="el" href="eeprom24lc512_8c_source.html#l00024">EEPROM_YieldDelay()</a> e <a class="el" href="app__watchdog_8c_source.html#l00055">Watchdog_Service()</a>.</p>
+
+<p class="reference">Referenciado(a) por <a class="el" href="eeprom24lc512_8c_source.html#l01361">EEPROM_ExportCSV_USB()</a>, <a class="el" href="eeprom24lc512_8c_source.html#l01259">EEPROM_ExportOneChip()</a> e <a class="el" href="eeprom24lc512_8c_source.html#l01135">EEPROM_USB_SendText()</a>.</p>
+
+</div>
+</div>
+<a id="adf78c56ba22cebc51139098d772e49f3" name="adf78c56ba22cebc51139098d772e49f3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adf78c56ba22cebc51139098d772e49f3">&#9670;&#160;</a></span>EEPROM_YieldDelay()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void EEPROM_YieldDelay </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>ms</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Espera <code class="param">ms</code> milissegundos cedendo a CPU quando o RTOS está em execução. </p>
+<p><span class="tt">HAL_Delay()</span> é espera ocupada e, em uma tarefa de prioridade maior, deixa as demais sem executar. </p><dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">ms</td><td>Tempo de espera, em milissegundos. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definição na linha <a class="el" href="eeprom24lc512_8c_source.html#l00024">24</a> do arquivo <a class="el" href="eeprom24lc512_8c_source.html">eeprom24lc512.c</a>.</p>
+
+<p class="reference">Referencias <a class="el" href="eeprom24lc512_8c_source.html#l00024">EEPROM_YieldDelay()</a>.</p>
+
+<p class="reference">Referenciado(a) por <a class="el" href="eeprom24lc512_8c_source.html#l00032">EEPROM24LC512_WriteBuffer()</a>, <a class="el" href="eeprom24lc512_8c_source.html#l01135">EEPROM_USB_SendText()</a> e <a class="el" href="eeprom24lc512_8c_source.html#l00024">EEPROM_YieldDelay()</a>.</p>
+
+</div>
+</div>
+<a name="doc-var-members" id="doc-var-members"></a><h2 id="header-doc-var-members" class="groupheader">Variáveis</h2>
+<a id="ae49d648b08d7909282a811be5c02c758" name="ae49d648b08d7909282a811be5c02c758"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae49d648b08d7909282a811be5c02c758">&#9670;&#160;</a></span>export_cache</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t export_cache[EXPORT_CACHE_SIZE]</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definição na linha <a class="el" href="eeprom24lc512_8c_source.html#l01204">1204</a> do arquivo <a class="el" href="eeprom24lc512_8c_source.html">eeprom24lc512.c</a>.</p>
+
+</div>
+</div>
+<a id="a6735d780d7a2eeff6a28164a03968292" name="a6735d780d7a2eeff6a28164a03968292"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6735d780d7a2eeff6a28164a03968292">&#9670;&#160;</a></span>export_cache_base</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t export_cache_base</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definição na linha <a class="el" href="eeprom24lc512_8c_source.html#l01205">1205</a> do arquivo <a class="el" href="eeprom24lc512_8c_source.html">eeprom24lc512.c</a>.</p>
+
+</div>
+</div>
+<a id="ab954dd6a8286dc01ba189418bd136444" name="ab954dd6a8286dc01ba189418bd136444"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab954dd6a8286dc01ba189418bd136444">&#9670;&#160;</a></span>export_cache_len</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t export_cache_len</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definição na linha <a class="el" href="eeprom24lc512_8c_source.html#l01206">1206</a> do arquivo <a class="el" href="eeprom24lc512_8c_source.html">eeprom24lc512.c</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><b>Core</b></li><li class="navelem"><b>Src</b></li><li class="navelem"><a href="eeprom24lc512_8c.html">eeprom24lc512.c</a></li>
+    <li class="footer">Gerado por <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.18.0 </li>
+  </ul>
+</div>
+</body>
+</html>

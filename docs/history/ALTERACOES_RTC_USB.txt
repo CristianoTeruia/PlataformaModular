@@ -1,0 +1,28 @@
+Alteracoes propostas: ajuste automatico do RTC apos exportacao CSV validada
+
+Arquivos alterados:
+- exportar_eeprom.py
+- Core/Src/main.c
+- Core/Src/app_state.c
+- Core/Inc/app_state.h
+- Core/Src/ssd1306.c
+- USB_DEVICE/App/usbd_cdc_if.c
+
+Fluxo:
+1. O script exporta e salva o CSV.
+2. Se a exportacao for validada, envia RTC_SET,AAAA,MM,DD,hh,mm,ss usando a hora local do computador.
+3. O firmware valida os campos e configura o RTC.
+4. Somente apos sucesso, escreve 0xA55A no registrador de backup DR1 e marca rtc_time_valid = 1.
+5. O script so entao pergunta se o usuario deseja apagar as EEPROMs.
+
+O registrador DR0 (0x32F2) significa apenas que o RTC foi inicializado. O DR1 (0xA55A) indica que uma data/hora real foi configurada. Assim, o valor padrao 01/01/2000 nao passa a ser considerado confiavel so porque o firmware reiniciou.
+
+Teste sugerido:
+- Fazer backup do projeto original.
+- Importar/abrir o projeto no STM32CubeIDE e compilar.
+- Gravar no STM32 e executar exportar_eeprom.py.
+- Confirmar que o CSV foi salvo, que aparece RTC_SET_END,OK e que o OLED deixa de mostrar RTC TIME INVALID.
+- Executar novamente sem desconectar a bateria: o horario deve continuar valido.
+- Desconectar toda a alimentacao principal e a bateria de backup; ao reiniciar, deve aparecer RTC TIME INVALID ate a proxima exportacao validada e ajuste pelo Python.
+
+Observacao: o firmware nao foi compilado nem testado em hardware neste ambiente. O projeto deve ser compilado e validado no STM32CubeIDE antes de uso com dados importantes.

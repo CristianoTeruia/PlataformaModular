@@ -1,0 +1,2254 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pt-BR">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.18.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>PlataformaModular: Referência do Arquivo Core/Src/app_state.c</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="codefolding.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">PlataformaModular
+   </div>
+   <div id="projectbrief">Plataforma modular embarcada para aquisição e registro de dados de sensores (STM32F411 + FreeRTOS)</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Gerado por Doxygen 1.18.0 -->
+<script type="text/javascript">
+let searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', codefold.init);
+</script>
+<script type="application/json" id="doxygen-config">
+{
+  "relPath": "",
+  "generateTreeView": true,
+  "searchEngine": true,
+  "serverBasedSearch": false,
+  "disableIndex": false,
+  "dynamicMenus": true,
+  "fullSidebar": false
+}
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<div id="main-nav-mobile">
+<div class="sm sm-dox"><input id="main-menu-state" type="checkbox"/>
+<label class="main-menu-btn" for="main-menu-state">
+<span class="main-menu-btn-icon"></span> Toggle main menu visibility</label>
+<span id="searchBoxPos1"></span>
+</div>
+</div><!-- main-nav-mobile -->
+<div id="main-nav">
+  <ul class="sm sm-dox" id="main-menu">
+    <li id="searchBoxPos2">
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect" class="search-icon"><span class="search-icon-dropdown"></span></span>
+          <input type="text" id="MSearchField" value="" placeholder="Busca" accesskey="S"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+          </span>
+        </div>
+    </li>
+  </ul>
+</div><!-- main-nav -->
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded',() => { initNavTree('app__state_8c.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Carregando...</div>
+<div class="SRStatus" id="Searching">Procurando...</div>
+<div class="SRStatus" id="NoMatches">Nenhuma entrada encontrado</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Referência do Arquivo app_state.c</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Definição das variáveis globais declaradas em <a class="el" href="app__state_8h.html" title="Tipos, constantes e variáveis globais compartilhadas entre os módulos do firmware.">app_state.h</a>.  
+<a href="#details">Mais...</a></p>
+<div class="textblock"><code>#include &quot;<a class="el" href="app__state_8h_source.html">app_state.h</a>&quot;</code><br />
+<code>#include &quot;cmsis_os2.h&quot;</code><br />
+</div>
+<p><a href="app__state_8c_source.html">Ir para o código-fonte desse arquivo.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
+Funções</h2></td></tr>
+<tr class="memitem:a37a3a5a51fd18694f366bc8c8e489c05" id="r_a37a3a5a51fd18694f366bc8c8e489c05"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a37a3a5a51fd18694f366bc8c8e489c05">App_Delay</a> (uint32_t ms)</td></tr>
+<tr class="memdesc:a37a3a5a51fd18694f366bc8c8e489c05"><td class="mdescLeft">&#160;</td><td class="mdescRight">Espera <code class="param">ms</code> milissegundos cedendo a CPU quando o RTOS está em execução.  <br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-var-members" class="groupheader"><a id="var-members" name="var-members"></a>
+Variáveis</h2></td></tr>
+<tr class="memitem:af6f9cc13b7debf5417430455e56e51c2" id="r_af6f9cc13b7debf5417430455e56e51c2"><td class="memItemLeft">float&#160;</td><td class="memItemRight"><a class="el" href="#af6f9cc13b7debf5417430455e56e51c2">aht20_temperature</a></td></tr>
+<tr class="memitem:ae1154ae5250491d9ed941127edc058bb" id="r_ae1154ae5250491d9ed941127edc058bb"><td class="memItemLeft">float&#160;</td><td class="memItemRight"><a class="el" href="#ae1154ae5250491d9ed941127edc058bb">aht20_humidity</a></td></tr>
+<tr class="memitem:a35f2c205addd04bd1088b0df5d848a96" id="r_a35f2c205addd04bd1088b0df5d848a96"><td class="memItemLeft">float&#160;</td><td class="memItemRight"><a class="el" href="#a35f2c205addd04bd1088b0df5d848a96">bmp280_temperature</a></td></tr>
+<tr class="memitem:a91041af11b6e620c485ce77552fb8466" id="r_a91041af11b6e620c485ce77552fb8466"><td class="memItemLeft">float&#160;</td><td class="memItemRight"><a class="el" href="#a91041af11b6e620c485ce77552fb8466">bmp280_pressure</a></td></tr>
+<tr class="memitem:a730ed166c629bded674b13faffe9cef7" id="r_a730ed166c629bded674b13faffe9cef7"><td class="memItemLeft">uint16_t&#160;</td><td class="memItemRight"><a class="el" href="#a730ed166c629bded674b13faffe9cef7">dig_T1</a></td></tr>
+<tr class="memitem:a14cb8cb6405f1dbd7b96eacb1564f3ac" id="r_a14cb8cb6405f1dbd7b96eacb1564f3ac"><td class="memItemLeft">uint16_t&#160;</td><td class="memItemRight"><a class="el" href="#a14cb8cb6405f1dbd7b96eacb1564f3ac">dig_P1</a></td></tr>
+<tr class="memitem:ab5c023a004c0497ba616d916155c85bb" id="r_ab5c023a004c0497ba616d916155c85bb"><td class="memItemLeft">int16_t&#160;</td><td class="memItemRight"><a class="el" href="#ab5c023a004c0497ba616d916155c85bb">dig_T2</a></td></tr>
+<tr class="memitem:a9536e89c30bbd791153ac9e407b0752b" id="r_a9536e89c30bbd791153ac9e407b0752b"><td class="memItemLeft">int16_t&#160;</td><td class="memItemRight"><a class="el" href="#a9536e89c30bbd791153ac9e407b0752b">dig_T3</a></td></tr>
+<tr class="memitem:abf2720ad17acc224ed28e66ec3de32ed" id="r_abf2720ad17acc224ed28e66ec3de32ed"><td class="memItemLeft">int16_t&#160;</td><td class="memItemRight"><a class="el" href="#abf2720ad17acc224ed28e66ec3de32ed">dig_P2</a></td></tr>
+<tr class="memitem:a16db1b4967cfd3dc34219d8fb8c92aeb" id="r_a16db1b4967cfd3dc34219d8fb8c92aeb"><td class="memItemLeft">int16_t&#160;</td><td class="memItemRight"><a class="el" href="#a16db1b4967cfd3dc34219d8fb8c92aeb">dig_P3</a></td></tr>
+<tr class="memitem:a9c7db64a28b0e240d0478921741dd67d" id="r_a9c7db64a28b0e240d0478921741dd67d"><td class="memItemLeft">int16_t&#160;</td><td class="memItemRight"><a class="el" href="#a9c7db64a28b0e240d0478921741dd67d">dig_P4</a></td></tr>
+<tr class="memitem:a7e509836d7ae0753ceaaed354b5e1479" id="r_a7e509836d7ae0753ceaaed354b5e1479"><td class="memItemLeft">int16_t&#160;</td><td class="memItemRight"><a class="el" href="#a7e509836d7ae0753ceaaed354b5e1479">dig_P5</a></td></tr>
+<tr class="memitem:a2ae5570c6daeda1d3666ed3dad96c4b7" id="r_a2ae5570c6daeda1d3666ed3dad96c4b7"><td class="memItemLeft">int16_t&#160;</td><td class="memItemRight"><a class="el" href="#a2ae5570c6daeda1d3666ed3dad96c4b7">dig_P6</a></td></tr>
+<tr class="memitem:a7f3c3b4bc3acd51c35229dd2cc50a3d6" id="r_a7f3c3b4bc3acd51c35229dd2cc50a3d6"><td class="memItemLeft">int16_t&#160;</td><td class="memItemRight"><a class="el" href="#a7f3c3b4bc3acd51c35229dd2cc50a3d6">dig_P7</a></td></tr>
+<tr class="memitem:a40493b036281e2b5fdfdf1776fe4708a" id="r_a40493b036281e2b5fdfdf1776fe4708a"><td class="memItemLeft">int16_t&#160;</td><td class="memItemRight"><a class="el" href="#a40493b036281e2b5fdfdf1776fe4708a">dig_P8</a></td></tr>
+<tr class="memitem:a361620dc95ad1d56b5d416d9d290c5f4" id="r_a361620dc95ad1d56b5d416d9d290c5f4"><td class="memItemLeft">int16_t&#160;</td><td class="memItemRight"><a class="el" href="#a361620dc95ad1d56b5d416d9d290c5f4">dig_P9</a></td></tr>
+<tr class="memitem:a8a931f3b6aecdc6cd7d6e2de54ded765" id="r_a8a931f3b6aecdc6cd7d6e2de54ded765"><td class="memItemLeft">int32_t&#160;</td><td class="memItemRight"><a class="el" href="#a8a931f3b6aecdc6cd7d6e2de54ded765">bmp280_t_fine</a></td></tr>
+<tr class="memdesc:a8a931f3b6aecdc6cd7d6e2de54ded765"><td class="mdescLeft">&#160;</td><td class="mdescRight">Temperatura intermediária (<span class="tt">t_fine</span>) da compensação do BMP280, reutilizada no cálculo da pressão.  <br /></td></tr>
+<tr class="memitem:a8ad5c31985f0f97a9b4ce913a7f1870a" id="r_a8ad5c31985f0f97a9b4ce913a7f1870a"><td class="memItemLeft">uint8_t&#160;</td><td class="memItemRight"><a class="el" href="#a8ad5c31985f0f97a9b4ce913a7f1870a">mpu6500_who_am_i</a></td></tr>
+<tr class="memdesc:a8ad5c31985f0f97a9b4ce913a7f1870a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Último valor lido do registrador WHO_AM_I do MPU6500 (esperado 0x70).  <br /></td></tr>
+<tr class="memitem:a473532d07eb17a041136760d65652369" id="r_a473532d07eb17a041136760d65652369"><td class="memItemLeft">int16_t&#160;</td><td class="memItemRight"><a class="el" href="#a473532d07eb17a041136760d65652369">mpu6500_accel_x</a></td></tr>
+<tr class="memitem:ac48a7eb67ea8c9cd270213b83887102b" id="r_ac48a7eb67ea8c9cd270213b83887102b"><td class="memItemLeft">int16_t&#160;</td><td class="memItemRight"><a class="el" href="#ac48a7eb67ea8c9cd270213b83887102b">mpu6500_accel_y</a></td></tr>
+<tr class="memitem:af4ee032fd85d1ada351154aff8d0902a" id="r_af4ee032fd85d1ada351154aff8d0902a"><td class="memItemLeft">int16_t&#160;</td><td class="memItemRight"><a class="el" href="#af4ee032fd85d1ada351154aff8d0902a">mpu6500_accel_z</a></td></tr>
+<tr class="memitem:af1bd45e4e464ba35f2dda271a111940a" id="r_af1bd45e4e464ba35f2dda271a111940a"><td class="memItemLeft">int16_t&#160;</td><td class="memItemRight"><a class="el" href="#af1bd45e4e464ba35f2dda271a111940a">mpu6500_gyro_x</a></td></tr>
+<tr class="memitem:adb67477706062f24cc2ed94fbf2e5d81" id="r_adb67477706062f24cc2ed94fbf2e5d81"><td class="memItemLeft">int16_t&#160;</td><td class="memItemRight"><a class="el" href="#adb67477706062f24cc2ed94fbf2e5d81">mpu6500_gyro_y</a></td></tr>
+<tr class="memitem:a5bd1ef9b351103b6c8c56ded1b26b236" id="r_a5bd1ef9b351103b6c8c56ded1b26b236"><td class="memItemLeft">int16_t&#160;</td><td class="memItemRight"><a class="el" href="#a5bd1ef9b351103b6c8c56ded1b26b236">mpu6500_gyro_z</a></td></tr>
+<tr class="memitem:ad7d02f05c28d305a5fdc6b7e7deafd4a" id="r_ad7d02f05c28d305a5fdc6b7e7deafd4a"><td class="memItemLeft">float&#160;</td><td class="memItemRight"><a class="el" href="#ad7d02f05c28d305a5fdc6b7e7deafd4a">mpu6500_accel_x_g</a></td></tr>
+<tr class="memitem:a51a06f9b053f6e4a61aa98f6b3569ed7" id="r_a51a06f9b053f6e4a61aa98f6b3569ed7"><td class="memItemLeft">float&#160;</td><td class="memItemRight"><a class="el" href="#a51a06f9b053f6e4a61aa98f6b3569ed7">mpu6500_accel_y_g</a></td></tr>
+<tr class="memitem:a3c45f95cce673c04fbf2f482c75e4b09" id="r_a3c45f95cce673c04fbf2f482c75e4b09"><td class="memItemLeft">float&#160;</td><td class="memItemRight"><a class="el" href="#a3c45f95cce673c04fbf2f482c75e4b09">mpu6500_accel_z_g</a></td></tr>
+<tr class="memitem:af64f041a2da74983fb61c0b82378c62f" id="r_af64f041a2da74983fb61c0b82378c62f"><td class="memItemLeft">float&#160;</td><td class="memItemRight"><a class="el" href="#af64f041a2da74983fb61c0b82378c62f">mpu6500_gyro_x_dps</a></td></tr>
+<tr class="memitem:a6125830b4bddd1adb51cd1fa9880a13b" id="r_a6125830b4bddd1adb51cd1fa9880a13b"><td class="memItemLeft">float&#160;</td><td class="memItemRight"><a class="el" href="#a6125830b4bddd1adb51cd1fa9880a13b">mpu6500_gyro_y_dps</a></td></tr>
+<tr class="memitem:ac92261368ad2d996089491b139c20fcc" id="r_ac92261368ad2d996089491b139c20fcc"><td class="memItemLeft">float&#160;</td><td class="memItemRight"><a class="el" href="#ac92261368ad2d996089491b139c20fcc">mpu6500_gyro_z_dps</a></td></tr>
+<tr class="memitem:a38a24285aceeaa09a0084cac81779a18" id="r_a38a24285aceeaa09a0084cac81779a18"><td class="memItemLeft">float&#160;</td><td class="memItemRight"><a class="el" href="#a38a24285aceeaa09a0084cac81779a18">mpu6500_accel_offset_x</a></td></tr>
+<tr class="memitem:a3854f32bfeecfaa004fe80d56adf8574" id="r_a3854f32bfeecfaa004fe80d56adf8574"><td class="memItemLeft">float&#160;</td><td class="memItemRight"><a class="el" href="#a3854f32bfeecfaa004fe80d56adf8574">mpu6500_accel_offset_y</a></td></tr>
+<tr class="memitem:a9dc51766a0a3c5b766f843a31a718f30" id="r_a9dc51766a0a3c5b766f843a31a718f30"><td class="memItemLeft">float&#160;</td><td class="memItemRight"><a class="el" href="#a9dc51766a0a3c5b766f843a31a718f30">mpu6500_accel_offset_z</a></td></tr>
+<tr class="memitem:ae1388b1533361ab02b7a31265ba723c0" id="r_ae1388b1533361ab02b7a31265ba723c0"><td class="memItemLeft">float&#160;</td><td class="memItemRight"><a class="el" href="#ae1388b1533361ab02b7a31265ba723c0">mpu6500_gyro_offset_x</a></td></tr>
+<tr class="memitem:a9ba456f9ce6e172179e18d92c3b8225c" id="r_a9ba456f9ce6e172179e18d92c3b8225c"><td class="memItemLeft">float&#160;</td><td class="memItemRight"><a class="el" href="#a9ba456f9ce6e172179e18d92c3b8225c">mpu6500_gyro_offset_y</a></td></tr>
+<tr class="memitem:abab4f06c5b7b18d0ff22506174aab782" id="r_abab4f06c5b7b18d0ff22506174aab782"><td class="memItemLeft">float&#160;</td><td class="memItemRight"><a class="el" href="#abab4f06c5b7b18d0ff22506174aab782">mpu6500_gyro_offset_z</a></td></tr>
+<tr class="memitem:a25c6d63c0716b71ac1cb0688a8800669" id="r_a25c6d63c0716b71ac1cb0688a8800669"><td class="memItemLeft">uint8_t&#160;</td><td class="memItemRight"><a class="el" href="#a25c6d63c0716b71ac1cb0688a8800669">ssd1306_buffer</a> [1024]</td></tr>
+<tr class="memdesc:a25c6d63c0716b71ac1cb0688a8800669"><td class="mdescLeft">&#160;</td><td class="mdescRight">Memória de imagem do OLED: 128 x 64 pixels, 8 páginas de 128 bytes.  <br /></td></tr>
+<tr class="memitem:aa2919561b5197df52a4a0ad81fb0814b" id="r_aa2919561b5197df52a4a0ad81fb0814b"><td class="memItemLeft">HAL_StatusTypeDef&#160;</td><td class="memItemRight"><a class="el" href="#aa2919561b5197df52a4a0ad81fb0814b">ssd1306_status</a></td></tr>
+<tr class="memitem:a12d0bc6faf33100d6e7b259ef2aa2489" id="r_a12d0bc6faf33100d6e7b259ef2aa2489"><td class="memItemLeft">HAL_StatusTypeDef&#160;</td><td class="memItemRight"><a class="el" href="#a12d0bc6faf33100d6e7b259ef2aa2489">ssd1306_fill_status</a></td></tr>
+<tr class="memitem:aa4716fb628410ec1b31a4fc636dc93d0" id="r_aa4716fb628410ec1b31a4fc636dc93d0"><td class="memItemLeft">volatile uint8_t&#160;</td><td class="memItemRight"><a class="el" href="#aa4716fb628410ec1b31a4fc636dc93d0">i2c2_last_lock_status</a> = 0U</td></tr>
+<tr class="memdesc:aa4716fb628410ec1b31a4fc636dc93d0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Resultado da última aquisição do mutex do I²C2 em leitura da EEPROM (diagnóstico).  <br /></td></tr>
+<tr class="memitem:af16fb49235a7e0c27b510164aa69a840" id="r_af16fb49235a7e0c27b510164aa69a840"><td class="memItemLeft">volatile uint32_t&#160;</td><td class="memItemRight"><a class="el" href="#af16fb49235a7e0c27b510164aa69a840">eeprom_read_error_snapshot</a> = 0U</td></tr>
+<tr class="memitem:ad9647b92db1d00a21166af8899287741" id="r_ad9647b92db1d00a21166af8899287741"><td class="memItemLeft">volatile uint32_t&#160;</td><td class="memItemRight"><a class="el" href="#ad9647b92db1d00a21166af8899287741">eeprom_read_state_snapshot</a> = 0U</td></tr>
+<tr class="memitem:a4afa3be70cd1f6acff17d615ecd29b0c" id="r_a4afa3be70cd1f6acff17d615ecd29b0c"><td class="memItemLeft">volatile uint32_t&#160;</td><td class="memItemRight"><a class="el" href="#a4afa3be70cd1f6acff17d615ecd29b0c">oled_lock_fail_count</a> = 0U</td></tr>
+<tr class="memitem:affb17898fabc82f0b6e5032f5d3c8555" id="r_affb17898fabc82f0b6e5032f5d3c8555"><td class="memItemLeft">volatile uint32_t&#160;</td><td class="memItemRight"><a class="el" href="#affb17898fabc82f0b6e5032f5d3c8555">oled_page_switch_count</a> = 0U</td></tr>
+<tr class="memitem:adef7a49385cf87a69e137c4f0122442a" id="r_adef7a49385cf87a69e137c4f0122442a"><td class="memItemLeft">volatile uint32_t&#160;</td><td class="memItemRight"><a class="el" href="#adef7a49385cf87a69e137c4f0122442a">oled_i2c_error_snapshot</a> = 0U</td></tr>
+<tr class="memitem:af44ce64fa7961a404bb44f428e56a75d" id="r_af44ce64fa7961a404bb44f428e56a75d"><td class="memItemLeft">volatile uint32_t&#160;</td><td class="memItemRight"><a class="el" href="#af44ce64fa7961a404bb44f428e56a75d">oled_i2c_state_snapshot</a> = 0U</td></tr>
+<tr class="memitem:a89dc4785578a08b5d603115d208e3520" id="r_a89dc4785578a08b5d603115d208e3520"><td class="memItemLeft">volatile uint32_t&#160;</td><td class="memItemRight"><a class="el" href="#a89dc4785578a08b5d603115d208e3520">oled_pre_state_snapshot</a> = 0U</td></tr>
+<tr class="memitem:aeca698713574433eb542374a5683c4c6" id="r_aeca698713574433eb542374a5683c4c6"><td class="memItemLeft">volatile uint32_t&#160;</td><td class="memItemRight"><a class="el" href="#aeca698713574433eb542374a5683c4c6">oled_pre_lock_snapshot</a> = 0U</td></tr>
+<tr class="memitem:a781b2b0f132bec84adb28d23c0cb7e69" id="r_a781b2b0f132bec84adb28d23c0cb7e69"><td class="memItemLeft">volatile uint32_t&#160;</td><td class="memItemRight"><a class="el" href="#a781b2b0f132bec84adb28d23c0cb7e69">oled_hw_busy_snapshot</a> = 0U</td></tr>
+<tr class="memdesc:a781b2b0f132bec84adb28d23c0cb7e69"><td class="mdescLeft">&#160;</td><td class="mdescRight">Flag BUSY do periférico I²C2 antes da última transferência do OLED.  <br /></td></tr>
+<tr class="memitem:ac95b0cbc6d015741cbb1143f6e7449ea" id="r_ac95b0cbc6d015741cbb1143f6e7449ea"><td class="memItemLeft">volatile uint8_t&#160;</td><td class="memItemRight"><a class="el" href="#ac95b0cbc6d015741cbb1143f6e7449ea">oled_sda_snapshot</a> = 1U</td></tr>
+<tr class="memitem:a452586b8ed9180cce6c209a479e97d36" id="r_a452586b8ed9180cce6c209a479e97d36"><td class="memItemLeft">volatile uint8_t&#160;</td><td class="memItemRight"><a class="el" href="#a452586b8ed9180cce6c209a479e97d36">oled_scl_snapshot</a> = 1U</td></tr>
+<tr class="memitem:af49aa31228a8c886c4e0bfa13f80fd72" id="r_af49aa31228a8c886c4e0bfa13f80fd72"><td class="memItemLeft">volatile uint8_t&#160;</td><td class="memItemRight"><a class="el" href="#af49aa31228a8c886c4e0bfa13f80fd72">oled_failed_page</a> = 0xFFU</td></tr>
+<tr class="memitem:a7654fd7bdd7757e9b258a10d67c54724" id="r_a7654fd7bdd7757e9b258a10d67c54724"><td class="memItemLeft">volatile uint8_t&#160;</td><td class="memItemRight"><a class="el" href="#a7654fd7bdd7757e9b258a10d67c54724">oled_failed_stage</a> = 0U</td></tr>
+<tr class="memitem:aaaded989d0aa2ec50a28e5a48369dae2" id="r_aaaded989d0aa2ec50a28e5a48369dae2"><td class="memItemLeft">volatile uint32_t&#160;</td><td class="memItemRight"><a class="el" href="#aaaded989d0aa2ec50a28e5a48369dae2">oled_render_overlap_count</a> = 0U</td></tr>
+<tr class="memitem:ade818f0d130bac4ff4513a3183748822" id="r_ade818f0d130bac4ff4513a3183748822"><td class="memItemLeft">volatile uint32_t&#160;</td><td class="memItemRight"><a class="el" href="#ade818f0d130bac4ff4513a3183748822">oled_buffer_mutation_count</a> = 0U</td></tr>
+<tr class="memitem:aa8ff25333c15e4fdacab5cb82d96a5a2" id="r_aa8ff25333c15e4fdacab5cb82d96a5a2"><td class="memItemLeft">volatile uint32_t&#160;</td><td class="memItemRight"><a class="el" href="#aa8ff25333c15e4fdacab5cb82d96a5a2">oled_buffer_checksum_before</a> = 0U</td></tr>
+<tr class="memitem:a42b52c0a1993f3c29f19836762ee9050" id="r_a42b52c0a1993f3c29f19836762ee9050"><td class="memItemLeft">volatile uint32_t&#160;</td><td class="memItemRight"><a class="el" href="#a42b52c0a1993f3c29f19836762ee9050">oled_buffer_checksum_after</a> = 0U</td></tr>
+<tr class="memitem:ac1b58296f24ec3d0db6351a759743bed" id="r_ac1b58296f24ec3d0db6351a759743bed"><td class="memItemLeft">uint8_t&#160;</td><td class="memItemRight"><a class="el" href="#ac1b58296f24ec3d0db6351a759743bed">i2c2_device_found</a></td></tr>
+<tr class="memdesc:ac1b58296f24ec3d0db6351a759743bed"><td class="mdescLeft">&#160;</td><td class="mdescRight">Último endereço de 7 bits que respondeu em <a class="el" href="ssd1306_8h.html#ad2bc6421efd7f9a129e76de9c1fde825" title="Varre os endereços 1 a 127 do I²C2 e guarda em i2c2_device_found o último que respondeu (depuração).">I2C2_Scan_All()</a>.  <br /></td></tr>
+<tr class="memitem:ae82557ddf2c5226679c91a8f723a0d9e" id="r_ae82557ddf2c5226679c91a8f723a0d9e"><td class="memItemLeft">int32_t&#160;</td><td class="memItemRight"><a class="el" href="#ae82557ddf2c5226679c91a8f723a0d9e">display_aht_temp</a></td></tr>
+<tr class="memitem:a2a99dfd2050ed52111987a918f9a0181" id="r_a2a99dfd2050ed52111987a918f9a0181"><td class="memItemLeft">int32_t&#160;</td><td class="memItemRight"><a class="el" href="#a2a99dfd2050ed52111987a918f9a0181">display_aht_hum</a></td></tr>
+<tr class="memitem:a07b50979a63ce2fb5de6fc3787bd76d5" id="r_a07b50979a63ce2fb5de6fc3787bd76d5"><td class="memItemLeft">int32_t&#160;</td><td class="memItemRight"><a class="el" href="#a07b50979a63ce2fb5de6fc3787bd76d5">display_pressure</a></td></tr>
+<tr class="memitem:a28c3b4587553e9ce45a952ed970e19c8" id="r_a28c3b4587553e9ce45a952ed970e19c8"><td class="memItemLeft">int32_t&#160;</td><td class="memItemRight"><a class="el" href="#a28c3b4587553e9ce45a952ed970e19c8">display_accel_z</a></td></tr>
+<tr class="memitem:a0dfdeef7e8ebbaddbdb4507ae3884386" id="r_a0dfdeef7e8ebbaddbdb4507ae3884386"><td class="memItemLeft">uint8_t&#160;</td><td class="memItemRight"><a class="el" href="#a0dfdeef7e8ebbaddbdb4507ae3884386">display_page</a> = 0</td></tr>
+<tr class="memdesc:a0dfdeef7e8ebbaddbdb4507ae3884386"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tela atual do OLED: 0 = estado do sistema; 1 = armazenamento.  <br /></td></tr>
+<tr class="memitem:a5a0071b821d225f25444845f422fd0bb" id="r_a5a0071b821d225f25444845f422fd0bb"><td class="memItemLeft">uint8_t&#160;</td><td class="memItemRight"><a class="el" href="#a5a0071b821d225f25444845f422fd0bb">eeprom_write_data</a></td></tr>
+<tr class="memitem:a91ea8b26998dddd69a2a6dea8d6fd47f" id="r_a91ea8b26998dddd69a2a6dea8d6fd47f"><td class="memItemLeft">uint8_t&#160;</td><td class="memItemRight"><a class="el" href="#a91ea8b26998dddd69a2a6dea8d6fd47f">eeprom_read_data</a></td></tr>
+<tr class="memitem:ae017628fc37090ce3b44447ac2a12ea7" id="r_ae017628fc37090ce3b44447ac2a12ea7"><td class="memItemLeft">HAL_StatusTypeDef&#160;</td><td class="memItemRight"><a class="el" href="#ae017628fc37090ce3b44447ac2a12ea7">eeprom_write_status</a></td></tr>
+<tr class="memitem:a8efb51b1bff228c1ec41121790fd5537" id="r_a8efb51b1bff228c1ec41121790fd5537"><td class="memItemLeft">HAL_StatusTypeDef&#160;</td><td class="memItemRight"><a class="el" href="#a8efb51b1bff228c1ec41121790fd5537">eeprom_read_status</a></td></tr>
+<tr class="memitem:af5dd366f28ca90970352954752a9762c" id="r_af5dd366f28ca90970352954752a9762c"><td class="memItemLeft">HAL_StatusTypeDef&#160;</td><td class="memItemRight"><a class="el" href="#af5dd366f28ca90970352954752a9762c">eeprom_test_status</a></td></tr>
+<tr class="memitem:a999b6e89551d6193c35a5098074842f5" id="r_a999b6e89551d6193c35a5098074842f5"><td class="memItemLeft">uint8_t&#160;</td><td class="memItemRight"><a class="el" href="#a999b6e89551d6193c35a5098074842f5">eeprom_test_write</a> [5]</td></tr>
+<tr class="memitem:aa62cb8007c9c872b9be8d827544dd019" id="r_aa62cb8007c9c872b9be8d827544dd019"><td class="memItemLeft">uint8_t&#160;</td><td class="memItemRight"><a class="el" href="#aa62cb8007c9c872b9be8d827544dd019">eeprom_test_read</a> [5]</td></tr>
+<tr class="memitem:a9d98cfc7f09b7bf92bfd7becc0eaa5b6" id="r_a9d98cfc7f09b7bf92bfd7becc0eaa5b6"><td class="memItemLeft"><a class="el" href="struct_sensor_record_e_e_p_r_o_m.html">SensorRecordEEPROM</a>&#160;</td><td class="memItemRight"><a class="el" href="#a9d98cfc7f09b7bf92bfd7becc0eaa5b6">eeprom_record</a></td></tr>
+<tr class="memitem:a3dd576b8ffdc26800c5bc1b5687f2233" id="r_a3dd576b8ffdc26800c5bc1b5687f2233"><td class="memItemLeft"><a class="el" href="struct_sensor_record_e_e_p_r_o_m.html">SensorRecordEEPROM</a>&#160;</td><td class="memItemRight"><a class="el" href="#a3dd576b8ffdc26800c5bc1b5687f2233">eeprom_record_read</a></td></tr>
+<tr class="memitem:a4be7f6688c932c93c285870ac134d00f" id="r_a4be7f6688c932c93c285870ac134d00f"><td class="memItemLeft">uint16_t&#160;</td><td class="memItemRight"><a class="el" href="#a4be7f6688c932c93c285870ac134d00f">eeprom_record_size</a></td></tr>
+<tr class="memdesc:a4be7f6688c932c93c285870ac134d00f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tamanho do último registro serializado nos testes (legado).  <br /></td></tr>
+<tr class="memitem:a76905f3785d3bcc2388f742e3350aee3" id="r_a76905f3785d3bcc2388f742e3350aee3"><td class="memItemLeft">uint8_t&#160;</td><td class="memItemRight"><a class="el" href="#a76905f3785d3bcc2388f742e3350aee3">eeprom_records_equal</a></td></tr>
+<tr class="memdesc:a76905f3785d3bcc2388f742e3350aee3"><td class="mdescLeft">&#160;</td><td class="mdescRight">1 = registro lido igual ao gravado no teste (legado).  <br /></td></tr>
+<tr class="memitem:a75712a7fa1186da67f764d7238304f62" id="r_a75712a7fa1186da67f764d7238304f62"><td class="memItemLeft"><a class="el" href="struct_sensor_record_e_e_p_r_o_m.html">SensorRecordEEPROM</a>&#160;</td><td class="memItemRight"><a class="el" href="#a75712a7fa1186da67f764d7238304f62">eeprom_records_write</a> [5]</td></tr>
+<tr class="memitem:a3a2eca52ae6f7e6fa991bf09205a5b55" id="r_a3a2eca52ae6f7e6fa991bf09205a5b55"><td class="memItemLeft"><a class="el" href="struct_sensor_record_e_e_p_r_o_m.html">SensorRecordEEPROM</a>&#160;</td><td class="memItemRight"><a class="el" href="#a3a2eca52ae6f7e6fa991bf09205a5b55">eeprom_records_read</a> [5]</td></tr>
+<tr class="memitem:a30d3d69ba26cc057c522039a67c2cde6" id="r_a30d3d69ba26cc057c522039a67c2cde6"><td class="memItemLeft">uint8_t&#160;</td><td class="memItemRight"><a class="el" href="#a30d3d69ba26cc057c522039a67c2cde6">eeprom_multi_test_ok</a></td></tr>
+<tr class="memdesc:a30d3d69ba26cc057c522039a67c2cde6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Resultado do teste de múltiplos registros (legado).  <br /></td></tr>
+<tr class="memitem:ad5e94eedb67f6426fd969fad75f886be" id="r_ad5e94eedb67f6426fd969fad75f886be"><td class="memItemLeft">uint16_t&#160;</td><td class="memItemRight"><a class="el" href="#ad5e94eedb67f6426fd969fad75f886be">eeprom_next_address</a> = 0x0000U</td></tr>
+<tr class="memdesc:ad5e94eedb67f6426fd969fad75f886be"><td class="mdescLeft">&#160;</td><td class="mdescRight">Próximo endereço livre no chip ativo; 0xFFFF = memória cheia.  <br /></td></tr>
+<tr class="memitem:a1476fd871413c360114f9e6b359844cb" id="r_a1476fd871413c360114f9e6b359844cb"><td class="memItemLeft">uint8_t&#160;</td><td class="memItemRight"><a class="el" href="#a1476fd871413c360114f9e6b359844cb">eeprom_full</a> = 0U</td></tr>
+<tr class="memitem:a9f64ce805b325998ea52762b445a2145" id="r_a9f64ce805b325998ea52762b445a2145"><td class="memItemLeft">uint8_t&#160;</td><td class="memItemRight"><a class="el" href="#a9f64ce805b325998ea52762b445a2145">eeprom_status_display</a> = 0U</td></tr>
+<tr class="memitem:ade6d834507085d886d456578b1c26b48" id="r_ade6d834507085d886d456578b1c26b48"><td class="memItemLeft">uint8_t&#160;</td><td class="memItemRight"><a class="el" href="#ade6d834507085d886d456578b1c26b48">eeprom_metadata_load_ok</a> = 0U</td></tr>
+<tr class="memitem:a10fc7ffc97c3d6c8b882b907fd66ab63" id="r_a10fc7ffc97c3d6c8b882b907fd66ab63"><td class="memItemLeft">volatile uint8_t&#160;</td><td class="memItemRight"><a class="el" href="#a10fc7ffc97c3d6c8b882b907fd66ab63">usb_export_requested</a> = 0U</td></tr>
+<tr class="memdesc:a10fc7ffc97c3d6c8b882b907fd66ab63"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pedido <span class="tt">EXPORT</span> recebido pela USB, atendido pela <span class="tt">defaultTask</span>.  <br /></td></tr>
+<tr class="memitem:a47040bacfe6b9ded1f45153d46f88f89" id="r_a47040bacfe6b9ded1f45153d46f88f89"><td class="memItemLeft">volatile uint8_t&#160;</td><td class="memItemRight"><a class="el" href="#a47040bacfe6b9ded1f45153d46f88f89">usb_clear_requested</a> = 0U</td></tr>
+<tr class="memdesc:a47040bacfe6b9ded1f45153d46f88f89"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pedido <span class="tt">CLEAR,CONFIRMO</span> recebido pela USB, atendido pela <span class="tt">defaultTask</span>.  <br /></td></tr>
+<tr class="memitem:ace4e0a1dbd5828f0ce06c3e283732ec9" id="r_ace4e0a1dbd5828f0ce06c3e283732ec9"><td class="memItemLeft">volatile uint8_t&#160;</td><td class="memItemRight"><a class="el" href="#ace4e0a1dbd5828f0ce06c3e283732ec9">usb_rtc_set_requested</a> = 0U</td></tr>
+<tr class="memdesc:ace4e0a1dbd5828f0ce06c3e283732ec9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pedido <span class="tt">RTC_SET</span> recebido pela USB, atendido pela <span class="tt">defaultTask</span>.  <br /></td></tr>
+<tr class="memitem:aa58512c4bddad587a7f26c47ecf58360" id="r_aa58512c4bddad587a7f26c47ecf58360"><td class="memItemLeft">volatile uint8_t&#160;</td><td class="memItemRight"><a class="el" href="#aa58512c4bddad587a7f26c47ecf58360">usb_diag_requested</a> = 0U</td></tr>
+<tr class="memdesc:aa58512c4bddad587a7f26c47ecf58360"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pedido <span class="tt">DIAG</span> recebido pela USB, atendido pela <span class="tt">defaultTask</span>.  <br /></td></tr>
+<tr class="memitem:a9a9ecfc353ed8d71e54b3969f62e997f" id="r_a9a9ecfc353ed8d71e54b3969f62e997f"><td class="memItemLeft">volatile uint8_t&#160;</td><td class="memItemRight"><a class="el" href="#a9a9ecfc353ed8d71e54b3969f62e997f">oled_task_stage</a> = 0U</td></tr>
+<tr class="memdesc:a9a9ecfc353ed8d71e54b3969f62e997f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Etapa da <span class="tt">oledTask</span>: 0 ocioso, 1 espera o mutex de sensores, 2 espera o mutex da EEPROM, 3 renderizando, 4 espera o mutex do I²C2, 5 transferindo pelo I²C2, 6 recuperando.  <br /></td></tr>
+<tr class="memitem:afa951ad8a25ea7734dc427bef675660d" id="r_afa951ad8a25ea7734dc427bef675660d"><td class="memItemLeft">volatile uint32_t&#160;</td><td class="memItemRight"><a class="el" href="#afa951ad8a25ea7734dc427bef675660d">oled_task_loops</a> = 0U</td></tr>
+<tr class="memitem:a56940d80a8fe2c85b30614b641337a26" id="r_a56940d80a8fe2c85b30614b641337a26"><td class="memItemLeft">volatile uint32_t&#160;</td><td class="memItemRight"><a class="el" href="#a56940d80a8fe2c85b30614b641337a26">oled_update_ok_count</a> = 0U</td></tr>
+<tr class="memitem:ac360945c8ba5c0fbad68c5e1ba118e53" id="r_ac360945c8ba5c0fbad68c5e1ba118e53"><td class="memItemLeft">volatile uint32_t&#160;</td><td class="memItemRight"><a class="el" href="#ac360945c8ba5c0fbad68c5e1ba118e53">oled_update_fail_count</a> = 0U</td></tr>
+<tr class="memitem:a8bf5c8fd55b4d6512453e6e5bf2cafcc" id="r_a8bf5c8fd55b4d6512453e6e5bf2cafcc"><td class="memItemLeft">volatile uint32_t&#160;</td><td class="memItemRight"><a class="el" href="#a8bf5c8fd55b4d6512453e6e5bf2cafcc">oled_consecutive_fail</a> = 0U</td></tr>
+<tr class="memitem:ab00e368d228f767ba3ff22354408285d" id="r_ab00e368d228f767ba3ff22354408285d"><td class="memItemLeft">volatile uint32_t&#160;</td><td class="memItemRight"><a class="el" href="#ab00e368d228f767ba3ff22354408285d">i2c2_recovery_count</a> = 0U</td></tr>
+<tr class="memitem:a58390c2c043691e6d40347d320e4d603" id="r_a58390c2c043691e6d40347d320e4d603"><td class="memItemLeft">volatile uint32_t&#160;</td><td class="memItemRight"><a class="el" href="#a58390c2c043691e6d40347d320e4d603">i2c2_recovery_status</a> = 0U</td></tr>
+<tr class="memitem:a4f21105f4e064c098aed81a37661f6d5" id="r_a4f21105f4e064c098aed81a37661f6d5"><td class="memItemLeft">volatile uint32_t&#160;</td><td class="memItemRight"><a class="el" href="#a4f21105f4e064c098aed81a37661f6d5">oled_ff_status</a> = 0U</td></tr>
+<tr class="memitem:a1289559fe7d366786b38f47111f5341c" id="r_a1289559fe7d366786b38f47111f5341c"><td class="memItemLeft">volatile uint32_t&#160;</td><td class="memItemRight"><a class="el" href="#a1289559fe7d366786b38f47111f5341c">oled_ff_i2cerr</a> = 0U</td></tr>
+<tr class="memitem:ab3f7d62f45abb5965642a3da68ffa69a" id="r_ab3f7d62f45abb5965642a3da68ffa69a"><td class="memItemLeft">volatile uint32_t&#160;</td><td class="memItemRight"><a class="el" href="#ab3f7d62f45abb5965642a3da68ffa69a">oled_ff_i2cstate</a> = 0U</td></tr>
+<tr class="memitem:a60b3fed8ac63aafb51a5277dc7550294" id="r_a60b3fed8ac63aafb51a5277dc7550294"><td class="memItemLeft">volatile uint8_t&#160;</td><td class="memItemRight"><a class="el" href="#a60b3fed8ac63aafb51a5277dc7550294">oled_ff_sensor_active</a> = 0U</td></tr>
+<tr class="memitem:ae66d0d296777f406e73bc598eaf6898e" id="r_ae66d0d296777f406e73bc598eaf6898e"><td class="memItemLeft">volatile uint8_t&#160;</td><td class="memItemRight"><a class="el" href="#ae66d0d296777f406e73bc598eaf6898e">sensor_cycle_active</a> = 0U</td></tr>
+<tr class="memitem:a997c28009ebf5d4b1b60d28d19dd1d5e" id="r_a997c28009ebf5d4b1b60d28d19dd1d5e"><td class="memItemLeft">char&#160;</td><td class="memItemRight"><a class="el" href="#a997c28009ebf5d4b1b60d28d19dd1d5e">usb_rtc_set_command</a> [32] = {0}</td></tr>
+<tr class="memdesc:a997c28009ebf5d4b1b60d28d19dd1d5e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Linha <span class="tt">RTC_SET</span> recebida, copiada da callback USB para ser tratada na <span class="tt">defaultTask</span>.  <br /></td></tr>
+<tr class="memitem:a9ce3c7e0c6684a9affd00d99bd579abd" id="r_a9ce3c7e0c6684a9affd00d99bd579abd"><td class="memItemLeft"><a class="el" href="struct_e_e_p_r_o_m_metadata.html">EEPROMMetadata</a>&#160;</td><td class="memItemRight"><a class="el" href="#a9ce3c7e0c6684a9affd00d99bd579abd">eeprom_metadata</a></td></tr>
+<tr class="memdesc:a9ce3c7e0c6684a9affd00d99bd579abd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Cópia em RAM dos metadados gravados na EEPROM 1.  <br /></td></tr>
+<tr class="memitem:aefd9468bb268cd45742da583c94c1340" id="r_aefd9468bb268cd45742da583c94c1340"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#aefd9468bb268cd45742da583c94c1340">aht20_available</a> = false</td></tr>
+<tr class="memitem:a26bc83f6d779fe3a3bc1661b16c096d1" id="r_a26bc83f6d779fe3a3bc1661b16c096d1"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#a26bc83f6d779fe3a3bc1661b16c096d1">bmp280_available</a> = false</td></tr>
+<tr class="memitem:a0a0fb70056d01f444858058d0ce40a5c" id="r_a0a0fb70056d01f444858058d0ce40a5c"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#a0a0fb70056d01f444858058d0ce40a5c">mpu6500_available</a> = false</td></tr>
+<tr class="memitem:a0833b5108bab564c3aaa5328c536f772" id="r_a0833b5108bab564c3aaa5328c536f772"><td class="memItemLeft">uint8_t&#160;</td><td class="memItemRight"><a class="el" href="#a0833b5108bab564c3aaa5328c536f772">aht20_last_read_ok</a> = 0U</td></tr>
+<tr class="memitem:afdee576fd4b8ca1fb1e5780daa0710ca" id="r_afdee576fd4b8ca1fb1e5780daa0710ca"><td class="memItemLeft">uint8_t&#160;</td><td class="memItemRight"><a class="el" href="#afdee576fd4b8ca1fb1e5780daa0710ca">bmp280_last_read_ok</a> = 0U</td></tr>
+<tr class="memitem:adb4a4ee2b719d503256dc2704fda7edc" id="r_adb4a4ee2b719d503256dc2704fda7edc"><td class="memItemLeft">uint8_t&#160;</td><td class="memItemRight"><a class="el" href="#adb4a4ee2b719d503256dc2704fda7edc">mpu6500_last_read_ok</a> = 0U</td></tr>
+<tr class="memitem:a0e01e5221963e8cc0966e73f45e5ccc1" id="r_a0e01e5221963e8cc0966e73f45e5ccc1"><td class="memItemLeft">uint8_t&#160;</td><td class="memItemRight"><a class="el" href="#a0e01e5221963e8cc0966e73f45e5ccc1">usb_operation_state</a> = 0U</td></tr>
+<tr class="memdesc:a0e01e5221963e8cc0966e73f45e5ccc1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Operação USB em curso: 0 livre, 1 exportando, 2 limpando, 3 erro.  <br /></td></tr>
+<tr class="memitem:a1422dea54c1ba2f943b97d055ce9f27a" id="r_a1422dea54c1ba2f943b97d055ce9f27a"><td class="memItemLeft">volatile uint8_t&#160;</td><td class="memItemRight"><a class="el" href="#a1422dea54c1ba2f943b97d055ce9f27a">diagnostic_sensor_stage</a> = 0U</td></tr>
+<tr class="memdesc:a1422dea54c1ba2f943b97d055ce9f27a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Último estágio do ciclo de aquisição: de 1 em diante, leitura do sensor de índice (valor - 1) da tabela; 4 = avaliação e gravação na EEPROM; 5 = ciclo concluído (4 e 5 coincidem com os índices do BH1750 e do ENS160).  <br /></td></tr>
+<tr class="memitem:a46f12eb211279c322e5b80708302ff0c" id="r_a46f12eb211279c322e5b80708302ff0c"><td class="memItemLeft">volatile uint8_t&#160;</td><td class="memItemRight"><a class="el" href="#a46f12eb211279c322e5b80708302ff0c">diagnostic_export_stage</a> = 0U</td></tr>
+<tr class="memdesc:a46f12eb211279c322e5b80708302ff0c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Estágio da exportação: 1 entrada, 2 validação, 3 <span class="tt">EXPORT_BEGIN</span>, 4 cabeçalho, 5 registros e resumo, 6 rotina retornou.  <br /></td></tr>
+<tr class="memitem:a6d46eca7ff32f51031a81713f3671e36" id="r_a6d46eca7ff32f51031a81713f3671e36"><td class="memItemLeft">volatile int8_t&#160;</td><td class="memItemRight"><a class="el" href="#a6d46eca7ff32f51031a81713f3671e36">diagnostic_export_result</a> = -1</td></tr>
+<tr class="memdesc:a6d46eca7ff32f51031a81713f3671e36"><td class="mdescLeft">&#160;</td><td class="mdescRight">Resultado da exportação: -1 não terminou, 0 <span class="tt">HAL_OK</span>, 1 erro, 2 tempo esgotado.  <br /></td></tr>
+<tr class="memitem:a95ef45e83077329633e85dac0c6bf804" id="r_a95ef45e83077329633e85dac0c6bf804"><td class="memItemLeft">volatile int8_t&#160;</td><td class="memItemRight"><a class="el" href="#a95ef45e83077329633e85dac0c6bf804">diagnostic_usb_tx_result</a> = -1</td></tr>
+<tr class="memdesc:a95ef45e83077329633e85dac0c6bf804"><td class="mdescLeft">&#160;</td><td class="mdescRight">Resultado do último envio USB: -1 sem envio, 0 OK, 1 <span class="tt">USBD_BUSY</span>, 2 falha ou outro.  <br /></td></tr>
+<tr class="memitem:a27b3ebe92da7d2eded0e4e9a13bc0102" id="r_a27b3ebe92da7d2eded0e4e9a13bc0102"><td class="memItemLeft">uint8_t&#160;</td><td class="memItemRight"><a class="el" href="#a27b3ebe92da7d2eded0e4e9a13bc0102">oled_available</a> = 0U</td></tr>
+<tr class="memdesc:a27b3ebe92da7d2eded0e4e9a13bc0102"><td class="mdescLeft">&#160;</td><td class="mdescRight">1 se o SSD1306 respondeu na inicialização.  <br /></td></tr>
+<tr class="memitem:a3fa5173666ac34207e1a9aa713d75027" id="r_a3fa5173666ac34207e1a9aa713d75027"><td class="memItemLeft">uint8_t&#160;</td><td class="memItemRight"><a class="el" href="#a3fa5173666ac34207e1a9aa713d75027">eeprom_full_read_buffer</a> [64]</td></tr>
+<tr class="memdesc:a3fa5173666ac34207e1a9aa713d75027"><td class="mdescLeft">&#160;</td><td class="mdescRight">Último bloco de 64 bytes lido por <a class="el" href="eeprom24lc512_8h.html#ab83e49947ce34753469ff505b77ef87d" title="Lê toda a EEPROM 1 em blocos de 64 B, para depuração.">EEPROM24C512_ReadFullMemory()</a> (depuração).  <br /></td></tr>
+<tr class="memitem:a5a7a4aad01aca5eba3cd4f3833d5cb94" id="r_a5a7a4aad01aca5eba3cd4f3833d5cb94"><td class="memItemLeft">uint16_t&#160;</td><td class="memItemRight"><a class="el" href="#a5a7a4aad01aca5eba3cd4f3833d5cb94">eeprom_full_read_address</a></td></tr>
+<tr class="memdesc:a5a7a4aad01aca5eba3cd4f3833d5cb94"><td class="mdescLeft">&#160;</td><td class="mdescRight">Endereço inicial do último bloco lido por <a class="el" href="eeprom24lc512_8h.html#ab83e49947ce34753469ff505b77ef87d" title="Lê toda a EEPROM 1 em blocos de 64 B, para depuração.">EEPROM24C512_ReadFullMemory()</a>.  <br /></td></tr>
+<tr class="memitem:a83c73a94c6cd6d7e9ca97510aca2216a" id="r_a83c73a94c6cd6d7e9ca97510aca2216a"><td class="memItemLeft">HAL_StatusTypeDef&#160;</td><td class="memItemRight"><a class="el" href="#a83c73a94c6cd6d7e9ca97510aca2216a">eeprom_full_read_status</a></td></tr>
+<tr class="memdesc:a83c73a94c6cd6d7e9ca97510aca2216a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Status HAL da última leitura de <a class="el" href="eeprom24lc512_8h.html#ab83e49947ce34753469ff505b77ef87d" title="Lê toda a EEPROM 1 em blocos de 64 B, para depuração.">EEPROM24C512_ReadFullMemory()</a>.  <br /></td></tr>
+</table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Descrição detalhada</h2>
+<div class="textblock"><p>Definição das variáveis globais declaradas em <a class="el" href="app__state_8h.html" title="Tipos, constantes e variáveis globais compartilhadas entre os módulos do firmware.">app_state.h</a>. </p>
+
+<p class="definition">Definição no arquivo <a class="el" href="app__state_8c_source.html">app_state.c</a>.</p>
+</div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Funções</h2>
+<a id="a37a3a5a51fd18694f366bc8c8e489c05" name="a37a3a5a51fd18694f366bc8c8e489c05"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a37a3a5a51fd18694f366bc8c8e489c05">&#9670;&#160;</a></span>App_Delay()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void App_Delay </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>ms</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Espera <code class="param">ms</code> milissegundos cedendo a CPU quando o RTOS está em execução. </p>
+<p>Usa <span class="tt">osDelay</span> com o kernel em execução e <span class="tt">HAL_Delay</span> antes dele. Evita que uma espera ocupada em tarefa de prioridade maior deixe as demais sem executar. </p><dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">ms</td><td>Tempo de espera, em milissegundos. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definição na linha <a class="el" href="app__state_8c_source.html#l00055">55</a> do arquivo <a class="el" href="app__state_8c_source.html">app_state.c</a>.</p>
+
+<p class="reference">Referencias <a class="el" href="app__state_8c_source.html#l00055">App_Delay()</a>.</p>
+
+<p class="reference">Referenciado(a) por <a class="el" href="aht20_8c_source.html#l00010">AHT20_Read()</a>, <a class="el" href="app__state_8c_source.html#l00055">App_Delay()</a>, <a class="el" href="bh1750_8c_source.html#l00030">BH1750_Read()</a>, <a class="el" href="bmp280_8c_source.html#l00050">BMP280_Read()</a>, <a class="el" href="ens160_8c_source.html#l00152">ENS160_Read()</a>, <a class="el" href="ens160_8c_source.html#l00099">EnterStandardMode()</a>, <a class="el" href="mpu6500_8c_source.html#l00199">MPU6500_Calibrate()</a>, <a class="el" href="mpu6500_8c_source.html#l00010">MPU6500_Init()</a>, <a class="el" href="mpu6500_8c_source.html#l00097">MPU6500_Wake()</a> e <a class="el" href="ssd1306_8c_source.html#l00081">SSD1306_Init()</a>.</p>
+
+</div>
+</div>
+<a name="doc-var-members" id="doc-var-members"></a><h2 id="header-doc-var-members" class="groupheader">Variáveis</h2>
+<a id="aefd9468bb268cd45742da583c94c1340" name="aefd9468bb268cd45742da583c94c1340"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aefd9468bb268cd45742da583c94c1340">&#9670;&#160;</a></span>aht20_available</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool aht20_available = false</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definição na linha <a class="el" href="app__state_8c_source.html#l00064">64</a> do arquivo <a class="el" href="app__state_8c_source.html">app_state.c</a>.</p>
+
+</div>
+</div>
+<a id="ae1154ae5250491d9ed941127edc058bb" name="ae1154ae5250491d9ed941127edc058bb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae1154ae5250491d9ed941127edc058bb">&#9670;&#160;</a></span>aht20_humidity</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float aht20_humidity</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definição na linha <a class="el" href="app__state_8c_source.html#l00008">8</a> do arquivo <a class="el" href="app__state_8c_source.html">app_state.c</a>.</p>
+
+</div>
+</div>
+<a id="a0833b5108bab564c3aaa5328c536f772" name="a0833b5108bab564c3aaa5328c536f772"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0833b5108bab564c3aaa5328c536f772">&#9670;&#160;</a></span>aht20_last_read_ok</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t aht20_last_read_ok = 0U</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definição na linha <a class="el" href="app__state_8c_source.html#l00065">65</a> do arquivo <a class="el" href="app__state_8c_source.html">app_state.c</a>.</p>
+
+</div>
+</div>
+<a id="af6f9cc13b7debf5417430455e56e51c2" name="af6f9cc13b7debf5417430455e56e51c2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af6f9cc13b7debf5417430455e56e51c2">&#9670;&#160;</a></span>aht20_temperature</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float aht20_temperature</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definição na linha <a class="el" href="app__state_8c_source.html#l00008">8</a> do arquivo <a class="el" href="app__state_8c_source.html">app_state.c</a>.</p>
+
+</div>
+</div>
+<a id="a26bc83f6d779fe3a3bc1661b16c096d1" name="a26bc83f6d779fe3a3bc1661b16c096d1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a26bc83f6d779fe3a3bc1661b16c096d1">&#9670;&#160;</a></span>bmp280_available</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool bmp280_available = false</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definição na linha <a class="el" href="app__state_8c_source.html#l00064">64</a> do arquivo <a class="el" href="app__state_8c_source.html">app_state.c</a>.</p>
+
+</div>
+</div>
+<a id="afdee576fd4b8ca1fb1e5780daa0710ca" name="afdee576fd4b8ca1fb1e5780daa0710ca"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afdee576fd4b8ca1fb1e5780daa0710ca">&#9670;&#160;</a></span>bmp280_last_read_ok</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t bmp280_last_read_ok = 0U</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definição na linha <a class="el" href="app__state_8c_source.html#l00065">65</a> do arquivo <a class="el" href="app__state_8c_source.html">app_state.c</a>.</p>
+
+</div>
+</div>
+<a id="a91041af11b6e620c485ce77552fb8466" name="a91041af11b6e620c485ce77552fb8466"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a91041af11b6e620c485ce77552fb8466">&#9670;&#160;</a></span>bmp280_pressure</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float bmp280_pressure</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definição na linha <a class="el" href="app__state_8c_source.html#l00009">9</a> do arquivo <a class="el" href="app__state_8c_source.html">app_state.c</a>.</p>
+
+</div>
+</div>
+<a id="a8a931f3b6aecdc6cd7d6e2de54ded765" name="a8a931f3b6aecdc6cd7d6e2de54ded765"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8a931f3b6aecdc6cd7d6e2de54ded765">&#9670;&#160;</a></span>bmp280_t_fine</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int32_t bmp280_t_fine</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Temperatura intermediária (<span class="tt">t_fine</span>) da compensação do BMP280, reutilizada no cálculo da pressão. </p>
+
+<p class="definition">Definição na linha <a class="el" href="app__state_8c_source.html#l00012">12</a> do arquivo <a class="el" href="app__state_8c_source.html">app_state.c</a>.</p>
+
+<p class="reference">Referenciado(a) por <a class="el" href="bmp280_8c_source.html#l00050">BMP280_Read()</a>.</p>
+
+</div>
+</div>
+<a id="a35f2c205addd04bd1088b0df5d848a96" name="a35f2c205addd04bd1088b0df5d848a96"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a35f2c205addd04bd1088b0df5d848a96">&#9670;&#160;</a></span>bmp280_temperature</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float bmp280_temperature</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definição na linha <a class="el" href="app__state_8c_source.html#l00009">9</a> do arquivo <a class="el" href="app__state_8c_source.html">app_state.c</a>.</p>
+
+</div>
+</div>
+<a id="a6d46eca7ff32f51031a81713f3671e36" name="a6d46eca7ff32f51031a81713f3671e36"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6d46eca7ff32f51031a81713f3671e36">&#9670;&#160;</a></span>diagnostic_export_result</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">volatile int8_t diagnostic_export_result = -1</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Resultado da exportação: -1 não terminou, 0 <span class="tt">HAL_OK</span>, 1 erro, 2 tempo esgotado. </p>
+
+<p class="definition">Definição na linha <a class="el" href="app__state_8c_source.html#l00069">69</a> do arquivo <a class="el" href="app__state_8c_source.html">app_state.c</a>.</p>
+
+<p class="reference">Referenciado(a) por <a class="el" href="app__tasks_8c_source.html#l00223">App_CommandTask()</a> e <a class="el" href="app__tasks_8c_source.html#l00431">StartOledTask()</a>.</p>
+
+</div>
+</div>
+<a id="a46f12eb211279c322e5b80708302ff0c" name="a46f12eb211279c322e5b80708302ff0c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a46f12eb211279c322e5b80708302ff0c">&#9670;&#160;</a></span>diagnostic_export_stage</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">volatile uint8_t diagnostic_export_stage = 0U</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Estágio da exportação: 1 entrada, 2 validação, 3 <span class="tt">EXPORT_BEGIN</span>, 4 cabeçalho, 5 registros e resumo, 6 rotina retornou. </p>
+
+<p class="definition">Definição na linha <a class="el" href="app__state_8c_source.html#l00068">68</a> do arquivo <a class="el" href="app__state_8c_source.html">app_state.c</a>.</p>
+
+<p class="reference">Referenciado(a) por <a class="el" href="app__tasks_8c_source.html#l00223">App_CommandTask()</a>, <a class="el" href="eeprom24lc512_8c_source.html#l01361">EEPROM_ExportCSV_USB()</a>, <a class="el" href="eeprom24lc512_8c_source.html#l00252">EEPROM_SaveSensorRecord()</a> e <a class="el" href="app__tasks_8c_source.html#l00431">StartOledTask()</a>.</p>
+
+</div>
+</div>
+<a id="a1422dea54c1ba2f943b97d055ce9f27a" name="a1422dea54c1ba2f943b97d055ce9f27a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1422dea54c1ba2f943b97d055ce9f27a">&#9670;&#160;</a></span>diagnostic_sensor_stage</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">volatile uint8_t diagnostic_sensor_stage = 0U</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Último estágio do ciclo de aquisição: de 1 em diante, leitura do sensor de índice (valor - 1) da tabela; 4 = avaliação e gravação na EEPROM; 5 = ciclo concluído (4 e 5 coincidem com os índices do BH1750 e do ENS160). </p>
+
+<p class="definition">Definição na linha <a class="el" href="app__state_8c_source.html#l00067">67</a> do arquivo <a class="el" href="app__state_8c_source.html">app_state.c</a>.</p>
+
+<p class="reference">Referenciado(a) por <a class="el" href="app__tasks_8c_source.html#l00431">StartOledTask()</a> e <a class="el" href="app__tasks_8c_source.html#l00552">StartSensorTask()</a>.</p>
+
+</div>
+</div>
+<a id="a95ef45e83077329633e85dac0c6bf804" name="a95ef45e83077329633e85dac0c6bf804"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a95ef45e83077329633e85dac0c6bf804">&#9670;&#160;</a></span>diagnostic_usb_tx_result</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">volatile int8_t diagnostic_usb_tx_result = -1</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Resultado do último envio USB: -1 sem envio, 0 OK, 1 <span class="tt">USBD_BUSY</span>, 2 falha ou outro. </p>
+
+<p class="definition">Definição na linha <a class="el" href="app__state_8c_source.html#l00070">70</a> do arquivo <a class="el" href="app__state_8c_source.html">app_state.c</a>.</p>
+
+<p class="reference">Referenciado(a) por <a class="el" href="app__tasks_8c_source.html#l00223">App_CommandTask()</a>, <a class="el" href="eeprom24lc512_8c_source.html#l01135">EEPROM_USB_SendText()</a> e <a class="el" href="app__tasks_8c_source.html#l00431">StartOledTask()</a>.</p>
+
+</div>
+</div>
+<a id="a14cb8cb6405f1dbd7b96eacb1564f3ac" name="a14cb8cb6405f1dbd7b96eacb1564f3ac"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a14cb8cb6405f1dbd7b96eacb1564f3ac">&#9670;&#160;</a></span>dig_P1</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint16_t dig_P1</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definição na linha <a class="el" href="app__state_8c_source.html#l00010">10</a> do arquivo <a class="el" href="app__state_8c_source.html">app_state.c</a>.</p>
+
+</div>
+</div>
+<a id="abf2720ad17acc224ed28e66ec3de32ed" name="abf2720ad17acc224ed28e66ec3de32ed"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abf2720ad17acc224ed28e66ec3de32ed">&#9670;&#160;</a></span>dig_P2</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int16_t dig_P2</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definição na linha <a class="el" href="app__state_8c_source.html#l00011">11</a> do arquivo <a class="el" href="app__state_8c_source.html">app_state.c</a>.</p>
+
+</div>
+</div>
+<a id="a16db1b4967cfd3dc34219d8fb8c92aeb" name="a16db1b4967cfd3dc34219d8fb8c92aeb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a16db1b4967cfd3dc34219d8fb8c92aeb">&#9670;&#160;</a></span>dig_P3</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int16_t dig_P3</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definição na linha <a class="el" href="app__state_8c_source.html#l00011">11</a> do arquivo <a class="el" href="app__state_8c_source.html">app_state.c</a>.</p>
+
+</div>
+</div>
+<a id="a9c7db64a28b0e240d0478921741dd67d" name="a9c7db64a28b0e240d0478921741dd67d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9c7db64a28b0e240d0478921741dd67d">&#9670;&#160;</a></span>dig_P4</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int16_t dig_P4</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definição na linha <a class="el" href="app__state_8c_source.html#l00011">11</a> do arquivo <a class="el" href="app__state_8c_source.html">app_state.c</a>.</p>
+
+</div>
+</div>
+<a id="a7e509836d7ae0753ceaaed354b5e1479" name="a7e509836d7ae0753ceaaed354b5e1479"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7e509836d7ae0753ceaaed354b5e1479">&#9670;&#160;</a></span>dig_P5</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int16_t dig_P5</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definição na linha <a class="el" href="app__state_8c_source.html#l00011">11</a> do arquivo <a class="el" href="app__state_8c_source.html">app_state.c</a>.</p>
+
+</div>
+</div>
+<a id="a2ae5570c6daeda1d3666ed3dad96c4b7" name="a2ae5570c6daeda1d3666ed3dad96c4b7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2ae5570c6daeda1d3666ed3dad96c4b7">&#9670;&#160;</a></span>dig_P6</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int16_t dig_P6</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definição na linha <a class="el" href="app__state_8c_source.html#l00011">11</a> do arquivo <a class="el" href="app__state_8c_source.html">app_state.c</a>.</p>
+
+</div>
+</div>
+<a id="a7f3c3b4bc3acd51c35229dd2cc50a3d6" name="a7f3c3b4bc3acd51c35229dd2cc50a3d6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7f3c3b4bc3acd51c35229dd2cc50a3d6">&#9670;&#160;</a></span>dig_P7</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int16_t dig_P7</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definição na linha <a class="el" href="app__state_8c_source.html#l00011">11</a> do arquivo <a class="el" href="app__state_8c_source.html">app_state.c</a>.</p>
+
+</div>
+</div>
+<a id="a40493b036281e2b5fdfdf1776fe4708a" name="a40493b036281e2b5fdfdf1776fe4708a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a40493b036281e2b5fdfdf1776fe4708a">&#9670;&#160;</a></span>dig_P8</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int16_t dig_P8</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definição na linha <a class="el" href="app__state_8c_source.html#l00011">11</a> do arquivo <a class="el" href="app__state_8c_source.html">app_state.c</a>.</p>
+
+</div>
+</div>
+<a id="a361620dc95ad1d56b5d416d9d290c5f4" name="a361620dc95ad1d56b5d416d9d290c5f4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a361620dc95ad1d56b5d416d9d290c5f4">&#9670;&#160;</a></span>dig_P9</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int16_t dig_P9</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definição na linha <a class="el" href="app__state_8c_source.html#l00011">11</a> do arquivo <a class="el" href="app__state_8c_source.html">app_state.c</a>.</p>
+
+</div>
+</div>
+<a id="a730ed166c629bded674b13faffe9cef7" name="a730ed166c629bded674b13faffe9cef7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a730ed166c629bded674b13faffe9cef7">&#9670;&#160;</a></span>dig_T1</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint16_t dig_T1</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definição na linha <a class="el" href="app__state_8c_source.html#l00010">10</a> do arquivo <a class="el" href="app__state_8c_source.html">app_state.c</a>.</p>
+
+</div>
+</div>
+<a id="ab5c023a004c0497ba616d916155c85bb" name="ab5c023a004c0497ba616d916155c85bb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab5c023a004c0497ba616d916155c85bb">&#9670;&#160;</a></span>dig_T2</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int16_t dig_T2</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definição na linha <a class="el" href="app__state_8c_source.html#l00011">11</a> do arquivo <a class="el" href="app__state_8c_source.html">app_state.c</a>.</p>
+
+</div>
+</div>
+<a id="a9536e89c30bbd791153ac9e407b0752b" name="a9536e89c30bbd791153ac9e407b0752b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9536e89c30bbd791153ac9e407b0752b">&#9670;&#160;</a></span>dig_T3</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int16_t dig_T3</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definição na linha <a class="el" href="app__state_8c_source.html#l00011">11</a> do arquivo <a class="el" href="app__state_8c_source.html">app_state.c</a>.</p>
+
+</div>
+</div>
+<a id="a28c3b4587553e9ce45a952ed970e19c8" name="a28c3b4587553e9ce45a952ed970e19c8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a28c3b4587553e9ce45a952ed970e19c8">&#9670;&#160;</a></span>display_accel_z</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int32_t display_accel_z</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definição na linha <a class="el" href="app__state_8c_source.html#l00033">33</a> do arquivo <a class="el" href="app__state_8c_source.html">app_state.c</a>.</p>
+
+</div>
+</div>
+<a id="a2a99dfd2050ed52111987a918f9a0181" name="a2a99dfd2050ed52111987a918f9a0181"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2a99dfd2050ed52111987a918f9a0181">&#9670;&#160;</a></span>display_aht_hum</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int32_t display_aht_hum</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definição na linha <a class="el" href="app__state_8c_source.html#l00033">33</a> do arquivo <a class="el" href="app__state_8c_source.html">app_state.c</a>.</p>
+
+</div>
+</div>
+<a id="ae82557ddf2c5226679c91a8f723a0d9e" name="ae82557ddf2c5226679c91a8f723a0d9e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae82557ddf2c5226679c91a8f723a0d9e">&#9670;&#160;</a></span>display_aht_temp</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int32_t display_aht_temp</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definição na linha <a class="el" href="app__state_8c_source.html#l00033">33</a> do arquivo <a class="el" href="app__state_8c_source.html">app_state.c</a>.</p>
+
+</div>
+</div>
+<a id="a0dfdeef7e8ebbaddbdb4507ae3884386" name="a0dfdeef7e8ebbaddbdb4507ae3884386"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0dfdeef7e8ebbaddbdb4507ae3884386">&#9670;&#160;</a></span>display_page</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t display_page = 0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Tela atual do OLED: 0 = estado do sistema; 1 = armazenamento. </p>
+
+<p class="definition">Definição na linha <a class="el" href="app__state_8c_source.html#l00034">34</a> do arquivo <a class="el" href="app__state_8c_source.html">app_state.c</a>.</p>
+
+<p class="reference">Referenciado(a) por <a class="el" href="app__tasks_8c_source.html#l00223">App_CommandTask()</a>, <a class="el" href="app__tasks_8c_source.html#l00431">StartOledTask()</a> e <a class="el" href="ssd1306_8c_source.html#l00607">UpdateDisplay()</a>.</p>
+
+</div>
+</div>
+<a id="a07b50979a63ce2fb5de6fc3787bd76d5" name="a07b50979a63ce2fb5de6fc3787bd76d5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a07b50979a63ce2fb5de6fc3787bd76d5">&#9670;&#160;</a></span>display_pressure</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int32_t display_pressure</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definição na linha <a class="el" href="app__state_8c_source.html#l00033">33</a> do arquivo <a class="el" href="app__state_8c_source.html">app_state.c</a>.</p>
+
+</div>
+</div>
+<a id="a1476fd871413c360114f9e6b359844cb" name="a1476fd871413c360114f9e6b359844cb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1476fd871413c360114f9e6b359844cb">&#9670;&#160;</a></span>eeprom_full</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t eeprom_full = 0U</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definição na linha <a class="el" href="app__state_8c_source.html#l00044">44</a> do arquivo <a class="el" href="app__state_8c_source.html">app_state.c</a>.</p>
+
+</div>
+</div>
+<a id="a5a7a4aad01aca5eba3cd4f3833d5cb94" name="a5a7a4aad01aca5eba3cd4f3833d5cb94"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5a7a4aad01aca5eba3cd4f3833d5cb94">&#9670;&#160;</a></span>eeprom_full_read_address</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint16_t eeprom_full_read_address</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Endereço inicial do último bloco lido por <a class="el" href="eeprom24lc512_8h.html#ab83e49947ce34753469ff505b77ef87d" title="Lê toda a EEPROM 1 em blocos de 64 B, para depuração.">EEPROM24C512_ReadFullMemory()</a>. </p>
+
+<p class="definition">Definição na linha <a class="el" href="app__state_8c_source.html#l00073">73</a> do arquivo <a class="el" href="app__state_8c_source.html">app_state.c</a>.</p>
+
+<p class="reference">Referenciado(a) por <a class="el" href="eeprom24lc512_8c_source.html#l00436">EEPROM24C512_ReadFullMemory()</a>.</p>
+
+</div>
+</div>
+<a id="a3fa5173666ac34207e1a9aa713d75027" name="a3fa5173666ac34207e1a9aa713d75027"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3fa5173666ac34207e1a9aa713d75027">&#9670;&#160;</a></span>eeprom_full_read_buffer</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t eeprom_full_read_buffer[64]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Último bloco de 64 bytes lido por <a class="el" href="eeprom24lc512_8h.html#ab83e49947ce34753469ff505b77ef87d" title="Lê toda a EEPROM 1 em blocos de 64 B, para depuração.">EEPROM24C512_ReadFullMemory()</a> (depuração). </p>
+
+<p class="definition">Definição na linha <a class="el" href="app__state_8c_source.html#l00072">72</a> do arquivo <a class="el" href="app__state_8c_source.html">app_state.c</a>.</p>
+
+<p class="reference">Referenciado(a) por <a class="el" href="eeprom24lc512_8c_source.html#l00436">EEPROM24C512_ReadFullMemory()</a>.</p>
+
+</div>
+</div>
+<a id="a83c73a94c6cd6d7e9ca97510aca2216a" name="a83c73a94c6cd6d7e9ca97510aca2216a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a83c73a94c6cd6d7e9ca97510aca2216a">&#9670;&#160;</a></span>eeprom_full_read_status</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">HAL_StatusTypeDef eeprom_full_read_status</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Status HAL da última leitura de <a class="el" href="eeprom24lc512_8h.html#ab83e49947ce34753469ff505b77ef87d" title="Lê toda a EEPROM 1 em blocos de 64 B, para depuração.">EEPROM24C512_ReadFullMemory()</a>. </p>
+
+<p class="definition">Definição na linha <a class="el" href="app__state_8c_source.html#l00074">74</a> do arquivo <a class="el" href="app__state_8c_source.html">app_state.c</a>.</p>
+
+<p class="reference">Referenciado(a) por <a class="el" href="eeprom24lc512_8c_source.html#l00436">EEPROM24C512_ReadFullMemory()</a>.</p>
+
+</div>
+</div>
+<a id="a9ce3c7e0c6684a9affd00d99bd579abd" name="a9ce3c7e0c6684a9affd00d99bd579abd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9ce3c7e0c6684a9affd00d99bd579abd">&#9670;&#160;</a></span>eeprom_metadata</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_e_e_p_r_o_m_metadata.html">EEPROMMetadata</a> eeprom_metadata</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Cópia em RAM dos metadados gravados na EEPROM 1. </p>
+
+<p class="definition">Definição na linha <a class="el" href="app__state_8c_source.html#l00063">63</a> do arquivo <a class="el" href="app__state_8c_source.html">app_state.c</a>.</p>
+
+<p class="reference">Referenciado(a) por <a class="el" href="eeprom24lc512_8c_source.html#l00721">EEPROM24LC512_EraseAll()</a>, <a class="el" href="eeprom24lc512_8c_source.html#l01361">EEPROM_ExportCSV_USB()</a>, <a class="el" href="eeprom24lc512_8c_source.html#l00482">EEPROM_LoadMetadata()</a>, <a class="el" href="eeprom24lc512_8c_source.html#l00471">EEPROM_SaveMetadata()</a>, <a class="el" href="eeprom24lc512_8c_source.html#l00252">EEPROM_SaveSensorRecord()</a>, <a class="el" href="app__tasks_8c_source.html#l00431">StartOledTask()</a> e <a class="el" href="ssd1306_8c_source.html#l00607">UpdateDisplay()</a>.</p>
+
+</div>
+</div>
+<a id="ade6d834507085d886d456578b1c26b48" name="ade6d834507085d886d456578b1c26b48"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ade6d834507085d886d456578b1c26b48">&#9670;&#160;</a></span>eeprom_metadata_load_ok</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t eeprom_metadata_load_ok = 0U</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definição na linha <a class="el" href="app__state_8c_source.html#l00044">44</a> do arquivo <a class="el" href="app__state_8c_source.html">app_state.c</a>.</p>
+
+</div>
+</div>
+<a id="a30d3d69ba26cc057c522039a67c2cde6" name="a30d3d69ba26cc057c522039a67c2cde6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a30d3d69ba26cc057c522039a67c2cde6">&#9670;&#160;</a></span>eeprom_multi_test_ok</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t eeprom_multi_test_ok</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Resultado do teste de múltiplos registros (legado). </p>
+
+<p class="definition">Definição na linha <a class="el" href="app__state_8c_source.html#l00042">42</a> do arquivo <a class="el" href="app__state_8c_source.html">app_state.c</a>.</p>
+
+</div>
+</div>
+<a id="ad5e94eedb67f6426fd969fad75f886be" name="ad5e94eedb67f6426fd969fad75f886be"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad5e94eedb67f6426fd969fad75f886be">&#9670;&#160;</a></span>eeprom_next_address</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint16_t eeprom_next_address = 0x0000U</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Próximo endereço livre no chip ativo; 0xFFFF = memória cheia. </p>
+
+<p class="definition">Definição na linha <a class="el" href="app__state_8c_source.html#l00043">43</a> do arquivo <a class="el" href="app__state_8c_source.html">app_state.c</a>.</p>
+
+<p class="reference">Referenciado(a) por <a class="el" href="eeprom24lc512_8c_source.html#l00721">EEPROM24LC512_EraseAll()</a>, <a class="el" href="eeprom24lc512_8c_source.html#l00482">EEPROM_LoadMetadata()</a>, <a class="el" href="eeprom24lc512_8c_source.html#l00252">EEPROM_SaveSensorRecord()</a>, <a class="el" href="app__tasks_8c_source.html#l00431">StartOledTask()</a> e <a class="el" href="ssd1306_8c_source.html#l00607">UpdateDisplay()</a>.</p>
+
+</div>
+</div>
+<a id="a91ea8b26998dddd69a2a6dea8d6fd47f" name="a91ea8b26998dddd69a2a6dea8d6fd47f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a91ea8b26998dddd69a2a6dea8d6fd47f">&#9670;&#160;</a></span>eeprom_read_data</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t eeprom_read_data</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definição na linha <a class="el" href="app__state_8c_source.html#l00035">35</a> do arquivo <a class="el" href="app__state_8c_source.html">app_state.c</a>.</p>
+
+</div>
+</div>
+<a id="af16fb49235a7e0c27b510164aa69a840" name="af16fb49235a7e0c27b510164aa69a840"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af16fb49235a7e0c27b510164aa69a840">&#9670;&#160;</a></span>eeprom_read_error_snapshot</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">volatile uint32_t eeprom_read_error_snapshot = 0U</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definição na linha <a class="el" href="app__state_8c_source.html#l00023">23</a> do arquivo <a class="el" href="app__state_8c_source.html">app_state.c</a>.</p>
+
+</div>
+</div>
+<a id="ad9647b92db1d00a21166af8899287741" name="ad9647b92db1d00a21166af8899287741"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad9647b92db1d00a21166af8899287741">&#9670;&#160;</a></span>eeprom_read_state_snapshot</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">volatile uint32_t eeprom_read_state_snapshot = 0U</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definição na linha <a class="el" href="app__state_8c_source.html#l00023">23</a> do arquivo <a class="el" href="app__state_8c_source.html">app_state.c</a>.</p>
+
+</div>
+</div>
+<a id="a8efb51b1bff228c1ec41121790fd5537" name="a8efb51b1bff228c1ec41121790fd5537"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8efb51b1bff228c1ec41121790fd5537">&#9670;&#160;</a></span>eeprom_read_status</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">HAL_StatusTypeDef eeprom_read_status</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definição na linha <a class="el" href="app__state_8c_source.html#l00036">36</a> do arquivo <a class="el" href="app__state_8c_source.html">app_state.c</a>.</p>
+
+</div>
+</div>
+<a id="a9d98cfc7f09b7bf92bfd7becc0eaa5b6" name="a9d98cfc7f09b7bf92bfd7becc0eaa5b6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9d98cfc7f09b7bf92bfd7becc0eaa5b6">&#9670;&#160;</a></span>eeprom_record</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_sensor_record_e_e_p_r_o_m.html">SensorRecordEEPROM</a> eeprom_record</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definição na linha <a class="el" href="app__state_8c_source.html#l00038">38</a> do arquivo <a class="el" href="app__state_8c_source.html">app_state.c</a>.</p>
+
+</div>
+</div>
+<a id="a3dd576b8ffdc26800c5bc1b5687f2233" name="a3dd576b8ffdc26800c5bc1b5687f2233"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3dd576b8ffdc26800c5bc1b5687f2233">&#9670;&#160;</a></span>eeprom_record_read</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_sensor_record_e_e_p_r_o_m.html">SensorRecordEEPROM</a> eeprom_record_read</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definição na linha <a class="el" href="app__state_8c_source.html#l00038">38</a> do arquivo <a class="el" href="app__state_8c_source.html">app_state.c</a>.</p>
+
+</div>
+</div>
+<a id="a4be7f6688c932c93c285870ac134d00f" name="a4be7f6688c932c93c285870ac134d00f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4be7f6688c932c93c285870ac134d00f">&#9670;&#160;</a></span>eeprom_record_size</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint16_t eeprom_record_size</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Tamanho do último registro serializado nos testes (legado). </p>
+
+<p class="definition">Definição na linha <a class="el" href="app__state_8c_source.html#l00039">39</a> do arquivo <a class="el" href="app__state_8c_source.html">app_state.c</a>.</p>
+
+</div>
+</div>
+<a id="a76905f3785d3bcc2388f742e3350aee3" name="a76905f3785d3bcc2388f742e3350aee3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a76905f3785d3bcc2388f742e3350aee3">&#9670;&#160;</a></span>eeprom_records_equal</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t eeprom_records_equal</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>1 = registro lido igual ao gravado no teste (legado). </p>
+
+<p class="definition">Definição na linha <a class="el" href="app__state_8c_source.html#l00040">40</a> do arquivo <a class="el" href="app__state_8c_source.html">app_state.c</a>.</p>
+
+</div>
+</div>
+<a id="a3a2eca52ae6f7e6fa991bf09205a5b55" name="a3a2eca52ae6f7e6fa991bf09205a5b55"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3a2eca52ae6f7e6fa991bf09205a5b55">&#9670;&#160;</a></span>eeprom_records_read</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_sensor_record_e_e_p_r_o_m.html">SensorRecordEEPROM</a> eeprom_records_read[5]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definição na linha <a class="el" href="app__state_8c_source.html#l00041">41</a> do arquivo <a class="el" href="app__state_8c_source.html">app_state.c</a>.</p>
+
+</div>
+</div>
+<a id="a75712a7fa1186da67f764d7238304f62" name="a75712a7fa1186da67f764d7238304f62"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a75712a7fa1186da67f764d7238304f62">&#9670;&#160;</a></span>eeprom_records_write</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_sensor_record_e_e_p_r_o_m.html">SensorRecordEEPROM</a> eeprom_records_write[5]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definição na linha <a class="el" href="app__state_8c_source.html#l00041">41</a> do arquivo <a class="el" href="app__state_8c_source.html">app_state.c</a>.</p>
+
+</div>
+</div>
+<a id="a9f64ce805b325998ea52762b445a2145" name="a9f64ce805b325998ea52762b445a2145"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9f64ce805b325998ea52762b445a2145">&#9670;&#160;</a></span>eeprom_status_display</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t eeprom_status_display = 0U</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definição na linha <a class="el" href="app__state_8c_source.html#l00044">44</a> do arquivo <a class="el" href="app__state_8c_source.html">app_state.c</a>.</p>
+
+</div>
+</div>
+<a id="aa62cb8007c9c872b9be8d827544dd019" name="aa62cb8007c9c872b9be8d827544dd019"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa62cb8007c9c872b9be8d827544dd019">&#9670;&#160;</a></span>eeprom_test_read</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t eeprom_test_read[5]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definição na linha <a class="el" href="app__state_8c_source.html#l00037">37</a> do arquivo <a class="el" href="app__state_8c_source.html">app_state.c</a>.</p>
+
+</div>
+</div>
+<a id="af5dd366f28ca90970352954752a9762c" name="af5dd366f28ca90970352954752a9762c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af5dd366f28ca90970352954752a9762c">&#9670;&#160;</a></span>eeprom_test_status</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">HAL_StatusTypeDef eeprom_test_status</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definição na linha <a class="el" href="app__state_8c_source.html#l00036">36</a> do arquivo <a class="el" href="app__state_8c_source.html">app_state.c</a>.</p>
+
+</div>
+</div>
+<a id="a999b6e89551d6193c35a5098074842f5" name="a999b6e89551d6193c35a5098074842f5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a999b6e89551d6193c35a5098074842f5">&#9670;&#160;</a></span>eeprom_test_write</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t eeprom_test_write[5]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definição na linha <a class="el" href="app__state_8c_source.html#l00037">37</a> do arquivo <a class="el" href="app__state_8c_source.html">app_state.c</a>.</p>
+
+</div>
+</div>
+<a id="a5a0071b821d225f25444845f422fd0bb" name="a5a0071b821d225f25444845f422fd0bb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5a0071b821d225f25444845f422fd0bb">&#9670;&#160;</a></span>eeprom_write_data</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t eeprom_write_data</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definição na linha <a class="el" href="app__state_8c_source.html#l00035">35</a> do arquivo <a class="el" href="app__state_8c_source.html">app_state.c</a>.</p>
+
+</div>
+</div>
+<a id="ae017628fc37090ce3b44447ac2a12ea7" name="ae017628fc37090ce3b44447ac2a12ea7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae017628fc37090ce3b44447ac2a12ea7">&#9670;&#160;</a></span>eeprom_write_status</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">HAL_StatusTypeDef eeprom_write_status</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definição na linha <a class="el" href="app__state_8c_source.html#l00036">36</a> do arquivo <a class="el" href="app__state_8c_source.html">app_state.c</a>.</p>
+
+</div>
+</div>
+<a id="ac1b58296f24ec3d0db6351a759743bed" name="ac1b58296f24ec3d0db6351a759743bed"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac1b58296f24ec3d0db6351a759743bed">&#9670;&#160;</a></span>i2c2_device_found</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t i2c2_device_found</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Último endereço de 7 bits que respondeu em <a class="el" href="ssd1306_8h.html#ad2bc6421efd7f9a129e76de9c1fde825" title="Varre os endereços 1 a 127 do I²C2 e guarda em i2c2_device_found o último que respondeu (depuração).">I2C2_Scan_All()</a>. </p>
+
+<p class="definition">Definição na linha <a class="el" href="app__state_8c_source.html#l00032">32</a> do arquivo <a class="el" href="app__state_8c_source.html">app_state.c</a>.</p>
+
+<p class="reference">Referenciado(a) por <a class="el" href="ssd1306_8c_source.html#l00245">I2C2_Scan_All()</a>.</p>
+
+</div>
+</div>
+<a id="aa4716fb628410ec1b31a4fc636dc93d0" name="aa4716fb628410ec1b31a4fc636dc93d0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa4716fb628410ec1b31a4fc636dc93d0">&#9670;&#160;</a></span>i2c2_last_lock_status</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">volatile uint8_t i2c2_last_lock_status = 0U</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Resultado da última aquisição do mutex do I²C2 em leitura da EEPROM (diagnóstico). </p>
+
+<p class="definition">Definição na linha <a class="el" href="app__state_8c_source.html#l00022">22</a> do arquivo <a class="el" href="app__state_8c_source.html">app_state.c</a>.</p>
+
+<p class="reference">Referenciado(a) por <a class="el" href="eeprom24lc512_8c_source.html#l00105">EEPROM24LC512_ReadBuffer()</a> e <a class="el" href="eeprom24lc512_8c_source.html#l01361">EEPROM_ExportCSV_USB()</a>.</p>
+
+</div>
+</div>
+<a id="ab00e368d228f767ba3ff22354408285d" name="ab00e368d228f767ba3ff22354408285d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab00e368d228f767ba3ff22354408285d">&#9670;&#160;</a></span>i2c2_recovery_count</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">volatile uint32_t i2c2_recovery_count = 0U</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definição na linha <a class="el" href="app__state_8c_source.html#l00051">51</a> do arquivo <a class="el" href="app__state_8c_source.html">app_state.c</a>.</p>
+
+</div>
+</div>
+<a id="a58390c2c043691e6d40347d320e4d603" name="a58390c2c043691e6d40347d320e4d603"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a58390c2c043691e6d40347d320e4d603">&#9670;&#160;</a></span>i2c2_recovery_status</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">volatile uint32_t i2c2_recovery_status = 0U</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definição na linha <a class="el" href="app__state_8c_source.html#l00051">51</a> do arquivo <a class="el" href="app__state_8c_source.html">app_state.c</a>.</p>
+
+</div>
+</div>
+<a id="a38a24285aceeaa09a0084cac81779a18" name="a38a24285aceeaa09a0084cac81779a18"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a38a24285aceeaa09a0084cac81779a18">&#9670;&#160;</a></span>mpu6500_accel_offset_x</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float mpu6500_accel_offset_x</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definição na linha <a class="el" href="app__state_8c_source.html#l00018">18</a> do arquivo <a class="el" href="app__state_8c_source.html">app_state.c</a>.</p>
+
+</div>
+</div>
+<a id="a3854f32bfeecfaa004fe80d56adf8574" name="a3854f32bfeecfaa004fe80d56adf8574"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3854f32bfeecfaa004fe80d56adf8574">&#9670;&#160;</a></span>mpu6500_accel_offset_y</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float mpu6500_accel_offset_y</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definição na linha <a class="el" href="app__state_8c_source.html#l00018">18</a> do arquivo <a class="el" href="app__state_8c_source.html">app_state.c</a>.</p>
+
+</div>
+</div>
+<a id="a9dc51766a0a3c5b766f843a31a718f30" name="a9dc51766a0a3c5b766f843a31a718f30"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9dc51766a0a3c5b766f843a31a718f30">&#9670;&#160;</a></span>mpu6500_accel_offset_z</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float mpu6500_accel_offset_z</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definição na linha <a class="el" href="app__state_8c_source.html#l00018">18</a> do arquivo <a class="el" href="app__state_8c_source.html">app_state.c</a>.</p>
+
+</div>
+</div>
+<a id="a473532d07eb17a041136760d65652369" name="a473532d07eb17a041136760d65652369"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a473532d07eb17a041136760d65652369">&#9670;&#160;</a></span>mpu6500_accel_x</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int16_t mpu6500_accel_x</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definição na linha <a class="el" href="app__state_8c_source.html#l00014">14</a> do arquivo <a class="el" href="app__state_8c_source.html">app_state.c</a>.</p>
+
+</div>
+</div>
+<a id="ad7d02f05c28d305a5fdc6b7e7deafd4a" name="ad7d02f05c28d305a5fdc6b7e7deafd4a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad7d02f05c28d305a5fdc6b7e7deafd4a">&#9670;&#160;</a></span>mpu6500_accel_x_g</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float mpu6500_accel_x_g</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definição na linha <a class="el" href="app__state_8c_source.html#l00016">16</a> do arquivo <a class="el" href="app__state_8c_source.html">app_state.c</a>.</p>
+
+</div>
+</div>
+<a id="ac48a7eb67ea8c9cd270213b83887102b" name="ac48a7eb67ea8c9cd270213b83887102b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac48a7eb67ea8c9cd270213b83887102b">&#9670;&#160;</a></span>mpu6500_accel_y</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int16_t mpu6500_accel_y</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definição na linha <a class="el" href="app__state_8c_source.html#l00014">14</a> do arquivo <a class="el" href="app__state_8c_source.html">app_state.c</a>.</p>
+
+</div>
+</div>
+<a id="a51a06f9b053f6e4a61aa98f6b3569ed7" name="a51a06f9b053f6e4a61aa98f6b3569ed7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a51a06f9b053f6e4a61aa98f6b3569ed7">&#9670;&#160;</a></span>mpu6500_accel_y_g</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float mpu6500_accel_y_g</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definição na linha <a class="el" href="app__state_8c_source.html#l00016">16</a> do arquivo <a class="el" href="app__state_8c_source.html">app_state.c</a>.</p>
+
+</div>
+</div>
+<a id="af4ee032fd85d1ada351154aff8d0902a" name="af4ee032fd85d1ada351154aff8d0902a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af4ee032fd85d1ada351154aff8d0902a">&#9670;&#160;</a></span>mpu6500_accel_z</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int16_t mpu6500_accel_z</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definição na linha <a class="el" href="app__state_8c_source.html#l00014">14</a> do arquivo <a class="el" href="app__state_8c_source.html">app_state.c</a>.</p>
+
+</div>
+</div>
+<a id="a3c45f95cce673c04fbf2f482c75e4b09" name="a3c45f95cce673c04fbf2f482c75e4b09"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3c45f95cce673c04fbf2f482c75e4b09">&#9670;&#160;</a></span>mpu6500_accel_z_g</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float mpu6500_accel_z_g</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definição na linha <a class="el" href="app__state_8c_source.html#l00016">16</a> do arquivo <a class="el" href="app__state_8c_source.html">app_state.c</a>.</p>
+
+</div>
+</div>
+<a id="a0a0fb70056d01f444858058d0ce40a5c" name="a0a0fb70056d01f444858058d0ce40a5c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0a0fb70056d01f444858058d0ce40a5c">&#9670;&#160;</a></span>mpu6500_available</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool mpu6500_available = false</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definição na linha <a class="el" href="app__state_8c_source.html#l00064">64</a> do arquivo <a class="el" href="app__state_8c_source.html">app_state.c</a>.</p>
+
+</div>
+</div>
+<a id="ae1388b1533361ab02b7a31265ba723c0" name="ae1388b1533361ab02b7a31265ba723c0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae1388b1533361ab02b7a31265ba723c0">&#9670;&#160;</a></span>mpu6500_gyro_offset_x</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float mpu6500_gyro_offset_x</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definição na linha <a class="el" href="app__state_8c_source.html#l00019">19</a> do arquivo <a class="el" href="app__state_8c_source.html">app_state.c</a>.</p>
+
+</div>
+</div>
+<a id="a9ba456f9ce6e172179e18d92c3b8225c" name="a9ba456f9ce6e172179e18d92c3b8225c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9ba456f9ce6e172179e18d92c3b8225c">&#9670;&#160;</a></span>mpu6500_gyro_offset_y</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float mpu6500_gyro_offset_y</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definição na linha <a class="el" href="app__state_8c_source.html#l00019">19</a> do arquivo <a class="el" href="app__state_8c_source.html">app_state.c</a>.</p>
+
+</div>
+</div>
+<a id="abab4f06c5b7b18d0ff22506174aab782" name="abab4f06c5b7b18d0ff22506174aab782"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abab4f06c5b7b18d0ff22506174aab782">&#9670;&#160;</a></span>mpu6500_gyro_offset_z</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float mpu6500_gyro_offset_z</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definição na linha <a class="el" href="app__state_8c_source.html#l00019">19</a> do arquivo <a class="el" href="app__state_8c_source.html">app_state.c</a>.</p>
+
+</div>
+</div>
+<a id="af1bd45e4e464ba35f2dda271a111940a" name="af1bd45e4e464ba35f2dda271a111940a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af1bd45e4e464ba35f2dda271a111940a">&#9670;&#160;</a></span>mpu6500_gyro_x</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int16_t mpu6500_gyro_x</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definição na linha <a class="el" href="app__state_8c_source.html#l00015">15</a> do arquivo <a class="el" href="app__state_8c_source.html">app_state.c</a>.</p>
+
+</div>
+</div>
+<a id="af64f041a2da74983fb61c0b82378c62f" name="af64f041a2da74983fb61c0b82378c62f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af64f041a2da74983fb61c0b82378c62f">&#9670;&#160;</a></span>mpu6500_gyro_x_dps</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float mpu6500_gyro_x_dps</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definição na linha <a class="el" href="app__state_8c_source.html#l00017">17</a> do arquivo <a class="el" href="app__state_8c_source.html">app_state.c</a>.</p>
+
+</div>
+</div>
+<a id="adb67477706062f24cc2ed94fbf2e5d81" name="adb67477706062f24cc2ed94fbf2e5d81"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adb67477706062f24cc2ed94fbf2e5d81">&#9670;&#160;</a></span>mpu6500_gyro_y</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int16_t mpu6500_gyro_y</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definição na linha <a class="el" href="app__state_8c_source.html#l00015">15</a> do arquivo <a class="el" href="app__state_8c_source.html">app_state.c</a>.</p>
+
+</div>
+</div>
+<a id="a6125830b4bddd1adb51cd1fa9880a13b" name="a6125830b4bddd1adb51cd1fa9880a13b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6125830b4bddd1adb51cd1fa9880a13b">&#9670;&#160;</a></span>mpu6500_gyro_y_dps</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float mpu6500_gyro_y_dps</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definição na linha <a class="el" href="app__state_8c_source.html#l00017">17</a> do arquivo <a class="el" href="app__state_8c_source.html">app_state.c</a>.</p>
+
+</div>
+</div>
+<a id="a5bd1ef9b351103b6c8c56ded1b26b236" name="a5bd1ef9b351103b6c8c56ded1b26b236"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5bd1ef9b351103b6c8c56ded1b26b236">&#9670;&#160;</a></span>mpu6500_gyro_z</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int16_t mpu6500_gyro_z</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definição na linha <a class="el" href="app__state_8c_source.html#l00015">15</a> do arquivo <a class="el" href="app__state_8c_source.html">app_state.c</a>.</p>
+
+</div>
+</div>
+<a id="ac92261368ad2d996089491b139c20fcc" name="ac92261368ad2d996089491b139c20fcc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac92261368ad2d996089491b139c20fcc">&#9670;&#160;</a></span>mpu6500_gyro_z_dps</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float mpu6500_gyro_z_dps</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definição na linha <a class="el" href="app__state_8c_source.html#l00017">17</a> do arquivo <a class="el" href="app__state_8c_source.html">app_state.c</a>.</p>
+
+</div>
+</div>
+<a id="adb4a4ee2b719d503256dc2704fda7edc" name="adb4a4ee2b719d503256dc2704fda7edc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adb4a4ee2b719d503256dc2704fda7edc">&#9670;&#160;</a></span>mpu6500_last_read_ok</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t mpu6500_last_read_ok = 0U</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definição na linha <a class="el" href="app__state_8c_source.html#l00065">65</a> do arquivo <a class="el" href="app__state_8c_source.html">app_state.c</a>.</p>
+
+</div>
+</div>
+<a id="a8ad5c31985f0f97a9b4ce913a7f1870a" name="a8ad5c31985f0f97a9b4ce913a7f1870a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8ad5c31985f0f97a9b4ce913a7f1870a">&#9670;&#160;</a></span>mpu6500_who_am_i</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t mpu6500_who_am_i</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Último valor lido do registrador WHO_AM_I do MPU6500 (esperado 0x70). </p>
+
+<p class="definition">Definição na linha <a class="el" href="app__state_8c_source.html#l00013">13</a> do arquivo <a class="el" href="app__state_8c_source.html">app_state.c</a>.</p>
+
+<p class="reference">Referenciado(a) por <a class="el" href="mpu6500_8c_source.html#l00010">MPU6500_Init()</a>.</p>
+
+</div>
+</div>
+<a id="a27b3ebe92da7d2eded0e4e9a13bc0102" name="a27b3ebe92da7d2eded0e4e9a13bc0102"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a27b3ebe92da7d2eded0e4e9a13bc0102">&#9670;&#160;</a></span>oled_available</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t oled_available = 0U</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>1 se o SSD1306 respondeu na inicialização. </p>
+
+<p class="definition">Definição na linha <a class="el" href="app__state_8c_source.html#l00071">71</a> do arquivo <a class="el" href="app__state_8c_source.html">app_state.c</a>.</p>
+
+<p class="reference">Referenciado(a) por <a class="el" href="app__tasks_8c_source.html#l00431">StartOledTask()</a> e <a class="el" href="ssd1306_8c_source.html#l00607">UpdateDisplay()</a>.</p>
+
+</div>
+</div>
+<a id="a42b52c0a1993f3c29f19836762ee9050" name="a42b52c0a1993f3c29f19836762ee9050"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a42b52c0a1993f3c29f19836762ee9050">&#9670;&#160;</a></span>oled_buffer_checksum_after</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">volatile uint32_t oled_buffer_checksum_after = 0U</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definição na linha <a class="el" href="app__state_8c_source.html#l00031">31</a> do arquivo <a class="el" href="app__state_8c_source.html">app_state.c</a>.</p>
+
+</div>
+</div>
+<a id="aa8ff25333c15e4fdacab5cb82d96a5a2" name="aa8ff25333c15e4fdacab5cb82d96a5a2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa8ff25333c15e4fdacab5cb82d96a5a2">&#9670;&#160;</a></span>oled_buffer_checksum_before</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">volatile uint32_t oled_buffer_checksum_before = 0U</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definição na linha <a class="el" href="app__state_8c_source.html#l00031">31</a> do arquivo <a class="el" href="app__state_8c_source.html">app_state.c</a>.</p>
+
+</div>
+</div>
+<a id="ade818f0d130bac4ff4513a3183748822" name="ade818f0d130bac4ff4513a3183748822"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ade818f0d130bac4ff4513a3183748822">&#9670;&#160;</a></span>oled_buffer_mutation_count</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">volatile uint32_t oled_buffer_mutation_count = 0U</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definição na linha <a class="el" href="app__state_8c_source.html#l00030">30</a> do arquivo <a class="el" href="app__state_8c_source.html">app_state.c</a>.</p>
+
+</div>
+</div>
+<a id="a8bf5c8fd55b4d6512453e6e5bf2cafcc" name="a8bf5c8fd55b4d6512453e6e5bf2cafcc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8bf5c8fd55b4d6512453e6e5bf2cafcc">&#9670;&#160;</a></span>oled_consecutive_fail</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">volatile uint32_t oled_consecutive_fail = 0U</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definição na linha <a class="el" href="app__state_8c_source.html#l00051">51</a> do arquivo <a class="el" href="app__state_8c_source.html">app_state.c</a>.</p>
+
+</div>
+</div>
+<a id="af49aa31228a8c886c4e0bfa13f80fd72" name="af49aa31228a8c886c4e0bfa13f80fd72"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af49aa31228a8c886c4e0bfa13f80fd72">&#9670;&#160;</a></span>oled_failed_page</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">volatile uint8_t oled_failed_page = 0xFFU</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definição na linha <a class="el" href="app__state_8c_source.html#l00029">29</a> do arquivo <a class="el" href="app__state_8c_source.html">app_state.c</a>.</p>
+
+</div>
+</div>
+<a id="a7654fd7bdd7757e9b258a10d67c54724" name="a7654fd7bdd7757e9b258a10d67c54724"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7654fd7bdd7757e9b258a10d67c54724">&#9670;&#160;</a></span>oled_failed_stage</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">volatile uint8_t oled_failed_stage = 0U</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definição na linha <a class="el" href="app__state_8c_source.html#l00029">29</a> do arquivo <a class="el" href="app__state_8c_source.html">app_state.c</a>.</p>
+
+</div>
+</div>
+<a id="a1289559fe7d366786b38f47111f5341c" name="a1289559fe7d366786b38f47111f5341c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1289559fe7d366786b38f47111f5341c">&#9670;&#160;</a></span>oled_ff_i2cerr</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">volatile uint32_t oled_ff_i2cerr = 0U</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definição na linha <a class="el" href="app__state_8c_source.html#l00052">52</a> do arquivo <a class="el" href="app__state_8c_source.html">app_state.c</a>.</p>
+
+</div>
+</div>
+<a id="ab3f7d62f45abb5965642a3da68ffa69a" name="ab3f7d62f45abb5965642a3da68ffa69a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab3f7d62f45abb5965642a3da68ffa69a">&#9670;&#160;</a></span>oled_ff_i2cstate</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">volatile uint32_t oled_ff_i2cstate = 0U</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definição na linha <a class="el" href="app__state_8c_source.html#l00052">52</a> do arquivo <a class="el" href="app__state_8c_source.html">app_state.c</a>.</p>
+
+</div>
+</div>
+<a id="a60b3fed8ac63aafb51a5277dc7550294" name="a60b3fed8ac63aafb51a5277dc7550294"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a60b3fed8ac63aafb51a5277dc7550294">&#9670;&#160;</a></span>oled_ff_sensor_active</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">volatile uint8_t oled_ff_sensor_active = 0U</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definição na linha <a class="el" href="app__state_8c_source.html#l00053">53</a> do arquivo <a class="el" href="app__state_8c_source.html">app_state.c</a>.</p>
+
+</div>
+</div>
+<a id="a4f21105f4e064c098aed81a37661f6d5" name="a4f21105f4e064c098aed81a37661f6d5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4f21105f4e064c098aed81a37661f6d5">&#9670;&#160;</a></span>oled_ff_status</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">volatile uint32_t oled_ff_status = 0U</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definição na linha <a class="el" href="app__state_8c_source.html#l00052">52</a> do arquivo <a class="el" href="app__state_8c_source.html">app_state.c</a>.</p>
+
+</div>
+</div>
+<a id="a781b2b0f132bec84adb28d23c0cb7e69" name="a781b2b0f132bec84adb28d23c0cb7e69"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a781b2b0f132bec84adb28d23c0cb7e69">&#9670;&#160;</a></span>oled_hw_busy_snapshot</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">volatile uint32_t oled_hw_busy_snapshot = 0U</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Flag BUSY do periférico I²C2 antes da última transferência do OLED. </p>
+
+<p class="definition">Definição na linha <a class="el" href="app__state_8c_source.html#l00027">27</a> do arquivo <a class="el" href="app__state_8c_source.html">app_state.c</a>.</p>
+
+<p class="reference">Referenciado(a) por <a class="el" href="eeprom24lc512_8c_source.html#l01361">EEPROM_ExportCSV_USB()</a> e <a class="el" href="ssd1306_8c_source.html#l00382">OLED_CaptureI2C2PreState()</a>.</p>
+
+</div>
+</div>
+<a id="adef7a49385cf87a69e137c4f0122442a" name="adef7a49385cf87a69e137c4f0122442a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adef7a49385cf87a69e137c4f0122442a">&#9670;&#160;</a></span>oled_i2c_error_snapshot</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">volatile uint32_t oled_i2c_error_snapshot = 0U</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definição na linha <a class="el" href="app__state_8c_source.html#l00025">25</a> do arquivo <a class="el" href="app__state_8c_source.html">app_state.c</a>.</p>
+
+</div>
+</div>
+<a id="af44ce64fa7961a404bb44f428e56a75d" name="af44ce64fa7961a404bb44f428e56a75d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af44ce64fa7961a404bb44f428e56a75d">&#9670;&#160;</a></span>oled_i2c_state_snapshot</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">volatile uint32_t oled_i2c_state_snapshot = 0U</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definição na linha <a class="el" href="app__state_8c_source.html#l00025">25</a> do arquivo <a class="el" href="app__state_8c_source.html">app_state.c</a>.</p>
+
+</div>
+</div>
+<a id="a4afa3be70cd1f6acff17d615ecd29b0c" name="a4afa3be70cd1f6acff17d615ecd29b0c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4afa3be70cd1f6acff17d615ecd29b0c">&#9670;&#160;</a></span>oled_lock_fail_count</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">volatile uint32_t oled_lock_fail_count = 0U</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definição na linha <a class="el" href="app__state_8c_source.html#l00024">24</a> do arquivo <a class="el" href="app__state_8c_source.html">app_state.c</a>.</p>
+
+</div>
+</div>
+<a id="affb17898fabc82f0b6e5032f5d3c8555" name="affb17898fabc82f0b6e5032f5d3c8555"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#affb17898fabc82f0b6e5032f5d3c8555">&#9670;&#160;</a></span>oled_page_switch_count</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">volatile uint32_t oled_page_switch_count = 0U</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definição na linha <a class="el" href="app__state_8c_source.html#l00024">24</a> do arquivo <a class="el" href="app__state_8c_source.html">app_state.c</a>.</p>
+
+</div>
+</div>
+<a id="aeca698713574433eb542374a5683c4c6" name="aeca698713574433eb542374a5683c4c6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeca698713574433eb542374a5683c4c6">&#9670;&#160;</a></span>oled_pre_lock_snapshot</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">volatile uint32_t oled_pre_lock_snapshot = 0U</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definição na linha <a class="el" href="app__state_8c_source.html#l00026">26</a> do arquivo <a class="el" href="app__state_8c_source.html">app_state.c</a>.</p>
+
+</div>
+</div>
+<a id="a89dc4785578a08b5d603115d208e3520" name="a89dc4785578a08b5d603115d208e3520"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a89dc4785578a08b5d603115d208e3520">&#9670;&#160;</a></span>oled_pre_state_snapshot</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">volatile uint32_t oled_pre_state_snapshot = 0U</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definição na linha <a class="el" href="app__state_8c_source.html#l00026">26</a> do arquivo <a class="el" href="app__state_8c_source.html">app_state.c</a>.</p>
+
+</div>
+</div>
+<a id="aaaded989d0aa2ec50a28e5a48369dae2" name="aaaded989d0aa2ec50a28e5a48369dae2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaaded989d0aa2ec50a28e5a48369dae2">&#9670;&#160;</a></span>oled_render_overlap_count</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">volatile uint32_t oled_render_overlap_count = 0U</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definição na linha <a class="el" href="app__state_8c_source.html#l00030">30</a> do arquivo <a class="el" href="app__state_8c_source.html">app_state.c</a>.</p>
+
+</div>
+</div>
+<a id="a452586b8ed9180cce6c209a479e97d36" name="a452586b8ed9180cce6c209a479e97d36"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a452586b8ed9180cce6c209a479e97d36">&#9670;&#160;</a></span>oled_scl_snapshot</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">volatile uint8_t oled_scl_snapshot = 1U</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definição na linha <a class="el" href="app__state_8c_source.html#l00028">28</a> do arquivo <a class="el" href="app__state_8c_source.html">app_state.c</a>.</p>
+
+</div>
+</div>
+<a id="ac95b0cbc6d015741cbb1143f6e7449ea" name="ac95b0cbc6d015741cbb1143f6e7449ea"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac95b0cbc6d015741cbb1143f6e7449ea">&#9670;&#160;</a></span>oled_sda_snapshot</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">volatile uint8_t oled_sda_snapshot = 1U</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definição na linha <a class="el" href="app__state_8c_source.html#l00028">28</a> do arquivo <a class="el" href="app__state_8c_source.html">app_state.c</a>.</p>
+
+</div>
+</div>
+<a id="afa951ad8a25ea7734dc427bef675660d" name="afa951ad8a25ea7734dc427bef675660d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afa951ad8a25ea7734dc427bef675660d">&#9670;&#160;</a></span>oled_task_loops</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">volatile uint32_t oled_task_loops = 0U</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definição na linha <a class="el" href="app__state_8c_source.html#l00050">50</a> do arquivo <a class="el" href="app__state_8c_source.html">app_state.c</a>.</p>
+
+</div>
+</div>
+<a id="a9a9ecfc353ed8d71e54b3969f62e997f" name="a9a9ecfc353ed8d71e54b3969f62e997f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9a9ecfc353ed8d71e54b3969f62e997f">&#9670;&#160;</a></span>oled_task_stage</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">volatile uint8_t oled_task_stage = 0U</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Etapa da <span class="tt">oledTask</span>: 0 ocioso, 1 espera o mutex de sensores, 2 espera o mutex da EEPROM, 3 renderizando, 4 espera o mutex do I²C2, 5 transferindo pelo I²C2, 6 recuperando. </p>
+
+<p class="definition">Definição na linha <a class="el" href="app__state_8c_source.html#l00049">49</a> do arquivo <a class="el" href="app__state_8c_source.html">app_state.c</a>.</p>
+
+<p class="reference">Referenciado(a) por <a class="el" href="app__tasks_8c_source.html#l00223">App_CommandTask()</a>, <a class="el" href="ssd1306_8c_source.html#l00391">SSD1306_UpdateScreen()</a> e <a class="el" href="app__tasks_8c_source.html#l00431">StartOledTask()</a>.</p>
+
+</div>
+</div>
+<a id="ac360945c8ba5c0fbad68c5e1ba118e53" name="ac360945c8ba5c0fbad68c5e1ba118e53"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac360945c8ba5c0fbad68c5e1ba118e53">&#9670;&#160;</a></span>oled_update_fail_count</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">volatile uint32_t oled_update_fail_count = 0U</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definição na linha <a class="el" href="app__state_8c_source.html#l00050">50</a> do arquivo <a class="el" href="app__state_8c_source.html">app_state.c</a>.</p>
+
+</div>
+</div>
+<a id="a56940d80a8fe2c85b30614b641337a26" name="a56940d80a8fe2c85b30614b641337a26"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a56940d80a8fe2c85b30614b641337a26">&#9670;&#160;</a></span>oled_update_ok_count</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">volatile uint32_t oled_update_ok_count = 0U</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definição na linha <a class="el" href="app__state_8c_source.html#l00050">50</a> do arquivo <a class="el" href="app__state_8c_source.html">app_state.c</a>.</p>
+
+</div>
+</div>
+<a id="ae66d0d296777f406e73bc598eaf6898e" name="ae66d0d296777f406e73bc598eaf6898e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae66d0d296777f406e73bc598eaf6898e">&#9670;&#160;</a></span>sensor_cycle_active</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">volatile uint8_t sensor_cycle_active = 0U</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definição na linha <a class="el" href="app__state_8c_source.html#l00053">53</a> do arquivo <a class="el" href="app__state_8c_source.html">app_state.c</a>.</p>
+
+</div>
+</div>
+<a id="a25c6d63c0716b71ac1cb0688a8800669" name="a25c6d63c0716b71ac1cb0688a8800669"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a25c6d63c0716b71ac1cb0688a8800669">&#9670;&#160;</a></span>ssd1306_buffer</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t ssd1306_buffer[1024]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Memória de imagem do OLED: 128 x 64 pixels, 8 páginas de 128 bytes. </p>
+
+<p class="definition">Definição na linha <a class="el" href="app__state_8c_source.html#l00020">20</a> do arquivo <a class="el" href="app__state_8c_source.html">app_state.c</a>.</p>
+
+<p class="reference">Referenciado(a) por <a class="el" href="ssd1306_8c_source.html#l00070">OLED_BufferChecksum()</a>, <a class="el" href="ssd1306_8c_source.html#l00288">SSD1306_Clear()</a>, <a class="el" href="ssd1306_8c_source.html#l00297">SSD1306_DrawPixel()</a> e <a class="el" href="ssd1306_8c_source.html#l00391">SSD1306_UpdateScreen()</a>.</p>
+
+</div>
+</div>
+<a id="a12d0bc6faf33100d6e7b259ef2aa2489" name="a12d0bc6faf33100d6e7b259ef2aa2489"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a12d0bc6faf33100d6e7b259ef2aa2489">&#9670;&#160;</a></span>ssd1306_fill_status</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">HAL_StatusTypeDef ssd1306_fill_status</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definição na linha <a class="el" href="app__state_8c_source.html#l00021">21</a> do arquivo <a class="el" href="app__state_8c_source.html">app_state.c</a>.</p>
+
+</div>
+</div>
+<a id="aa2919561b5197df52a4a0ad81fb0814b" name="aa2919561b5197df52a4a0ad81fb0814b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa2919561b5197df52a4a0ad81fb0814b">&#9670;&#160;</a></span>ssd1306_status</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">HAL_StatusTypeDef ssd1306_status</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definição na linha <a class="el" href="app__state_8c_source.html#l00021">21</a> do arquivo <a class="el" href="app__state_8c_source.html">app_state.c</a>.</p>
+
+</div>
+</div>
+<a id="a47040bacfe6b9ded1f45153d46f88f89" name="a47040bacfe6b9ded1f45153d46f88f89"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a47040bacfe6b9ded1f45153d46f88f89">&#9670;&#160;</a></span>usb_clear_requested</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">volatile uint8_t usb_clear_requested = 0U</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Pedido <span class="tt">CLEAR,CONFIRMO</span> recebido pela USB, atendido pela <span class="tt">defaultTask</span>. </p>
+
+<p class="definition">Definição na linha <a class="el" href="app__state_8c_source.html#l00046">46</a> do arquivo <a class="el" href="app__state_8c_source.html">app_state.c</a>.</p>
+
+<p class="reference">Referenciado(a) por <a class="el" href="app__tasks_8c_source.html#l00223">App_CommandTask()</a>.</p>
+
+</div>
+</div>
+<a id="aa58512c4bddad587a7f26c47ecf58360" name="aa58512c4bddad587a7f26c47ecf58360"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa58512c4bddad587a7f26c47ecf58360">&#9670;&#160;</a></span>usb_diag_requested</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">volatile uint8_t usb_diag_requested = 0U</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Pedido <span class="tt">DIAG</span> recebido pela USB, atendido pela <span class="tt">defaultTask</span>. </p>
+
+<p class="definition">Definição na linha <a class="el" href="app__state_8c_source.html#l00048">48</a> do arquivo <a class="el" href="app__state_8c_source.html">app_state.c</a>.</p>
+
+<p class="reference">Referenciado(a) por <a class="el" href="app__tasks_8c_source.html#l00223">App_CommandTask()</a>.</p>
+
+</div>
+</div>
+<a id="a10fc7ffc97c3d6c8b882b907fd66ab63" name="a10fc7ffc97c3d6c8b882b907fd66ab63"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a10fc7ffc97c3d6c8b882b907fd66ab63">&#9670;&#160;</a></span>usb_export_requested</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">volatile uint8_t usb_export_requested = 0U</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Pedido <span class="tt">EXPORT</span> recebido pela USB, atendido pela <span class="tt">defaultTask</span>. </p>
+
+<p class="definition">Definição na linha <a class="el" href="app__state_8c_source.html#l00045">45</a> do arquivo <a class="el" href="app__state_8c_source.html">app_state.c</a>.</p>
+
+<p class="reference">Referenciado(a) por <a class="el" href="app__tasks_8c_source.html#l00223">App_CommandTask()</a>.</p>
+
+</div>
+</div>
+<a id="a0e01e5221963e8cc0966e73f45e5ccc1" name="a0e01e5221963e8cc0966e73f45e5ccc1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0e01e5221963e8cc0966e73f45e5ccc1">&#9670;&#160;</a></span>usb_operation_state</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t usb_operation_state = 0U</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Operação USB em curso: 0 livre, 1 exportando, 2 limpando, 3 erro. </p>
+
+<p class="definition">Definição na linha <a class="el" href="app__state_8c_source.html#l00066">66</a> do arquivo <a class="el" href="app__state_8c_source.html">app_state.c</a>.</p>
+
+<p class="reference">Referenciado(a) por <a class="el" href="app__tasks_8c_source.html#l00223">App_CommandTask()</a>, <a class="el" href="app__tasks_8c_source.html#l00431">StartOledTask()</a>, <a class="el" href="app__tasks_8c_source.html#l00552">StartSensorTask()</a> e <a class="el" href="ssd1306_8c_source.html#l00607">UpdateDisplay()</a>.</p>
+
+</div>
+</div>
+<a id="a997c28009ebf5d4b1b60d28d19dd1d5e" name="a997c28009ebf5d4b1b60d28d19dd1d5e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a997c28009ebf5d4b1b60d28d19dd1d5e">&#9670;&#160;</a></span>usb_rtc_set_command</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char usb_rtc_set_command[32] = {0}</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Linha <span class="tt">RTC_SET</span> recebida, copiada da callback USB para ser tratada na <span class="tt">defaultTask</span>. </p>
+
+<p class="definition">Definição na linha <a class="el" href="app__state_8c_source.html#l00062">62</a> do arquivo <a class="el" href="app__state_8c_source.html">app_state.c</a>.</p>
+
+<p class="reference">Referenciado(a) por <a class="el" href="app__tasks_8c_source.html#l00223">App_CommandTask()</a>.</p>
+
+</div>
+</div>
+<a id="ace4e0a1dbd5828f0ce06c3e283732ec9" name="ace4e0a1dbd5828f0ce06c3e283732ec9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ace4e0a1dbd5828f0ce06c3e283732ec9">&#9670;&#160;</a></span>usb_rtc_set_requested</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">volatile uint8_t usb_rtc_set_requested = 0U</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Pedido <span class="tt">RTC_SET</span> recebido pela USB, atendido pela <span class="tt">defaultTask</span>. </p>
+
+<p class="definition">Definição na linha <a class="el" href="app__state_8c_source.html#l00047">47</a> do arquivo <a class="el" href="app__state_8c_source.html">app_state.c</a>.</p>
+
+<p class="reference">Referenciado(a) por <a class="el" href="app__tasks_8c_source.html#l00223">App_CommandTask()</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><b>Core</b></li><li class="navelem"><b>Src</b></li><li class="navelem"><a href="app__state_8c.html">app_state.c</a></li>
+    <li class="footer">Gerado por <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.18.0 </li>
+  </ul>
+</div>
+</body>
+</html>

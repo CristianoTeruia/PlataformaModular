@@ -1,0 +1,312 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pt-BR">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.18.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>PlataformaModular: Referência do Arquivo Core/Inc/mpu6500.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="codefolding.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">PlataformaModular
+   </div>
+   <div id="projectbrief">Plataforma modular embarcada para aquisição e registro de dados de sensores (STM32F411 + FreeRTOS)</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Gerado por Doxygen 1.18.0 -->
+<script type="text/javascript">
+let searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', codefold.init);
+</script>
+<script type="application/json" id="doxygen-config">
+{
+  "relPath": "",
+  "generateTreeView": true,
+  "searchEngine": true,
+  "serverBasedSearch": false,
+  "disableIndex": false,
+  "dynamicMenus": true,
+  "fullSidebar": false
+}
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<div id="main-nav-mobile">
+<div class="sm sm-dox"><input id="main-menu-state" type="checkbox"/>
+<label class="main-menu-btn" for="main-menu-state">
+<span class="main-menu-btn-icon"></span> Toggle main menu visibility</label>
+<span id="searchBoxPos1"></span>
+</div>
+</div><!-- main-nav-mobile -->
+<div id="main-nav">
+  <ul class="sm sm-dox" id="main-menu">
+    <li id="searchBoxPos2">
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect" class="search-icon"><span class="search-icon-dropdown"></span></span>
+          <input type="text" id="MSearchField" value="" placeholder="Busca" accesskey="S"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+          </span>
+        </div>
+    </li>
+  </ul>
+</div><!-- main-nav -->
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded',() => { initNavTree('mpu6500_8h.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Carregando...</div>
+<div class="SRStatus" id="Searching">Procurando...</div>
+<div class="SRStatus" id="NoMatches">Nenhuma entrada encontrado</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Referência do Arquivo mpu6500.h</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Driver do acelerômetro e giroscópio MPU6500 (I²C1, endereço 0x68).  
+<a href="#details">Mais...</a></p>
+<div class="textblock"><code>#include &quot;<a class="el" href="app__state_8h_source.html">app_state.h</a>&quot;</code><br />
+</div>
+<p><a href="mpu6500_8h_source.html">Ir para o código-fonte desse arquivo.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
+Funções</h2></td></tr>
+<tr class="memitem:a83e6c0f966fbcb5a598cab4cc79db90d" id="r_a83e6c0f966fbcb5a598cab4cc79db90d"><td class="memItemLeft">HAL_StatusTypeDef&#160;</td><td class="memItemRight"><a class="el" href="#a83e6c0f966fbcb5a598cab4cc79db90d">MPU6500_Init</a> (void)</td></tr>
+<tr class="memdesc:a83e6c0f966fbcb5a598cab4cc79db90d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Detecta e configura o sensor.  <br /></td></tr>
+<tr class="memitem:a44b099e7ab4e500e6966e8b92615384c" id="r_a44b099e7ab4e500e6966e8b92615384c"><td class="memItemLeft">HAL_StatusTypeDef&#160;</td><td class="memItemRight"><a class="el" href="#a44b099e7ab4e500e6966e8b92615384c">MPU6500_Read</a> (void)</td></tr>
+<tr class="memdesc:a44b099e7ab4e500e6966e8b92615384c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lê aceleração e velocidade angular e aplica os offsets.  <br /></td></tr>
+<tr class="memitem:a909b56cbca4234f86b74edf9d351aea6" id="r_a909b56cbca4234f86b74edf9d351aea6"><td class="memItemLeft">HAL_StatusTypeDef&#160;</td><td class="memItemRight"><a class="el" href="#a909b56cbca4234f86b74edf9d351aea6">MPU6500_Sleep</a> (void)</td></tr>
+<tr class="memdesc:a909b56cbca4234f86b74edf9d351aea6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Coloca o sensor em repouso (bit SLEEP do <span class="tt">PWR_MGMT_1</span>) para economizar energia.  <br /></td></tr>
+<tr class="memitem:a7ab0e94c6f6d3f817e4866e0ec44b390" id="r_a7ab0e94c6f6d3f817e4866e0ec44b390"><td class="memItemLeft">HAL_StatusTypeDef&#160;</td><td class="memItemRight"><a class="el" href="#a7ab0e94c6f6d3f817e4866e0ec44b390">MPU6500_Wake</a> (void)</td></tr>
+<tr class="memdesc:a7ab0e94c6f6d3f817e4866e0ec44b390"><td class="mdescLeft">&#160;</td><td class="mdescRight">Acorda o sensor e espera 100 ms para a estabilização do acelerômetro e do giroscópio.  <br /></td></tr>
+<tr class="memitem:a70cb5f6bd93698d202e28f633529f220" id="r_a70cb5f6bd93698d202e28f633529f220"><td class="memItemLeft">HAL_StatusTypeDef&#160;</td><td class="memItemRight"><a class="el" href="#a70cb5f6bd93698d202e28f633529f220">MPU6500_Calibrate</a> (void)</td></tr>
+<tr class="memdesc:a70cb5f6bd93698d202e28f633529f220"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calcula os offsets (zeragem) com a placa em repouso.  <br /></td></tr>
+</table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Descrição detalhada</h2>
+<div class="textblock"><p>Driver do acelerômetro e giroscópio MPU6500 (I²C1, endereço 0x68). </p>
+<p>Fundos de escala fixos: ±2 g (16384 LSB/g) e ±250 °/s (131 LSB/(°/s)). Os resultados ficam nas variáveis <span class="tt">mpu6500_*</span> de <a class="el" href="app__state_8h.html" title="Tipos, constantes e variáveis globais compartilhadas entre os módulos do firmware.">app_state.h</a>. </p>
+
+<p class="definition">Definição no arquivo <a class="el" href="mpu6500_8h_source.html">mpu6500.h</a>.</p>
+</div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Funções</h2>
+<a id="a70cb5f6bd93698d202e28f633529f220" name="a70cb5f6bd93698d202e28f633529f220"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a70cb5f6bd93698d202e28f633529f220">&#9670;&#160;</a></span>MPU6500_Calibrate()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">HAL_StatusTypeDef MPU6500_Calibrate </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Calcula os offsets (zeragem) com a placa em repouso. </p>
+<p>Faz a média de 500 leituras de <a class="el" href="#a44b099e7ab4e500e6966e8b92615384c" title="Lê aceleração e velocidade angular e aplica os offsets.">MPU6500_Read()</a>, uma a cada cerca de 5 ms. Em X e Y da aceleração e nos três eixos do giroscópio o offset é essa média; em Z da aceleração é a média menos 1 g, pois em repouso o eixo Z deve medir +1 g. Pressupõe a placa parada e com o eixo Z na vertical.</p>
+<p>O registro de sensores chama esta função na primeira leitura após a partida e novamente sempre que o sensor volta de uma falha.</p>
+<dl class="section warning"><dt>Aviso</dt><dd>A média é calculada sobre leituras que já descontam os offsets vigentes, e o resultado substitui os offsets. Isso só zera corretamente quando os offsets vigentes são nulos (primeira execução após a partida). Executada de novo sem reiniciar, o novo offset vale (média bruta - offset anterior): com a placa em repouso, as leituras voltam aos valores brutos, e uma terceira execução zera de novo, de modo que as execuções alternam entre zerar e desfazer a zeragem. O comportamento foi reproduzido no PC com esta função e leituras simuladas.</dd></dl>
+<dl class="retval"><dt>Valores Retornados</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">HAL_OK</td><td>Offsets atualizados. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Retorna</dt><dd>Status da primeira leitura que falhar; neste caso os offsets não são alterados. </dd></dl>
+
+<p class="definition">Definição na linha <a class="el" href="mpu6500_8c_source.html#l00199">199</a> do arquivo <a class="el" href="mpu6500_8c_source.html">mpu6500.c</a>.</p>
+
+<p class="reference">Referencias <a class="el" href="app__state_8c_source.html#l00055">App_Delay()</a>, <a class="el" href="app__state_8h_source.html#l00091">mpu6500_accel_offset_z</a>, <a class="el" href="app__state_8h_source.html#l00089">mpu6500_accel_z_g</a>, <a class="el" href="mpu6500_8c_source.html#l00199">MPU6500_Calibrate()</a>, <a class="el" href="app__state_8h_source.html#l00092">mpu6500_gyro_offset_z</a>, <a class="el" href="app__state_8h_source.html#l00090">mpu6500_gyro_z_dps</a> e <a class="el" href="mpu6500_8c_source.html#l00106">MPU6500_Read()</a>.</p>
+
+<p class="reference">Referenciado(a) por <a class="el" href="mpu6500_8c_source.html#l00199">MPU6500_Calibrate()</a> e <a class="el" href="sensor__registry_8c_source.html#l00138">Mpu_Read()</a>.</p>
+
+</div>
+</div>
+<a id="a83e6c0f966fbcb5a598cab4cc79db90d" name="a83e6c0f966fbcb5a598cab4cc79db90d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a83e6c0f966fbcb5a598cab4cc79db90d">&#9670;&#160;</a></span>MPU6500_Init()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">HAL_StatusTypeDef MPU6500_Init </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Detecta e configura o sensor. </p>
+<p>Lê o WHO_AM_I (esperado 0x70), tira o sensor do modo de repouso, espera 100 ms e configura os fundos de escala de ±2 g e ±250 °/s. </p><dl class="retval"><dt>Valores Retornados</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">HAL_OK</td><td>Sensor configurado. </td></tr>
+    <tr><td class="paramname">HAL_ERROR</td><td>WHO_AM_I diferente de 0x70. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Retorna</dt><dd>Status da HAL em caso de falha de comunicação I²C. </dd></dl>
+
+<p class="definition">Definição na linha <a class="el" href="mpu6500_8c_source.html#l00010">10</a> do arquivo <a class="el" href="mpu6500_8c_source.html">mpu6500.c</a>.</p>
+
+<p class="reference">Referencias <a class="el" href="app__state_8c_source.html#l00055">App_Delay()</a>, <a class="el" href="app__state_8h.html#af7b2c26e44dadaaa798a5c3d82914ba7">hi2c1</a>, <a class="el" href="mpu6500_8c_source.html#l00010">MPU6500_Init()</a> e <a class="el" href="app__state_8c_source.html#l00013">mpu6500_who_am_i</a>.</p>
+
+<p class="reference">Referenciado(a) por <a class="el" href="mpu6500_8c_source.html#l00010">MPU6500_Init()</a> e <a class="el" href="sensor__registry_8c_source.html#l00138">Mpu_Read()</a>.</p>
+
+</div>
+</div>
+<a id="a44b099e7ab4e500e6966e8b92615384c" name="a44b099e7ab4e500e6966e8b92615384c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a44b099e7ab4e500e6966e8b92615384c">&#9670;&#160;</a></span>MPU6500_Read()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">HAL_StatusTypeDef MPU6500_Read </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Lê aceleração e velocidade angular e aplica os offsets. </p>
+<p>Lê 14 bytes a partir de ACCEL_XOUT_H (0x3B), converte para g e °/s, subtrai os offsets de <a class="el" href="#a70cb5f6bd93698d202e28f633529f220" title="Calcula os offsets (zeragem) com a placa em repouso.">MPU6500_Calibrate()</a> e atualiza as variáveis <span class="tt">mpu6500_*</span>. A temperatura interna do sensor é descartada. </p><dl class="retval"><dt>Valores Retornados</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">HAL_OK</td><td>Leitura válida. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Retorna</dt><dd>Status da HAL em caso de falha de comunicação I²C. </dd></dl>
+
+<p class="definition">Definição na linha <a class="el" href="mpu6500_8c_source.html#l00106">106</a> do arquivo <a class="el" href="mpu6500_8c_source.html">mpu6500.c</a>.</p>
+
+<p class="reference">Referencias <a class="el" href="app__state_8h.html#af7b2c26e44dadaaa798a5c3d82914ba7">hi2c1</a>, <a class="el" href="app__state_8h_source.html#l00091">mpu6500_accel_offset_z</a>, <a class="el" href="app__state_8h_source.html#l00087">mpu6500_accel_z</a>, <a class="el" href="app__state_8h_source.html#l00089">mpu6500_accel_z_g</a>, <a class="el" href="app__state_8h_source.html#l00092">mpu6500_gyro_offset_z</a>, <a class="el" href="app__state_8h_source.html#l00088">mpu6500_gyro_z</a>, <a class="el" href="app__state_8h_source.html#l00090">mpu6500_gyro_z_dps</a> e <a class="el" href="mpu6500_8c_source.html#l00106">MPU6500_Read()</a>.</p>
+
+<p class="reference">Referenciado(a) por <a class="el" href="mpu6500_8c_source.html#l00199">MPU6500_Calibrate()</a>, <a class="el" href="mpu6500_8c_source.html#l00106">MPU6500_Read()</a> e <a class="el" href="sensor__registry_8c_source.html#l00138">Mpu_Read()</a>.</p>
+
+</div>
+</div>
+<a id="a909b56cbca4234f86b74edf9d351aea6" name="a909b56cbca4234f86b74edf9d351aea6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a909b56cbca4234f86b74edf9d351aea6">&#9670;&#160;</a></span>MPU6500_Sleep()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">HAL_StatusTypeDef MPU6500_Sleep </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Coloca o sensor em repouso (bit SLEEP do <span class="tt">PWR_MGMT_1</span>) para economizar energia. </p>
+<p>O sensor dorme entre as amostras e mantém os registradores de configuração. </p><dl class="section return"><dt>Retorna</dt><dd>Status da HAL da escrita. </dd></dl>
+
+<p class="definition">Definição na linha <a class="el" href="mpu6500_8c_source.html#l00091">91</a> do arquivo <a class="el" href="mpu6500_8c_source.html">mpu6500.c</a>.</p>
+
+<p class="reference">Referencias <a class="el" href="app__state_8h.html#af7b2c26e44dadaaa798a5c3d82914ba7">hi2c1</a> e <a class="el" href="mpu6500_8c_source.html#l00091">MPU6500_Sleep()</a>.</p>
+
+<p class="reference">Referenciado(a) por <a class="el" href="mpu6500_8c_source.html#l00091">MPU6500_Sleep()</a> e <a class="el" href="sensor__registry_8c_source.html#l00138">Mpu_Read()</a>.</p>
+
+</div>
+</div>
+<a id="a7ab0e94c6f6d3f817e4866e0ec44b390" name="a7ab0e94c6f6d3f817e4866e0ec44b390"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7ab0e94c6f6d3f817e4866e0ec44b390">&#9670;&#160;</a></span>MPU6500_Wake()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">HAL_StatusTypeDef MPU6500_Wake </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Acorda o sensor e espera 100 ms para a estabilização do acelerômetro e do giroscópio. </p>
+<dl class="section return"><dt>Retorna</dt><dd>Status da HAL da escrita. </dd></dl>
+
+<p class="definition">Definição na linha <a class="el" href="mpu6500_8c_source.html#l00097">97</a> do arquivo <a class="el" href="mpu6500_8c_source.html">mpu6500.c</a>.</p>
+
+<p class="reference">Referencias <a class="el" href="app__state_8c_source.html#l00055">App_Delay()</a>, <a class="el" href="app__state_8h.html#af7b2c26e44dadaaa798a5c3d82914ba7">hi2c1</a> e <a class="el" href="mpu6500_8c_source.html#l00097">MPU6500_Wake()</a>.</p>
+
+<p class="reference">Referenciado(a) por <a class="el" href="mpu6500_8c_source.html#l00097">MPU6500_Wake()</a> e <a class="el" href="sensor__registry_8c_source.html#l00138">Mpu_Read()</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><b>Core</b></li><li class="navelem"><b>Inc</b></li><li class="navelem"><a href="mpu6500_8h.html">mpu6500.h</a></li>
+    <li class="footer">Gerado por <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.18.0 </li>
+  </ul>
+</div>
+</body>
+</html>

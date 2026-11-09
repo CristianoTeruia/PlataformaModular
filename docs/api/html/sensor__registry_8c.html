@@ -1,0 +1,1525 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pt-BR">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.18.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>PlataformaModular: Referência do Arquivo Core/Src/sensor_registry.c</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="codefolding.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">PlataformaModular
+   </div>
+   <div id="projectbrief">Plataforma modular embarcada para aquisição e registro de dados de sensores (STM32F411 + FreeRTOS)</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Gerado por Doxygen 1.18.0 -->
+<script type="text/javascript">
+let searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', codefold.init);
+</script>
+<script type="application/json" id="doxygen-config">
+{
+  "relPath": "",
+  "generateTreeView": true,
+  "searchEngine": true,
+  "serverBasedSearch": false,
+  "disableIndex": false,
+  "dynamicMenus": true,
+  "fullSidebar": false
+}
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<div id="main-nav-mobile">
+<div class="sm sm-dox"><input id="main-menu-state" type="checkbox"/>
+<label class="main-menu-btn" for="main-menu-state">
+<span class="main-menu-btn-icon"></span> Toggle main menu visibility</label>
+<span id="searchBoxPos1"></span>
+</div>
+</div><!-- main-nav-mobile -->
+<div id="main-nav">
+  <ul class="sm sm-dox" id="main-menu">
+    <li id="searchBoxPos2">
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect" class="search-icon"><span class="search-icon-dropdown"></span></span>
+          <input type="text" id="MSearchField" value="" placeholder="Busca" accesskey="S"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+          </span>
+        </div>
+    </li>
+  </ul>
+</div><!-- main-nav -->
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded',() => { initNavTree('sensor__registry_8c.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Carregando...</div>
+<div class="SRStatus" id="Searching">Procurando...</div>
+<div class="SRStatus" id="NoMatches">Nenhuma entrada encontrado</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Referência do Arquivo sensor_registry.c</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Tabela de sensores e funções de serialização e formatação CSV (ver <a class="el" href="sensor__registry_8h.html" title="Registro de sensores: tabela que descreve cada sensor I²C do sistema.">sensor_registry.h</a>).  
+<a href="#details">Mais...</a></p>
+<div class="textblock"><code>#include &quot;<a class="el" href="sensor__registry_8h_source.html">sensor_registry.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="app__state_8h_source.html">app_state.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="aht20_8h_source.html">aht20.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="bmp280_8h_source.html">bmp280.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="mpu6500_8h_source.html">mpu6500.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="bh1750_8h_source.html">bh1750.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="ens160_8h_source.html">ens160.h</a>&quot;</code><br />
+<code>#include &lt;stdio.h&gt;</code><br />
+<code>#include &lt;string.h&gt;</code><br />
+</div>
+<p><a href="sensor__registry_8c_source.html">Ir para o código-fonte desse arquivo.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-define-members" class="groupheader"><a id="define-members" name="define-members"></a>
+Definições e Macros</h2></td></tr>
+<tr class="memitem:adb6af7ed8689b3af8abc20736f75d26a" id="r_adb6af7ed8689b3af8abc20736f75d26a"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#adb6af7ed8689b3af8abc20736f75d26a">SENSOR_COUNT</a>&#160;&#160;&#160;((uint8_t)(sizeof(<a class="el" href="#a9f8776bae5ded002bc9bfa589ff12e0a">sensor_table</a>) / sizeof(<a class="el" href="#a9f8776bae5ded002bc9bfa589ff12e0a">sensor_table</a>[0])))</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
+Funções</h2></td></tr>
+<tr class="memitem:acda27d50950c8262ef26dfcbb6e14759" id="r_acda27d50950c8262ef26dfcbb6e14759"><td class="memItemLeft">static uint16_t&#160;</td><td class="memItemRight"><a class="el" href="#acda27d50950c8262ef26dfcbb6e14759">ReadLE16</a> (const uint8_t *p)</td></tr>
+<tr class="memdesc:acda27d50950c8262ef26dfcbb6e14759"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lê um inteiro de 16 bits sem sinal em little-endian.  <br /></td></tr>
+<tr class="memitem:ac6043998a3014cbf7a46c6c95f15347b" id="r_ac6043998a3014cbf7a46c6c95f15347b"><td class="memItemLeft">static uint32_t&#160;</td><td class="memItemRight"><a class="el" href="#ac6043998a3014cbf7a46c6c95f15347b">ReadLE32</a> (const uint8_t *p)</td></tr>
+<tr class="memdesc:ac6043998a3014cbf7a46c6c95f15347b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lê um inteiro de 32 bits sem sinal em little-endian.  <br /></td></tr>
+<tr class="memitem:adfb907b0ec1ba0fe2121430302166c59" id="r_adfb907b0ec1ba0fe2121430302166c59"><td class="memItemLeft">static int&#160;</td><td class="memItemRight"><a class="el" href="#adfb907b0ec1ba0fe2121430302166c59">AppendScaled</a> (char *buffer, size_t capacity, int current, int32_t value, uint32_t scale, uint8_t decimals)</td></tr>
+<tr class="memdesc:adfb907b0ec1ba0fe2121430302166c59"><td class="mdescLeft">&#160;</td><td class="mdescRight">Escreve <span class="tt">&lt;sinal&gt;&lt;inteiro&gt;.
+</span> <br /></td></tr>
+<tr class="memitem:a33c1f30977008b47d462b87988a569ca" id="r_a33c1f30977008b47d462b87988a569ca"><td class="memItemLeft">static int&#160;</td><td class="memItemRight"><a class="el" href="#a33c1f30977008b47d462b87988a569ca">Put</a> (char *out, size_t capacity, int pos, int written)</td></tr>
+<tr class="memdesc:a33c1f30977008b47d462b87988a569ca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Acrescenta texto formatado em out+pos; retorna a nova posicao ou -1 se nao couber.  <br /></td></tr>
+<tr class="memitem:aba3b7369b98b31b9746c192dae5784c3" id="r_aba3b7369b98b31b9746c192dae5784c3"><td class="memItemLeft">static HAL_StatusTypeDef&#160;</td><td class="memItemRight"><a class="el" href="#aba3b7369b98b31b9746c192dae5784c3">Aht_Read</a> (void)</td></tr>
+<tr class="memdesc:aba3b7369b98b31b9746c192dae5784c3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lê o AHT20 e atualiza <span class="tt">aht20_available</span> e <span class="tt">aht20_last_read_ok</span>.  <br /></td></tr>
+<tr class="memitem:aafbb5723a684bd641df05820431d98d8" id="r_aafbb5723a684bd641df05820431d98d8"><td class="memItemLeft">static void&#160;</td><td class="memItemRight"><a class="el" href="#aafbb5723a684bd641df05820431d98d8">Aht_Serialize</a> (uint8_t *out)</td></tr>
+<tr class="memdesc:aafbb5723a684bd641df05820431d98d8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Grava 4 bytes: temperatura (int16) e umidade (uint16), ambas em centésimos, little-endian.  <br /></td></tr>
+<tr class="memitem:a6b46db9aed8c99f71fd892219faa6b01" id="r_a6b46db9aed8c99f71fd892219faa6b01"><td class="memItemLeft">static int&#160;</td><td class="memItemRight"><a class="el" href="#a6b46db9aed8c99f71fd892219faa6b01">Aht_Csv</a> (const uint8_t *p, char *out, size_t cap)</td></tr>
+<tr class="memdesc:a6b46db9aed8c99f71fd892219faa6b01"><td class="mdescLeft">&#160;</td><td class="mdescRight">Colunas <span class="tt">aht_present,aht_temp_c,aht_humidity_pct</span>; com o sensor ausente, <span class="tt">0,,</span>.  <br /></td></tr>
+<tr class="memitem:ad4b8ba94907973fabc326a0830e82ab1" id="r_ad4b8ba94907973fabc326a0830e82ab1"><td class="memItemLeft">static HAL_StatusTypeDef&#160;</td><td class="memItemRight"><a class="el" href="#ad4b8ba94907973fabc326a0830e82ab1">Bmp_Read</a> (void)</td></tr>
+<tr class="memdesc:ad4b8ba94907973fabc326a0830e82ab1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lê a calibração e depois a temperatura e a pressão do BMP280; atualiza a disponibilidade.  <br /></td></tr>
+<tr class="memitem:ab3e860d88aabe39aa321a93dd53475f7" id="r_ab3e860d88aabe39aa321a93dd53475f7"><td class="memItemLeft">static void&#160;</td><td class="memItemRight"><a class="el" href="#ab3e860d88aabe39aa321a93dd53475f7">Bmp_Serialize</a> (uint8_t *out)</td></tr>
+<tr class="memdesc:ab3e860d88aabe39aa321a93dd53475f7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Grava 4 bytes: pressão em Pa (uint32, parte inteira), little-endian.  <br /></td></tr>
+<tr class="memitem:a92ab15cc8e8eb6d605707723048f73a7" id="r_a92ab15cc8e8eb6d605707723048f73a7"><td class="memItemLeft">static int&#160;</td><td class="memItemRight"><a class="el" href="#a92ab15cc8e8eb6d605707723048f73a7">Bmp_Csv</a> (const uint8_t *p, char *out, size_t cap)</td></tr>
+<tr class="memdesc:a92ab15cc8e8eb6d605707723048f73a7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Coluna <span class="tt">bmp_pressure</span>, em Pa inteiros.  <br /></td></tr>
+<tr class="memitem:a2ea0845544cfaf374a98253e1b201872" id="r_a2ea0845544cfaf374a98253e1b201872"><td class="memItemLeft">static HAL_StatusTypeDef&#160;</td><td class="memItemRight"><a class="el" href="#a2ea0845544cfaf374a98253e1b201872">Mpu_Read</a> (void)</td></tr>
+<tr class="memdesc:a2ea0845544cfaf374a98253e1b201872"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lê o MPU6500, que dorme entre as amostras.  <br /></td></tr>
+<tr class="memitem:adc4a2eb914b28a10e81af9170790390e" id="r_adc4a2eb914b28a10e81af9170790390e"><td class="memItemLeft">static void&#160;</td><td class="memItemRight"><a class="el" href="#adc4a2eb914b28a10e81af9170790390e">Mpu_Serialize</a> (uint8_t *out)</td></tr>
+<tr class="memdesc:adc4a2eb914b28a10e81af9170790390e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Grava 12 bytes (int16, little-endian): aceleração X, Y, Z em milésimos de g e velocidade angular X, Y, Z em centésimos de °/s.  <br /></td></tr>
+<tr class="memitem:aba2de6e03b0f71cff1cd3c3526006349" id="r_aba2de6e03b0f71cff1cd3c3526006349"><td class="memItemLeft">static int&#160;</td><td class="memItemRight"><a class="el" href="#aba2de6e03b0f71cff1cd3c3526006349">Mpu_Csv</a> (const uint8_t *p, char *out, size_t cap)</td></tr>
+<tr class="memdesc:aba2de6e03b0f71cff1cd3c3526006349"><td class="mdescLeft">&#160;</td><td class="mdescRight">Seis colunas: aceleração com 3 casas decimais (g) e velocidade angular com 2 (°/s); ausente, <span class="tt">,,,,,</span>.  <br /></td></tr>
+<tr class="memitem:a9ade17ea45d1cc88f5c1331e0086aadd" id="r_a9ade17ea45d1cc88f5c1331e0086aadd"><td class="memItemLeft">static HAL_StatusTypeDef&#160;</td><td class="memItemRight"><a class="el" href="#a9ade17ea45d1cc88f5c1331e0086aadd">Bh_Read</a> (void)</td></tr>
+<tr class="memdesc:a9ade17ea45d1cc88f5c1331e0086aadd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Mede a iluminância do BH1750 e guarda a contagem bruta em <span class="tt">bh1750_raw_sample</span>.  <br /></td></tr>
+<tr class="memitem:a469932346c65bcda5b0f5b0e88794891" id="r_a469932346c65bcda5b0f5b0e88794891"><td class="memItemLeft">static void&#160;</td><td class="memItemRight"><a class="el" href="#a469932346c65bcda5b0f5b0e88794891">Bh_Serialize</a> (uint8_t *out)</td></tr>
+<tr class="memdesc:a469932346c65bcda5b0f5b0e88794891"><td class="mdescLeft">&#160;</td><td class="mdescRight">Grava 2 bytes: contagem bruta de 16 bits, little-endian.  <br /></td></tr>
+<tr class="memitem:aae35d33c85b03b45974fad1f4aac78ba" id="r_aae35d33c85b03b45974fad1f4aac78ba"><td class="memItemLeft">static int&#160;</td><td class="memItemRight"><a class="el" href="#aae35d33c85b03b45974fad1f4aac78ba">Bh_Csv</a> (const uint8_t *p, char *out, size_t cap)</td></tr>
+<tr class="memdesc:aae35d33c85b03b45974fad1f4aac78ba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Coluna <span class="tt">bh_lux</span>: contagem bruta dividida por 1,2, com uma casa decimal e arredondamento.  <br /></td></tr>
+<tr class="memitem:a13a335d701f8151ce62b5daa2b3ce48a" id="r_a13a335d701f8151ce62b5daa2b3ce48a"><td class="memItemLeft">static HAL_StatusTypeDef&#160;</td><td class="memItemRight"><a class="el" href="#a13a335d701f8151ce62b5daa2b3ce48a">Ens_Read</a> (void)</td></tr>
+<tr class="memdesc:a13a335d701f8151ce62b5daa2b3ce48a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lê o ENS160, compensado pela temperatura e umidade do AHT20 (lido antes, pela ordem da tabela).  <br /></td></tr>
+<tr class="memitem:abb6c04fa2cb25da4e03bc3c043991acb" id="r_abb6c04fa2cb25da4e03bc3c043991acb"><td class="memItemLeft">static void&#160;</td><td class="memItemRight"><a class="el" href="#abb6c04fa2cb25da4e03bc3c043991acb">Ens_Serialize</a> (uint8_t *out)</td></tr>
+<tr class="memdesc:abb6c04fa2cb25da4e03bc3c043991acb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Grava 6 bytes: AQI (1), TVOC em ppb (2), eCO2 em ppm (2) e validade (1).  <br /></td></tr>
+<tr class="memitem:a84a1b585a68a824298f64bc93f4dc64c" id="r_a84a1b585a68a824298f64bc93f4dc64c"><td class="memItemLeft">static int&#160;</td><td class="memItemRight"><a class="el" href="#a84a1b585a68a824298f64bc93f4dc64c">Ens_Csv</a> (const uint8_t *p, char *out, size_t cap)</td></tr>
+<tr class="memdesc:a84a1b585a68a824298f64bc93f4dc64c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Colunas <span class="tt">ens_aqi,ens_tvoc_ppb,ens_eco2_ppm,ens_validity</span>; ausente, <span class="tt">,,,</span>.  <br /></td></tr>
+<tr class="memitem:acd7b7af14ae011dbfed7e19ec3d42b79" id="r_acd7b7af14ae011dbfed7e19ec3d42b79"><td class="memItemLeft">uint8_t&#160;</td><td class="memItemRight"><a class="el" href="#acd7b7af14ae011dbfed7e19ec3d42b79">Sensors_Count</a> (void)</td></tr>
+<tr class="memdesc:acd7b7af14ae011dbfed7e19ec3d42b79"><td class="mdescLeft">&#160;</td><td class="mdescRight">Número de sensores da tabela.  <br /></td></tr>
+<tr class="memitem:acf85c823f914ea7e3c458d7ccd7b2cf8" id="r_acf85c823f914ea7e3c458d7ccd7b2cf8"><td class="memItemLeft">const <a class="el" href="struct_sensor_driver.html">SensorDriver</a> *&#160;</td><td class="memItemRight"><a class="el" href="#acf85c823f914ea7e3c458d7ccd7b2cf8">Sensors_Get</a> (uint8_t index)</td></tr>
+<tr class="memdesc:acf85c823f914ea7e3c458d7ccd7b2cf8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obtém uma entrada da tabela.  <br /></td></tr>
+<tr class="memitem:af9bd5dd7935c13d815be548dd9ccd967" id="r_af9bd5dd7935c13d815be548dd9ccd967"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#af9bd5dd7935c13d815be548dd9ccd967">Sensors_ReadOne</a> (uint8_t index)</td></tr>
+<tr class="memdesc:af9bd5dd7935c13d815be548dd9ccd967"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lê um sensor e atualiza as máscaras "disponível agora" e "detectado desde o boot".  <br /></td></tr>
+<tr class="memitem:a2c882d85f0ec5887841ab171232ee9c5" id="r_a2c882d85f0ec5887841ab171232ee9c5"><td class="memItemLeft">uint8_t&#160;</td><td class="memItemRight"><a class="el" href="#a2c882d85f0ec5887841ab171232ee9c5">Sensors_AvailableMask</a> (void)</td></tr>
+<tr class="memdesc:a2c882d85f0ec5887841ab171232ee9c5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Máscara dos sensores que responderam na última tentativa.  <br /></td></tr>
+<tr class="memitem:ac53551032a5e8347c9eadf7c44af066d" id="r_ac53551032a5e8347c9eadf7c44af066d"><td class="memItemLeft">uint8_t&#160;</td><td class="memItemRight"><a class="el" href="#ac53551032a5e8347c9eadf7c44af066d">Sensors_DetectedMask</a> (void)</td></tr>
+<tr class="memdesc:ac53551032a5e8347c9eadf7c44af066d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Máscara dos sensores que já responderam desde o boot.  <br /></td></tr>
+<tr class="memitem:a23c1e8ff03595881c86650c6ea025098" id="r_a23c1e8ff03595881c86650c6ea025098"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a23c1e8ff03595881c86650c6ea025098">Sensors_UpdateDisplayValues</a> (void)</td></tr>
+<tr class="memdesc:a23c1e8ff03595881c86650c6ea025098"><td class="mdescLeft">&#160;</td><td class="mdescRight">Atualiza as variáveis escaladas usadas pelo OLED (<span class="tt">display_*</span>) a partir das últimas leituras.  <br /></td></tr>
+<tr class="memitem:add508f17781de3fa7d4fc698b282d93d" id="r_add508f17781de3fa7d4fc698b282d93d"><td class="memItemLeft">uint8_t&#160;</td><td class="memItemRight"><a class="el" href="#add508f17781de3fa7d4fc698b282d93d">Sensors_RecordSizeFromMask</a> (uint8_t mask, uint8_t *size)</td></tr>
+<tr class="memdesc:add508f17781de3fa7d4fc698b282d93d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calcula o tamanho do registro para uma máscara de sensores.  <br /></td></tr>
+<tr class="memitem:ae0dffa239fa10b4184f17e7af4cdfba7" id="r_ae0dffa239fa10b4184f17e7af4cdfba7"><td class="memItemLeft">uint8_t&#160;</td><td class="memItemRight"><a class="el" href="#ae0dffa239fa10b4184f17e7af4cdfba7">Sensors_Serialize</a> (uint8_t mask, uint8_t *buffer, uint8_t index)</td></tr>
+<tr class="memdesc:ae0dffa239fa10b4184f17e7af4cdfba7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Serializa os dados dos sensores da máscara, na ordem da tabela.  <br /></td></tr>
+<tr class="memitem:ae7ae641cba461f405573a82582f74aa1" id="r_ae7ae641cba461f405573a82582f74aa1"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#ae7ae641cba461f405573a82582f74aa1">Sensors_CsvHeader</a> (char *out, size_t capacity)</td></tr>
+<tr class="memdesc:ae7ae641cba461f405573a82582f74aa1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Monta a linha de cabeçalho do CSV.  <br /></td></tr>
+<tr class="memitem:a4ef906e3abcffc9a16e53f7f97cd5323" id="r_a4ef906e3abcffc9a16e53f7f97cd5323"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#a4ef906e3abcffc9a16e53f7f97cd5323">Sensors_CsvFormatRow</a> (uint8_t mask, const uint8_t *payload, char *out, size_t capacity)</td></tr>
+<tr class="memdesc:a4ef906e3abcffc9a16e53f7f97cd5323"><td class="mdescLeft">&#160;</td><td class="mdescRight">Formata as colunas de sensores de uma linha do CSV.  <br /></td></tr>
+<tr class="memitem:a56d452310676cc238d3ba54320cd2cbd" id="r_a56d452310676cc238d3ba54320cd2cbd"><td class="memItemLeft">uint8_t&#160;</td><td class="memItemRight"><a class="el" href="#a56d452310676cc238d3ba54320cd2cbd">Sensors_PopCount</a> (uint8_t value)</td></tr>
+<tr class="memdesc:a56d452310676cc238d3ba54320cd2cbd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Conta os bits em 1 de um byte.  <br /></td></tr>
+<tr class="memitem:abf3b7825d2f2f25be8e4d7c190309bdc" id="r_abf3b7825d2f2f25be8e4d7c190309bdc"><td class="memItemLeft">const char *&#160;</td><td class="memItemRight"><a class="el" href="#abf3b7825d2f2f25be8e4d7c190309bdc">Sensors_FirstMissingName</a> (uint8_t detected_mask, uint8_t present_mask)</td></tr>
+<tr class="memdesc:abf3b7825d2f2f25be8e4d7c190309bdc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Nome do primeiro sensor detectado que não está respondendo agora.  <br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-var-members" class="groupheader"><a id="var-members" name="var-members"></a>
+Variáveis</h2></td></tr>
+<tr class="memitem:a79b6f7841d8f34dda56f50fd8dea53c1" id="r_a79b6f7841d8f34dda56f50fd8dea53c1"><td class="memItemLeft">static uint16_t&#160;</td><td class="memItemRight"><a class="el" href="#a79b6f7841d8f34dda56f50fd8dea53c1">bh1750_raw_sample</a></td></tr>
+<tr class="memitem:abae17798f8027c3aa8da174f2cf40e45" id="r_abae17798f8027c3aa8da174f2cf40e45"><td class="memItemLeft">static <a class="el" href="struct_e_n_s160___sample.html">ENS160_Sample</a>&#160;</td><td class="memItemRight"><a class="el" href="#abae17798f8027c3aa8da174f2cf40e45">ens160_sample</a></td></tr>
+<tr class="memitem:a9f8776bae5ded002bc9bfa589ff12e0a" id="r_a9f8776bae5ded002bc9bfa589ff12e0a"><td class="memItemLeft">static const <a class="el" href="struct_sensor_driver.html">SensorDriver</a>&#160;</td><td class="memItemRight"><a class="el" href="#a9f8776bae5ded002bc9bfa589ff12e0a">sensor_table</a> []</td></tr>
+<tr class="memdesc:a9f8776bae5ded002bc9bfa589ff12e0a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tabela dos sensores do sistema.  <br /></td></tr>
+<tr class="memitem:af5ade255df750a3ea1c1f2232af03d8a" id="r_af5ade255df750a3ea1c1f2232af03d8a"><td class="memItemLeft">static volatile uint8_t&#160;</td><td class="memItemRight"><a class="el" href="#af5ade255df750a3ea1c1f2232af03d8a">sensors_available_mask</a> = 0U</td></tr>
+<tr class="memitem:a18b85f04de586e6f57a8a811710b3ead" id="r_a18b85f04de586e6f57a8a811710b3ead"><td class="memItemLeft">static volatile uint8_t&#160;</td><td class="memItemRight"><a class="el" href="#a18b85f04de586e6f57a8a811710b3ead">sensors_detected_mask</a> = 0U</td></tr>
+</table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Descrição detalhada</h2>
+<div class="textblock"><p>Tabela de sensores e funções de serialização e formatação CSV (ver <a class="el" href="sensor__registry_8h.html" title="Registro de sensores: tabela que descreve cada sensor I²C do sistema.">sensor_registry.h</a>). </p>
+
+<p class="definition">Definição no arquivo <a class="el" href="sensor__registry_8c_source.html">sensor_registry.c</a>.</p>
+</div><a name="doc-define-members" id="doc-define-members"></a><h2 id="header-doc-define-members" class="groupheader">Definições e macros</h2>
+<a id="adb6af7ed8689b3af8abc20736f75d26a" name="adb6af7ed8689b3af8abc20736f75d26a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adb6af7ed8689b3af8abc20736f75d26a">&#9670;&#160;</a></span>SENSOR_COUNT</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define SENSOR_COUNT&#160;&#160;&#160;((uint8_t)(sizeof(<a class="el" href="#a9f8776bae5ded002bc9bfa589ff12e0a">sensor_table</a>) / sizeof(<a class="el" href="#a9f8776bae5ded002bc9bfa589ff12e0a">sensor_table</a>[0])))</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definição na linha <a class="el" href="sensor__registry_8c_source.html#l00275">275</a> do arquivo <a class="el" href="sensor__registry_8c_source.html">sensor_registry.c</a>.</p>
+
+</div>
+</div>
+<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Funções</h2>
+<a id="a6b46db9aed8c99f71fd892219faa6b01" name="a6b46db9aed8c99f71fd892219faa6b01"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6b46db9aed8c99f71fd892219faa6b01">&#9670;&#160;</a></span>Aht_Csv()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Aht_Csv </td>
+          <td>(</td>
+          <td class="paramtype">const uint8_t *</td>          <td class="paramname"><span class="paramname"><em>p</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>out</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>cap</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Colunas <span class="tt">aht_present,aht_temp_c,aht_humidity_pct</span>; com o sensor ausente, <span class="tt">0,,</span>. </p>
+
+<p class="definition">Definição na linha <a class="el" href="sensor__registry_8c_source.html#l00084">84</a> do arquivo <a class="el" href="sensor__registry_8c_source.html">sensor_registry.c</a>.</p>
+
+<p class="reference">Referencias <a class="el" href="sensor__registry_8c_source.html#l00084">Aht_Csv()</a>, <a class="el" href="sensor__registry_8c_source.html#l00034">AppendScaled()</a>, <a class="el" href="sensor__registry_8c_source.html#l00054">Put()</a> e <a class="el" href="sensor__registry_8c_source.html#l00019">ReadLE16()</a>.</p>
+
+<p class="reference">Referenciado(a) por <a class="el" href="sensor__registry_8c_source.html#l00084">Aht_Csv()</a>.</p>
+
+</div>
+</div>
+<a id="aba3b7369b98b31b9746c192dae5784c3" name="aba3b7369b98b31b9746c192dae5784c3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aba3b7369b98b31b9746c192dae5784c3">&#9670;&#160;</a></span>Aht_Read()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">HAL_StatusTypeDef Aht_Read </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Lê o AHT20 e atualiza <span class="tt">aht20_available</span> e <span class="tt">aht20_last_read_ok</span>. </p>
+
+<p class="definition">Definição na linha <a class="el" href="sensor__registry_8c_source.html#l00065">65</a> do arquivo <a class="el" href="sensor__registry_8c_source.html">sensor_registry.c</a>.</p>
+
+<p class="reference">Referencias <a class="el" href="app__state_8h_source.html#l00081">aht20_humidity</a>, <a class="el" href="aht20_8c_source.html#l00010">AHT20_Read()</a> e <a class="el" href="sensor__registry_8c_source.html#l00065">Aht_Read()</a>.</p>
+
+<p class="reference">Referenciado(a) por <a class="el" href="sensor__registry_8c_source.html#l00065">Aht_Read()</a>.</p>
+
+</div>
+</div>
+<a id="aafbb5723a684bd641df05820431d98d8" name="aafbb5723a684bd641df05820431d98d8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aafbb5723a684bd641df05820431d98d8">&#9670;&#160;</a></span>Aht_Serialize()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Aht_Serialize </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t *</td>          <td class="paramname"><span class="paramname"><em>out</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Grava 4 bytes: temperatura (int16) e umidade (uint16), ambas em centésimos, little-endian. </p>
+
+<p class="definition">Definição na linha <a class="el" href="sensor__registry_8c_source.html#l00074">74</a> do arquivo <a class="el" href="sensor__registry_8c_source.html">sensor_registry.c</a>.</p>
+
+<p class="reference">Referencias <a class="el" href="app__state_8h_source.html#l00081">aht20_humidity</a> e <a class="el" href="sensor__registry_8c_source.html#l00074">Aht_Serialize()</a>.</p>
+
+<p class="reference">Referenciado(a) por <a class="el" href="sensor__registry_8c_source.html#l00074">Aht_Serialize()</a>.</p>
+
+</div>
+</div>
+<a id="adfb907b0ec1ba0fe2121430302166c59" name="adfb907b0ec1ba0fe2121430302166c59"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adfb907b0ec1ba0fe2121430302166c59">&#9670;&#160;</a></span>AppendScaled()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int AppendScaled </td>
+          <td>(</td>
+          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>buffer</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>capacity</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>current</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int32_t</td>          <td class="paramname"><span class="paramname"><em>value</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>scale</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>decimals</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Escreve <span class="tt">&lt;sinal&gt;&lt;inteiro&gt;.
+</span></p>
+<p>&lt;decimais&gt; em buffer+current. </p>
+
+<p class="definition">Definição na linha <a class="el" href="sensor__registry_8c_source.html#l00034">34</a> do arquivo <a class="el" href="sensor__registry_8c_source.html">sensor_registry.c</a>.</p>
+
+<p class="reference">Referencias <a class="el" href="sensor__registry_8c_source.html#l00034">AppendScaled()</a>.</p>
+
+<p class="reference">Referenciado(a) por <a class="el" href="sensor__registry_8c_source.html#l00084">Aht_Csv()</a>, <a class="el" href="sensor__registry_8c_source.html#l00034">AppendScaled()</a>, <a class="el" href="sensor__registry_8c_source.html#l00218">Bh_Csv()</a> e <a class="el" href="sensor__registry_8c_source.html#l00184">Mpu_Csv()</a>.</p>
+
+</div>
+</div>
+<a id="aae35d33c85b03b45974fad1f4aac78ba" name="aae35d33c85b03b45974fad1f4aac78ba"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aae35d33c85b03b45974fad1f4aac78ba">&#9670;&#160;</a></span>Bh_Csv()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Bh_Csv </td>
+          <td>(</td>
+          <td class="paramtype">const uint8_t *</td>          <td class="paramname"><span class="paramname"><em>p</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>out</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>cap</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Coluna <span class="tt">bh_lux</span>: contagem bruta dividida por 1,2, com uma casa decimal e arredondamento. </p>
+
+<p class="definition">Definição na linha <a class="el" href="sensor__registry_8c_source.html#l00218">218</a> do arquivo <a class="el" href="sensor__registry_8c_source.html">sensor_registry.c</a>.</p>
+
+<p class="reference">Referencias <a class="el" href="sensor__registry_8c_source.html#l00034">AppendScaled()</a>, <a class="el" href="sensor__registry_8c_source.html#l00218">Bh_Csv()</a>, <a class="el" href="sensor__registry_8c_source.html#l00054">Put()</a> e <a class="el" href="sensor__registry_8c_source.html#l00019">ReadLE16()</a>.</p>
+
+<p class="reference">Referenciado(a) por <a class="el" href="sensor__registry_8c_source.html#l00218">Bh_Csv()</a>.</p>
+
+</div>
+</div>
+<a id="a9ade17ea45d1cc88f5c1331e0086aadd" name="a9ade17ea45d1cc88f5c1331e0086aadd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9ade17ea45d1cc88f5c1331e0086aadd">&#9670;&#160;</a></span>Bh_Read()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">HAL_StatusTypeDef Bh_Read </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Mede a iluminância do BH1750 e guarda a contagem bruta em <span class="tt">bh1750_raw_sample</span>. </p>
+
+<p class="definition">Definição na linha <a class="el" href="sensor__registry_8c_source.html#l00206">206</a> do arquivo <a class="el" href="sensor__registry_8c_source.html">sensor_registry.c</a>.</p>
+
+<p class="reference">Referencias <a class="el" href="bh1750_8c_source.html#l00030">BH1750_Read()</a> e <a class="el" href="sensor__registry_8c_source.html#l00206">Bh_Read()</a>.</p>
+
+<p class="reference">Referenciado(a) por <a class="el" href="sensor__registry_8c_source.html#l00206">Bh_Read()</a>.</p>
+
+</div>
+</div>
+<a id="a469932346c65bcda5b0f5b0e88794891" name="a469932346c65bcda5b0f5b0e88794891"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a469932346c65bcda5b0f5b0e88794891">&#9670;&#160;</a></span>Bh_Serialize()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Bh_Serialize </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t *</td>          <td class="paramname"><span class="paramname"><em>out</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Grava 2 bytes: contagem bruta de 16 bits, little-endian. </p>
+
+<p class="definition">Definição na linha <a class="el" href="sensor__registry_8c_source.html#l00212">212</a> do arquivo <a class="el" href="sensor__registry_8c_source.html">sensor_registry.c</a>.</p>
+
+<p class="reference">Referencias <a class="el" href="sensor__registry_8c_source.html#l00212">Bh_Serialize()</a>.</p>
+
+<p class="reference">Referenciado(a) por <a class="el" href="sensor__registry_8c_source.html#l00212">Bh_Serialize()</a>.</p>
+
+</div>
+</div>
+<a id="a92ab15cc8e8eb6d605707723048f73a7" name="a92ab15cc8e8eb6d605707723048f73a7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a92ab15cc8e8eb6d605707723048f73a7">&#9670;&#160;</a></span>Bmp_Csv()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Bmp_Csv </td>
+          <td>(</td>
+          <td class="paramtype">const uint8_t *</td>          <td class="paramname"><span class="paramname"><em>p</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>out</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>cap</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Coluna <span class="tt">bmp_pressure</span>, em Pa inteiros. </p>
+
+<p class="definition">Definição na linha <a class="el" href="sensor__registry_8c_source.html#l00122">122</a> do arquivo <a class="el" href="sensor__registry_8c_source.html">sensor_registry.c</a>.</p>
+
+<p class="reference">Referencias <a class="el" href="sensor__registry_8c_source.html#l00122">Bmp_Csv()</a>, <a class="el" href="sensor__registry_8c_source.html#l00054">Put()</a> e <a class="el" href="sensor__registry_8c_source.html#l00025">ReadLE32()</a>.</p>
+
+<p class="reference">Referenciado(a) por <a class="el" href="sensor__registry_8c_source.html#l00122">Bmp_Csv()</a>.</p>
+
+</div>
+</div>
+<a id="ad4b8ba94907973fabc326a0830e82ab1" name="ad4b8ba94907973fabc326a0830e82ab1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad4b8ba94907973fabc326a0830e82ab1">&#9670;&#160;</a></span>Bmp_Read()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">HAL_StatusTypeDef Bmp_Read </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Lê a calibração e depois a temperatura e a pressão do BMP280; atualiza a disponibilidade. </p>
+
+<p class="definition">Definição na linha <a class="el" href="sensor__registry_8c_source.html#l00099">99</a> do arquivo <a class="el" href="sensor__registry_8c_source.html">sensor_registry.c</a>.</p>
+
+<p class="reference">Referencias <a class="el" href="app__state_8h_source.html#l00082">bmp280_pressure</a>, <a class="el" href="bmp280_8c_source.html#l00050">BMP280_Read()</a>, <a class="el" href="bmp280_8c_source.html#l00013">BMP280_ReadCalibration()</a> e <a class="el" href="sensor__registry_8c_source.html#l00099">Bmp_Read()</a>.</p>
+
+<p class="reference">Referenciado(a) por <a class="el" href="sensor__registry_8c_source.html#l00099">Bmp_Read()</a>.</p>
+
+</div>
+</div>
+<a id="ab3e860d88aabe39aa321a93dd53475f7" name="ab3e860d88aabe39aa321a93dd53475f7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab3e860d88aabe39aa321a93dd53475f7">&#9670;&#160;</a></span>Bmp_Serialize()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Bmp_Serialize </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t *</td>          <td class="paramname"><span class="paramname"><em>out</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Grava 4 bytes: pressão em Pa (uint32, parte inteira), little-endian. </p>
+
+<p class="definition">Definição na linha <a class="el" href="sensor__registry_8c_source.html#l00115">115</a> do arquivo <a class="el" href="sensor__registry_8c_source.html">sensor_registry.c</a>.</p>
+
+<p class="reference">Referencias <a class="el" href="app__state_8h_source.html#l00082">bmp280_pressure</a> e <a class="el" href="sensor__registry_8c_source.html#l00115">Bmp_Serialize()</a>.</p>
+
+<p class="reference">Referenciado(a) por <a class="el" href="sensor__registry_8c_source.html#l00115">Bmp_Serialize()</a>.</p>
+
+</div>
+</div>
+<a id="a84a1b585a68a824298f64bc93f4dc64c" name="a84a1b585a68a824298f64bc93f4dc64c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a84a1b585a68a824298f64bc93f4dc64c">&#9670;&#160;</a></span>Ens_Csv()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Ens_Csv </td>
+          <td>(</td>
+          <td class="paramtype">const uint8_t *</td>          <td class="paramname"><span class="paramname"><em>p</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>out</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>cap</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Colunas <span class="tt">ens_aqi,ens_tvoc_ppb,ens_eco2_ppm,ens_validity</span>; ausente, <span class="tt">,,,</span>. </p>
+
+<p class="definition">Definição na linha <a class="el" href="sensor__registry_8c_source.html#l00248">248</a> do arquivo <a class="el" href="sensor__registry_8c_source.html">sensor_registry.c</a>.</p>
+
+<p class="reference">Referencias <a class="el" href="sensor__registry_8c_source.html#l00248">Ens_Csv()</a>, <a class="el" href="sensor__registry_8c_source.html#l00054">Put()</a> e <a class="el" href="sensor__registry_8c_source.html#l00019">ReadLE16()</a>.</p>
+
+<p class="reference">Referenciado(a) por <a class="el" href="sensor__registry_8c_source.html#l00248">Ens_Csv()</a>.</p>
+
+</div>
+</div>
+<a id="a13a335d701f8151ce62b5daa2b3ce48a" name="a13a335d701f8151ce62b5daa2b3ce48a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a13a335d701f8151ce62b5daa2b3ce48a">&#9670;&#160;</a></span>Ens_Read()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">HAL_StatusTypeDef Ens_Read </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Lê o ENS160, compensado pela temperatura e umidade do AHT20 (lido antes, pela ordem da tabela). </p>
+
+<p class="definition">Definição na linha <a class="el" href="sensor__registry_8c_source.html#l00232">232</a> do arquivo <a class="el" href="sensor__registry_8c_source.html">sensor_registry.c</a>.</p>
+
+<p class="reference">Referencias <a class="el" href="app__state_8h_source.html#l00081">aht20_humidity</a>, <a class="el" href="ens160_8c_source.html#l00152">ENS160_Read()</a> e <a class="el" href="sensor__registry_8c_source.html#l00232">Ens_Read()</a>.</p>
+
+<p class="reference">Referenciado(a) por <a class="el" href="sensor__registry_8c_source.html#l00232">Ens_Read()</a>.</p>
+
+</div>
+</div>
+<a id="abb6c04fa2cb25da4e03bc3c043991acb" name="abb6c04fa2cb25da4e03bc3c043991acb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abb6c04fa2cb25da4e03bc3c043991acb">&#9670;&#160;</a></span>Ens_Serialize()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Ens_Serialize </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t *</td>          <td class="paramname"><span class="paramname"><em>out</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Grava 6 bytes: AQI (1), TVOC em ppb (2), eCO2 em ppm (2) e validade (1). </p>
+
+<p class="definition">Definição na linha <a class="el" href="sensor__registry_8c_source.html#l00239">239</a> do arquivo <a class="el" href="sensor__registry_8c_source.html">sensor_registry.c</a>.</p>
+
+<p class="reference">Referencias <a class="el" href="sensor__registry_8c_source.html#l00239">Ens_Serialize()</a>.</p>
+
+<p class="reference">Referenciado(a) por <a class="el" href="sensor__registry_8c_source.html#l00239">Ens_Serialize()</a>.</p>
+
+</div>
+</div>
+<a id="aba2de6e03b0f71cff1cd3c3526006349" name="aba2de6e03b0f71cff1cd3c3526006349"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aba2de6e03b0f71cff1cd3c3526006349">&#9670;&#160;</a></span>Mpu_Csv()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Mpu_Csv </td>
+          <td>(</td>
+          <td class="paramtype">const uint8_t *</td>          <td class="paramname"><span class="paramname"><em>p</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>out</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>cap</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Seis colunas: aceleração com 3 casas decimais (g) e velocidade angular com 2 (°/s); ausente, <span class="tt">,,,,,</span>. </p>
+
+<p class="definition">Definição na linha <a class="el" href="sensor__registry_8c_source.html#l00184">184</a> do arquivo <a class="el" href="sensor__registry_8c_source.html">sensor_registry.c</a>.</p>
+
+<p class="reference">Referencias <a class="el" href="sensor__registry_8c_source.html#l00034">AppendScaled()</a>, <a class="el" href="sensor__registry_8c_source.html#l00184">Mpu_Csv()</a>, <a class="el" href="sensor__registry_8c_source.html#l00054">Put()</a> e <a class="el" href="sensor__registry_8c_source.html#l00019">ReadLE16()</a>.</p>
+
+<p class="reference">Referenciado(a) por <a class="el" href="sensor__registry_8c_source.html#l00184">Mpu_Csv()</a>.</p>
+
+</div>
+</div>
+<a id="a2ea0845544cfaf374a98253e1b201872" name="a2ea0845544cfaf374a98253e1b201872"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2ea0845544cfaf374a98253e1b201872">&#9670;&#160;</a></span>Mpu_Read()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">HAL_StatusTypeDef Mpu_Read </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Lê o MPU6500, que dorme entre as amostras. </p>
+<p>Se o sensor não estava disponível, reinicializa e recalibra (<a class="el" href="mpu6500_8h.html#a83e6c0f966fbcb5a598cab4cc79db90d" title="Detecta e configura o sensor.">MPU6500_Init()</a> e <a class="el" href="mpu6500_8h.html#a70cb5f6bd93698d202e28f633529f220" title="Calcula os offsets (zeragem) com a placa em repouso.">MPU6500_Calibrate()</a>) antes de ler; caso contrário, acorda, lê e volta a dormir. Atualiza a disponibilidade. Veja o aviso sobre recalibração em <a class="el" href="mpu6500_8h.html#a70cb5f6bd93698d202e28f633529f220" title="Calcula os offsets (zeragem) com a placa em repouso.">MPU6500_Calibrate()</a>. </p>
+
+<p class="definition">Definição na linha <a class="el" href="sensor__registry_8c_source.html#l00138">138</a> do arquivo <a class="el" href="sensor__registry_8c_source.html">sensor_registry.c</a>.</p>
+
+<p class="reference">Referencias <a class="el" href="app__state_8h_source.html#l00161">mpu6500_available</a>, <a class="el" href="mpu6500_8c_source.html#l00199">MPU6500_Calibrate()</a>, <a class="el" href="mpu6500_8c_source.html#l00010">MPU6500_Init()</a>, <a class="el" href="app__state_8h_source.html#l00162">mpu6500_last_read_ok</a>, <a class="el" href="mpu6500_8c_source.html#l00106">MPU6500_Read()</a>, <a class="el" href="mpu6500_8c_source.html#l00091">MPU6500_Sleep()</a>, <a class="el" href="mpu6500_8c_source.html#l00097">MPU6500_Wake()</a> e <a class="el" href="sensor__registry_8c_source.html#l00138">Mpu_Read()</a>.</p>
+
+<p class="reference">Referenciado(a) por <a class="el" href="sensor__registry_8c_source.html#l00138">Mpu_Read()</a>.</p>
+
+</div>
+</div>
+<a id="adc4a2eb914b28a10e81af9170790390e" name="adc4a2eb914b28a10e81af9170790390e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adc4a2eb914b28a10e81af9170790390e">&#9670;&#160;</a></span>Mpu_Serialize()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Mpu_Serialize </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t *</td>          <td class="paramname"><span class="paramname"><em>out</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Grava 12 bytes (int16, little-endian): aceleração X, Y, Z em milésimos de g e velocidade angular X, Y, Z em centésimos de °/s. </p>
+
+<p class="definition">Definição na linha <a class="el" href="sensor__registry_8c_source.html#l00166">166</a> do arquivo <a class="el" href="sensor__registry_8c_source.html">sensor_registry.c</a>.</p>
+
+<p class="reference">Referencias <a class="el" href="app__state_8h_source.html#l00089">mpu6500_accel_z_g</a>, <a class="el" href="app__state_8h_source.html#l00090">mpu6500_gyro_z_dps</a> e <a class="el" href="sensor__registry_8c_source.html#l00166">Mpu_Serialize()</a>.</p>
+
+<p class="reference">Referenciado(a) por <a class="el" href="sensor__registry_8c_source.html#l00166">Mpu_Serialize()</a>.</p>
+
+</div>
+</div>
+<a id="a33c1f30977008b47d462b87988a569ca" name="a33c1f30977008b47d462b87988a569ca"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a33c1f30977008b47d462b87988a569ca">&#9670;&#160;</a></span>Put()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Put </td>
+          <td>(</td>
+          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>out</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>capacity</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>pos</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>written</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Acrescenta texto formatado em out+pos; retorna a nova posicao ou -1 se nao couber. </p>
+
+<p class="definition">Definição na linha <a class="el" href="sensor__registry_8c_source.html#l00054">54</a> do arquivo <a class="el" href="sensor__registry_8c_source.html">sensor_registry.c</a>.</p>
+
+<p class="reference">Referencias <a class="el" href="sensor__registry_8c_source.html#l00054">Put()</a>.</p>
+
+<p class="reference">Referenciado(a) por <a class="el" href="sensor__registry_8c_source.html#l00084">Aht_Csv()</a>, <a class="el" href="sensor__registry_8c_source.html#l00218">Bh_Csv()</a>, <a class="el" href="sensor__registry_8c_source.html#l00122">Bmp_Csv()</a>, <a class="el" href="sensor__registry_8c_source.html#l00248">Ens_Csv()</a>, <a class="el" href="sensor__registry_8c_source.html#l00184">Mpu_Csv()</a>, <a class="el" href="sensor__registry_8c_source.html#l00054">Put()</a> e <a class="el" href="sensor__registry_8c_source.html#l00354">Sensors_CsvHeader()</a>.</p>
+
+</div>
+</div>
+<a id="acda27d50950c8262ef26dfcbb6e14759" name="acda27d50950c8262ef26dfcbb6e14759"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acda27d50950c8262ef26dfcbb6e14759">&#9670;&#160;</a></span>ReadLE16()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint16_t ReadLE16 </td>
+          <td>(</td>
+          <td class="paramtype">const uint8_t *</td>          <td class="paramname"><span class="paramname"><em>p</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Lê um inteiro de 16 bits sem sinal em little-endian. </p>
+
+<p class="definition">Definição na linha <a class="el" href="sensor__registry_8c_source.html#l00019">19</a> do arquivo <a class="el" href="sensor__registry_8c_source.html">sensor_registry.c</a>.</p>
+
+<p class="reference">Referencias <a class="el" href="sensor__registry_8c_source.html#l00019">ReadLE16()</a>.</p>
+
+<p class="reference">Referenciado(a) por <a class="el" href="sensor__registry_8c_source.html#l00084">Aht_Csv()</a>, <a class="el" href="sensor__registry_8c_source.html#l00218">Bh_Csv()</a>, <a class="el" href="sensor__registry_8c_source.html#l00248">Ens_Csv()</a>, <a class="el" href="sensor__registry_8c_source.html#l00184">Mpu_Csv()</a> e <a class="el" href="sensor__registry_8c_source.html#l00019">ReadLE16()</a>.</p>
+
+</div>
+</div>
+<a id="ac6043998a3014cbf7a46c6c95f15347b" name="ac6043998a3014cbf7a46c6c95f15347b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac6043998a3014cbf7a46c6c95f15347b">&#9670;&#160;</a></span>ReadLE32()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t ReadLE32 </td>
+          <td>(</td>
+          <td class="paramtype">const uint8_t *</td>          <td class="paramname"><span class="paramname"><em>p</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Lê um inteiro de 32 bits sem sinal em little-endian. </p>
+
+<p class="definition">Definição na linha <a class="el" href="sensor__registry_8c_source.html#l00025">25</a> do arquivo <a class="el" href="sensor__registry_8c_source.html">sensor_registry.c</a>.</p>
+
+<p class="reference">Referencias <a class="el" href="sensor__registry_8c_source.html#l00025">ReadLE32()</a>.</p>
+
+<p class="reference">Referenciado(a) por <a class="el" href="sensor__registry_8c_source.html#l00122">Bmp_Csv()</a> e <a class="el" href="sensor__registry_8c_source.html#l00025">ReadLE32()</a>.</p>
+
+</div>
+</div>
+<a id="a2c882d85f0ec5887841ab171232ee9c5" name="a2c882d85f0ec5887841ab171232ee9c5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2c882d85f0ec5887841ab171232ee9c5">&#9670;&#160;</a></span>Sensors_AvailableMask()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t Sensors_AvailableMask </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Máscara dos sensores que responderam na última tentativa. </p>
+<dl class="section return"><dt>Retorna</dt><dd>Bits de SENSOR_AHT20, SENSOR_BMP280 etc. </dd></dl>
+
+<p class="definition">Definição na linha <a class="el" href="sensor__registry_8c_source.html#l00305">305</a> do arquivo <a class="el" href="sensor__registry_8c_source.html">sensor_registry.c</a>.</p>
+
+<p class="reference">Referencias <a class="el" href="sensor__registry_8c_source.html#l00305">Sensors_AvailableMask()</a>.</p>
+
+<p class="reference">Referenciado(a) por <a class="el" href="app__tasks_8c_source.html#l00223">App_CommandTask()</a>, <a class="el" href="eeprom24lc512_8c_source.html#l00252">EEPROM_SaveSensorRecord()</a>, <a class="el" href="sensor__registry_8c_source.html#l00305">Sensors_AvailableMask()</a>, <a class="el" href="app__tasks_8c_source.html#l00431">StartOledTask()</a>, <a class="el" href="app__tasks_8c_source.html#l00552">StartSensorTask()</a> e <a class="el" href="ssd1306_8c_source.html#l00607">UpdateDisplay()</a>.</p>
+
+</div>
+</div>
+<a id="acd7b7af14ae011dbfed7e19ec3d42b79" name="acd7b7af14ae011dbfed7e19ec3d42b79"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acd7b7af14ae011dbfed7e19ec3d42b79">&#9670;&#160;</a></span>Sensors_Count()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t Sensors_Count </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Número de sensores da tabela. </p>
+<dl class="section return"><dt>Retorna</dt><dd>Quantidade de entradas. </dd></dl>
+
+<p class="definition">Definição na linha <a class="el" href="sensor__registry_8c_source.html#l00280">280</a> do arquivo <a class="el" href="sensor__registry_8c_source.html">sensor_registry.c</a>.</p>
+
+<p class="reference">Referencias <a class="el" href="sensor__registry_8c_source.html#l00280">Sensors_Count()</a>.</p>
+
+<p class="reference">Referenciado(a) por <a class="el" href="sensor__registry_8c_source.html#l00280">Sensors_Count()</a> e <a class="el" href="app__tasks_8c_source.html#l00552">StartSensorTask()</a>.</p>
+
+</div>
+</div>
+<a id="a4ef906e3abcffc9a16e53f7f97cd5323" name="a4ef906e3abcffc9a16e53f7f97cd5323"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4ef906e3abcffc9a16e53f7f97cd5323">&#9670;&#160;</a></span>Sensors_CsvFormatRow()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Sensors_CsvFormatRow </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>mask</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const uint8_t *</td>          <td class="paramname"><span class="paramname"><em>payload</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>out</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>capacity</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Formata as colunas de sensores de uma linha do CSV. </p>
+<p>Sensores ausentes na máscara geram campos vazios. </p><dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">mask</td><td>Máscara do registro. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">payload</td><td>Dados dos sensores presentes (logo após o byte de máscara). </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">out</td><td>Buffer de saída. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">capacity</td><td>Tamanho de <code class="param">out</code>, em bytes. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Retorna</dt><dd>Caracteres escritos, ou -1 se não couber. </dd></dl>
+
+<p class="definition">Definição na linha <a class="el" href="sensor__registry_8c_source.html#l00366">366</a> do arquivo <a class="el" href="sensor__registry_8c_source.html">sensor_registry.c</a>.</p>
+
+<p class="reference">Referencias <a class="el" href="sensor__registry_8h_source.html#l00037">SensorDriver::csv_format</a>, <a class="el" href="sensor__registry_8h_source.html#l00028">SensorDriver::mask_bit</a>, <a class="el" href="sensor__registry_8h_source.html#l00029">SensorDriver::payload_size</a>, <a class="el" href="sensor__registry_8c_source.html#l00266">sensor_table</a> e <a class="el" href="sensor__registry_8c_source.html#l00366">Sensors_CsvFormatRow()</a>.</p>
+
+<p class="reference">Referenciado(a) por <a class="el" href="eeprom24lc512_8c_source.html#l01259">EEPROM_ExportOneChip()</a> e <a class="el" href="sensor__registry_8c_source.html#l00366">Sensors_CsvFormatRow()</a>.</p>
+
+</div>
+</div>
+<a id="ae7ae641cba461f405573a82582f74aa1" name="ae7ae641cba461f405573a82582f74aa1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae7ae641cba461f405573a82582f74aa1">&#9670;&#160;</a></span>Sensors_CsvHeader()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Sensors_CsvHeader </td>
+          <td>(</td>
+          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>out</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>capacity</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Monta a linha de cabeçalho do CSV. </p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[out]</td><td class="paramname">out</td><td>Buffer de saída. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">capacity</td><td>Tamanho de <code class="param">out</code>, em bytes. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Retorna</dt><dd>Caracteres escritos, ou -1 se não couber. </dd></dl>
+
+<p class="definition">Definição na linha <a class="el" href="sensor__registry_8c_source.html#l00354">354</a> do arquivo <a class="el" href="sensor__registry_8c_source.html">sensor_registry.c</a>.</p>
+
+<p class="reference">Referencias <a class="el" href="sensor__registry_8c_source.html#l00054">Put()</a>, <a class="el" href="sensor__registry_8c_source.html#l00266">sensor_table</a> e <a class="el" href="sensor__registry_8c_source.html#l00354">Sensors_CsvHeader()</a>.</p>
+
+<p class="reference">Referenciado(a) por <a class="el" href="eeprom24lc512_8c_source.html#l01361">EEPROM_ExportCSV_USB()</a> e <a class="el" href="sensor__registry_8c_source.html#l00354">Sensors_CsvHeader()</a>.</p>
+
+</div>
+</div>
+<a id="ac53551032a5e8347c9eadf7c44af066d" name="ac53551032a5e8347c9eadf7c44af066d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac53551032a5e8347c9eadf7c44af066d">&#9670;&#160;</a></span>Sensors_DetectedMask()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t Sensors_DetectedMask </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Máscara dos sensores que já responderam desde o boot. </p>
+<dl class="section return"><dt>Retorna</dt><dd>Bits de SENSOR_AHT20, SENSOR_BMP280 etc. </dd></dl>
+
+<p class="definition">Definição na linha <a class="el" href="sensor__registry_8c_source.html#l00306">306</a> do arquivo <a class="el" href="sensor__registry_8c_source.html">sensor_registry.c</a>.</p>
+
+<p class="reference">Referencias <a class="el" href="sensor__registry_8c_source.html#l00306">Sensors_DetectedMask()</a>.</p>
+
+<p class="reference">Referenciado(a) por <a class="el" href="app__tasks_8c_source.html#l00223">App_CommandTask()</a>, <a class="el" href="sensor__registry_8c_source.html#l00306">Sensors_DetectedMask()</a>, <a class="el" href="app__tasks_8c_source.html#l00431">StartOledTask()</a> e <a class="el" href="ssd1306_8c_source.html#l00607">UpdateDisplay()</a>.</p>
+
+</div>
+</div>
+<a id="abf3b7825d2f2f25be8e4d7c190309bdc" name="abf3b7825d2f2f25be8e4d7c190309bdc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abf3b7825d2f2f25be8e4d7c190309bdc">&#9670;&#160;</a></span>Sensors_FirstMissingName()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char * Sensors_FirstMissingName </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>detected_mask</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>present_mask</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Nome do primeiro sensor detectado que não está respondendo agora. </p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">detected_mask</td><td>Sensores detectados desde o boot. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">present_mask</td><td>Sensores que responderam na última tentativa. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Retorna</dt><dd>Nome do sensor, ou <span class="tt">NULL</span> se todos os detectados estão respondendo. </dd></dl>
+
+<p class="definition">Definição na linha <a class="el" href="sensor__registry_8c_source.html#l00399">399</a> do arquivo <a class="el" href="sensor__registry_8c_source.html">sensor_registry.c</a>.</p>
+
+<p class="reference">Referencias <a class="el" href="sensor__registry_8h_source.html#l00028">SensorDriver::mask_bit</a>, <a class="el" href="sensor__registry_8h_source.html#l00027">SensorDriver::name</a>, <a class="el" href="sensor__registry_8c_source.html#l00266">sensor_table</a> e <a class="el" href="sensor__registry_8c_source.html#l00399">Sensors_FirstMissingName()</a>.</p>
+
+<p class="reference">Referenciado(a) por <a class="el" href="sensor__registry_8c_source.html#l00399">Sensors_FirstMissingName()</a> e <a class="el" href="ssd1306_8c_source.html#l00521">UpdateDisplaySnapshot()</a>.</p>
+
+</div>
+</div>
+<a id="acf85c823f914ea7e3c458d7ccd7b2cf8" name="acf85c823f914ea7e3c458d7ccd7b2cf8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acf85c823f914ea7e3c458d7ccd7b2cf8">&#9670;&#160;</a></span>Sensors_Get()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="struct_sensor_driver.html">SensorDriver</a> * Sensors_Get </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>index</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Obtém uma entrada da tabela. </p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">index</td><td>Posição na tabela (a ordem define a ordem dos dados no registro e no CSV). </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Retorna</dt><dd>Ponteiro para a entrada, ou <span class="tt">NULL</span> se <code class="param">index</code> for inválido. </dd></dl>
+
+<p class="definition">Definição na linha <a class="el" href="sensor__registry_8c_source.html#l00282">282</a> do arquivo <a class="el" href="sensor__registry_8c_source.html">sensor_registry.c</a>.</p>
+
+<p class="reference">Referencias <a class="el" href="sensor__registry_8c_source.html#l00266">sensor_table</a> e <a class="el" href="sensor__registry_8c_source.html#l00282">Sensors_Get()</a>.</p>
+
+<p class="reference">Referenciado(a) por <a class="el" href="sensor__registry_8c_source.html#l00282">Sensors_Get()</a>.</p>
+
+</div>
+</div>
+<a id="a56d452310676cc238d3ba54320cd2cbd" name="a56d452310676cc238d3ba54320cd2cbd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a56d452310676cc238d3ba54320cd2cbd">&#9670;&#160;</a></span>Sensors_PopCount()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t Sensors_PopCount </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>value</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Conta os bits em 1 de um byte. </p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">value</td><td>Byte a examinar. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Retorna</dt><dd>Número de bits em 1. </dd></dl>
+
+<p class="definition">Definição na linha <a class="el" href="sensor__registry_8c_source.html#l00391">391</a> do arquivo <a class="el" href="sensor__registry_8c_source.html">sensor_registry.c</a>.</p>
+
+<p class="reference">Referencias <a class="el" href="sensor__registry_8c_source.html#l00391">Sensors_PopCount()</a>.</p>
+
+<p class="reference">Referenciado(a) por <a class="el" href="sensor__registry_8c_source.html#l00391">Sensors_PopCount()</a> e <a class="el" href="ssd1306_8c_source.html#l00521">UpdateDisplaySnapshot()</a>.</p>
+
+</div>
+</div>
+<a id="af9bd5dd7935c13d815be548dd9ccd967" name="af9bd5dd7935c13d815be548dd9ccd967"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af9bd5dd7935c13d815be548dd9ccd967">&#9670;&#160;</a></span>Sensors_ReadOne()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Sensors_ReadOne </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>index</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Lê um sensor e atualiza as máscaras "disponível agora" e "detectado desde o boot". </p>
+<p>Se a leitura falha, o bit sai da máscara de disponíveis. <span class="tt">HAL_BUSY</span> (sensor responde, mas ainda não entrega dado) conta como detectado, para o OLED mostrar <span class="tt">ERRO:&lt;nome&gt;</span> em vez de ignorar um módulo conectado. </p><dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">index</td><td>Posição do sensor na tabela (índices inválidos são ignorados). </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definição na linha <a class="el" href="sensor__registry_8c_source.html#l00287">287</a> do arquivo <a class="el" href="sensor__registry_8c_source.html">sensor_registry.c</a>.</p>
+
+<p class="reference">Referencias <a class="el" href="sensor__registry_8h_source.html#l00028">SensorDriver::mask_bit</a>, <a class="el" href="sensor__registry_8h_source.html#l00030">SensorDriver::read</a>, <a class="el" href="sensor__registry_8c_source.html#l00266">sensor_table</a> e <a class="el" href="sensor__registry_8c_source.html#l00287">Sensors_ReadOne()</a>.</p>
+
+<p class="reference">Referenciado(a) por <a class="el" href="sensor__registry_8c_source.html#l00287">Sensors_ReadOne()</a> e <a class="el" href="app__tasks_8c_source.html#l00552">StartSensorTask()</a>.</p>
+
+</div>
+</div>
+<a id="add508f17781de3fa7d4fc698b282d93d" name="add508f17781de3fa7d4fc698b282d93d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#add508f17781de3fa7d4fc698b282d93d">&#9670;&#160;</a></span>Sensors_RecordSizeFromMask()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t Sensors_RecordSizeFromMask </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>mask</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t *</td>          <td class="paramname"><span class="paramname"><em>size</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Calcula o tamanho do registro para uma máscara de sensores. </p>
+<p>Soma máscara (1 B), RTC (7 B), CRC (2 B) e os dados de cada sensor presente. </p><dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">mask</td><td>Máscara de sensores do registro. </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">size</td><td>Tamanho total do registro, em bytes. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="retval"><dt>Valores Retornados</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">1</td><td>Máscara válida; <code class="param">size</code> preenchido. </td></tr>
+    <tr><td class="paramname">0</td><td>Máscara nula, com bits desconhecidos, <code class="param">size</code> nulo ou registro maior que <a class="el" href="app__state_8h.html#a7ff8e0adc3ff2769f7fdb1455940eb64" title="Tamanho máximo de um registro, em bytes (o maior possível, com todos os sensores, tem 38 B).">EEPROM_MAX_RECORD_SIZE</a>. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definição na linha <a class="el" href="sensor__registry_8c_source.html#l00319">319</a> do arquivo <a class="el" href="sensor__registry_8c_source.html">sensor_registry.c</a>.</p>
+
+<p class="reference">Referencias <a class="el" href="app__state_8h_source.html#l00071">EEPROM_MAX_RECORD_SIZE</a>, <a class="el" href="sensor__registry_8h_source.html#l00029">SensorDriver::payload_size</a>, <a class="el" href="sensor__registry_8c_source.html#l00266">sensor_table</a> e <a class="el" href="sensor__registry_8c_source.html#l00319">Sensors_RecordSizeFromMask()</a>.</p>
+
+<p class="reference">Referenciado(a) por <a class="el" href="eeprom24lc512_8c_source.html#l00635">EEPROM_BuildSensorRecord()</a>, <a class="el" href="eeprom24lc512_8c_source.html#l01171">EEPROM_RecordSizeFromMask()</a> e <a class="el" href="sensor__registry_8c_source.html#l00319">Sensors_RecordSizeFromMask()</a>.</p>
+
+</div>
+</div>
+<a id="ae0dffa239fa10b4184f17e7af4cdfba7" name="ae0dffa239fa10b4184f17e7af4cdfba7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae0dffa239fa10b4184f17e7af4cdfba7">&#9670;&#160;</a></span>Sensors_Serialize()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t Sensors_Serialize </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>mask</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t *</td>          <td class="paramname"><span class="paramname"><em>buffer</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>index</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Serializa os dados dos sensores da máscara, na ordem da tabela. </p>
+<p>A máscara deve ter sido validada por <a class="el" href="sensor__registry_8h.html#add508f17781de3fa7d4fc698b282d93d" title="Calcula o tamanho do registro para uma máscara de sensores.">Sensors_RecordSizeFromMask()</a>. </p><dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">mask</td><td>Máscara de sensores. </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">buffer</td><td>Buffer do registro. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">index</td><td>Posição de <code class="param">buffer</code> onde começam os dados. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Retorna</dt><dd>Novo índice (posição logo após o último byte escrito). </dd></dl>
+
+<p class="definition">Definição na linha <a class="el" href="sensor__registry_8c_source.html#l00338">338</a> do arquivo <a class="el" href="sensor__registry_8c_source.html">sensor_registry.c</a>.</p>
+
+<p class="reference">Referencias <a class="el" href="sensor__registry_8c_source.html#l00266">sensor_table</a>, <a class="el" href="sensor__registry_8c_source.html#l00338">Sensors_Serialize()</a> e <a class="el" href="sensor__registry_8h_source.html#l00031">SensorDriver::serialize</a>.</p>
+
+<p class="reference">Referenciado(a) por <a class="el" href="eeprom24lc512_8c_source.html#l00635">EEPROM_BuildSensorRecord()</a> e <a class="el" href="sensor__registry_8c_source.html#l00338">Sensors_Serialize()</a>.</p>
+
+</div>
+</div>
+<a id="a23c1e8ff03595881c86650c6ea025098" name="a23c1e8ff03595881c86650c6ea025098"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a23c1e8ff03595881c86650c6ea025098">&#9670;&#160;</a></span>Sensors_UpdateDisplayValues()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Sensors_UpdateDisplayValues </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Atualiza as variáveis escaladas usadas pelo OLED (<span class="tt">display_*</span>) a partir das últimas leituras. </p>
+
+<p class="definition">Definição na linha <a class="el" href="sensor__registry_8c_source.html#l00308">308</a> do arquivo <a class="el" href="sensor__registry_8c_source.html">sensor_registry.c</a>.</p>
+
+<p class="reference">Referencias <a class="el" href="app__state_8h_source.html#l00081">aht20_humidity</a>, <a class="el" href="app__state_8h_source.html#l00082">bmp280_pressure</a>, <a class="el" href="app__state_8h_source.html#l00106">display_accel_z</a>, <a class="el" href="app__state_8h_source.html#l00087">mpu6500_accel_z</a> e <a class="el" href="sensor__registry_8c_source.html#l00308">Sensors_UpdateDisplayValues()</a>.</p>
+
+<p class="reference">Referenciado(a) por <a class="el" href="sensor__registry_8c_source.html#l00308">Sensors_UpdateDisplayValues()</a> e <a class="el" href="app__tasks_8c_source.html#l00552">StartSensorTask()</a>.</p>
+
+</div>
+</div>
+<a name="doc-var-members" id="doc-var-members"></a><h2 id="header-doc-var-members" class="groupheader">Variáveis</h2>
+<a id="a79b6f7841d8f34dda56f50fd8dea53c1" name="a79b6f7841d8f34dda56f50fd8dea53c1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a79b6f7841d8f34dda56f50fd8dea53c1">&#9670;&#160;</a></span>bh1750_raw_sample</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint16_t bh1750_raw_sample</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definição na linha <a class="el" href="sensor__registry_8c_source.html#l00203">203</a> do arquivo <a class="el" href="sensor__registry_8c_source.html">sensor_registry.c</a>.</p>
+
+</div>
+</div>
+<a id="abae17798f8027c3aa8da174f2cf40e45" name="abae17798f8027c3aa8da174f2cf40e45"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abae17798f8027c3aa8da174f2cf40e45">&#9670;&#160;</a></span>ens160_sample</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_e_n_s160___sample.html">ENS160_Sample</a> ens160_sample</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definição na linha <a class="el" href="sensor__registry_8c_source.html#l00229">229</a> do arquivo <a class="el" href="sensor__registry_8c_source.html">sensor_registry.c</a>.</p>
+
+</div>
+</div>
+<a id="a9f8776bae5ded002bc9bfa589ff12e0a" name="a9f8776bae5ded002bc9bfa589ff12e0a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9f8776bae5ded002bc9bfa589ff12e0a">&#9670;&#160;</a></span>sensor_table</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="struct_sensor_driver.html">SensorDriver</a> sensor_table[]</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<b>Valor inicial:</b><div class="fragment"><div class="line">                                       =</div>
+<div class="line">{</div>
+<div class="line">    { <span class="stringliteral">&quot;AHT&quot;</span>,     <a class="code hl_define" href="app__state_8h.html#a5199c19049b8b6d1746a000d4a185ba5">SENSOR_AHT20</a>,   4U,  <a class="code hl_function" href="#aba3b7369b98b31b9746c192dae5784c3">Aht_Read</a>, <a class="code hl_function" href="#aafbb5723a684bd641df05820431d98d8">Aht_Serialize</a>, <span class="stringliteral">&quot;aht_present,aht_temp_c,aht_humidity_pct&quot;</span>, <a class="code hl_function" href="#a6b46db9aed8c99f71fd892219faa6b01">Aht_Csv</a> },</div>
+<div class="line">    { <span class="stringliteral">&quot;BMP280&quot;</span>,  <a class="code hl_define" href="app__state_8h.html#ac605503e03d1b801182fccceb05e4444">SENSOR_BMP280</a>,  4U,  <a class="code hl_function" href="#ad4b8ba94907973fabc326a0830e82ab1">Bmp_Read</a>, <a class="code hl_function" href="#ab3e860d88aabe39aa321a93dd53475f7">Bmp_Serialize</a>, <span class="stringliteral">&quot;bmp_pressure&quot;</span>, <a class="code hl_function" href="#a92ab15cc8e8eb6d605707723048f73a7">Bmp_Csv</a> },</div>
+<div class="line">    { <span class="stringliteral">&quot;MPU6500&quot;</span>, <a class="code hl_define" href="app__state_8h.html#adba8ce9111bf5183e29417b2f4d4e728">SENSOR_MPU6500</a>, 12U, <a class="code hl_function" href="#a2ea0845544cfaf374a98253e1b201872">Mpu_Read</a>, <a class="code hl_function" href="#adc4a2eb914b28a10e81af9170790390e">Mpu_Serialize</a>,</div>
+<div class="line">      <span class="stringliteral">&quot;accel_x_g,accel_y_g,accel_z_g,gyro_x_dps,gyro_y_dps,gyro_z_dps&quot;</span>, <a class="code hl_function" href="#aba2de6e03b0f71cff1cd3c3526006349">Mpu_Csv</a> },</div>
+<div class="line">    { <span class="stringliteral">&quot;BH1750&quot;</span>,  <a class="code hl_define" href="app__state_8h.html#a576c7365490de036f306f02c9505fb2e">SENSOR_BH1750</a>,  2U,  <a class="code hl_function" href="#a9ade17ea45d1cc88f5c1331e0086aadd">Bh_Read</a>,  <a class="code hl_function" href="#a469932346c65bcda5b0f5b0e88794891">Bh_Serialize</a>,  <span class="stringliteral">&quot;bh_lux&quot;</span>, <a class="code hl_function" href="#aae35d33c85b03b45974fad1f4aac78ba">Bh_Csv</a> },</div>
+<div class="line">    { <span class="stringliteral">&quot;ENS160&quot;</span>,  <a class="code hl_define" href="app__state_8h.html#a6ae87dc7a643cb51a2757981944efb39">SENSOR_ENS160</a>,  6U,  <a class="code hl_function" href="#a13a335d701f8151ce62b5daa2b3ce48a">Ens_Read</a>, <a class="code hl_function" href="#abb6c04fa2cb25da4e03bc3c043991acb">Ens_Serialize</a>, <span class="stringliteral">&quot;ens_aqi,ens_tvoc_ppb,ens_eco2_ppm,ens_validity&quot;</span>, <a class="code hl_function" href="#a84a1b585a68a824298f64bc93f4dc64c">Ens_Csv</a> },</div>
+<div class="line">}</div>
+<div class="ttc" id="aapp__state_8h_html_a5199c19049b8b6d1746a000d4a185ba5"><div class="ttname"><a href="app__state_8h.html#a5199c19049b8b6d1746a000d4a185ba5">SENSOR_AHT20</a></div><div class="ttdeci">#define SENSOR_AHT20</div><div class="ttdoc">Bit do AHT20 na máscara do registro.</div><div class="ttdef"><b>Definição</b> <a href="app__state_8h_source.html#l00065">app_state.h:65</a></div></div>
+<div class="ttc" id="aapp__state_8h_html_a576c7365490de036f306f02c9505fb2e"><div class="ttname"><a href="app__state_8h.html#a576c7365490de036f306f02c9505fb2e">SENSOR_BH1750</a></div><div class="ttdeci">#define SENSOR_BH1750</div><div class="ttdoc">Bit do BH1750 na máscara do registro.</div><div class="ttdef"><b>Definição</b> <a href="app__state_8h_source.html#l00068">app_state.h:68</a></div></div>
+<div class="ttc" id="aapp__state_8h_html_a6ae87dc7a643cb51a2757981944efb39"><div class="ttname"><a href="app__state_8h.html#a6ae87dc7a643cb51a2757981944efb39">SENSOR_ENS160</a></div><div class="ttdeci">#define SENSOR_ENS160</div><div class="ttdoc">Bit do ENS160 na máscara do registro.</div><div class="ttdef"><b>Definição</b> <a href="app__state_8h_source.html#l00069">app_state.h:69</a></div></div>
+<div class="ttc" id="aapp__state_8h_html_ac605503e03d1b801182fccceb05e4444"><div class="ttname"><a href="app__state_8h.html#ac605503e03d1b801182fccceb05e4444">SENSOR_BMP280</a></div><div class="ttdeci">#define SENSOR_BMP280</div><div class="ttdoc">Bit do BMP280 na máscara do registro.</div><div class="ttdef"><b>Definição</b> <a href="app__state_8h_source.html#l00066">app_state.h:66</a></div></div>
+<div class="ttc" id="aapp__state_8h_html_adba8ce9111bf5183e29417b2f4d4e728"><div class="ttname"><a href="app__state_8h.html#adba8ce9111bf5183e29417b2f4d4e728">SENSOR_MPU6500</a></div><div class="ttdeci">#define SENSOR_MPU6500</div><div class="ttdoc">Bit do MPU6500 na máscara do registro.</div><div class="ttdef"><b>Definição</b> <a href="app__state_8h_source.html#l00067">app_state.h:67</a></div></div>
+<div class="ttc" id="asensor__registry_8c_html_a13a335d701f8151ce62b5daa2b3ce48a"><div class="ttname"><a href="#a13a335d701f8151ce62b5daa2b3ce48a">Ens_Read</a></div><div class="ttdeci">static HAL_StatusTypeDef Ens_Read(void)</div><div class="ttdoc">Lê o ENS160, compensado pela temperatura e umidade do AHT20 (lido antes, pela ordem da tabela).</div><div class="ttdef"><b>Definição</b> <a href="sensor__registry_8c_source.html#l00232">sensor_registry.c:232</a></div></div>
+<div class="ttc" id="asensor__registry_8c_html_a2ea0845544cfaf374a98253e1b201872"><div class="ttname"><a href="#a2ea0845544cfaf374a98253e1b201872">Mpu_Read</a></div><div class="ttdeci">static HAL_StatusTypeDef Mpu_Read(void)</div><div class="ttdoc">Lê o MPU6500, que dorme entre as amostras.</div><div class="ttdef"><b>Definição</b> <a href="sensor__registry_8c_source.html#l00138">sensor_registry.c:138</a></div></div>
+<div class="ttc" id="asensor__registry_8c_html_a469932346c65bcda5b0f5b0e88794891"><div class="ttname"><a href="#a469932346c65bcda5b0f5b0e88794891">Bh_Serialize</a></div><div class="ttdeci">static void Bh_Serialize(uint8_t *out)</div><div class="ttdoc">Grava 2 bytes: contagem bruta de 16 bits, little-endian.</div><div class="ttdef"><b>Definição</b> <a href="sensor__registry_8c_source.html#l00212">sensor_registry.c:212</a></div></div>
+<div class="ttc" id="asensor__registry_8c_html_a6b46db9aed8c99f71fd892219faa6b01"><div class="ttname"><a href="#a6b46db9aed8c99f71fd892219faa6b01">Aht_Csv</a></div><div class="ttdeci">static int Aht_Csv(const uint8_t *p, char *out, size_t cap)</div><div class="ttdoc">Colunas aht_present,aht_temp_c,aht_humidity_pct; com o sensor ausente, 0,,.</div><div class="ttdef"><b>Definição</b> <a href="sensor__registry_8c_source.html#l00084">sensor_registry.c:84</a></div></div>
+<div class="ttc" id="asensor__registry_8c_html_a84a1b585a68a824298f64bc93f4dc64c"><div class="ttname"><a href="#a84a1b585a68a824298f64bc93f4dc64c">Ens_Csv</a></div><div class="ttdeci">static int Ens_Csv(const uint8_t *p, char *out, size_t cap)</div><div class="ttdoc">Colunas ens_aqi,ens_tvoc_ppb,ens_eco2_ppm,ens_validity; ausente, ,,,.</div><div class="ttdef"><b>Definição</b> <a href="sensor__registry_8c_source.html#l00248">sensor_registry.c:248</a></div></div>
+<div class="ttc" id="asensor__registry_8c_html_a92ab15cc8e8eb6d605707723048f73a7"><div class="ttname"><a href="#a92ab15cc8e8eb6d605707723048f73a7">Bmp_Csv</a></div><div class="ttdeci">static int Bmp_Csv(const uint8_t *p, char *out, size_t cap)</div><div class="ttdoc">Coluna bmp_pressure, em Pa inteiros.</div><div class="ttdef"><b>Definição</b> <a href="sensor__registry_8c_source.html#l00122">sensor_registry.c:122</a></div></div>
+<div class="ttc" id="asensor__registry_8c_html_a9ade17ea45d1cc88f5c1331e0086aadd"><div class="ttname"><a href="#a9ade17ea45d1cc88f5c1331e0086aadd">Bh_Read</a></div><div class="ttdeci">static HAL_StatusTypeDef Bh_Read(void)</div><div class="ttdoc">Mede a iluminância do BH1750 e guarda a contagem bruta em bh1750_raw_sample.</div><div class="ttdef"><b>Definição</b> <a href="sensor__registry_8c_source.html#l00206">sensor_registry.c:206</a></div></div>
+<div class="ttc" id="asensor__registry_8c_html_aae35d33c85b03b45974fad1f4aac78ba"><div class="ttname"><a href="#aae35d33c85b03b45974fad1f4aac78ba">Bh_Csv</a></div><div class="ttdeci">static int Bh_Csv(const uint8_t *p, char *out, size_t cap)</div><div class="ttdoc">Coluna bh_lux: contagem bruta dividida por 1,2, com uma casa decimal e arredondamento.</div><div class="ttdef"><b>Definição</b> <a href="sensor__registry_8c_source.html#l00218">sensor_registry.c:218</a></div></div>
+<div class="ttc" id="asensor__registry_8c_html_aafbb5723a684bd641df05820431d98d8"><div class="ttname"><a href="#aafbb5723a684bd641df05820431d98d8">Aht_Serialize</a></div><div class="ttdeci">static void Aht_Serialize(uint8_t *out)</div><div class="ttdoc">Grava 4 bytes: temperatura (int16) e umidade (uint16), ambas em centésimos, little-endian.</div><div class="ttdef"><b>Definição</b> <a href="sensor__registry_8c_source.html#l00074">sensor_registry.c:74</a></div></div>
+<div class="ttc" id="asensor__registry_8c_html_ab3e860d88aabe39aa321a93dd53475f7"><div class="ttname"><a href="#ab3e860d88aabe39aa321a93dd53475f7">Bmp_Serialize</a></div><div class="ttdeci">static void Bmp_Serialize(uint8_t *out)</div><div class="ttdoc">Grava 4 bytes: pressão em Pa (uint32, parte inteira), little-endian.</div><div class="ttdef"><b>Definição</b> <a href="sensor__registry_8c_source.html#l00115">sensor_registry.c:115</a></div></div>
+<div class="ttc" id="asensor__registry_8c_html_aba2de6e03b0f71cff1cd3c3526006349"><div class="ttname"><a href="#aba2de6e03b0f71cff1cd3c3526006349">Mpu_Csv</a></div><div class="ttdeci">static int Mpu_Csv(const uint8_t *p, char *out, size_t cap)</div><div class="ttdoc">Seis colunas: aceleração com 3 casas decimais (g) e velocidade angular com 2 (°/s); ausente,...</div><div class="ttdef"><b>Definição</b> <a href="sensor__registry_8c_source.html#l00184">sensor_registry.c:184</a></div></div>
+<div class="ttc" id="asensor__registry_8c_html_aba3b7369b98b31b9746c192dae5784c3"><div class="ttname"><a href="#aba3b7369b98b31b9746c192dae5784c3">Aht_Read</a></div><div class="ttdeci">static HAL_StatusTypeDef Aht_Read(void)</div><div class="ttdoc">Lê o AHT20 e atualiza aht20_available e aht20_last_read_ok.</div><div class="ttdef"><b>Definição</b> <a href="sensor__registry_8c_source.html#l00065">sensor_registry.c:65</a></div></div>
+<div class="ttc" id="asensor__registry_8c_html_abb6c04fa2cb25da4e03bc3c043991acb"><div class="ttname"><a href="#abb6c04fa2cb25da4e03bc3c043991acb">Ens_Serialize</a></div><div class="ttdeci">static void Ens_Serialize(uint8_t *out)</div><div class="ttdoc">Grava 6 bytes: AQI (1), TVOC em ppb (2), eCO2 em ppm (2) e validade (1).</div><div class="ttdef"><b>Definição</b> <a href="sensor__registry_8c_source.html#l00239">sensor_registry.c:239</a></div></div>
+<div class="ttc" id="asensor__registry_8c_html_ad4b8ba94907973fabc326a0830e82ab1"><div class="ttname"><a href="#ad4b8ba94907973fabc326a0830e82ab1">Bmp_Read</a></div><div class="ttdeci">static HAL_StatusTypeDef Bmp_Read(void)</div><div class="ttdoc">Lê a calibração e depois a temperatura e a pressão do BMP280; atualiza a disponibilidade.</div><div class="ttdef"><b>Definição</b> <a href="sensor__registry_8c_source.html#l00099">sensor_registry.c:99</a></div></div>
+<div class="ttc" id="asensor__registry_8c_html_adc4a2eb914b28a10e81af9170790390e"><div class="ttname"><a href="#adc4a2eb914b28a10e81af9170790390e">Mpu_Serialize</a></div><div class="ttdeci">static void Mpu_Serialize(uint8_t *out)</div><div class="ttdoc">Grava 12 bytes (int16, little-endian): aceleração X, Y, Z em milésimos de g e velocidade angular X,...</div><div class="ttdef"><b>Definição</b> <a href="sensor__registry_8c_source.html#l00166">sensor_registry.c:166</a></div></div>
+</div><!-- fragment -->
+<p>Tabela dos sensores do sistema. </p>
+<p>A ORDEM define a ordem dos dados no registro e das colunas do CSV. Os bits da máscara NÃO podem mudar, porque os registros já gravados dependem deles. </p>
+
+<p class="definition">Definição na linha <a class="el" href="sensor__registry_8c_source.html#l00266">266</a> do arquivo <a class="el" href="sensor__registry_8c_source.html">sensor_registry.c</a>.</p>
+
+<p class="reference">Referenciado(a) por <a class="el" href="sensor__registry_8c_source.html#l00366">Sensors_CsvFormatRow()</a>, <a class="el" href="sensor__registry_8c_source.html#l00354">Sensors_CsvHeader()</a>, <a class="el" href="sensor__registry_8c_source.html#l00399">Sensors_FirstMissingName()</a>, <a class="el" href="sensor__registry_8c_source.html#l00282">Sensors_Get()</a>, <a class="el" href="sensor__registry_8c_source.html#l00287">Sensors_ReadOne()</a>, <a class="el" href="sensor__registry_8c_source.html#l00319">Sensors_RecordSizeFromMask()</a> e <a class="el" href="sensor__registry_8c_source.html#l00338">Sensors_Serialize()</a>.</p>
+
+</div>
+</div>
+<a id="af5ade255df750a3ea1c1f2232af03d8a" name="af5ade255df750a3ea1c1f2232af03d8a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af5ade255df750a3ea1c1f2232af03d8a">&#9670;&#160;</a></span>sensors_available_mask</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">volatile uint8_t sensors_available_mask = 0U</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definição na linha <a class="el" href="sensor__registry_8c_source.html#l00277">277</a> do arquivo <a class="el" href="sensor__registry_8c_source.html">sensor_registry.c</a>.</p>
+
+</div>
+</div>
+<a id="a18b85f04de586e6f57a8a811710b3ead" name="a18b85f04de586e6f57a8a811710b3ead"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a18b85f04de586e6f57a8a811710b3ead">&#9670;&#160;</a></span>sensors_detected_mask</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">volatile uint8_t sensors_detected_mask = 0U</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definição na linha <a class="el" href="sensor__registry_8c_source.html#l00278">278</a> do arquivo <a class="el" href="sensor__registry_8c_source.html">sensor_registry.c</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><b>Core</b></li><li class="navelem"><b>Src</b></li><li class="navelem"><a href="sensor__registry_8c.html">sensor_registry.c</a></li>
+    <li class="footer">Gerado por <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.18.0 </li>
+  </ul>
+</div>
+</body>
+</html>

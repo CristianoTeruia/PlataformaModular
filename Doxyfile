@@ -1,0 +1,73 @@
+# Doxyfile - documentação do firmware da PlataformaModular
+#
+# Gerar (a partir da raiz do projeto):      doxygen Doxyfile
+#   HTML:   docs/api/html/index.html
+#   LaTeX:  docs/api/latex   ->  entrar na pasta e rodar "make" (Linux/macOS) ou "make.bat" (Windows)
+#                                para gerar o PDF (refman.pdf). Precisa de uma distribuição LaTeX
+#                                (TeX Live ou MiKTeX) com o pacote de português do babel.
+# Os avisos ficam em docs/api/doxygen_warnings.txt.
+#
+# Só as opções que diferem do padrão do Doxygen estão aqui.
+
+DOXYFILE_ENCODING      = UTF-8
+PROJECT_NAME           = "PlataformaModular"
+PROJECT_BRIEF          = "Plataforma modular embarcada para aquisição e registro de dados de sensores (STM32F411 + FreeRTOS)"
+OUTPUT_DIRECTORY       = docs/api
+OUTPUT_LANGUAGE        = Brazilian
+FULL_PATH_NAMES        = YES
+TAB_SIZE               = 4
+JAVADOC_AUTOBRIEF      = YES
+MARKDOWN_SUPPORT       = YES
+OPTIMIZE_OUTPUT_FOR_C  = YES
+
+# O que documentar: o código da aplicação. Arquivos gerados pelo STM32CubeMX (e regenerados por ele)
+# e as bibliotecas ficam de fora.
+INPUT                  = docs/mainpage.dox Core/Inc Core/Src
+INPUT_ENCODING         = UTF-8
+FILE_PATTERNS          = *.c *.h *.dox
+RECURSIVE              = NO
+EXCLUDE_PATTERNS       = */main.c */main.h \
+                         */stm32f4xx_it.* */stm32f4xx_hal_msp.c */stm32f4xx_hal_conf.h \
+                         */system_stm32f4xx.c */syscalls.c */sysmem.c \
+                         */FreeRTOSConfig.h
+
+EXTRACT_ALL            = NO
+EXTRACT_STATIC         = YES
+SOURCE_BROWSER         = YES
+INLINE_SOURCES         = NO
+REFERENCED_BY_RELATION = YES
+REFERENCES_RELATION    = YES
+
+# Pré-processador: "__attribute__((packed))" das estruturas atrapalha a análise.
+ENABLE_PREPROCESSING   = YES
+MACRO_EXPANSION        = YES
+EXPAND_ONLY_PREDEF     = YES
+SEARCH_INCLUDES        = YES
+INCLUDE_PATH           = Core/Inc
+PREDEFINED             = "__attribute__(x)=" \
+                         "__cplusplus="
+
+# Avisos
+QUIET                  = NO
+WARNINGS               = YES
+WARN_IF_UNDOCUMENTED   = YES
+WARN_IF_DOC_ERROR      = YES
+WARN_NO_PARAMDOC       = NO
+WARN_LOGFILE           = docs/api/doxygen_warnings.txt
+
+# Saídas
+GENERATE_HTML          = YES
+HTML_OUTPUT            = html
+GENERATE_TREEVIEW      = YES
+GENERATE_LATEX         = YES
+LATEX_OUTPUT           = latex
+USE_PDFLATEX           = YES
+PDF_HYPERLINKS         = YES
+COMPACT_LATEX          = YES
+PAPER_TYPE             = a4
+
+# Gráficos de chamadas e de inclusão exigem o Graphviz (comando "dot"). Troque para YES se ele
+# estiver instalado.
+HAVE_DOT               = NO
+CALL_GRAPH             = NO
+CALLER_GRAPH           = NO

@@ -1,0 +1,27 @@
+var searchData=
+[
+  ['magic_0',['magic',['../struct_e_e_p_r_o_m_metadata.html#ab38ea198144d836e8ffad98f81c3c761',1,'EEPROMMetadata']]],
+  ['mapa_20da_20eeprom_1',['Formato do registro e mapa da EEPROM',['../index.html#sec_record',1,'']]],
+  ['mask_5fbit_2',['mask_bit',['../struct_sensor_driver.html#a8664ac8f3486dfc4bd7175583a920f88',1,'SensorDriver']]],
+  ['modulares_3',['Sensores modulares',['../index.html#sec_sensors',1,'']]],
+  ['mpu6500_2ec_4',['mpu6500.c',['../mpu6500_8c.html',1,'']]],
+  ['mpu6500_2eh_5',['mpu6500.h',['../mpu6500_8h.html',1,'']]],
+  ['mpu6500_5faccel_5foffset_5fz_6',['mpu6500_accel_offset_z',['../app__state_8h.html#a9dc51766a0a3c5b766f843a31a718f30',1,'app_state.h']]],
+  ['mpu6500_5faccel_5fz_7',['mpu6500_accel_z',['../app__state_8h.html#af4ee032fd85d1ada351154aff8d0902a',1,'app_state.h']]],
+  ['mpu6500_5faccel_5fz_5fg_8',['mpu6500_accel_z_g',['../app__state_8h.html#a3c45f95cce673c04fbf2f482c75e4b09',1,'app_state.h']]],
+  ['mpu6500_5favailable_9',['mpu6500_available',['../app__state_8h.html#a0a0fb70056d01f444858058d0ce40a5c',1,'app_state.h']]],
+  ['mpu6500_5fcalibrate_10',['MPU6500_Calibrate',['../mpu6500_8h.html#a70cb5f6bd93698d202e28f633529f220',1,'MPU6500_Calibrate(void):&#160;mpu6500.c'],['../mpu6500_8c.html#a70cb5f6bd93698d202e28f633529f220',1,'MPU6500_Calibrate(void):&#160;mpu6500.c']]],
+  ['mpu6500_5fgyro_5foffset_5fz_11',['mpu6500_gyro_offset_z',['../app__state_8h.html#abab4f06c5b7b18d0ff22506174aab782',1,'app_state.h']]],
+  ['mpu6500_5fgyro_5fz_12',['mpu6500_gyro_z',['../app__state_8h.html#a5bd1ef9b351103b6c8c56ded1b26b236',1,'app_state.h']]],
+  ['mpu6500_5fgyro_5fz_5fdps_13',['mpu6500_gyro_z_dps',['../app__state_8h.html#ac92261368ad2d996089491b139c20fcc',1,'app_state.h']]],
+  ['mpu6500_5finit_14',['MPU6500_Init',['../mpu6500_8h.html#a83e6c0f966fbcb5a598cab4cc79db90d',1,'MPU6500_Init(void):&#160;mpu6500.c'],['../mpu6500_8c.html#a83e6c0f966fbcb5a598cab4cc79db90d',1,'MPU6500_Init(void):&#160;mpu6500.c']]],
+  ['mpu6500_5flast_5fread_5fok_15',['mpu6500_last_read_ok',['../app__state_8h.html#adb4a4ee2b719d503256dc2704fda7edc',1,'app_state.h']]],
+  ['mpu6500_5fread_16',['MPU6500_Read',['../mpu6500_8h.html#a44b099e7ab4e500e6966e8b92615384c',1,'MPU6500_Read(void):&#160;mpu6500.c'],['../mpu6500_8c.html#a44b099e7ab4e500e6966e8b92615384c',1,'MPU6500_Read(void):&#160;mpu6500.c']]],
+  ['mpu6500_5fsleep_17',['MPU6500_Sleep',['../mpu6500_8h.html#a909b56cbca4234f86b74edf9d351aea6',1,'MPU6500_Sleep(void):&#160;mpu6500.c'],['../mpu6500_8c.html#a909b56cbca4234f86b74edf9d351aea6',1,'MPU6500_Sleep(void):&#160;mpu6500.c']]],
+  ['mpu6500_5fwake_18',['MPU6500_Wake',['../mpu6500_8h.html#a7ab0e94c6f6d3f817e4866e0ec44b390',1,'MPU6500_Wake(void):&#160;mpu6500.c'],['../mpu6500_8c.html#a7ab0e94c6f6d3f817e4866e0ec44b390',1,'MPU6500_Wake(void):&#160;mpu6500.c']]],
+  ['mpu6500_5fwho_5fam_5fi_19',['mpu6500_who_am_i',['../app__state_8h.html#a8ad5c31985f0f97a9b4ce913a7f1870a',1,'mpu6500_who_am_i:&#160;app_state.c'],['../app__state_8c.html#a8ad5c31985f0f97a9b4ce913a7f1870a',1,'mpu6500_who_am_i:&#160;app_state.c']]],
+  ['mpu_5fcsv_20',['Mpu_Csv',['../sensor__registry_8c.html#aba2de6e03b0f71cff1cd3c3526006349',1,'sensor_registry.c']]],
+  ['mpu_5fread_21',['Mpu_Read',['../sensor__registry_8c.html#a2ea0845544cfaf374a98253e1b201872',1,'sensor_registry.c']]],
+  ['mpu_5fserialize_22',['Mpu_Serialize',['../sensor__registry_8c.html#adc4a2eb914b28a10e81af9170790390e',1,'sensor_registry.c']]],
+  ['mutexes_23',['Tarefas e mutexes',['../index.html#sec_tasks',1,'']]]
+];

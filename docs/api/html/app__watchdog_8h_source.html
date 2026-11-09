@@ -1,0 +1,172 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pt-BR">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.18.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>PlataformaModular: Código-Fonte de Core/Inc/app_watchdog.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="codefolding.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">PlataformaModular
+   </div>
+   <div id="projectbrief">Plataforma modular embarcada para aquisição e registro de dados de sensores (STM32F411 + FreeRTOS)</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Gerado por Doxygen 1.18.0 -->
+<script type="text/javascript">
+let searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', codefold.init);
+</script>
+<script type="application/json" id="doxygen-config">
+{
+  "relPath": "",
+  "generateTreeView": true,
+  "searchEngine": true,
+  "serverBasedSearch": false,
+  "disableIndex": false,
+  "dynamicMenus": true,
+  "fullSidebar": false
+}
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<div id="main-nav-mobile">
+<div class="sm sm-dox"><input id="main-menu-state" type="checkbox"/>
+<label class="main-menu-btn" for="main-menu-state">
+<span class="main-menu-btn-icon"></span> Toggle main menu visibility</label>
+<span id="searchBoxPos1"></span>
+</div>
+</div><!-- main-nav-mobile -->
+<div id="main-nav">
+  <ul class="sm sm-dox" id="main-menu">
+    <li id="searchBoxPos2">
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect" class="search-icon"><span class="search-icon-dropdown"></span></span>
+          <input type="text" id="MSearchField" value="" placeholder="Busca" accesskey="S"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+          </span>
+        </div>
+    </li>
+  </ul>
+</div><!-- main-nav -->
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded',() => { initNavTree('app__watchdog_8h_source.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Carregando...</div>
+<div class="SRStatus" id="Searching">Procurando...</div>
+<div class="SRStatus" id="NoMatches">Nenhuma entrada encontrado</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">app_watchdog.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="app__watchdog_8h.html">Ir para a documentação desse arquivo.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#ifndef APP_WATCHDOG_H</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#define APP_WATCHDOG_H</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#include &lt;stdint.h&gt;</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span></div>
+<div class="foldopen" id="foldopen00018" data-start="{" data-end="};">
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno"><a class="line" href="app__watchdog_8h.html#a1bd5b6c00e58e57850cd31456681c674">   18</a></span><span class="keyword">typedef</span> <span class="keyword">enum</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>{</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno"><a class="line" href="app__watchdog_8h.html#a1bd5b6c00e58e57850cd31456681c674a3c5cdc93598261a5fe9a9ccbfa725cf6">   20</a></span>    <a class="code hl_enumvalue" href="app__watchdog_8h.html#a1bd5b6c00e58e57850cd31456681c674a3c5cdc93598261a5fe9a9ccbfa725cf6">WDG_TASK_COMMAND</a> = 0, </div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno"><a class="line" href="app__watchdog_8h.html#a1bd5b6c00e58e57850cd31456681c674a89e445c29adcc5ee48703c12b20224c8">   21</a></span>    <a class="code hl_enumvalue" href="app__watchdog_8h.html#a1bd5b6c00e58e57850cd31456681c674a89e445c29adcc5ee48703c12b20224c8">WDG_TASK_SENSOR</a>  = 1, </div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno"><a class="line" href="app__watchdog_8h.html#a1bd5b6c00e58e57850cd31456681c674a0e9213122b52126a14ceb39abc715040">   22</a></span>    <a class="code hl_enumvalue" href="app__watchdog_8h.html#a1bd5b6c00e58e57850cd31456681c674a0e9213122b52126a14ceb39abc715040">WDG_TASK_OLED</a>    = 2, </div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="app__watchdog_8h.html#a1bd5b6c00e58e57850cd31456681c674af0c9158fb4f25d511f485e5bc5c36f91">   23</a></span>    <a class="code hl_enumvalue" href="app__watchdog_8h.html#a1bd5b6c00e58e57850cd31456681c674af0c9158fb4f25d511f485e5bc5c36f91">WDG_TASK_COUNT</a>   = 3  </div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>} <a class="code hl_enumeration" href="app__watchdog_8h.html#a1bd5b6c00e58e57850cd31456681c674">wdg_task_t</a>;</div>
+</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="keyword">extern</span> <span class="keyword">volatile</span> uint32_t <a class="code hl_variable" href="app__watchdog_8h.html#a6ef5a505091641c9719d0ad1420da0a5">wdg_reset_csr</a>;        </div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="keyword">extern</span> <span class="keyword">volatile</span> uint32_t <a class="code hl_variable" href="app__watchdog_8h.html#a65f6722f966df0d644cf916e1dc936d0">wdg_iwdg_reset_count</a>; </div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="keyword">extern</span> <span class="keyword">volatile</span> uint32_t <a class="code hl_variable" href="app__watchdog_8h.html#a0fd3a81667c66cd2fc946325afc98d10">wdg_last_fault_code</a>;  </div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="keyword">extern</span> <span class="keyword">volatile</span> uint8_t  <a class="code hl_variable" href="app__watchdog_8h.html#ac19b3047bc88e38ef16dd26a314cab2e">wdg_stale_mask</a>;       </div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="keyword">extern</span> <span class="keyword">volatile</span> uint8_t  <a class="code hl_variable" href="app__watchdog_8h.html#adf08ec845306068c4c5b4360f31fea2c">wdg_test_hang</a>;        </div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span></div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="keywordtype">void</span> <a class="code hl_function" href="app__watchdog_8h.html#a874ddfabf9bcd8ca3f1984d03c28237d">Watchdog_CaptureResetCause</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span></div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span><span class="keywordtype">void</span> <a class="code hl_function" href="app__watchdog_8h.html#a495a07bd1939981855363ee899e619ed">Watchdog_Init</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span></div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span><span class="keywordtype">void</span> <a class="code hl_function" href="app__watchdog_8h.html#a6c8f0a6a7e01de26b54bf6f4dcbc9f11">Watchdog_Checkin</a>(<a class="code hl_enumeration" href="app__watchdog_8h.html#a1bd5b6c00e58e57850cd31456681c674">wdg_task_t</a> task);</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span></div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span><span class="keywordtype">void</span> <a class="code hl_function" href="app__watchdog_8h.html#a911d3989aa5282e60324f711e1f80a89">Watchdog_Service</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span> </div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span><span class="preprocessor">#endif </span><span class="comment">/* APP_WATCHDOG_H */</span><span class="preprocessor"></span></div>
+<div class="ttc" id="aapp__watchdog_8h_html_a0fd3a81667c66cd2fc946325afc98d10"><div class="ttname"><a href="app__watchdog_8h.html#a0fd3a81667c66cd2fc946325afc98d10">wdg_last_fault_code</a></div><div class="ttdeci">volatile uint32_t wdg_last_fault_code</div><div class="ttdoc">Última falha fatal (BKP DR2): 0xFA02 pilha, 0xFA03 heap, 0xFA04 HardFault.</div><div class="ttdef"><b>Definição</b> <a href="app__watchdog_8c_source.html#l00013">app_watchdog.c:13</a></div></div>
+<div class="ttc" id="aapp__watchdog_8h_html_a1bd5b6c00e58e57850cd31456681c674"><div class="ttname"><a href="app__watchdog_8h.html#a1bd5b6c00e58e57850cd31456681c674">wdg_task_t</a></div><div class="ttdeci">wdg_task_t</div><div class="ttdoc">Tarefas supervisionadas pelo watchdog.</div><div class="ttdef"><b>Definição</b> <a href="#l00018">app_watchdog.h:19</a></div></div>
+<div class="ttc" id="aapp__watchdog_8h_html_a1bd5b6c00e58e57850cd31456681c674a0e9213122b52126a14ceb39abc715040"><div class="ttname"><a href="app__watchdog_8h.html#a1bd5b6c00e58e57850cd31456681c674a0e9213122b52126a14ceb39abc715040">WDG_TASK_OLED</a></div><div class="ttdeci">@ WDG_TASK_OLED</div><div class="ttdoc">oledTask: prazo de 10 s (o laço normal é de cerca de 20 ms).</div><div class="ttdef"><b>Definição</b> <a href="#l00022">app_watchdog.h:22</a></div></div>
+<div class="ttc" id="aapp__watchdog_8h_html_a1bd5b6c00e58e57850cd31456681c674a3c5cdc93598261a5fe9a9ccbfa725cf6"><div class="ttname"><a href="app__watchdog_8h.html#a1bd5b6c00e58e57850cd31456681c674a3c5cdc93598261a5fe9a9ccbfa725cf6">WDG_TASK_COMMAND</a></div><div class="ttdeci">@ WDG_TASK_COMMAND</div><div class="ttdoc">defaultTask: marca a si mesma ao chamar Watchdog_Service().</div><div class="ttdef"><b>Definição</b> <a href="#l00020">app_watchdog.h:20</a></div></div>
+<div class="ttc" id="aapp__watchdog_8h_html_a1bd5b6c00e58e57850cd31456681c674a89e445c29adcc5ee48703c12b20224c8"><div class="ttname"><a href="app__watchdog_8h.html#a1bd5b6c00e58e57850cd31456681c674a89e445c29adcc5ee48703c12b20224c8">WDG_TASK_SENSOR</a></div><div class="ttdeci">@ WDG_TASK_SENSOR</div><div class="ttdoc">sensorTask: prazo de 30 s (o ciclo normal é de 10 s).</div><div class="ttdef"><b>Definição</b> <a href="#l00021">app_watchdog.h:21</a></div></div>
+<div class="ttc" id="aapp__watchdog_8h_html_a1bd5b6c00e58e57850cd31456681c674af0c9158fb4f25d511f485e5bc5c36f91"><div class="ttname"><a href="app__watchdog_8h.html#a1bd5b6c00e58e57850cd31456681c674af0c9158fb4f25d511f485e5bc5c36f91">WDG_TASK_COUNT</a></div><div class="ttdeci">@ WDG_TASK_COUNT</div><div class="ttdoc">Número de tarefas supervisionadas.</div><div class="ttdef"><b>Definição</b> <a href="#l00023">app_watchdog.h:23</a></div></div>
+<div class="ttc" id="aapp__watchdog_8h_html_a495a07bd1939981855363ee899e619ed"><div class="ttname"><a href="app__watchdog_8h.html#a495a07bd1939981855363ee899e619ed">Watchdog_Init</a></div><div class="ttdeci">void Watchdog_Init(void)</div><div class="ttdoc">Inicializa a supervisão.</div><div class="ttdef"><b>Definição</b> <a href="app__watchdog_8c_source.html#l00028">app_watchdog.c:28</a></div></div>
+<div class="ttc" id="aapp__watchdog_8h_html_a65f6722f966df0d644cf916e1dc936d0"><div class="ttname"><a href="app__watchdog_8h.html#a65f6722f966df0d644cf916e1dc936d0">wdg_iwdg_reset_count</a></div><div class="ttdeci">volatile uint32_t wdg_iwdg_reset_count</div><div class="ttdoc">Reinícios causados pelo IWDG (persistente em BKP DR3).</div><div class="ttdef"><b>Definição</b> <a href="app__watchdog_8c_source.html#l00012">app_watchdog.c:12</a></div></div>
+<div class="ttc" id="aapp__watchdog_8h_html_a6c8f0a6a7e01de26b54bf6f4dcbc9f11"><div class="ttname"><a href="app__watchdog_8h.html#a6c8f0a6a7e01de26b54bf6f4dcbc9f11">Watchdog_Checkin</a></div><div class="ttdeci">void Watchdog_Checkin(wdg_task_t task)</div><div class="ttdoc">Registra que uma tarefa está viva.</div><div class="ttdef"><b>Definição</b> <a href="app__watchdog_8c_source.html#l00050">app_watchdog.c:50</a></div></div>
+<div class="ttc" id="aapp__watchdog_8h_html_a6ef5a505091641c9719d0ad1420da0a5"><div class="ttname"><a href="app__watchdog_8h.html#a6ef5a505091641c9719d0ad1420da0a5">wdg_reset_csr</a></div><div class="ttdeci">volatile uint32_t wdg_reset_csr</div><div class="ttdoc">Valor de RCC-&gt;CSR lido no boot (flags de reset).</div><div class="ttdef"><b>Definição</b> <a href="app__watchdog_8c_source.html#l00011">app_watchdog.c:11</a></div></div>
+<div class="ttc" id="aapp__watchdog_8h_html_a874ddfabf9bcd8ca3f1984d03c28237d"><div class="ttname"><a href="app__watchdog_8h.html#a874ddfabf9bcd8ca3f1984d03c28237d">Watchdog_CaptureResetCause</a></div><div class="ttdeci">void Watchdog_CaptureResetCause(void)</div><div class="ttdoc">Salva a causa do último reinício.</div><div class="ttdef"><b>Definição</b> <a href="app__watchdog_8c_source.html#l00022">app_watchdog.c:22</a></div></div>
+<div class="ttc" id="aapp__watchdog_8h_html_a911d3989aa5282e60324f711e1f80a89"><div class="ttname"><a href="app__watchdog_8h.html#a911d3989aa5282e60324f711e1f80a89">Watchdog_Service</a></div><div class="ttdeci">void Watchdog_Service(void)</div><div class="ttdoc">Verifica os prazos e, se todas as tarefas estão em dia, realimenta o IWDG.</div><div class="ttdef"><b>Definição</b> <a href="app__watchdog_8c_source.html#l00055">app_watchdog.c:55</a></div></div>
+<div class="ttc" id="aapp__watchdog_8h_html_ac19b3047bc88e38ef16dd26a314cab2e"><div class="ttname"><a href="app__watchdog_8h.html#ac19b3047bc88e38ef16dd26a314cab2e">wdg_stale_mask</a></div><div class="ttdeci">volatile uint8_t wdg_stale_mask</div><div class="ttdoc">Bits das tarefas fora do prazo na última verificação.</div><div class="ttdef"><b>Definição</b> <a href="app__watchdog_8c_source.html#l00014">app_watchdog.c:14</a></div></div>
+<div class="ttc" id="aapp__watchdog_8h_html_adf08ec845306068c4c5b4360f31fea2c"><div class="ttname"><a href="app__watchdog_8h.html#adf08ec845306068c4c5b4360f31fea2c">wdg_test_hang</a></div><div class="ttdeci">volatile uint8_t wdg_test_hang</div><div class="ttdoc">1 após o comando WDTTEST (só com ENABLE_WDT_TEST).</div><div class="ttdef"><b>Definição</b> <a href="app__watchdog_8c_source.html#l00015">app_watchdog.c:15</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><b>Core</b></li><li class="navelem"><b>Inc</b></li><li class="navelem"><a href="app__watchdog_8h.html">app_watchdog.h</a></li>
+    <li class="footer">Gerado por <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.18.0 </li>
+  </ul>
+</div>
+</body>
+</html>
